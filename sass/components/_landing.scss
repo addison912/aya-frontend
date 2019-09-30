@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.landing {
+  background-color: white;
+  h1 {
+    text-align: center;
+    margin: 1em;
+  }
+}
+// .slider {
+//   width: 100vw;
+//   height: 40vh;
+//   background-color: grey;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+// .hide {
+//   display: none;
+// }
+.landingWrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  height: 40vh;
+}
+
+.landingArticle {
+  // border: 1px solid black;
+  width: 30vw;
+  padding: 1em 2em;
+  h2,
+  p {
+    text-align: left;
+    padding: 0.5em;
+  }
+}
