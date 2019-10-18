@@ -8,19 +8,10 @@
   h1 {
     text-align: center;
     margin: 1em;
+    font-family: $font-main;
   }
 }
-// .slider {
-//   width: 100vw;
-//   height: 40vh;
-//   background-color: grey;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// .hide {
-//   display: none;
-// }
+
 .landingWrapper {
   display: flex;
   justify-content: space-around;

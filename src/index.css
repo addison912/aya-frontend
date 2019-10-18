@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.landing {
+  background-color: white;
+}
+.landing h1 {
+  text-align: center;
+  margin: 1em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.landingWrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  height: 40vh;
+}
+
+.landingArticle {
+  width: 30vw;
+  padding: 1em 2em;
+}
+.landingArticle h2,
+.landingArticle p {
+  text-align: left;
+  padding: 0.5em;
+}
+
+.left-nav {
+  font-family: "Montserrat", sans-serif;
+  margin: 0px 12px;
+}
+
+/*# sourceMappingURL=index.css.map */
