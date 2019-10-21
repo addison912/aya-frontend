@@ -1,4 +1,17 @@
 .left-nav {
-  font-family: $font-main;
   margin: 0px 12px;
+  grid-column: 1 / 5;
+  grid-row: 2/13;
+  .galleries-list {
+    font-family: $font-nav;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    margin: 6px 0px;
+  }
+  p {
+    font-family: $font-main;
+  }
 }

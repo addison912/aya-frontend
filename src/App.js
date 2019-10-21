@@ -1,16 +1,21 @@
 import React from "react";
-import LeftNav from "./components/LeftNav";
-import Header from "./components/Header";
+import { Router, navigate } from "@reach/router";
+
+// import Header from "./components/Header";
+import Home from "./containers/Home";
+import Gallery from "./containers/Gallery";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="landing">
-          <Header />
-          <LeftNav />
+      <React.StrictMode>
+        <div className="App">
+          <Router>
+            <Home path="/" />
+            <Gallery path="gallery" />
+          </Router>
         </div>
-      </div>
+      </React.StrictMode>
     );
   }
 }

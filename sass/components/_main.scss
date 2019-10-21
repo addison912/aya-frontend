@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  max-width: 83.33vw;
+  margin: 0 auto;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0px;
+  grid-auto-rows: 20px;
+}
+
+.grid-wrapper {
+  height: 100vh;
+}

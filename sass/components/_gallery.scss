@@ -1,0 +1,14 @@
+.gallery {
+  grid-column: 4/12;
+  grid-row: 3/9;
+  display: flex;
+  justify-content: center;
+  background-image: url("http://placecorgi.com/1200");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
