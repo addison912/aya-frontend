@@ -26,7 +26,7 @@ class LeftNav extends Component {
   render() {
     return (
       <div className="left-nav">
-        <p>Aya Brackett</p>
+        <img src={`${domain}/assets/text-logo.png`} alt="Aya Brackett logo" />
         <ul className="galleries-list">
           {categories.map(category => (
             <li key={category}>

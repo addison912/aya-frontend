@@ -1,8 +1,10 @@
 .left-nav {
+  display: grid;
   margin: 0px 12px;
   grid-column: 1 / 5;
   grid-row: 2/13;
   .galleries-list {
+    grid-row: 3/12;
     font-family: $font-nav;
     margin: 0;
     padding: 0;

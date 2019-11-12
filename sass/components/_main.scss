@@ -6,10 +6,11 @@
 .grid-container {
   display: grid;
   max-width: 83.33vw;
+  height: 100vh;
   margin: 0 auto;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 0px;
-  grid-auto-rows: 20px;
+  grid-auto-rows: minmax(20px, auto);
 }
 
 .grid-wrapper {
