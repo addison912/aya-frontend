@@ -2,7 +2,7 @@ import React from "react";
 import { Router, navigate } from "@reach/router";
 
 // import Header from "./components/Header";
-import Home from "./containers/Home";
+import Main from "./containers/Main";
 import Gallery from "./containers/Gallery";
 
 class App extends React.Component {
@@ -11,7 +11,7 @@ class App extends React.Component {
       <React.StrictMode>
         <div className="App">
           <Router>
-            <Home path="/" />
+            <Main path="/" />
             <Gallery path="gallery" />
           </Router>
         </div>

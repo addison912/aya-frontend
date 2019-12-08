@@ -3,12 +3,10 @@ import { Router, Link } from "@reach/router";
 import { domain, categories } from "../config/constants";
 
 class LeftNav extends Component {
-  constructor() {
-    super();
-    this.state = {
-      message: ""
-    };
-  }
+  state = {
+    message: "",
+    galleries: []
+  };
 
   getText() {
     fetch(`${domain}/api/test`)
@@ -23,6 +21,7 @@ class LeftNav extends Component {
   componentDidMount() {
     this.getText();
   }
+
   render() {
     return (
       <div className="left-nav">
