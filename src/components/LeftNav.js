@@ -25,7 +25,10 @@ class LeftNav extends Component {
   render() {
     return (
       <div className="left-nav">
-        <img src={`${domain}/assets/text-logo.png`} alt="Aya Brackett logo" />
+        <img
+          src={`${domain}/assets/logo-aya_brackett.png`}
+          alt="Aya Brackett logo"
+        />
         <ul className="galleries-list">
           {categories.map(category => (
             <li key={category}>
@@ -34,6 +37,13 @@ class LeftNav extends Component {
             </li>
           ))}
         </ul>
+        <nav className="links">
+          <ul>
+            <li>About</li>
+            <li>News</li>
+            <li>Shop</li>
+          </ul>
+        </nav>
       </div>
     );
   }

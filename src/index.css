@@ -13,10 +13,6 @@ h1 {
   height: 100vh;
 }
 
-li {
-  font-family: "PitchMedium";
-}
-
 .left-nav {
   display: grid;
   margin: 0px 12px;
@@ -25,16 +21,47 @@ li {
 }
 .left-nav .galleries-list {
   grid-row: 3/12;
-  font-family: Arial;
+  grid-column: 1/5;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.left-nav li {
+.left-nav .galleries-list li {
   margin: 6px 0px;
+  font-family: "GT America Bold";
+  font-size: 2em;
+  opacity: 0.6;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 0.66px;
+  -webkit-text-stroke-color: black;
+  line-height: 110%;
 }
-.left-nav p {
-  font-family: courier;
+.left-nav .links {
+  grid-row: 6/12;
+  grid-column: 1/5;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 188px;
+  height: 20px;
+}
+.left-nav .links ul {
+  margin: 0;
+  padding: 0;
+}
+.left-nav .links li {
+  margin: 6px 0px;
+  font-family: "GT America";
+  font-size: 2em;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 140%;
+  color: #323844;
+}
+.left-nav li:hover {
+  cursor: pointer;
 }
 
 * {
@@ -54,6 +81,11 @@ li {
 
 .grid-wrapper {
   height: 100vh;
+}
+
+ul {
+  text-decoration: none;
+  list-style: none;
 }
 
 .gallery {
