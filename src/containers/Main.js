@@ -1,71 +1,36 @@
 import React, { Component } from "react";
 import LeftNav from "../components/LeftNav";
 import { domain } from "../config/constants";
+import { Router, navigate, Link } from "@reach/router";
+import About from "./About";
+import Gallery from "../components/Gallery";
 
 class Main extends Component {
   state = {
     photo: null,
     message: "",
     category: "",
+    gallery: "",
     galleries: [],
     layout: "single",
-    picture: require("../assets/images/spinner.gif")
+    caption: ""
   };
 
-  getimages = () => {
-    fetch(`${domain}/api/test`)
-      .then(res => {
-        return res.json();
-      })
-      .then(text => {
-        console.log(text);
-        this.setState({ message: text.message });
-      });
+  toggleGalleryLayout = e => {
+    this.setState({ layout: e.target.getAttribute("data") });
   };
 
-  getGallery() {
-    fetch(`${domain}/api/gallery/c/Home`)
-      .then(res => {
-        return res.json();
-      })
-      .then(galleries => {
-        this.setState({
-          galleries
-        });
-        let image =
-          domain +
-          "/uploads/" +
-          galleries[0].category +
-          "/" +
-          galleries[0].name +
-          "/" +
-          galleries[0].photos[
-            Math.floor(Math.random() * galleries[0].photos.length)
-          ].location;
-        this.setState({ picture: image });
-        console.log(image);
-      });
-  }
-
-  componentDidMount() {
-    this.getimages();
-    this.getGallery();
-  }
+  categoryClickHandler = e => {};
 
   render() {
     return (
-      <div className="grid-wrapper">
-        <div className="grid-container">
-          <LeftNav />
-          <div
-            className="gallery"
-            // style={{
-            //   backgroundImage: this.state.picture
-            // }}
-          >
-            {<img src={this.state.picture} alt="corgi" />}
-          </div>
-        </div>
+      <div className="main">
+        <LeftNav toggleGalleryLayout={this.toggleGalleryLayout} />
+        <Router>
+          <Gallery layout={this.state.layout} path={"/*"} />
+          {/* <Gallery path={"/:gallery"} /> */}
+          <About path="about" />
+        </Router>
       </div>
     );
   }

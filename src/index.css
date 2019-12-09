@@ -14,36 +14,27 @@ h1 {
 }
 
 .left-nav {
-  display: grid;
   margin: 0px 12px;
-  grid-column: 1/5;
-  grid-row: 2/13;
 }
 .left-nav .galleries-list {
-  grid-row: 3/12;
-  grid-column: 1/5;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.left-nav .galleries-list li {
+.left-nav .galleries-list li .category-link {
+  text-decoration: none;
   margin: 6px 0px;
   font-family: "GT America Bold";
-  font-size: 2em;
-  opacity: 0.6;
+  font-size: 31.2889px;
   -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 0.66px;
   -webkit-text-stroke-color: black;
   line-height: 110%;
 }
 .left-nav .links {
-  grid-row: 6/12;
-  grid-column: 1/5;
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 188px;
-  height: 20px;
 }
 .left-nav .links ul {
   margin: 0;
@@ -52,7 +43,6 @@ h1 {
 .left-nav .links li {
   margin: 6px 0px;
   font-family: "GT America";
-  font-size: 2em;
   text-align: left;
   font-style: normal;
   font-weight: normal;
@@ -64,19 +54,29 @@ h1 {
   cursor: pointer;
 }
 
+.logo {
+  padding-top: 8.33vh;
+}
+
+.gallery-toggle {
+  margin-right: 2em;
+}
+
+.gallery-toggle:hover {
+  cursor: pointer;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
-.grid-container {
-  display: grid;
+.main {
   max-width: 83.33vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   height: 100vh;
   margin: 0 auto;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: 0px;
-  grid-auto-rows: minmax(20px, auto);
 }
 
 .grid-wrapper {
@@ -88,14 +88,116 @@ ul {
   list-style: none;
 }
 
-.gallery {
-  grid-column: 4/12;
-  grid-row: 3/10;
+.horizontal-center {
   display: flex;
-  justify-content: center;
+  align-items: center;
+}
+
+.col-1 {
+  width: 8.33%;
+}
+
+.col-2 {
+  width: 16.66%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.33%;
+}
+
+.col-5 {
+  width: 41.66%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.33%;
+}
+
+.col-8 {
+  width: 66.66%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.33%;
+}
+
+.col-11 {
+  width: 91.66%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.row-1 {
+  height: 8.33% vh;
+}
+
+.row-2 {
+  height: 16.66vh;
+}
+
+.row-3 {
+  height: 25vh;
+}
+
+.row-4 {
+  height: 33.33vh;
+}
+
+.row-5 {
+  height: 41.66vh;
+}
+
+.row-6 {
+  height: 50vh;
+}
+
+.row-7 {
+  height: 58.33vh;
+}
+
+.row-8 {
+  height: 66.66vh;
+}
+
+.row-9 {
+  height: 75vh;
+}
+
+.row-10 {
+  height: 83.33vh;
+}
+
+.row-11 {
+  height: 91.66vh;
+}
+
+.row-12 {
+  height: 100vh;
+}
+
+.gallery {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.profile-pic {
+  grid-column: 4/5;
+  grid-row: 3/6;
 }
 
 /*# sourceMappingURL=index.css.map */
