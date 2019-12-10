@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
@@ -31,18 +32,29 @@ class LeftNav extends Component {
       <div className="left-nav row-12">
         <div className="row-3">
           <div className="logo">
-            <img
-              src={`${domain}/assets/logo-aya_brackett.png`}
-              alt="Aya Brackett logo"
-            />
+            <a href="/">
+              <img
+                src={`${domain}/assets/logo-aya_brackett.png`}
+                // src="http://localhost:3001/assets/logo-aya_brackett.png"
+                alt="Aya Brackett logo"
+              />
+            </a>
           </div>
         </div>
         <ul className="galleries-list row-3">
           {categories.map(category => (
-            <li key={category}>
-              <Link className="category-link" to={category.replace(/\s+/g, "")}>
-                {category}
-              </Link>
+            <li
+              key={category}
+
+              // to={category.replace(/\s+/g, "")}
+            >
+              <span
+                data={category}
+                onClick={this.props.categoryClickHandler}
+                className="category-link"
+              >
+                {category}{" "}
+              </span>
             </li>
           ))}
         </ul>

@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 
 class Gallery extends Component {
-  state = { picture: require("../assets/images/spinner.gif") };
-
   componentDidMount() {
     this.getImages();
-    this.getGallery();
+    this.props.getGalleries("Home");
   }
 
   getImages = () => {
@@ -20,35 +21,34 @@ class Gallery extends Component {
       });
   };
 
-  getGallery() {
-    this.path;
-    fetch(`${domain}/api/gallery/c/Home`)
-      .then(res => {
-        return res.json();
-      })
-      .then(galleries => {
-        this.setState({
-          galleries
-        });
-        let image =
-          domain +
-          "/uploads/" +
-          galleries[0].category +
-          "/" +
-          galleries[0].name +
-          "/" +
-          galleries[0].photos[
-            Math.floor(Math.random() * galleries[0].photos.length)
-          ].location;
-        this.setState({ picture: image });
-        console.log(image);
-      });
-  }
-
   render() {
     return (
       <div className="gallery row-12">
-        {<img src={this.state.picture} alt="corgi" />}
+        <div className="image-container">
+          <div
+            className="left-overlay"
+            style={{
+              cursor: `url("${domain}/assets/prev-arrow.svg"), w-resize`
+            }}
+            onClick={this.props.clickPicture}
+            role="button"
+            id="prev-photo"
+          ></div>
+          <div
+            className="right-overlay"
+            style={{
+              cursor: `url("${domain}/assets/next-arrow.svg"), w-resize`
+            }}
+            onClick={this.props.clickPicture}
+            role="button"
+            id="next-photo"
+          ></div>
+          <img
+            key={this.props.pictureUrl}
+            src={this.props.pictureUrl}
+            alt="corgi"
+          />
+        </div>
       </div>
     );
   }

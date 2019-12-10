@@ -5,17 +5,19 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    li {
-      .category-link {
-        text-decoration: none;
-        margin: 6px 0px;
-        font-family: "GT America Bold";
-        font-size: 31.2889px;
-        -webkit-text-fill-color: white;
-        -webkit-text-stroke-width: 0.66px;
-        -webkit-text-stroke-color: black;
-        line-height: 110%;
-      }
+    .category-link {
+      text-decoration: none;
+      margin: 6px 0px;
+      font-family: "GT America Bold";
+      font-size: 31.2889px;
+      color: white;
+      -webkit-text-stroke-width: 0.66px;
+      -webkit-text-stroke-color: black;
+      line-height: 100%;
+    }
+    .category-link-selected {
+      color: black;
+      transition: color ease-in-out 0.24s;
     }
   }
   .links {
@@ -37,7 +39,7 @@
       color: #323844;
     }
   }
-  li:hover {
+  li > span:hover {
     cursor: pointer;
   }
 }
