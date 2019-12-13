@@ -1,0 +1,22 @@
+.search-container img:hover {
+  cursor: pointer;
+}
+
+.search {
+  border: none;
+  font-family: "GT America", monospace;
+  text-transform: uppercase;
+}
+.search:focus {
+  outline: 0;
+}
+
+.search::placeholder {
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 8.33vh;
+}

@@ -3,52 +3,35 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import Single from "../components/Single";
+import Grid from "../components/Grid";
+import Search from "../components/Search";
 
 class Gallery extends Component {
   componentDidMount() {
-    this.getImages();
-    this.props.getGalleries("Home");
+    this.props.getGalleries();
   }
-
-  getImages = () => {
-    fetch(`${domain}/api/test`)
-      .then(res => {
-        return res.json();
-      })
-      .then(text => {
-        console.log(text);
-        this.setState({ message: text.message });
-      });
-  };
 
   render() {
     return (
-      <div className="gallery row-12">
-        <div className="image-container">
-          <div
-            className="left-overlay"
-            style={{
-              cursor: `url("${domain}/assets/prev-arrow.svg"), w-resize`
-            }}
-            onClick={this.props.clickPicture}
-            role="button"
-            id="prev-photo"
-          ></div>
-          <div
-            className="right-overlay"
-            style={{
-              cursor: `url("${domain}/assets/next-arrow.svg"), w-resize`
-            }}
-            onClick={this.props.clickPicture}
-            role="button"
-            id="next-photo"
-          ></div>
-          <img
-            key={this.props.pictureUrl}
-            src={this.props.pictureUrl}
-            alt="corgi"
+      <div>
+        <Search id="search" />
+        {this.props.layout == "single" && this.props.view == "gallery" ? (
+          <Single
+            photo={this.props.photo}
+            clickPicture={this.props.clickPicture}
+            category={this.props.category}
+            galleryLength={this.props.galleryLength}
+            galleryIndex={this.props.galleryIndex}
           />
-        </div>
+        ) : (
+          <Grid
+            galleries={this.props.galleries}
+            category={this.props.category}
+            view={this.props.view}
+            galleryClick={this.props.galleryClick}
+          />
+        )}
       </div>
     );
   }

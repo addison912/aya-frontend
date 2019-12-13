@@ -7,15 +7,17 @@ import Gallery from "../components/Gallery";
 
 class Main extends Component {
   state = {
-    photo: null,
+    photo: {},
     message: "",
     category: "Home",
     gallery: "",
     galleries: [],
     layout: "single",
+    view: "gallery",
     caption: "",
     pictureUrl: require("../assets/images/spinner.gif"),
-    galleryIndex: 0
+    galleryIndex: 0,
+    galleryLength: 0
   };
 
   toggleGalleryLayout = e => {
@@ -31,22 +33,28 @@ class Main extends Component {
         .classList.remove("category-link-selected");
     }
     e.target.classList.add("category-link-selected");
-    console.log(e.target.getAttribute("data"));
+    // console.log(e.target.getAttribute("data"));
   };
 
   getGalleries = category => {
-    this.path;
-    fetch(`${domain}/api/gallery/c/${!this.state.category ? "Home" : category}`)
+    this.setState({ category });
+    fetch(`${domain}/api/gallery/c/${category || "Home"}`)
       .then(res => {
         return res.json();
       })
       .then(galleries => {
         this.setState({
           galleries,
-          galleryIndex: 0
+          galleryIndex: 0,
+          gallery: galleries[0]
         });
+        if (galleries.length > 1) {
+          this.setState({ view: "category" });
+        } else if (galleries.length == 1) {
+          this.setState({ view: "gallery" });
+        }
         this.setPictureUrl();
-        console.log(this.state.galleries);
+        // console.log(this.state.galleries);
       });
   };
 
@@ -60,25 +68,50 @@ class Main extends Component {
       newIndex--;
     }
     if (newIndex <= -1) {
-      newIndex = this.state.galleries[0].photos.length - 1;
+      newIndex = this.state.gallery.photos.length - 1;
     }
     this.setState({ galleryIndex: newIndex });
     this.setPictureUrl(newIndex);
   };
 
-  setPictureUrl = i => {
-    let index = i ? i : this.state.galleryIndex;
-    index = index % this.state.galleries[0].photos.length;
-    let image =
+  galleryClick = e => {
+    let i = e.target.closest(".gridImageWrapper").getAttribute("data");
+    let gallery = this.state.galleries[i];
+    this.setState({ gallery, view: "gallery" });
+    let photo = gallery.photos[0];
+    let url =
       domain +
       "/uploads/" +
-      this.state.galleries[0].category.replace(/\s+/g, "_") +
+      gallery.category.replace(/\/?\s+/g, "_") +
       "/" +
-      this.state.galleries[0].name +
+      gallery.name.replace(/\/?\s+/g, "_") +
       "/" +
-      this.state.galleries[0].photos[index].location; // Math.floor(Math.random() * galleries[0].photos.length)
-    this.setState({ pictureUrl: image });
-    console.log(image);
+      gallery.photos[0].location;
+    photo.url = url;
+    this.setState({ photo, galleryIndex: 0 });
+    this.setGalleryLength();
+  };
+
+  setPictureUrl = i => {
+    let index = i ? i : this.state.galleryIndex;
+    index = index % this.state.gallery.photos.length;
+    let photo = this.state.gallery.photos[index];
+    let url =
+      domain +
+      "/uploads/" +
+      this.state.gallery.category.replace(/\/?\s+/g, "_") +
+      "/" +
+      this.state.gallery.name.replace(/\/?\s+/g, "_") +
+      "/" +
+      this.state.gallery.photos[index].location;
+    photo.url = url;
+    this.setState({ photo });
+    // console.log(photo);
+    this.setGalleryLength();
+  };
+
+  setGalleryLength = () => {
+    this.setState({ galleryLength: this.state.gallery.photos.length });
   };
 
   render() {
@@ -90,13 +123,19 @@ class Main extends Component {
         />
         <Router>
           <Gallery
-            pictureUrl={this.state.pictureUrl}
+            photo={this.state.photo}
             clickPicture={this.clickPicture}
+            category={this.state.category}
+            galleries={this.state.galleries} // don't forget to remove this
             getGalleries={this.getGalleries}
             layout={this.state.layout}
+            view={this.state.view}
             path={"/*"}
-            category={this.state.category}
+            galleryLength={this.state.galleryLength}
+            galleryIndex={(this.state.galleryIndex % 42) + 1}
+            galleryClick={this.galleryClick}
           />
+
           {/* <Gallery path={"/:gallery"} /> */}
           <About path="about" />
         </Router>

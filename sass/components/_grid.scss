@@ -1,0 +1,33 @@
+.gallery-grid {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  width: 100%;
+  max-height: 93.33%;
+  overflow: scroll;
+}
+
+.gridImageWrapper {
+  display: inline-block;
+  // margin-bottom: 16px;
+  // width: calc(100% - 4px);
+  // margin-right: 16px;
+  overflow: hidden;
+  img:hover {
+    transform: scale(1.024);
+    cursor: pointer;
+  }
+  .caption {
+    font-family: "Courier New", Courier, monospace;
+    margin-top: 8px;
+  }
+}
+
+.gridImage {
+  border: none;
+  height: auto;
+  display: block;
+
+  height: 200px;
+  transition: transform 0.2s ease-in-out;
+}

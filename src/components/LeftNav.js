@@ -60,9 +60,15 @@ class LeftNav extends Component {
         </ul>
         <nav className="links row-3">
           <ul>
-            <li>About</li>
-            <li>News</li>
-            <li>Shop</li>
+            <li>
+              <span>About</span>
+            </li>
+            <li>
+              <span>News</span>
+            </li>
+            <li>
+              <span>Shop</span>
+            </li>
           </ul>
         </nav>
         <div className="gallery-toggle">
