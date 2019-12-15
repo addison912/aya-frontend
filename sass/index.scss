@@ -1,8 +1,11 @@
 // variables
-@import url("http://localhost:3001/assets/fonts.css");
+// $domain: "http://localhost:3001/";
+$domain: "http://157.245.165.76:3001/";
+
+@import url("#{$domain}assets/fonts.css");
 @import "variables";
-@import url("http://localhost:3001/assets/next-arrow.svg");
-@import url("http://localhost:3001/assets/prev-arrow.svg");
+@import url("#{$domain}assets/next-arrow.svg");
+@import url("#{$domain}assets/prev-arrow.svg");
 
 // components
 @import "components/home";
