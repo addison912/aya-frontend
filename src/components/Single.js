@@ -5,9 +5,23 @@ import React, { Component } from "react";
 import { domain } from "../config/constants";
 
 class Single extends Component {
+  // setHeight = () => {
+  //   let gallery = document.getElementsByClassName("image-wrapper");
+  //   gallery.getAttribute("height") >= gallery.getAttribute("width")
+  //     ? document
+  //         .getElementsByClassName("gallery")
+  //         .setAttribute("style={{ top: '16.66vh' }}")
+  //     : document
+  //         .getElementsByClassName("gallery")
+  //         .setAttribute("style={{ top: '16.66vh' }}");
+  // };
+
+  // componentDidMount() {
+  //   this.setHeight();
+  // }
   render() {
     return (
-      <div className="gallery row-12">
+      <div className="gallery row-9 center">
         <div className="image-container">
           <div
             className="left-overlay"
@@ -41,7 +55,21 @@ class Single extends Component {
             <div className="image-info">
               <p className="caption">{this.props.photo.caption}</p>
               <p className="index">
-                {this.props.galleryIndex} of {this.props.galleryLength}
+                <span>
+                  <img
+                    src={require("../assets/images/prev-arrow.svg")}
+                    alt="previous"
+                    className="index-arrow"
+                  />
+                </span>{" "}
+                {this.props.photoIndex} of {this.props.galleryLength}{" "}
+                <span>
+                  <img
+                    src={require("../assets/images/next-arrow.svg")}
+                    alt="next"
+                    className="index-arrow"
+                  />
+                </span>
               </p>
             </div>
           </div>

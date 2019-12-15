@@ -34,9 +34,9 @@ class LeftNav extends Component {
           <div className="logo">
             <a href="/">
               <img
-                src={`${domain}/assets/logo-aya_brackett.png`}
-                // src="http://localhost:3001/assets/logo-aya_brackett.png"
+                src={require("../assets/images/logo-aya_brackett.png")}
                 alt="Aya Brackett logo"
+                id="logo-image"
               />
             </a>
           </div>
@@ -74,21 +74,29 @@ class LeftNav extends Component {
         <div className="gallery-toggle">
           {window.location.pathname == "?" ||
           !!window.location.pathname.indexOf("gallery") ? (
-            <div>
+            <div className="layout-icon-container">
               <img
-                src={require("../assets/images/grid.png")}
+                src={require("../assets/images/grid.svg")}
                 alt="toggle grid gallery"
                 id="grid-gallery"
-                className="gallery-toggle"
-                data="grid"
+                className={
+                  this.props.layout == "grid"
+                    ? "gallery-toggle selected-layout-icon"
+                    : "gallery-toggle unselected-layout-icon"
+                }
+                layout-data="grid"
                 onClick={this.props.toggleGalleryLayout}
               />
               <img
-                src={require("../assets/images/single.png")}
+                src={require("../assets/images/single.svg")}
                 alt="toggle single gallery"
                 id="single-gallery"
-                className="gallery-toggle"
-                data="single"
+                className={
+                  this.props.layout == "single"
+                    ? "gallery-toggle selected-layout-icon"
+                    : "gallery-toggle unselected-layout-icon"
+                }
+                layout-data="single"
                 onClick={this.props.toggleGalleryLayout}
               />
             </div>

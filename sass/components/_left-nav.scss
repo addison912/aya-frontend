@@ -48,9 +48,23 @@
   padding-top: 8.33vh;
 }
 
+.layout-icon-container {
+  display: flex;
+}
+
 .gallery-toggle {
-  margin-right: 2em;
+  margin-right: 1.6em;
+  width: 24px;
+  height: 24px;
 }
 .gallery-toggle:hover {
   cursor: pointer;
+}
+
+.selected-layout-icon {
+  opacity: 100%;
+}
+
+.unselected-layout-icon {
+  opacity: 50%;
 }

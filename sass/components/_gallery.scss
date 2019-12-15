@@ -1,15 +1,21 @@
-.gallery {
+.gallery-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+}
+
+.gallery {
+  position: absolute;
+  top: 16.66vh;
 }
 
 .image-container {
-  width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
+  width: 100%;
 }
 
 .left-overlay,
@@ -98,5 +104,24 @@
   width: 100%;
   margin-top: 12px;
   justify-content: space-between;
-  font-family: "Courier New", Courier, monospace;
+  .caption {
+    font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
+  }
+  .index {
+    font-family: "GT America";
+    text-transform: uppercase;
+    font-size: 8px;
+    line-height: 10px;
+  }
+  .index-arrow {
+    height: 8px;
+    width: auto;
+    vertical-align: -2px;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

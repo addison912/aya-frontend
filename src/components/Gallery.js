@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
-import { domain } from "../config/constants";
 import Single from "../components/Single";
 import Grid from "../components/Grid";
 import Search from "../components/Search";
@@ -14,7 +13,7 @@ class Gallery extends Component {
 
   render() {
     return (
-      <div>
+      <div className={"gallery-container"}>
         <Search id="search" />
         {this.props.layout == "single" && this.props.view == "gallery" ? (
           <Single
@@ -22,7 +21,7 @@ class Gallery extends Component {
             clickPicture={this.props.clickPicture}
             category={this.props.category}
             galleryLength={this.props.galleryLength}
-            galleryIndex={this.props.galleryIndex}
+            photoIndex={this.props.photoIndex}
           />
         ) : (
           <Grid
@@ -30,6 +29,8 @@ class Gallery extends Component {
             category={this.props.category}
             view={this.props.view}
             galleryClick={this.props.galleryClick}
+            gallery={this.props.gallery}
+            photoClick={this.props.photoClick}
           />
         )}
       </div>

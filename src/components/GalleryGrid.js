@@ -4,38 +4,36 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 
-class CategoryGrid extends Component {
+class GalleryGrid extends Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     return (
       <div className="gallery-grid">
-        {this.props.galleries.map((gallery, i) => (
+        {this.props.gallery.photos.map((photo, i) => (
           <div
             className="gridImageWrapper"
             key={i}
             data={i}
-            onClick={this.props.galleryClick}
             role="button"
+            onClick={this.props.photoClick}
           >
             <img
-              src={`${domain}/uploads/${gallery.category.replace(
+              src={`${domain}/uploads/${photo.category.replace(
                 /\/?\s+/g,
                 "_"
-              )}/${gallery.name.replace(/\/?\s+/g, "_")}/${
-                gallery.photos[0].location
-              }`}
-              alt={
-                gallery.photos && gallery.photos[0] && gallery.photos[0].caption
-                  ? gallery.photos[0].caption
-                  : null
-              }
+              )}/${photo.gallery.replace(/\/?\s+/g, "_")}/${photo.location}`}
+              alt={photo.caption}
               className="gridImage"
             />
-            <p className="caption">{gallery.name}</p>
+            {/* <p className="caption">{name}</p> */}
           </div>
         ))}
       </div>
+      //   <div>{JSON.stringify(this.props.gallery.photos[1])}</div>
     );
   }
 }
 
-export default CategoryGrid;
+export default GalleryGrid;
