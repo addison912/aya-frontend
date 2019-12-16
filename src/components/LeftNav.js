@@ -76,7 +76,7 @@ class LeftNav extends Component {
           !!window.location.pathname.indexOf("gallery") ? (
             <div className="layout-icon-container">
               <img
-                src={require("../assets/images/grid.png")}
+                src={require("../assets/images/grid.svg")}
                 alt="toggle grid gallery"
                 id="grid-gallery"
                 className={
@@ -88,7 +88,7 @@ class LeftNav extends Component {
                 onClick={this.props.toggleGalleryLayout}
               />
               <img
-                src={require("../assets/images/single.png")}
+                src={require("../assets/images/single.svg")}
                 alt="toggle single gallery"
                 id="single-gallery"
                 className={

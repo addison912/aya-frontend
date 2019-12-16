@@ -17,5 +17,15 @@
   <body>
     <div id="root"></div>
     <script src="../src/index.js"></script>
+    <script type="text/javascript">
+      (function() {
+        var qtm = document.createElement("script");
+        qtm.type = "text/javascript";
+        qtm.async = 1;
+        qtm.src = "https://cdn.quantummetric.com/qscripts/quantum-qmaddison.js";
+        var d = document.getElementsByTagName("script")[0];
+        !window.QuantumMetricAPI && d.parentNode.insertBefore(qtm, d);
+      })();
+    </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-@import url("http://157.245.165.76:3001/assets/fonts.css");
+@import url("http://157.245.165.76/assets/fonts.css");
 @import url("http://localhost:3001assets/next-arrow.svg");
 @import url("http://localhost:3001assets/prev-arrow.svg");
 h1 {
@@ -78,11 +78,11 @@ h1 {
 }
 
 .selected-layout-icon {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .unselected-layout-icon {
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 * {
