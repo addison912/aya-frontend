@@ -7,7 +7,7 @@ import { domain } from "../config/constants";
 class Search extends Component {
   render() {
     return (
-      <div className="search-container col-6">
+      <div className="search-container">
         <input type="text" className="search" placeholder="FIND SOMETHING" />
         <img
           src={require("../assets/images/search.svg")}

@@ -7,13 +7,9 @@ import CategoryGrid from "../components/CategoryGrid";
 import GalleryGrid from "../components/GalleryGrid";
 
 class Grid extends Component {
-  // componentDidMount() {
-  //   console.log(this.props);
-  // }
-
   render() {
     return (
-      <div className="gallery row-8 col-6">
+      <div className="gallery">
         {this.props.view == "category" ? (
           <CategoryGrid
             galleries={this.props.galleries}

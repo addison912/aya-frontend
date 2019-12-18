@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import LeftNav from "../components/LeftNav";
 import { domain } from "../config/constants";
 import { Router, navigate, Link } from "@reach/router";
-import About from "./About";
 import Gallery from "../components/Gallery";
+import LeftNav from "../components/LeftNav";
+import Logo from "../components/Logo";
+import Search from "../components/Search";
+import LayoutIcons from "../components/LayoutIcons";
 
 class Main extends Component {
   state = {
@@ -130,33 +132,31 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <LeftNav
-          toggleGalleryLayout={this.toggleGalleryLayout}
-          categoryClickHandler={this.categoryClickHandler}
+        <Logo className="logo" />
+        <LeftNav categoryClickHandler={this.categoryClickHandler} />
+        <Search id="search" />
+        <LayoutIcons
           layout={this.state.layout}
+          toggleGalleryLayout={this.toggleGalleryLayout}
         />
-        <div>
-          <div />
-          <Router>
-            <Gallery
-              photo={this.state.photo}
-              clickPicture={this.clickPicture}
-              category={this.state.category}
-              galleries={this.state.galleries} // don't forget to remove this
-              getGalleries={this.getGalleries}
-              layout={this.state.layout}
-              view={this.state.view}
-              path={"/*"}
-              galleryLength={this.state.galleryLength}
-              photoIndex={(this.state.photoIndex % 42) + 1}
-              galleryClick={this.galleryClick}
-              gallery={this.state.gallery}
-              photoClick={this.photoClick}
-            />
+        <div className="content">
+          <Gallery
+            photo={this.state.photo}
+            clickPicture={this.clickPicture}
+            category={this.state.category}
+            galleries={this.state.galleries} // don't forget to remove this
+            getGalleries={this.getGalleries}
+            layout={this.state.layout}
+            view={this.state.view}
+            path={"/*"}
+            galleryLength={this.state.galleryLength}
+            photoIndex={(this.state.photoIndex % 42) + 1}
+            galleryClick={this.galleryClick}
+            gallery={this.state.gallery}
+            photoClick={this.photoClick}
+          />
 
-            {/* <Gallery path={"/:gallery"} /> */}
-            <About path="about" />
-          </Router>
+          {/* <Gallery path={"/:gallery"} /> */}
         </div>
       </div>
     );

@@ -3,7 +3,9 @@ import { Router, navigate, Link } from "@reach/router";
 
 // import Header from "./components/Header";
 import Main from "./containers/Main";
-// import About from "./containers/About";
+import About from "./containers/About";
+import News from "./containers/News";
+import Shop from "./containers/Shop";
 // import LeftNav from "./components/LeftNav";
 
 class App extends React.Component {
@@ -11,11 +13,12 @@ class App extends React.Component {
     return (
       <React.StrictMode>
         <div className="App">
-          {/* <Router>
+          <Router className="router">
             <Main path="/" />
-            <About path="about" />
-          </Router> */}
-          <Main />
+            <About path="/about" />
+            <News path="/news" />
+            <Shop path="/shop" />
+          </Router>
         </div>
       </React.StrictMode>
     );

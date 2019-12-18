@@ -1,7 +1,10 @@
 .left-nav {
-  margin: 0px 12px;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 8;
 
-  .galleries-list {
+  .category-list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -9,43 +12,24 @@
       text-decoration: none;
       margin: 6px 0px;
       font-family: "GT America Bold";
-      font-size: 31.2889px;
+      font-size: 32px;
       color: white;
       -webkit-text-stroke-width: 0.66px;
       -webkit-text-stroke-color: black;
-      line-height: 100%;
+      line-height: 110%;
     }
     .category-link-selected {
       color: black;
       transition: color ease-in-out 0.24s;
     }
   }
-  .links {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      margin: 6px 0px;
-      font-family: "GT America";
-      text-align: left;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      line-height: 140%;
-      color: #323844;
-    }
-  }
-  li > span:hover {
-    cursor: pointer;
-  }
 }
 
 .logo {
-  padding-top: 8.33vh;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 2;
 }
 
 .layout-icon-container {
@@ -55,7 +39,13 @@
 .gallery-toggle {
   margin-right: 1.6em;
   width: 24px;
-  height: 24px;
+  height: 100%;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 9;
+  grid-row-end: 12;
+  display: flex;
+  align-items: center;
 }
 .gallery-toggle:hover {
   cursor: pointer;
@@ -67,4 +57,37 @@
 
 .unselected-layout-icon {
   opacity: 0.5;
+}
+
+.links {
+  margin: 24px 0 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 24px;
+  line-height: 140%;
+  a {
+    color: #323844;
+    transition: ease-in-out 0.3s;
+  }
+  :hover {
+    color: #aaa;
+    transition: ease-in-out 0.3s;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin: 6px 0px;
+    font-family: "GT America";
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 140%;
+    color: #323844;
+  }
+}
+li > span:hover {
+  cursor: pointer;
 }

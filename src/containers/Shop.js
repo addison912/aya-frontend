@@ -3,7 +3,7 @@ import { domain } from "../config/constants";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 
-class About extends Component {
+class Shop extends Component {
   state = {
     photo: "",
     message: ""
@@ -26,7 +26,7 @@ class About extends Component {
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
         <div className="content">
           <div className="page-container">
-            <h1>About Page Coming Soon!</h1>
+            <h1>Store Page Coming Soon</h1>
           </div>
         </div>
       </div>
@@ -34,4 +34,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default Shop;

@@ -15,10 +15,13 @@
 }
 
 .search-container {
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  top: 8.33vh;
+  grid-column-start: 10;
+  grid-column-end: 13;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-align: right;
 }
 
 #search {

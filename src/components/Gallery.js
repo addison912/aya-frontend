@@ -4,7 +4,6 @@
 import React, { Component } from "react";
 import Single from "../components/Single";
 import Grid from "../components/Grid";
-import Search from "../components/Search";
 
 class Gallery extends Component {
   componentDidMount() {
@@ -14,7 +13,6 @@ class Gallery extends Component {
   render() {
     return (
       <div className={"gallery-container"}>
-        <Search id="search" />
         {this.props.layout == "single" && this.props.view == "gallery" ? (
           <Single
             photo={this.props.photo}

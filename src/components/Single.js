@@ -21,7 +21,7 @@ class Single extends Component {
   // }
   render() {
     return (
-      <div className="gallery row-9 center">
+      <div className="gallery center">
         <div className="image-container">
           <div
             className="left-overlay"
