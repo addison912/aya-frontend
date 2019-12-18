@@ -1,4 +1,4 @@
-@import url("http://157.245.165.76/assets/fonts.css");
+@import url("http://funky.haus/assets/fonts.css");
 @import url("http://localhost:3001assets/next-arrow.svg");
 @import url("http://localhost:3001assets/prev-arrow.svg");
 h1 {
@@ -226,6 +226,7 @@ ul {
 .gallery {
   position: absolute;
   top: 16.66vh;
+  width: 66.66%;
 }
 
 .image-container {

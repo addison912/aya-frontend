@@ -1,0 +1,67 @@
+.content {
+  background: #eee;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  padding: 0 120px;
+}
+
+.logo {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+nav {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 8;
+}
+
+.projects {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 110%;
+}
+
+.info {
+  margin-top: 24px;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+.searchbar {
+  grid-column-start: 10;
+  grid-column-end: 12;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  font-size: 8px;
+  text-align: right;
+}
+
+.content {
+  grid-column-start: 5;
+  grid-column-end: 12;
+  grid-row-start: 3;
+  grid-row-end: 12;
+}
