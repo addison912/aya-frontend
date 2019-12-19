@@ -24,6 +24,12 @@
   text-align: right;
 }
 
+@media only screen and (max-width: 560px) {
+  .search-container {
+    display: none;
+  }
+}
+
 #search {
   display: flex;
   align-items: flex-end;

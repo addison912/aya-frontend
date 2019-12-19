@@ -25,11 +25,27 @@
   }
 }
 
+@media only screen and (max-width: 760px) {
+  .category-link {
+    font-size: 24px;
+  }
+}
+
 .logo {
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 2;
+}
+
+@media only screen and (max-width: 560px) {
+  .logo {
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
 }
 
 .layout-icon-container {
@@ -90,4 +106,10 @@
 }
 li > span:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 760px) {
+  .links {
+    font-size: 16px;
+  }
 }

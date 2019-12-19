@@ -17,7 +17,7 @@ class CategoryGrid extends Component {
             role="button"
           >
             <img
-              src={`${domain}/uploads/${gallery.category.replace(
+              src={`${domain}/uploads/photos/${gallery.category.replace(
                 /\/?\s+/g,
                 "_"
               )}/${gallery.name.replace(/\/?\s+/g, "_")}/${

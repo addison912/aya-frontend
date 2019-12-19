@@ -20,7 +20,7 @@ class GalleryGrid extends Component {
             onClick={this.props.photoClick}
           >
             <img
-              src={`${domain}/uploads/${photo.category.replace(
+              src={`${domain}/uploads/photos/${photo.category.replace(
                 /\/?\s+/g,
                 "_"
               )}/${photo.gallery.replace(/\/?\s+/g, "_")}/${photo.location}`}
