@@ -41,7 +41,7 @@ class Main extends Component {
 
   getGalleries = category => {
     this.setState({ category });
-    fetch(`${domain}/api/gallery/c/${category || "Home"}`)
+    fetch(`${domain}/api/gallery/c/${category}`)
       .then(res => {
         return res.json();
       })
@@ -135,6 +135,13 @@ class Main extends Component {
     this.setState({ galleryLength: this.state.gallery.photos.length });
   };
 
+  componentDidMount() {
+    console.log(this.props);
+    if (this.props.category) {
+      this.getGalleries(this.props.category);
+    } else this.getGalleries("Home");
+  }
+
   render() {
     return (
       <div className="main">
@@ -154,7 +161,6 @@ class Main extends Component {
             getGalleries={this.getGalleries}
             layout={this.state.layout}
             view={this.state.view}
-            path={"/*"}
             galleryLength={this.state.galleryLength}
             photoIndex={(this.state.photoIndex % this.state.galleryLength) + 1}
             galleryClick={this.galleryClick}

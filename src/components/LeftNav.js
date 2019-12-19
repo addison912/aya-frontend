@@ -38,13 +38,15 @@ class LeftNav extends Component {
 
               // to={category.replace(/\s+/g, "")}
             >
-              <span
-                data={category}
-                onClick={this.props.categoryClickHandler}
-                className="category-link"
-              >
-                {category}{" "}
-              </span>
+              <Link to={`/${category}`}>
+                <span
+                  data={category}
+                  onClick={this.props.categoryClickHandler}
+                  className="category-link"
+                >
+                  {category}{" "}
+                </span>
+              </Link>
             </li>
           ))}
         </ul>

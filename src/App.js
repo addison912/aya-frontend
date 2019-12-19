@@ -14,10 +14,11 @@ class App extends React.Component {
       <React.StrictMode>
         <div className="App">
           <Router className="router">
-            <Main path="/" />
             <About path="/about" />
             <News path="/news" />
             <Shop path="/shop" />
+            <Main path="/" />
+            <Main path="/:category" />
           </Router>
         </div>
       </React.StrictMode>

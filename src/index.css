@@ -278,6 +278,7 @@ a {
 .right-overlay {
   display: block;
   position: absolute;
+  opacity: 0;
   bottom: 0;
   z-index: 2;
   width: 50%;
