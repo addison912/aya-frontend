@@ -75,6 +75,14 @@
   right: 0;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+///keyframes///
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -124,8 +132,15 @@
   }
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media only screen and (max-width: 560px) {
+  .caption {
+    font-size: 0.82em;
+  }
+  .image-info {
+    padding: 0 8.33%;
+    display: none;
+  }
+  .single-pic {
+    height: 100%;
+  }
 }

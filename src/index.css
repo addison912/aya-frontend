@@ -39,11 +39,6 @@ h1 {
   transition: color ease-in-out 0.24s;
 }
 
-@media only screen and (max-width: 760px) {
-  .category-link {
-    font-size: 24px;
-  }
-}
 .logo {
   grid-column-start: 1;
   grid-column-end: 5;
@@ -51,15 +46,6 @@ h1 {
   grid-row-end: 2;
 }
 
-@media only screen and (max-width: 560px) {
-  .logo {
-    text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 13;
-    grid-row-start: 2;
-    grid-row-end: 2;
-  }
-}
 .layout-icon-container {
   display: flex;
 }
@@ -126,6 +112,27 @@ li > span:hover {
   .links {
     font-size: 16px;
   }
+
+  .category-link {
+    font-size: 24px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .left-nav {
+    display: none;
+  }
+
+  .logo {
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 12;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+  .gallery-toggle {
+    display: none;
+  }
 }
 * {
   margin: 0;
@@ -154,21 +161,6 @@ body,
   margin: 0;
 }
 
-@media only screen and (max-width: 960px) {
-  .main {
-    padding: 0 56px;
-  }
-}
-@media only screen and (max-width: 760px) {
-  .main {
-    padding: 0 32px;
-  }
-}
-@media only screen and (max-width: 560px) {
-  .main {
-    padding: 0;
-  }
-}
 .content {
   grid-column-start: 5;
   grid-column-end: 13;
@@ -176,14 +168,6 @@ body,
   grid-row-end: 12;
 }
 
-@media only screen and (max-width: 560px) {
-  .content {
-    grid-column-start: 1;
-    grid-column-end: 13;
-    grid-row-start: 3;
-    grid-row-end: 11;
-  }
-}
 ul {
   text-decoration: none;
   list-style: none;
@@ -205,6 +189,28 @@ a {
   text-align: center;
 }
 
+@media only screen and (max-width: 960px) {
+  .main {
+    padding: 0 56px;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .main {
+    padding: 0 32px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .main {
+    padding: 0;
+  }
+
+  .content {
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 3;
+    grid-row-end: 11;
+  }
+}
 .gallery-container {
   display: flex;
   flex-direction: column;
@@ -286,6 +292,12 @@ a {
   right: 0;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -330,12 +342,20 @@ a {
     opacity: 1;
   }
 }
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@media only screen and (max-width: 560px) {
+  .caption {
+    font-size: 0.82em;
+  }
 
+  .image-info {
+    padding: 0 8.33%;
+    display: none;
+  }
+
+  .single-pic {
+    height: 100%;
+  }
+}
 .profile-pic {
   grid-column: 4/5;
   grid-row: 3/6;

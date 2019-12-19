@@ -49,13 +49,17 @@ class Main extends Component {
         this.setState({
           galleries,
           photoIndex: 0,
-          gallery: galleries[0],
           galleryIndex: 0
         });
+
         if (galleries.length > 1) {
           this.setState({ view: "category" });
         } else if (galleries.length == 1) {
-          this.setState({ view: "gallery" });
+          this.setState({
+            view: "gallery",
+            galleryLength: galleries[0].photos.length,
+            gallery: galleries[0]
+          });
         }
         this.setPictureUrl();
         // console.log(this.state.galleries);
@@ -75,10 +79,12 @@ class Main extends Component {
       newIndex--;
     }
     if (newIndex <= -1) {
-      newIndex = this.state.gallery.photos.length - 1;
+      newIndex = this.state.galleryLength - 1;
     }
     this.setState({ photoIndex: newIndex });
     this.setPictureUrl(newIndex);
+    console.log("new: " + this.state.photoIndex);
+    console.log("state" + this.state.photoIndex);
   };
 
   galleryClick = e => {
@@ -88,7 +94,7 @@ class Main extends Component {
     let photo = gallery.photos[0];
     let url =
       domain +
-      "/uploads/" +
+      "/uploads/photos/" +
       gallery.category.replace(/\/?\s+/g, "_") +
       "/" +
       gallery.name.replace(/\/?\s+/g, "_") +
@@ -96,8 +102,8 @@ class Main extends Component {
       gallery.photos[0].location;
     photo.url = url;
     this.setState({ photo, photoIndex: 0 });
-    this.setGalleryLength();
     this.setGallery(i);
+    this.setState({ galleryLength: this.state.galleries[i].photos.length });
   };
 
   photoClick = e => {
@@ -113,7 +119,7 @@ class Main extends Component {
     let photo = this.state.gallery.photos[index];
     let url =
       domain +
-      "/uploads/" +
+      "/uploads/photos/" +
       this.state.gallery.category.replace(/\/?\s+/g, "_") +
       "/" +
       this.state.gallery.name.replace(/\/?\s+/g, "_") +
@@ -150,7 +156,7 @@ class Main extends Component {
             view={this.state.view}
             path={"/*"}
             galleryLength={this.state.galleryLength}
-            photoIndex={(this.state.photoIndex % 42) + 1}
+            photoIndex={(this.state.photoIndex % this.state.galleryLength) + 1}
             galleryClick={this.galleryClick}
             gallery={this.state.gallery}
             photoClick={this.photoClick}
