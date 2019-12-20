@@ -46,20 +46,42 @@ h1 {
   grid-row-end: 2;
 }
 
-.layout-icon-container {
-  display: flex;
-}
-
-.gallery-toggle {
-  margin-right: 1.6em;
-  width: 24px;
-  height: 100%;
+.main > .gallery-toggle {
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 9;
   grid-row-end: 12;
+  width: 96px;
+}
+
+.gallery-toggle {
+  height: 100%;
   display: flex;
   align-items: center;
+}
+
+.layout-icon-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+}
+.icon-wrapper img {
+  height: 24px;
+  width: 24px;
+  margin: 0 0 4px 0;
+}
+.icon-wrapper p {
+  font-family: "GT America";
+  text-transform: uppercase;
+  font-size: 8px;
+  line-height: 10px;
 }
 
 .gallery-toggle:hover {
@@ -130,7 +152,7 @@ li > span:hover {
     grid-row-end: 2;
   }
 
-  .gallery-toggle {
+  .main > .gallery-toggle {
     display: none;
   }
 }
@@ -438,6 +460,37 @@ a {
   display: flex;
   align-items: flex-end;
   width: 100%;
+}
+
+#navbar {
+  display: none;
+}
+
+@media only screen and (max-width: 560px) {
+  #navbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100vw;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 12;
+    grid-row-end: 13;
+    padding: 0 8.33%;
+  }
+
+  .navbar-hamburger :hover {
+    cursor: pointer;
+  }
+}
+.navbar-icons {
+  display: flex;
+}
+.navbar-icons .icon-wrapper {
+  margin-right: 24px;
+}
+.navbar-icons .icon-wrapper :hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,0 +1,30 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { Component } from "react";
+import { Router, navigate, Link } from "@reach/router";
+import LayoutIcons from "./LayoutIcons";
+
+class Navbar extends Component {
+  render() {
+    return (
+      <div id="navbar">
+        <div className="navbar-icons">
+          <LayoutIcons
+            layout={this.props.layout}
+            toggleGalleryLayout={this.props.toggleGalleryLayout}
+          />
+          <div className="icon-wrapper">
+            <img src={require("../assets/images/info-icon.svg")} alt="info" />
+            <p>info</p>
+          </div>
+        </div>
+        <div className="navbar-hamburger">
+          {" "}
+          <img src={require("../assets/images/hamburger.svg")} alt="menu" />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Navbar;

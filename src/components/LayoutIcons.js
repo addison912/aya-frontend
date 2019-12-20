@@ -9,32 +9,36 @@ class LayoutIcons extends Component {
         {window.location.pathname == "?" ||
         !!window.location.pathname.indexOf("gallery") ? (
           <div className="layout-icon-container">
-            <img
-              src={require("../assets/images/grid.svg")}
-              alt="toggle grid gallery"
-              id="grid-gallery"
-              className={
-                this.props.layout == "grid"
-                  ? "gallery-toggle selected-layout-icon"
-                  : "gallery-toggle unselected-layout-icon"
-              }
-              layout-data="grid"
-              onClick={this.props.toggleGalleryLayout}
-              role="button"
-            />
-            <img
-              src={require("../assets/images/single.svg")}
-              alt="toggle single gallery"
-              id="single-gallery"
-              className={
-                this.props.layout == "single"
-                  ? "gallery-toggle selected-layout-icon"
-                  : "gallery-toggle unselected-layout-icon"
-              }
-              layout-data="single"
-              onClick={this.props.toggleGalleryLayout}
-              role="button"
-            />
+            <div className="icon-wrapper">
+              <img
+                src={require("../assets/images/grid.svg")}
+                alt="toggle grid gallery"
+                className={
+                  this.props.layout == "grid"
+                    ? "gallery-toggle selected-layout-icon"
+                    : "gallery-toggle unselected-layout-icon"
+                }
+                layout-data="grid"
+                onClick={this.props.toggleGalleryLayout}
+                role="button"
+              />
+              <p>SINGLE</p>
+            </div>
+            <div className="icon-wrapper">
+              <img
+                src={require("../assets/images/single.svg")}
+                alt="toggle single gallery"
+                className={
+                  this.props.layout == "single"
+                    ? "gallery-toggle selected-layout-icon"
+                    : "gallery-toggle unselected-layout-icon"
+                }
+                layout-data="single"
+                onClick={this.props.toggleGalleryLayout}
+                role="button"
+              />
+              <p>GRID</p>
+            </div>
           </div>
         ) : null}
       </div>

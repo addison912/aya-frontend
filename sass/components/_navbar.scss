@@ -1,0 +1,32 @@
+#navbar {
+  display: none;
+}
+
+@media only screen and (max-width: 560px) {
+  #navbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100vw;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 12;
+    grid-row-end: 13;
+    padding: 0 8.33%;
+  }
+  .navbar-hamburger {
+    :hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.navbar-icons {
+  display: flex;
+  .icon-wrapper {
+    margin-right: 24px;
+    :hover {
+      cursor: pointer;
+    }
+  }
+}

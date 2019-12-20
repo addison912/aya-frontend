@@ -6,6 +6,7 @@ import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
 import LayoutIcons from "../components/LayoutIcons";
+import Navbar from "../components/Navbar";
 
 class Main extends Component {
   state = {
@@ -167,9 +168,12 @@ class Main extends Component {
             gallery={this.state.gallery}
             photoClick={this.photoClick}
           />
-
           {/* <Gallery path={"/:gallery"} /> */}
         </div>
+        <Navbar
+          layout={this.state.layout}
+          toggleGalleryLayout={this.toggleGalleryLayout}
+        />
       </div>
     );
   }
