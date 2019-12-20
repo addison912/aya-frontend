@@ -100,7 +100,6 @@ h1 {
   margin: 24px 0 0 0;
   padding: 0;
   list-style: none;
-  font-size: 24px;
   line-height: 140%;
 }
 .links a {
@@ -380,8 +379,62 @@ a {
   }
 }
 .profile-pic {
+  grid-column: 4/6;
+  grid-row: 4/7;
+}
+.profile-pic img {
+  object-fit: cover;
+}
+
+.contact-info {
+  grid-column: 4/6;
+  grid-row: 8/10;
+}
+
+.about-scroll {
+  grid-column: 7/13;
+  grid-row: 4/13;
+}
+
+.press {
   grid-column: 4/5;
   grid-row: 3/6;
+}
+.press p {
+  line-height: 150%;
+}
+
+.client-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.client-lists ul li:first-child {
+  text-transform: uppercase;
+}
+.client-lists ul li {
+  font-family: "GT America Mono Thin";
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.about {
+  overflow: scroll;
+}
+.about h2 {
+  font-family: "GT America";
+  font-size: 24px;
+  margin: 0 0 1em 0;
+}
+.about p {
+  font-family: "GT America Mono Thin";
+  font-size: 16px;
+  line-height: 150%;
+}
+.about section {
+  margin-bottom: 8.33%;
+}
+.about ul {
+  padding: 0;
 }
 
 .gallery-grid {
