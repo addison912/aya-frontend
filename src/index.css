@@ -424,6 +424,8 @@ a {
   font-family: "GT America";
   font-size: 24px;
   margin: 0 0 1em 0;
+  font-style: normal;
+  font-weight: normal;
 }
 .about p {
   font-family: "GT America Mono Thin";
