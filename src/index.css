@@ -482,10 +482,6 @@ a {
   animation: fadein 1s;
 }
 
-.search-container img:hover {
-  cursor: pointer;
-}
-
 .search {
   border: none;
   font-family: "GT America", monospace;
@@ -504,6 +500,13 @@ a {
   font-size: 8px;
   letter-spacing: 0.15em;
   text-align: right;
+}
+.search-container img:hover {
+  cursor: pointer;
+}
+.search-container button {
+  border: none;
+  outline: none;
 }
 
 @media only screen and (max-width: 560px) {

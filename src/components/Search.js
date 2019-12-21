@@ -7,13 +7,26 @@ import { domain } from "../config/constants";
 class Search extends Component {
   render() {
     return (
-      <div className="search-container">
-        <input type="text" className="search" placeholder="FIND SOMETHING" />
-        <img
-          src={require("../assets/images/search.svg")}
-          alt="search icon"
-        ></img>
-      </div>
+      <form className="search-container" onSubmit={this.props.search}>
+        <input
+          type="text"
+          className="search"
+          placeholder="FIND SOMETHING"
+          onChange={this.props.handleSearchInput}
+          value={this.props.searchInput}
+        />
+        <button
+          type="submit"
+          onClick={this.props.search}
+          aria-labelledby="submit button"
+          name="search"
+        >
+          <img
+            src={require("../assets/images/search.svg")}
+            alt="search icon"
+          ></img>
+        </button>
+      </form>
     );
   }
 }

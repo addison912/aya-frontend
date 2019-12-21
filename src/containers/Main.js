@@ -21,7 +21,8 @@ class Main extends Component {
     pictureUrl: require("../assets/images/spinner.gif"),
     photoIndex: 0,
     galleryIndex: 0,
-    galleryLength: 0
+    galleryLength: 0,
+    searchInput: ""
   };
 
   toggleGalleryLayout = e => {
@@ -42,6 +43,7 @@ class Main extends Component {
 
   getGalleries = category => {
     this.setState({ category });
+    console.log(category.toLowerCase());
     fetch(`${domain}/api/gallery/c/${category}`)
       .then(res => {
         return res.json();
@@ -61,10 +63,52 @@ class Main extends Component {
             galleryLength: galleries[0].photos.length,
             gallery: galleries[0]
           });
+          console.log(galleries);
         }
         this.setPictureUrl();
         // console.log(this.state.galleries);
       });
+  };
+
+  search = e => {
+    e.preventDefault(this.state.searchInput);
+    console.log(`searching for: ${this.state.searchInput}`);
+    fetch(`${domain}/api/photo/search`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ query: this.state.searchInput })
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(photos => {
+        this.setState({
+          view: "gallery",
+          layout: "grid",
+          galleries: [{ photos }],
+          photoIndex: 0,
+          galleryIndex: 0,
+          gallery: { photos },
+          galleryLength: photos.length,
+          searchInput: ""
+        });
+
+        if (photos.length > 1) {
+          console.log("length: " + photos.length);
+        }
+
+        console.log(this.state.gallery);
+
+        // this.setPictureUrl();
+        // console.log(this.state.galleries);
+      });
+  };
+
+  handleSearchInput = e => {
+    this.setState({ searchInput: e.target.value });
+    // console.log(e.target.value);
   };
 
   setGallery = i => {
@@ -72,6 +116,7 @@ class Main extends Component {
     this.setState({ gallery });
   };
 
+  //////
   clickPicture = e => {
     let newIndex = this.state.photoIndex;
     if (e.target.getAttribute("id") == "next-photo") {
@@ -107,6 +152,7 @@ class Main extends Component {
     this.setState({ galleryLength: this.state.galleries[i].photos.length });
   };
 
+  /////
   photoClick = e => {
     let i = e.target.closest(".gridImageWrapper").getAttribute("data");
     this.setState({ layout: "single", photoIndex: i });
@@ -148,7 +194,12 @@ class Main extends Component {
       <div className="main">
         <Logo className="logo" />
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
-        <Search id="search" />
+        <Search
+          id="search"
+          search={this.search}
+          searchInput={this.state.searchInput}
+          handleSearchInput={this.handleSearchInput}
+        />
         <LayoutIcons
           layout={this.state.layout}
           toggleGalleryLayout={this.toggleGalleryLayout}
