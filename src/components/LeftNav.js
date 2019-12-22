@@ -36,7 +36,7 @@ class LeftNav extends Component {
             </li>
           ))}
         </ul>
-        <Links />
+        <Links categoryClickHandler={this.props.categoryClickHandler} />
       </nav>
     );
   }

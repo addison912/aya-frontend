@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
 import { domain, categories } from "../config/constants";
 import Links from "./Links";
+import Search from "./Search";
 
 // require("../assets/images/grid.png")
 
@@ -12,13 +13,18 @@ class HamburgerMenu extends Component {
   render() {
     return (
       <nav
-        // className="hamburger-menu"
         className={
           this.props.hamburgerMenu == false
             ? "hamburger-menu hidden-menu"
             : "hamburger-menu visible-menu"
         }
       >
+        <Search
+          id="search"
+          search={this.props.search}
+          searchInput={this.props.searchInput}
+          handleSearchInput={this.props.handleSearchInput}
+        />
         <ul className="category-list">
           {categories.map(category => (
             <li
@@ -38,7 +44,7 @@ class HamburgerMenu extends Component {
             </li>
           ))}
         </ul>
-        <Links />
+        <Links toggleHamburgerMenu={this.props.toggleHamburgerMenu} />
       </nav>
     );
   }

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import { Router, navigate, Link } from "@reach/router";
@@ -9,17 +11,17 @@ class Links extends Component {
         <ul>
           <li>
             <Link to="/about">
-              <span>About</span>
+              <span onClick={this.props.toggleHamburgerMenu}>About</span>
             </Link>
           </li>
           <li>
             <Link to="/news">
-              <span>News</span>
+              <span onClick={this.props.toggleHamburgerMenu}>News</span>
             </Link>
           </li>
           <li>
             <Link to="/shop">
-              <span>Shop</span>
+              <span onClick={this.props.toggleHamburgerMenu}>Shop</span>
             </Link>
           </li>
         </ul>

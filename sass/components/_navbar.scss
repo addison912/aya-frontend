@@ -8,10 +8,13 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100vw;
-    grid-column-start: 1;
-    grid-column-end: 13;
-    grid-row-start: 12;
-    grid-row-end: 13;
+    // grid-column-start: 1;
+    // grid-column-end: 13;
+    // grid-row-start: 12;
+    // grid-row-end: 13;
+    position: absolute;
+    top: 91.66vh;
+    height: 8.34vh;
     padding: 0 8.33%;
     z-index: 4;
     background: #ffffff;
