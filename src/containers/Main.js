@@ -7,6 +7,7 @@ import Logo from "../components/Logo";
 import Search from "../components/Search";
 import LayoutIcons from "../components/LayoutIcons";
 import Navbar from "../components/Navbar";
+import HamburgerMenu from "../components/HamburgerMenu";
 
 class Main extends Component {
   state = {
@@ -22,11 +23,14 @@ class Main extends Component {
     photoIndex: 0,
     galleryIndex: 0,
     galleryLength: 0,
-    searchInput: ""
+    searchInput: "",
+    hamburgerMenu: false
   };
 
   toggleGalleryLayout = e => {
-    this.setState({ layout: e.target.getAttribute("layout-data") });
+    this.setState({
+      layout: e.target.closest(".icon-wrapper").getAttribute("layout-data")
+    });
   };
 
   categoryClickHandler = e => {
@@ -39,6 +43,9 @@ class Main extends Component {
     }
     e.target.classList.add("category-link-selected");
     // console.log(e.target.getAttribute("data"));
+    if (this.state.hamburgerMenu == true) {
+      this.setState({ hamburgerMenu: false });
+    }
   };
 
   getGalleries = category => {
@@ -189,6 +196,11 @@ class Main extends Component {
     } else this.getGalleries("Home");
   }
 
+  toggleHamburgerMenu = () => {
+    console.log("hamburger clicked");
+    this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
+  };
+
   render() {
     return (
       <div className="main">
@@ -224,6 +236,12 @@ class Main extends Component {
         <Navbar
           layout={this.state.layout}
           toggleGalleryLayout={this.toggleGalleryLayout}
+          categoryClickHandler={this.categoryClickHandler}
+          toggleHamburgerMenu={this.toggleHamburgerMenu}
+        />
+        <HamburgerMenu
+          categoryClickHandler={this.categoryClickHandler}
+          hamburgerMenu={this.state.hamburgerMenu}
         />
       </div>
     );

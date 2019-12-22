@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { Router, navigate, Link } from "@reach/router";
 import LayoutIcons from "./LayoutIcons";
+import HamburgerMenu from "./HamburgerMenu";
 
 class Navbar extends Component {
   render() {
@@ -20,7 +22,12 @@ class Navbar extends Component {
         </div>
         <div className="navbar-hamburger">
           {" "}
-          <img src={require("../assets/images/hamburger.svg")} alt="menu" />
+          <img
+            src={require("../assets/images/hamburger.svg")}
+            alt="menu"
+            onClick={this.props.toggleHamburgerMenu}
+            role="button"
+          />
         </div>
       </div>
     );

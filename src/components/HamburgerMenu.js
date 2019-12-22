@@ -8,15 +8,17 @@ import Links from "./Links";
 
 // require("../assets/images/grid.png")
 
-class LeftNav extends Component {
-  state = {
-    message: "",
-    galleries: []
-  };
-
+class HamburgerMenu extends Component {
   render() {
     return (
-      <nav className="left-nav">
+      <nav
+        // className="hamburger-menu"
+        className={
+          this.props.hamburgerMenu == false
+            ? "hamburger-menu hidden-menu"
+            : "hamburger-menu visible-menu"
+        }
+      >
         <ul className="category-list">
           {categories.map(category => (
             <li
@@ -42,4 +44,4 @@ class LeftNav extends Component {
   }
 }
 
-export default LeftNav;
+export default HamburgerMenu;
