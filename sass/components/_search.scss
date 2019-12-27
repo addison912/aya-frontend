@@ -2,6 +2,12 @@
   font-family: "GT America", monospace;
   text-transform: uppercase;
   border: none;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.main .search {
+  text-align: right;
 }
 .search:focus {
   outline: 0;

@@ -1,6 +1,6 @@
 @import url("http://funky.haus/assets/fonts.css");
-@import url("http://localhost:3001assets/next-arrow.svg");
-@import url("http://localhost:3001assets/prev-arrow.svg");
+@import url("http://funky.haus/assets/next-arrow.svg");
+@import url("http://funky.haus/assets/prev-arrow.svg");
 h1 {
   margin: 1em;
   font-family: "GT America", sans-serif;
@@ -31,11 +31,15 @@ h1 {
   font-size: 32px;
   color: white;
   -webkit-text-stroke-width: 0.66px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: #323844;
   line-height: 110%;
 }
 .left-nav .category-list .category-link-selected {
-  color: black;
+  color: #323844;
+  transition: color ease-in-out 0.24s;
+}
+.left-nav .category-list .category-link:hover {
+  color: #323844;
   transition: color ease-in-out 0.24s;
 }
 
@@ -82,6 +86,7 @@ h1 {
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;
+  letter-spacing: 0.15em;
 }
 
 .gallery-toggle:hover {
@@ -262,6 +267,7 @@ a {
 
 .single-pic {
   height: calc(100% - 32px);
+  max-width: 100%;
   object-fit: contain;
   -webkit-animation: fadein 1s;
   /* Safari, Chrome and Opera > 12.1 */
@@ -282,6 +288,7 @@ a {
 }
 .image-info .caption {
   font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
+  font-size: 16px;
 }
 .image-info .index {
   font-family: "GT America";
@@ -289,6 +296,7 @@ a {
   font-size: 8px;
   line-height: 10px;
   min-width: 56px;
+  letter-spacing: 0.15em;
 }
 .image-info .index-arrow {
   height: 8px;
@@ -301,10 +309,10 @@ a {
   display: block;
   position: absolute;
   opacity: 0;
-  bottom: 0;
+  top: 0;
   z-index: 2;
   width: 50%;
-  height: 100%;
+  height: calc(100% - 32px);
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
@@ -491,6 +499,12 @@ a {
   font-family: "GT America", monospace;
   text-transform: uppercase;
   border: none;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.main .search {
+  text-align: right;
 }
 
 .search:focus {

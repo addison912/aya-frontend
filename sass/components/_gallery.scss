@@ -21,12 +21,14 @@
 .image-wrapper {
   display: flex;
   flex-direction: column;
+  // height: fit-content;
   max-height: 100%;
   width: 100%;
 }
 
 .single-pic {
   height: calc(100% - 32px);
+  max-width: 100%;
   object-fit: contain;
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1s; /* Firefox < 16 */
@@ -42,6 +44,7 @@
   justify-content: space-between;
   .caption {
     font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
+    font-size: 16px;
   }
   .index {
     font-family: "GT America";
@@ -49,6 +52,7 @@
     font-size: 8px;
     line-height: 10px;
     min-width: 56px;
+    letter-spacing: 0.15em;
   }
   .index-arrow {
     height: 8px;
@@ -62,10 +66,10 @@
   display: block;
   position: absolute;
   opacity: 0;
-  bottom: 0;
+  top: 0;
   z-index: 2;
   width: 50%;
-  height: 100%;
+  height: calc(100% - 32px);
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
