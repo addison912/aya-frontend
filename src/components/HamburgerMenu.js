@@ -18,6 +18,13 @@ class HamburgerMenu extends Component {
             ? "hamburger-menu hidden-menu"
             : "hamburger-menu visible-menu"
         }
+        // style={
+        //   this.props.hamburgerMenu == false
+        //     ? { top: "100vh" }
+        //     : {
+        //         top: window.innerHeight - this.offsetHight
+        //       }
+        // }
       >
         <Search
           id="search"

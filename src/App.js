@@ -141,8 +141,8 @@ class App extends React.Component {
     }
     this.setState({ photoIndex: newIndex });
     this.setPictureUrl(newIndex);
-    console.log("new: " + this.state.photoIndex);
-    console.log("state" + this.state.photoIndex);
+    // console.log("new: " + this.state.photoIndex);
+    // console.log("state" + this.state.photoIndex);
   };
 
   galleryClick = e => {
@@ -176,14 +176,15 @@ class App extends React.Component {
     let index = i ? i : this.state.photoIndex;
     index = index % this.state.gallery.photos.length;
     let photo = this.state.gallery.photos[index];
+    console.log(photo);
     let url =
       domain +
       "/uploads/photos/" +
-      this.state.gallery.category.replace(/\/?\s+/g, "_") +
+      photo.category.replace(/\/?\s+/g, "_") +
       "/" +
-      this.state.gallery.name.replace(/\/?\s+/g, "_") +
+      photo.gallery.replace(/\/?\s+/g, "_") +
       "/" +
-      this.state.gallery.photos[index].location;
+      photo.location;
     photo.url = url;
     this.setState({ photo });
     // console.log(photo);
@@ -196,8 +197,8 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log(this.props);
-    if (this.props.category) {
-      this.getGalleries(this.props.category);
+    if (this.state.category) {
+      this.getGalleries(this.state.category);
     } else this.getGalleries("Home");
   }
 
