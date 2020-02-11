@@ -1,8 +1,8 @@
 #navbar {
   display: none;
   background: #ffffff;
-  height: 8.34vh;
-  padding: 12px 8.33%;
+  // height: 8.34vh;
+  padding: 24px 32px;
 }
 
 @media only screen and (max-width: 560px) {
@@ -11,12 +11,8 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100vw;
-    // grid-column-start: 1;
-    // grid-column-end: 13;
-    // grid-row-start: 12;
-    // grid-row-end: 13;
-    position: absolute;
-    top: 91.66vh;
+    position: fixed;
+    bottom: 0;
     z-index: 4;
   }
   .navbar-hamburger {

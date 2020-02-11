@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import ImageSpacer from "./ImageSpacer";
 
 class GalleryGrid extends Component {
   // componentDidMount() {
@@ -30,6 +31,9 @@ class GalleryGrid extends Component {
             {/* <p className="caption">{name}</p> */}
           </div>
         ))}
+        <ImageSpacer />
+        <ImageSpacer />
+        <ImageSpacer />
       </div>
       //   <div>{JSON.stringify(this.props.gallery.photos[1])}</div>
     );
