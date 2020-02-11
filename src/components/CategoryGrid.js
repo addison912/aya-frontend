@@ -3,8 +3,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import ImageSpacer from "./ImageSpacer";
 
 class CategoryGrid extends Component {
+  // componentDidMount() {
+  //   if (this.props.galleries.length < 4 && this.props.galleries.length > 1) {
+  //     console.log(this.props.galleries.length);
+  //     document.querySelector(".gallery-grid").a;
+  //   }
+  // }
   render() {
     return (
       <div className="gallery-grid">
@@ -23,6 +30,10 @@ class CategoryGrid extends Component {
               )}/${gallery.name.replace(/\/?\s+/g, "_")}/${
                 gallery.photos[0].location
               }`}
+              // src={`${domain}/uploads/photos/${gallery.category.replace(
+              //   /\/?\s+/g,
+              //   "_"
+              // )}/The_Fine_Art_of_Paper_Flowers/${gallery.photos[0].location}`}
               alt={
                 gallery.photos && gallery.photos[0] && gallery.photos[0].caption
                   ? gallery.photos[0].caption
@@ -33,6 +44,8 @@ class CategoryGrid extends Component {
             <p className="caption">{gallery.name}</p>
           </div>
         ))}
+        <ImageSpacer />
+        <ImageSpacer />
       </div>
     );
   }

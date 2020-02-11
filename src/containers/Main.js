@@ -7,6 +7,11 @@ import Search from "../components/Search";
 import LayoutIcons from "../components/LayoutIcons";
 
 class Main extends Component {
+  componentDidMount() {
+    if (this.props.cat && this.props.cat != this.props.category) {
+      this.props.setCategory(this.props.cat);
+    }
+  }
   render() {
     return (
       <div className="main">

@@ -15,7 +15,7 @@ class App extends React.Component {
   state = {
     photo: {},
     message: "",
-    category: "Home",
+    category: "",
     gallery: {},
     galleries: [],
     layout: "single",
@@ -35,6 +35,42 @@ class App extends React.Component {
     });
   };
 
+  setGallery = i => {
+    let gallery = this.state.galleries[i];
+    this.setState({ gallery });
+  };
+
+  setGalleryLength = () => {
+    this.setState({ galleryLength: this.state.gallery.photos.length });
+  };
+
+  setCategory = category => {
+    this.setState({ category });
+    this.getGalleries(category);
+    this.state.hamburgerMenu == true
+      ? this.setState({ hamburgerMenu: false })
+      : null;
+  };
+
+  galleryClick = e => {
+    let i = e.target.closest(".gridImageWrapper").getAttribute("data");
+    let gallery = this.state.galleries[i];
+    this.setState({ gallery, view: "gallery" });
+    let photo = gallery.photos[0];
+    let url =
+      domain +
+      "/uploads/photos/" +
+      gallery.category.replace(/\/?\s+/g, "_") +
+      "/" +
+      gallery.name.replace(/\/?\s+/g, "_") +
+      "/" +
+      gallery.photos[0].location;
+    photo.url = url;
+    this.setState({ photo, photoIndex: 0 });
+    this.setGallery(i);
+    this.setState({ galleryLength: this.state.galleries[i].photos.length });
+  };
+
   categoryClickHandler = e => {
     this.setState({ category: e.target.getAttribute("data") });
     this.getGalleries(e.target.getAttribute("data"));
@@ -52,15 +88,20 @@ class App extends React.Component {
 
   getGalleries = category => {
     this.setState({ category });
-    console.log(category.toLowerCase());
+
     fetch(`${domain}/api/gallery/c/${category}`)
       .then(res => {
         return res.json();
       })
       .then(galleries => {
+        console.log(galleries);
+        let photoIndex =
+          category.toLowerCase() == "home"
+            ? Math.floor(Math.random() * galleries[0].photos.length)
+            : 0;
         this.setState({
           galleries,
-          photoIndex: 0,
+          photoIndex,
           galleryIndex: 0
         });
 
@@ -72,12 +113,13 @@ class App extends React.Component {
             galleryLength: galleries[0].photos.length,
             gallery: galleries[0]
           });
-          console.log(galleries);
         }
         this.setPictureUrl();
         // console.log(this.state.galleries);
       });
   };
+
+  //search
 
   search = e => {
     e.preventDefault(this.state.searchInput);
@@ -123,11 +165,6 @@ class App extends React.Component {
     // console.log(e.target.value);
   };
 
-  setGallery = i => {
-    let gallery = this.state.galleries[i];
-    this.setState({ gallery });
-  };
-
   //////
   clickPicture = e => {
     let newIndex = this.state.photoIndex;
@@ -145,25 +182,6 @@ class App extends React.Component {
     // console.log("state" + this.state.photoIndex);
   };
 
-  galleryClick = e => {
-    let i = e.target.closest(".gridImageWrapper").getAttribute("data");
-    let gallery = this.state.galleries[i];
-    this.setState({ gallery, view: "gallery" });
-    let photo = gallery.photos[0];
-    let url =
-      domain +
-      "/uploads/photos/" +
-      gallery.category.replace(/\/?\s+/g, "_") +
-      "/" +
-      gallery.name.replace(/\/?\s+/g, "_") +
-      "/" +
-      gallery.photos[0].location;
-    photo.url = url;
-    this.setState({ photo, photoIndex: 0 });
-    this.setGallery(i);
-    this.setState({ galleryLength: this.state.galleries[i].photos.length });
-  };
-
   /////
   photoClick = e => {
     let i = e.target.closest(".gridImageWrapper").getAttribute("data");
@@ -176,7 +194,6 @@ class App extends React.Component {
     let index = i ? i : this.state.photoIndex;
     index = index % this.state.gallery.photos.length;
     let photo = this.state.gallery.photos[index];
-    console.log(photo);
     let url =
       domain +
       "/uploads/photos/" +
@@ -191,15 +208,22 @@ class App extends React.Component {
     this.setGalleryLength();
   };
 
-  setGalleryLength = () => {
-    this.setState({ galleryLength: this.state.gallery.photos.length });
-  };
-
   componentDidMount() {
-    console.log(this.props);
     if (this.state.category) {
       this.getGalleries(this.state.category);
     } else this.getGalleries("Home");
+
+    //hide hamburger menu when background clicked
+    window.addEventListener("click", e => {
+      if (this.state.hamburgerMenu == true) {
+        if (
+          !e.target.closest("#navbar") &&
+          !e.target.closest(".hamburger-menu")
+        ) {
+          this.toggleHamburgerMenu();
+        }
+      }
+    });
   }
 
   toggleHamburgerMenu = () => {
@@ -244,7 +268,8 @@ class App extends React.Component {
               photoClick={this.photoClick}
             />
             <Main
-              path="/:category"
+              path="/:cat"
+              setCategory={this.setCategory}
               categoryClickHandler={this.categoryClickHandler}
               search={this.search}
               searchInput={this.state.searchInput}

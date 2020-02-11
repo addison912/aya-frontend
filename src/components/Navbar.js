@@ -9,7 +9,14 @@ import HamburgerMenu from "./HamburgerMenu";
 class Navbar extends Component {
   render() {
     return (
-      <div id="navbar">
+      <div
+        id="navbar"
+        className={
+          !!window.location.pathname && window.location.pathname == "/about"
+            ? "hide-icons"
+            : null
+        }
+      >
         <div className="navbar-icons">
           <LayoutIcons
             layout={this.props.layout}

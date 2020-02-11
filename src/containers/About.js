@@ -25,13 +25,15 @@ class About extends Component {
         <Logo className="logo" />
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
         <div className="profile-pic">
-          <img src={require("../assets/images/profile-pic.png")} alt="" />
+          <img src={require("../assets/images/profile-pic.png")} alt="Aya" />
         </div>
         <div className="contact-info">
           <h2>Contact</h2>
           <p>aya@ayabrackett.com</p>
           <p>(510) 292-5719</p>
-          <p>@ayabrackett</p>
+          <p>
+            <a href="https://www.instagram.com/ayabrackett/">@ayabrackett</a>
+          </p>
         </div>
         <div className="about-scroll">
           <section>

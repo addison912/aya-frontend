@@ -1,5 +1,8 @@
 #navbar {
   display: none;
+  background: #ffffff;
+  height: 8.34vh;
+  padding: 12px 8.33%;
 }
 
 @media only screen and (max-width: 560px) {
@@ -14,14 +17,17 @@
     // grid-row-end: 13;
     position: absolute;
     top: 91.66vh;
-    height: 8.34vh;
-    padding: 0 8.33%;
     z-index: 4;
-    background: #ffffff;
   }
   .navbar-hamburger {
     :hover {
       cursor: pointer;
+    }
+  }
+  #navbar.hide-icons {
+    justify-content: flex-end;
+    .navbar-icons {
+      display: none;
     }
   }
 }

@@ -11,9 +11,12 @@
 .contact-info {
   grid-column: 4/6;
   grid-row: 8/10;
+  line-height: 150%;
+  font-size: 16px;
 }
 
 .about-scroll {
+  overflow: scroll;
   grid-column: 7/13;
   grid-row: 4/13;
 }
@@ -60,5 +63,61 @@
   }
   ul {
     padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1240px) {
+  .about {
+    padding: 0 56px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .about .left-nav {
+    display: none;
+  }
+  .about {
+    overflow: scroll;
+
+    .logo {
+      grid-column: 1/12;
+      grid-row: 0/1;
+      display: flex;
+      justify-content: center;
+      margin: 24px;
+    }
+    .profile-pic {
+      grid-row: 3/5;
+      grid-column: 1/12;
+      display: flex;
+      justify-content: center;
+    }
+    .contact-info {
+      grid-row: 5/7;
+      grid-column: 1/12;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 32px;
+    }
+    .about-scroll {
+      grid-row-start: 7;
+      grid-column: 1/12;
+      overflow: visible;
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .main {
+    padding: 0 32px;
+  }
+  .client-lists {
+    grid-template-columns: 1fr;
+    ul {
+      margin-bottom: 24px;
+    }
   }
 }
