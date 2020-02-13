@@ -48,6 +48,8 @@ h1 {
   grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 2;
+  display: flex;
+  align-items: center;
 }
 
 .main > .gallery-toggle {
@@ -154,6 +156,7 @@ li > span:hover {
     grid-column-end: 12;
     grid-row-start: 2;
     grid-row-end: 2;
+    justify-content: center;
   }
 
   .main > .gallery-toggle {
@@ -228,7 +231,7 @@ a {
 }
 @media only screen and (max-width: 560px) {
   .main {
-    padding: 0;
+    padding: 0px;
   }
 
   .content {
@@ -278,6 +281,18 @@ a {
   -o-animation: fadein 1s;
   /* Opera < 12.1 */
   animation: fadein 1s;
+}
+
+.fade-out {
+  -webkit-animation: fadeout 1s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 1s;
+  /* Firefox < 16 */
+  -ms-animation: fadeout 1s;
+  /* Internet Explorer */
+  -o-animation: fadeout 1s;
+  /* Opera < 12.1 */
+  animation: fadeout 1s;
 }
 
 .image-info {
@@ -363,19 +378,63 @@ a {
 /* Internet Explorer */
 @-ms-keyframes fadein {
   from {
-    opacity: 0;
+    opacity: 1;
   }
   to {
-    opacity: 1;
+    opacity: 0;
   }
 }
 /* Opera < 12.1 */
 @-o-keyframes fadein {
   from {
-    opacity: 0;
+    opacity: 1;
   }
   to {
+    opacity: 0;
+  }
+}
+@keyframes fadeout {
+  from {
     opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* Firefox < 16 */
+@-moz-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* Opera < 12.1 */
+@-o-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 @media only screen and (max-width: 560px) {
@@ -500,7 +559,7 @@ a {
   }
 }
 @media only screen and (max-width: 760px) {
-  .main {
+  .main.about {
     padding: 0 32px;
   }
 
@@ -645,6 +704,7 @@ a {
   display: none;
   background: #ffffff;
   padding: 24px 32px;
+  border-top: 1px solid black;
 }
 
 @media only screen and (max-width: 560px) {
@@ -679,15 +739,21 @@ a {
   cursor: pointer;
 }
 
+.navbar-icons,
+.navbar-hamburger {
+  z-index: 5;
+}
+
 .hamburger-menu {
   padding: 32px;
   background-color: white;
   display: none;
-  z-index: 3;
+  z-index: 2;
   display: none;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
+  position: fixed;
+  left: 0;
   height: fit-content;
   width: 100vw;
 }
@@ -722,16 +788,16 @@ a {
 
 @media only screen and (max-width: 560px) {
   .hamburger-menu.visible-menu {
-    bottom: 8.34vh;
+    bottom: 82px;
     overflow: scroll;
-    transition: ease-in-out 0.42s;
+    transition: bottom ease-in-out 0.7s;
     display: flex;
   }
 
   .hamburger-menu.hidden-menu {
-    bottom: -100vh;
+    bottom: -1000px;
     overflow: hidden;
-    transition: ease-in-out 0.42s;
+    transition: bottom ease-in-out 0.7s;
     display: flex;
   }
 }

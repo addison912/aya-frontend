@@ -15,7 +15,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <Logo className="logo" />
+        <Logo className="logo" setCategory={this.props.setCategory} />
         <LeftNav categoryClickHandler={this.props.categoryClickHandler} />
         <Search
           className="search-component"

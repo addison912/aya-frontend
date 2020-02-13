@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { Router, navigate, Link } from "@reach/router";
 
 class Logo extends Component {
   render() {
     return (
-      <div className="logo">
+      <div className="logo" onClick={() => this.props.setCategory("Home")}>
         <Link to="/">
           <img
             src={require("../assets/images/logo-aya_brackett.svg")}

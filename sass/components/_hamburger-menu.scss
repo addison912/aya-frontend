@@ -5,12 +5,13 @@
   //   grid-row: 5/12;
   background-color: rgba($color: #ffffff, $alpha: 1);
   display: none;
-  z-index: 3;
+  z-index: 2;
   display: none;
   flex-direction: column;
   align-items: flex-start;
   //   position: relative;
-  position: absolute;
+  position: fixed;
+  left: 0;
   height: fit-content;
   width: 100vw;
   .category-list {
@@ -45,15 +46,15 @@
 
 @media only screen and (max-width: 560px) {
   .hamburger-menu.visible-menu {
-    bottom: 8.34vh;
+    bottom: 82px;
     overflow: scroll;
-    transition: ease-in-out 0.42s;
+    transition: bottom ease-in-out 0.7s;
     display: flex;
   }
   .hamburger-menu.hidden-menu {
-    bottom: -100vh;
+    bottom: -1000px;
     overflow: hidden;
-    transition: ease-in-out 0.42s;
+    transition: bottom ease-in-out 0.7s;
     display: flex;
   }
 }

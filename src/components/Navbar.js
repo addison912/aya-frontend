@@ -9,32 +9,42 @@ import HamburgerMenu from "./HamburgerMenu";
 class Navbar extends Component {
   render() {
     return (
-      <div
-        id="navbar"
-        className={
-          !!window.location.pathname && window.location.pathname == "/about"
-            ? "hide-icons"
-            : null
-        }
-      >
-        <div className="navbar-icons">
-          <LayoutIcons
-            layout={this.props.layout}
-            toggleGalleryLayout={this.props.toggleGalleryLayout}
-          />
-          <div className="icon-wrapper">
-            <img src={require("../assets/images/info-icon.svg")} alt="info" />
-            <p>info</p>
+      <div>
+        <HamburgerMenu
+          categoryClickHandler={this.props.categoryClickHandler}
+          hamburgerMenu={this.props.hamburgerMenu}
+          toggleHamburgerMenu={this.props.toggleHamburgerMenu}
+          search={this.props.search}
+          searchInput={this.props.searchInput}
+          handleSearchInput={this.props.handleSearchInput}
+        />
+        <div
+          id="navbar"
+          className={
+            !!window.location.pathname && window.location.pathname == "/about"
+              ? "hide-icons"
+              : null
+          }
+        >
+          <div className="navbar-icons">
+            <LayoutIcons
+              layout={this.props.layout}
+              toggleGalleryLayout={this.props.toggleGalleryLayout}
+            />
+            <div className="icon-wrapper">
+              <img src={require("../assets/images/info-icon.svg")} alt="info" />
+              <p>info</p>
+            </div>
           </div>
-        </div>
-        <div className="navbar-hamburger">
-          {" "}
-          <img
-            src={require("../assets/images/hamburger.svg")}
-            alt="menu"
-            onClick={this.props.toggleHamburgerMenu}
-            role="button"
-          />
+          <div className="navbar-hamburger">
+            {" "}
+            <img
+              src={require("../assets/images/hamburger.svg")}
+              alt="menu"
+              onClick={this.props.toggleHamburgerMenu}
+              role="button"
+            />
+          </div>
         </div>
       </div>
     );

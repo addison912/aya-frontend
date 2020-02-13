@@ -3,6 +3,7 @@
   background: #ffffff;
   // height: 8.34vh;
   padding: 24px 32px;
+  border-top: 1px solid black;
 }
 
 @media only screen and (max-width: 560px) {
@@ -36,4 +37,9 @@
       cursor: pointer;
     }
   }
+}
+
+.navbar-icons,
+.navbar-hamburger {
+  z-index: 5;
 }

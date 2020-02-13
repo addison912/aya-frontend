@@ -45,6 +45,7 @@ class App extends React.Component {
   };
 
   setCategory = category => {
+    console.log("Here");
     this.setState({ category });
     this.getGalleries(category);
     this.state.hamburgerMenu == true
@@ -178,8 +179,6 @@ class App extends React.Component {
     }
     this.setState({ photoIndex: newIndex });
     this.setPictureUrl(newIndex);
-    // console.log("new: " + this.state.photoIndex);
-    // console.log("state" + this.state.photoIndex);
   };
 
   /////
@@ -242,11 +241,21 @@ class App extends React.Component {
             <About
               path="/about"
               categoryClickHandler={this.categoryClickHandler}
+              setCategory={this.setCategory}
             />
-            <News path="/news" />
-            <Shop path="/shop" />
+            <News
+              path="/news"
+              categoryClickHandler={this.categoryClickHandler}
+              setCategory={this.setCategory}
+            />
+            <Shop
+              path="/shop"
+              categoryClickHandler={this.categoryClickHandler}
+              setCategory={this.setCategory}
+            />
             <Main
               path="/"
+              setCategory={this.setCategory}
               categoryClickHandler={this.categoryClickHandler}
               search={this.search}
               searchInput={this.state.searchInput}
@@ -296,15 +305,19 @@ class App extends React.Component {
             toggleGalleryLayout={this.toggleGalleryLayout}
             categoryClickHandler={this.categoryClickHandler}
             toggleHamburgerMenu={this.toggleHamburgerMenu}
+            hamburgerMenu={this.state.hamburgerMenu}
+            search={this.search}
+            handleSearchInput={this.handleSearchInput}
+            searchInput={this.state.searchInput}
           />
-          <HamburgerMenu
+          {/* <HamburgerMenu
             categoryClickHandler={this.categoryClickHandler}
             hamburgerMenu={this.state.hamburgerMenu}
             toggleHamburgerMenu={this.toggleHamburgerMenu}
             search={this.search}
             searchInput={this.state.searchInput}
             handleSearchInput={this.handleSearchInput}
-          />
+          /> */}
         </div>
       </React.StrictMode>
     );
