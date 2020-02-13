@@ -5,6 +5,7 @@ import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
 import LayoutIcons from "../components/LayoutIcons";
+import BackButton from "../components/BackButton";
 
 class Main extends Component {
   componentDidMount() {
@@ -17,6 +18,13 @@ class Main extends Component {
       <div className="main">
         <Logo className="logo" setCategory={this.props.setCategory} />
         <LeftNav categoryClickHandler={this.props.categoryClickHandler} />
+        {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
+          <BackButton
+            category={this.props.category}
+            setCategory={this.props.setCategory}
+          />
+        ) : null}
+
         <Search
           className="search-component"
           search={this.props.search}

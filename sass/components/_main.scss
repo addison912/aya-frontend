@@ -15,7 +15,7 @@ body,
 }
 
 .main {
-  height: 100%;
+  height: calc(100% - 87px);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);

@@ -184,7 +184,7 @@ body,
 }
 
 .main {
-  height: 100%;
+  height: calc(100% - 87px);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -673,6 +673,9 @@ a {
 .search-wrapper input {
   width: 100%;
 }
+.search-wrapper input:hover {
+  cursor: text;
+}
 
 .search-component {
   display: flex;
@@ -841,6 +844,37 @@ a {
   font-size: 16px;
   line-height: 120%;
   max-width: 66.66%;
+}
+
+.back-button {
+  font-family: "GT America", monospace;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.back-button span:hover {
+  cursor: pointer;
+}
+.back-button .index-arrow {
+  height: 8px;
+  width: auto;
+  vertical-align: -1px;
+}
+
+.main .back-button {
+  grid-column-start: 5;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+@media only screen and (max-width: 560px) {
+  .back-button {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
