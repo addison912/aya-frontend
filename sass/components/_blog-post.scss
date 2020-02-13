@@ -1,0 +1,58 @@
+.blog-title {
+  font-family: "GT America";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 140%;
+  margin-bottom: 8px;
+}
+.blog-date {
+  font-family: "GT America Mono Thin";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 12px;
+}
+.blog-article {
+  font-family: "GT America Mono Thin";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+}
+.blog-text-container {
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 48px;
+}
+
+.blog.content {
+  overflow: scroll;
+  grid-column-start: 4;
+  grid-column-end: 13;
+  grid-row-start: 3;
+  grid-row-end: 12;
+}
+
+.blog-post {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.blog-images {
+  display: flex;
+  img {
+    height: 500px;
+    width: auto;
+    object-fit: cover;
+  }
+  img {
+    margin-right: 8px;
+  }
+  img:last-child {
+    margin-right: 0px;
+  }
+}

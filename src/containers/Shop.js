@@ -26,7 +26,7 @@ class Shop extends Component {
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
         <div className="content">
           <div className="page-container">
-            <h1>Store Page Coming Soon</h1>
+            <h1>Shop Coming Soon</h1>
           </div>
         </div>
       </div>

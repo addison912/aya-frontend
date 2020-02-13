@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { domain } from "../config/constants";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
+import BlogPost from "../components/BlogPost";
 
 class News extends Component {
   state = {
@@ -24,10 +25,8 @@ class News extends Component {
       <div className="main">
         <Logo className="logo" />
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
-        <div className="content">
-          <div className="page-container">
-            <h1>News Page Coming Soon!</h1>
-          </div>
+        <div className="blog content">
+          <BlogPost />
         </div>
       </div>
     );
