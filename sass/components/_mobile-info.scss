@@ -1,0 +1,24 @@
+.mobile-info {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(250, 250, 250, 0.5);
+  z-index: 6;
+  transition: display ease-in-out 1s;
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
+  span {
+    font-family: "GT America Mono Thin";
+    font-size: 16px;
+    line-height: 120%;
+    max-width: 66.66%;
+  }
+}

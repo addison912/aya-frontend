@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -31,10 +32,30 @@ class Navbar extends Component {
               layout={this.props.layout}
               toggleGalleryLayout={this.props.toggleGalleryLayout}
             />
-            <div className="icon-wrapper">
-              <img src={require("../assets/images/info-icon.svg")} alt="info" />
-              <p>info</p>
-            </div>
+            {this.props.layout == "single" &&
+            this.props.view == "gallery" &&
+            !this.props.mobileInfo ? (
+              <div className="icon-wrapper">
+                <img
+                  src={require("../assets/images/info-icon.svg")}
+                  alt="info"
+                  onClick={this.props.toggleMobileInfo}
+                />
+                <p>info</p>
+              </div>
+            ) : null}
+            {this.props.layout == "single" &&
+            this.props.view == "gallery" &&
+            !!this.props.mobileInfo ? (
+              <div className="icon-wrapper" style={{ zIndex: "8;" }}>
+                <img
+                  src={require("../assets/images/info-icon-selected.svg")}
+                  alt="info"
+                  onClick={this.props.toggleMobileInfo}
+                />
+                <p>info</p>
+              </div>
+            ) : null}
           </div>
           <div className="navbar-hamburger">
             {" "}

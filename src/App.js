@@ -8,7 +8,7 @@ import News from "./containers/News";
 import Shop from "./containers/Shop";
 import { domain } from "./config/constants";
 import Navbar from "./components/Navbar";
-import HamburgerMenu from "./components/HamburgerMenu";
+import MobileInfo from "./components/MobileInfo";
 // import LeftNav from "./components/LeftNav";
 
 class App extends React.Component {
@@ -20,13 +20,13 @@ class App extends React.Component {
     galleries: [],
     layout: "single",
     view: "gallery",
-    caption: "",
     pictureUrl: require("./assets/images/spinner.gif"),
     photoIndex: 0,
     galleryIndex: 0,
     galleryLength: 0,
     searchInput: "",
-    hamburgerMenu: false
+    hamburgerMenu: false,
+    mobileInfo: false
   };
 
   toggleGalleryLayout = e => {
@@ -45,7 +45,6 @@ class App extends React.Component {
   };
 
   setCategory = category => {
-    console.log("Here");
     this.setState({ category });
     this.getGalleries(category);
     this.state.hamburgerMenu == true
@@ -168,6 +167,7 @@ class App extends React.Component {
 
   //////
   clickPicture = e => {
+    document.querySelector(".single-pic").classList.add("fade-out");
     let newIndex = this.state.photoIndex;
     if (e.target.getAttribute("id") == "next-photo") {
       newIndex++;
@@ -177,8 +177,10 @@ class App extends React.Component {
     if (newIndex <= -1) {
       newIndex = this.state.galleryLength - 1;
     }
-    this.setState({ photoIndex: newIndex });
-    this.setPictureUrl(newIndex);
+    setTimeout(() => {
+      this.setState({ photoIndex: newIndex });
+      this.setPictureUrl(newIndex);
+    }, 500);
   };
 
   /////
@@ -226,16 +228,23 @@ class App extends React.Component {
   }
 
   toggleHamburgerMenu = () => {
-    console.log("hamburger clicked");
     this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
   };
+
+  toggleMobileInfo = () => {
+    console.log("info clicked");
+    this.setState({ mobileInfo: !this.state.mobileInfo });
+  };
+
   render() {
     return (
       <React.StrictMode>
         <div className="App">
           <Router
             className={
-              this.state.hamburgerMenu ? "router background-blur" : "router"
+              this.state.hamburgerMenu || this.state.mobileInfo
+                ? "router background-blur"
+                : "router"
             }
           >
             <About
@@ -302,6 +311,7 @@ class App extends React.Component {
           </Router>
           <Navbar
             layout={this.state.layout}
+            view={this.state.view}
             toggleGalleryLayout={this.toggleGalleryLayout}
             categoryClickHandler={this.categoryClickHandler}
             toggleHamburgerMenu={this.toggleHamburgerMenu}
@@ -309,15 +319,14 @@ class App extends React.Component {
             search={this.search}
             handleSearchInput={this.handleSearchInput}
             searchInput={this.state.searchInput}
+            mobileInfo={this.state.mobileInfo}
+            toggleMobileInfo={this.toggleMobileInfo}
           />
-          {/* <HamburgerMenu
-            categoryClickHandler={this.categoryClickHandler}
-            hamburgerMenu={this.state.hamburgerMenu}
-            toggleHamburgerMenu={this.toggleHamburgerMenu}
-            search={this.search}
-            searchInput={this.state.searchInput}
-            handleSearchInput={this.handleSearchInput}
-          /> */}
+          <MobileInfo
+            mobileInfo={this.state.mobileInfo}
+            toggleMobileInfo={this.toggleMobileInfo}
+            photo={this.state.photo}
+          />
         </div>
       </React.StrictMode>
     );

@@ -38,11 +38,13 @@
 }
 
 .fade-out {
-  -webkit-animation: fadeout 1s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeout 1s; /* Firefox < 16 */
-  -ms-animation: fadeout 1s; /* Internet Explorer */
-  -o-animation: fadeout 1s; /* Opera < 12.1 */
-  animation: fadeout 1s;
+  -webkit-animation: fadeout 0.6s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 0.6s; /* Firefox < 16 */
+  -ms-animation: fadeout 0.6s; /* Internet Explorer */
+  -o-animation: fadeout 0.6s; /* Opera < 12.1 */
+  animation: fadeout 0.6s;
+  // opacity: 0;
+  // transition: ease-in;
 }
 
 .image-info {

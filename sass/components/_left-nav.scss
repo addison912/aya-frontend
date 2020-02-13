@@ -131,6 +131,9 @@ li > span:hover {
 }
 
 @media only screen and (max-width: 560px) {
+  .logo {
+    align-items: flex-start;
+  }
   .left-nav {
     display: none;
   }
