@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import { useSwipeable, Swipeable } from "react-swipeable";
 
 class Single extends Component {
   // setHeight = () => {
@@ -22,13 +23,19 @@ class Single extends Component {
   render() {
     return (
       <div className="gallery center">
-        <div className="image-container">
+        <Swipeable
+          className="image-container"
+          onSwiped={e => {
+            console.log(e);
+            this.props.clickPicture(e.dir);
+          }}
+        >
           <div
             className="left-overlay"
             style={{
               cursor: `url("${domain}/assets/prev-arrow.svg"), w-resize`
             }}
-            onClick={this.props.clickPicture}
+            onClick={() => this.props.clickPicture("prev")}
             role="button"
             id="prev-photo"
           ></div>
@@ -37,7 +44,7 @@ class Single extends Component {
             style={{
               cursor: `url("${domain}/assets/next-arrow.svg"), w-resize`
             }}
-            onClick={this.props.clickPicture}
+            onClick={() => this.props.clickPicture("next")}
             role="button"
             id="next-photo"
           ></div>
@@ -73,7 +80,7 @@ class Single extends Component {
               </p>
             </div>
           </div>
-        </div>
+        </Swipeable>
       </div>
     );
   }

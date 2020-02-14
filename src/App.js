@@ -166,12 +166,12 @@ class App extends React.Component {
   };
 
   //////
-  clickPicture = e => {
+  clickPicture = dir => {
     document.querySelector(".single-pic").classList.add("fade-out");
     let newIndex = this.state.photoIndex;
-    if (e.target.getAttribute("id") == "next-photo") {
+    if (dir == "next" || dir == "Left") {
       newIndex++;
-    } else if (e.target.getAttribute("id") == "prev-photo") {
+    } else if (dir == "prev" || dir == "Right") {
       newIndex--;
     }
     if (newIndex <= -1) {
