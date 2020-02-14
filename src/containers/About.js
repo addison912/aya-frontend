@@ -22,7 +22,7 @@ class About extends Component {
   render() {
     return (
       <div className="main about">
-        <Logo className="logo" />
+        <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
         <div className="profile-pic">
           <img src={require("../assets/images/profile-pic.png")} alt="Aya" />

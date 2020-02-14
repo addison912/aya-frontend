@@ -165,6 +165,16 @@ class App extends React.Component {
     // console.log(e.target.value);
   };
 
+  handleLogoClick = () => {
+    this.setCategory("Home");
+    if (document.querySelector(".category-link-selected")) {
+      document
+        .querySelector(".category-link-selected")
+        .classList.remove("category-link-selected");
+    }
+    console.log("here");
+  };
+
   //////
   clickPicture = dir => {
     document.querySelector(".single-pic").classList.add("fade-out");
@@ -232,7 +242,6 @@ class App extends React.Component {
   };
 
   toggleMobileInfo = () => {
-    console.log("info clicked");
     this.setState({ mobileInfo: !this.state.mobileInfo });
   };
 
@@ -251,16 +260,19 @@ class App extends React.Component {
               path="/about"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
+              handleLogoClick={this.handleLogoClick}
             />
             <News
               path="/news"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
+              handleLogoClick={this.handleLogoClick}
             />
             <Shop
               path="/shop"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
+              handleLogoClick={this.handleLogoClick}
             />
             <Main
               path="/"
@@ -284,9 +296,10 @@ class App extends React.Component {
               galleryClick={this.galleryClick}
               gallery={this.state.gallery}
               photoClick={this.photoClick}
+              handleLogoClick={this.handleLogoClick}
             />
             <Main
-              path="/:cat"
+              path="c/:cat"
               setCategory={this.setCategory}
               categoryClickHandler={this.categoryClickHandler}
               search={this.search}
@@ -307,6 +320,7 @@ class App extends React.Component {
               galleryClick={this.galleryClick}
               gallery={this.state.gallery}
               photoClick={this.photoClick}
+              handleLogoClick={this.handleLogoClick}
             />
           </Router>
           <Navbar

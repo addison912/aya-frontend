@@ -22,7 +22,7 @@ class Shop extends Component {
   render() {
     return (
       <div className="main">
-        <Logo className="logo" />
+        <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
         <LeftNav categoryClickHandler={this.categoryClickHandler} />
         <div className="content">
           <div className="page-container">

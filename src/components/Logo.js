@@ -6,7 +6,7 @@ import { Router, navigate, Link } from "@reach/router";
 class Logo extends Component {
   render() {
     return (
-      <div className="logo" onClick={() => this.props.setCategory("Home")}>
+      <div className="logo" onClick={this.props.handleLogoClick}>
         <Link to="/">
           <img
             src={require("../assets/images/logo-aya_brackett.svg")}

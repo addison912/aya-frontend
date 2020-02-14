@@ -47,7 +47,7 @@ class Navbar extends Component {
             {this.props.layout == "single" &&
             this.props.view == "gallery" &&
             !!this.props.mobileInfo ? (
-              <div className="icon-wrapper" style={{ zIndex: "8;" }}>
+              <div className="icon-wrapper" style={{ zIndex: "8" }}>
                 <img
                   src={require("../assets/images/info-icon-selected.svg")}
                   alt="info"

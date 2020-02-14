@@ -16,7 +16,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <Logo className="logo" setCategory={this.props.setCategory} />
+        <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
         <LeftNav categoryClickHandler={this.props.categoryClickHandler} />
         {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
           <BackButton

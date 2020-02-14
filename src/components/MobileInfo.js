@@ -6,7 +6,7 @@ class MobileInfo extends Component {
   render() {
     return (
       <div
-        className={this.props.mobileInfo ? "mobile-info" : "hide"}
+        className={this.props.mobileInfo ? "mobile-info" : "hide-info"}
         onClick={this.props.toggleMobileInfo}
       >
         <span>{this.props.photo.caption}</span>

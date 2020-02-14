@@ -846,6 +846,30 @@ a {
   max-width: 66.66%;
 }
 
+.hide-info {
+  -webkit-animation: fadout-hide 1s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadout-hide 1s;
+  /* Firefox < 16 */
+  -ms-animation: fadout-hide 1s;
+  /* Internet Explorer */
+  -o-animation: fadout-hide 1s;
+  /* Opera < 12.1 */
+  animation: fadout-hide 1s;
+}
+
+@keyframes fadout-hide {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
 .back-button {
   font-family: "GT America", monospace;
   text-transform: uppercase;

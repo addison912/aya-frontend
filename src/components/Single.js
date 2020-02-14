@@ -26,7 +26,6 @@ class Single extends Component {
         <Swipeable
           className="image-container"
           onSwiped={e => {
-            console.log(e);
             this.props.clickPicture(e.dir);
           }}
         >
