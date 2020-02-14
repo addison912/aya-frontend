@@ -15,7 +15,7 @@ class App extends React.Component {
   state = {
     photo: {},
     message: "",
-    category: "",
+    category: "Home",
     gallery: {},
     galleries: [],
     layout: "single",
@@ -220,9 +220,9 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    if (this.state.category) {
-      this.getGalleries(this.state.category);
-    } else this.getGalleries("Home");
+    // if (this.state.category) {
+    //   this.getGalleries(this.state.category);
+    // } else this.getGalleries("Home");
 
     //hide hamburger menu when background clicked
     window.addEventListener("click", e => {
@@ -299,7 +299,7 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
             />
             <Main
-              path="c/:cat"
+              path="/:cat"
               setCategory={this.setCategory}
               categoryClickHandler={this.categoryClickHandler}
               search={this.search}
