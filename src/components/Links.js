@@ -11,17 +11,38 @@ class Links extends Component {
         <ul>
           <li>
             <Link to="/about">
-              <span onClick={this.props.toggleHamburgerMenu}>About</span>
+              <span
+                onClick={this.props.toggleHamburgerMenu}
+                className={
+                  this.props.selectedLink == "About" ? "selected-link" : null
+                }
+              >
+                About
+              </span>
             </Link>
           </li>
           <li>
             <Link to="/news">
-              <span onClick={this.props.toggleHamburgerMenu}>News</span>
+              <span
+                onClick={this.props.toggleHamburgerMenu}
+                className={
+                  this.props.selectedLink == "News" ? "selected-link" : null
+                }
+              >
+                News
+              </span>
             </Link>
           </li>
           <li>
             <Link to="/shop">
-              <span onClick={this.props.toggleHamburgerMenu}>Shop</span>
+              <span
+                onClick={this.props.toggleHamburgerMenu}
+                className={
+                  this.props.selectedLink == "Shop" ? "selected-link" : null
+                }
+              >
+                Shop
+              </span>
             </Link>
           </li>
         </ul>

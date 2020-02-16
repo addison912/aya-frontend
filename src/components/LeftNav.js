@@ -36,7 +36,10 @@ class LeftNav extends Component {
             </li>
           ))}
         </ul>
-        <Links categoryClickHandler={this.props.categoryClickHandler} />
+        <Links
+          categoryClickHandler={this.props.categoryClickHandler}
+          selectedLink={this.props.selectedLink}
+        />
       </nav>
     );
   }

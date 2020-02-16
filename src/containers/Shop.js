@@ -23,10 +23,13 @@ class Shop extends Component {
     return (
       <div className="main">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav categoryClickHandler={this.categoryClickHandler} />
+        <LeftNav
+          categoryClickHandler={this.categoryClickHandler}
+          selectedLink={"Shop"}
+        />
         <div className="content">
           <div className="page-container">
-            <h1>Shop Coming Soon</h1>
+            <h1>Shop, Coming Soon!</h1>
           </div>
         </div>
       </div>

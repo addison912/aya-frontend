@@ -23,7 +23,10 @@ class About extends Component {
     return (
       <div className="main about">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav categoryClickHandler={this.categoryClickHandler} />
+        <LeftNav
+          categoryClickHandler={this.categoryClickHandler}
+          selectedLink={"About"}
+        />
         <div className="profile-pic">
           <img src={require("../assets/images/profile-pic.png")} alt="Aya" />
         </div>

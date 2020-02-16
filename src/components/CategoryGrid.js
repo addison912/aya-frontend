@@ -30,10 +30,6 @@ class CategoryGrid extends Component {
               )}/${gallery.name.replace(/\/?\s+/g, "_")}/${
                 gallery.photos[0].location
               }`}
-              // src={`${domain}/uploads/photos/${gallery.category.replace(
-              //   /\/?\s+/g,
-              //   "_"
-              // )}/The_Fine_Art_of_Paper_Flowers/${gallery.photos[0].location}`}
               alt={
                 gallery.photos && gallery.photos[0] && gallery.photos[0].caption
                   ? gallery.photos[0].caption

@@ -11,7 +11,10 @@ class Main extends Component {
   componentDidMount() {
     if (this.props.cat && this.props.cat != this.props.category) {
       this.props.setCategory(this.props.cat);
+    } else if (!this.props.cat) {
+      this.props.setCategory("Home");
     }
+    console.log(this.props);
   }
   render() {
     return (
