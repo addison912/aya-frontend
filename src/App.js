@@ -1,5 +1,9 @@
 import React from "react";
-import { Router, navigate, Link } from "@reach/router";
+import { createHistory, LocationProvider, Router } from "@reach/router";
+import createHashSource from "hash-source";
+
+let source = createHashSource();
+let history = createHistory(source);
 
 // import Header from "./components/Header";
 import Main from "./containers/Main";
@@ -9,6 +13,7 @@ import Shop from "./containers/Shop";
 import { domain } from "./config/constants";
 import Navbar from "./components/Navbar";
 import MobileInfo from "./components/MobileInfo";
+
 // import LeftNav from "./components/LeftNav";
 
 class App extends React.Component {
@@ -172,7 +177,6 @@ class App extends React.Component {
         .querySelector(".category-link-selected")
         .classList.remove("category-link-selected");
     }
-    console.log("here");
   };
 
   //////
@@ -247,8 +251,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.StrictMode>
-        <div className="App">
+      <LocationProvider history={history}>
+        <div className="App" path="/">
           <Router
             className={
               this.state.hamburgerMenu || this.state.mobileInfo
@@ -297,6 +301,7 @@ class App extends React.Component {
               gallery={this.state.gallery}
               photoClick={this.photoClick}
               handleLogoClick={this.handleLogoClick}
+              default
             />
             <Main
               path="/:cat"
@@ -342,7 +347,7 @@ class App extends React.Component {
             photo={this.state.photo}
           />
         </div>
-      </React.StrictMode>
+      </LocationProvider>
     );
   }
 }

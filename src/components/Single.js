@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -61,7 +62,7 @@ class Single extends Component {
             <div className="image-info">
               <p className="caption">{this.props.photo.caption}</p>
               <p className="index">
-                <span>
+                <span onClick={() => this.props.clickPicture("prev")}>
                   <img
                     src={require("../assets/images/prev-arrow.svg")}
                     alt="previous"
@@ -69,7 +70,7 @@ class Single extends Component {
                   />
                 </span>{" "}
                 {this.props.photoIndex} of {this.props.galleryLength}{" "}
-                <span>
+                <span onClick={() => this.props.clickPicture("next")}>
                   <img
                     src={require("../assets/images/next-arrow.svg")}
                     alt="next"

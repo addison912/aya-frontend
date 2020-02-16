@@ -24,9 +24,17 @@ class News extends Component {
     return (
       <div className="main">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav categoryClickHandler={this.categoryClickHandler} />
-        <div className="blog content">
+        <LeftNav
+          categoryClickHandler={this.categoryClickHandler}
+          selectedLink={"News"}
+        />
+        {/* <div className="blog content">
           <BlogPost />
+        </div> */}
+        <div className="content">
+          <div className="page-container">
+            <h1>News, Coming Soon!</h1>
+          </div>
         </div>
       </div>
     );
