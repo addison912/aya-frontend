@@ -2,6 +2,14 @@
 @import url("http://funky.haus/assets/fonts.css");
 @import url("http://funky.haus/assets/next-arrow.svg");
 @import url("http://funky.haus/assets/prev-arrow.svg");
+::-moz-selection {
+  background: var(blue);
+}
+
+::selection {
+  background: var(blue);
+}
+
 nav {
   grid-area: nav;
 }
@@ -13,7 +21,7 @@ nav .projects {
 nav .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
-  font-family: "GT America Bold";
+  font-family: "GT America Extended", sans-serif;
   font-size: 32px;
   color: white;
   -webkit-text-stroke-width: 0.66px;
@@ -49,7 +57,7 @@ nav .projects .category-link:hover {
 }
 .links li {
   margin: 6px 0px;
-  font-family: "GT America";
+  font-family: "GT America", sans-serif;
   text-align: left;
   font-style: normal;
   font-weight: normal;
@@ -225,11 +233,10 @@ a {
   justify-content: space-between;
 }
 .image-info .caption {
-  font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
-  font-size: 16px;
+  font-family: "GT America Mono", monospace;
 }
 .image-info .caption-nav {
-  font-family: "GT America";
+  font-family: "GT America", sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;
@@ -506,7 +513,7 @@ figure img:hover {
 }
 
 figcaption {
-  font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
+  font-family: "GT America Mono", monospace;
   padding-top: 8px;
   display: flex;
   justify-content: space-between;
@@ -528,7 +535,7 @@ figcaption h1 {
   }
 }
 .search {
-  font-family: "GT America", monospace;
+  font-family: "GT America", sans-serif;
   text-transform: uppercase;
   border: none;
   font-size: 8px;
@@ -677,7 +684,7 @@ figcaption h1 {
 .hamburger-menu .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
-  font-family: "GT America Bold";
+  font-family: "GT America Extended", sans-serif;
   font-size: 32px;
   color: white;
   -webkit-text-stroke-width: 0.66px;
@@ -736,7 +743,7 @@ figcaption h1 {
   animation: fadein 1s;
 }
 .mobile-info span {
-  font-family: "GT America Mono Thin";
+  font-family: "GT America Mono", monospace;
   font-size: 16px;
   line-height: 120%;
   max-width: 66.66%;
@@ -767,7 +774,7 @@ figcaption h1 {
   }
 }
 .back-button {
-  font-family: "GT America", monospace;
+  font-family: "GT America", sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   letter-spacing: 0.15em;
@@ -793,7 +800,7 @@ figcaption h1 {
   }
 }
 .blog-title {
-  font-family: "GT America";
+  font-family: "GT America", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -802,7 +809,7 @@ figcaption h1 {
 }
 
 .blog-date {
-  font-family: "GT America Mono Thin";
+  font-family: "GT America Mono", monospace;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -811,7 +818,7 @@ figcaption h1 {
 }
 
 .blog-article {
-  font-family: "GT America Mono Thin";
+  font-family: "GT America Mono", monospace;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -902,7 +909,7 @@ nav .gallery-toggle {
   margin: 0 0 4px 0;
 }
 .icon-wrapper span {
-  font-family: "GT America";
+  font-family: "GT America", sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;

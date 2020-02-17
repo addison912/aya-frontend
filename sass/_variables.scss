@@ -1,2 +1,11 @@
-$font-main: courier;
-$font-heading: "GT America", sans-serif;
+$headings: "GT America", sans-serif;
+$body-text: "GT America Mono", monospace;
+$ui-text: "GT America Extended", sans-serif;
+$dark: #323844;
+$blue: blue;
+::-moz-selection {
+  background: var($blue);
+}
+::selection {
+  background: var($blue);
+}

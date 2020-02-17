@@ -1,5 +1,5 @@
 .blog-title {
-  font-family: "GT America";
+  font-family: $headings;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -7,7 +7,7 @@
   margin-bottom: 8px;
 }
 .blog-date {
-  font-family: "GT America Mono Thin";
+  font-family: $body-text;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -15,7 +15,7 @@
   margin-bottom: 12px;
 }
 .blog-article {
-  font-family: "GT America Mono Thin";
+  font-family: $body-text;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;

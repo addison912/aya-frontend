@@ -53,11 +53,10 @@
   margin-top: 12px;
   justify-content: space-between;
   .caption {
-    font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
-    font-size: 16px;
+    font-family: $body-text;
   }
   .caption-nav {
-    font-family: "GT America";
+    font-family: $headings;
     text-transform: uppercase;
     font-size: 8px;
     line-height: 10px;

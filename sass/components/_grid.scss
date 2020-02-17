@@ -58,7 +58,7 @@ figure {
   }
 }
 figcaption {
-  font-family: "GT America Mono Thin", "Courier New", Courier, monospace;
+  font-family: $body-text;
   padding-top: 8px;
   display: flex;
   justify-content: space-between;
