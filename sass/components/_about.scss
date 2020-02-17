@@ -1,123 +1,68 @@
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "profile about about" "contact press press" "clients clients clients";
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  height: auto;
+  grid-area: content;
+  margin-bottom: 128px;
+}
+
+.about-container ul li {
+  margin-bottom: 8px;
+}
+
 .profile-pic {
-  grid-column: 4/6;
-  grid-row: 4/7;
-  img {
-    object-fit: cover;
-    // width: 100%;
-    // height: auto;
-  }
+  grid-area: profile;
+  width: 62%;
 }
 
 .contact-info {
-  grid-column: 4/6;
-  grid-row: 8/10;
-  line-height: 150%;
-  font-size: 16px;
+  grid-area: contact;
 }
 
-.about-scroll {
-  overflow: scroll;
-  grid-column: 7/13;
-  grid-row: 4/13;
+.bio {
+  grid-area: about;
+}
+
+.bio h1 {
+  margin-top: 0;
 }
 
 .press {
-  grid-column: 4/5;
-  grid-row: 3/6;
-  p {
-    line-height: 150%;
-  }
+  grid-area: press;
 }
 
-.client-lists {
+.clients {
+  grid-area: clients;
+}
+
+.client-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  ul {
-    li:first-child {
-      text-transform: uppercase;
-    }
-    li {
-      font-family: "GT America Mono Thin";
-      font-size: 16px;
-      line-height: 150%;
-    }
-  }
-}
-
-.about {
-  overflow: scroll;
-  h2 {
-    font-family: "GT America";
-    font-size: 24px;
-    margin: 0 0 1em 0;
-    font-style: normal;
-    font-weight: normal;
-  }
-  p {
-    font-family: "GT America Mono Thin";
-    font-size: 16px;
-    line-height: 150%;
-  }
-  section {
-    margin-bottom: 8.33%;
-  }
-  ul {
-    padding: 0;
-  }
-}
-
-@media only screen and (max-width: 1240px) {
-  .about {
-    padding: 0 56px;
-  }
 }
 
 @media only screen and (max-width: 960px) {
-  .about .left-nav {
-    display: none;
+  .about-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "profile contact contact" "about about about" "press press press" "clients clients clients";
   }
-  .about {
-    overflow: scroll;
-
-    .logo {
-      grid-column: 1/12;
-      grid-row: 0/1;
-      display: flex;
-      justify-content: center;
-      margin: 24px;
-    }
-    .profile-pic {
-      grid-row: 3/6;
-      grid-column: 1/12;
-      display: flex;
-      justify-content: center;
-    }
-    .contact-info {
-      grid-row: 6/7;
-      grid-column: 1/12;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 32px;
-    }
-    .about-scroll {
-      grid-row-start: 9;
-      grid-column: 1/12;
-      overflow: visible;
-    }
-    h2 {
-      text-align: center;
-    }
+  .profile-pic {
+    width: 80%;
+    margin-bottom: 64px;
+  }
+  .client-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .client-list ul {
+    padding-right: 24px;
+    margin-bottom: 24px;
   }
 }
-@media only screen and (max-width: 760px) {
-  .main.about {
-    padding: 0 32px;
-  }
-  .client-lists {
-    grid-template-columns: 1fr;
-    ul {
-      margin-bottom: 24px;
-    }
+
+@media only screen and (max-width: 560px) {
+  .about-container {
+    padding: 0 24px;
   }
 }

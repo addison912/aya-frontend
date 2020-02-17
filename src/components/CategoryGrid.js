@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -6,18 +7,12 @@ import { domain } from "../config/constants";
 import ImageSpacer from "./ImageSpacer";
 
 class CategoryGrid extends Component {
-  // componentDidMount() {
-  //   if (this.props.galleries.length < 4 && this.props.galleries.length > 1) {
-  //     console.log(this.props.galleries.length);
-  //     document.querySelector(".gallery-grid").a;
-  //   }
-  // }
   render() {
     return (
-      <div className="gallery-grid">
+      <div className="gallery-content">
         {this.props.galleries.map((gallery, i) => (
-          <div
-            className="gridImageWrapper"
+          <figure
+            className="grid-image"
             key={i}
             data={i}
             onClick={this.props.galleryClick}
@@ -37,8 +32,8 @@ class CategoryGrid extends Component {
               }
               className="gridImage"
             />
-            <p className="caption">{gallery.name}</p>
-          </div>
+            <figcaption>{gallery.name}</figcaption>
+          </figure>
         ))}
         <ImageSpacer />
         <ImageSpacer />

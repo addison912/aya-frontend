@@ -21,26 +21,33 @@ class About extends Component {
   //   };
   render() {
     return (
-      <div className="main about">
+      <div className="main">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
         <LeftNav
           categoryClickHandler={this.categoryClickHandler}
           selectedLink={"About"}
         />
-        <div className="profile-pic">
-          <img src={require("../assets/images/profile-pic.png")} alt="Aya" />
-        </div>
-        <div className="contact-info">
-          <h2>Contact</h2>
-          <p>aya@ayabrackett.com</p>
-          <p>(510) 292-5719</p>
-          <p>
-            <a href="https://www.instagram.com/ayabrackett/">@ayabrackett</a>
-          </p>
-        </div>
-        <div className="about-scroll">
-          <section>
-            <p className="bio">
+        <div className="about-container">
+          <img
+            className="profile-pic"
+            src={require("../assets/images/profile-pic.png")}
+            alt="Aya"
+          />
+          <div className="contact-info">
+            <h1>Contact</h1>
+            <ul>
+              <li>aya@ayabrackett.com</li>
+              <li>(510) 292-5719</li>
+              <li>
+                <a href="https://www.instagram.com/ayabrackett/">
+                  @ayabrackett
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="bio">
+            <h1>About</h1>
+            <p>
               Aya Brackett was born and raised in a traditionally built Japanese
               house in Nevada City, CA and is now based in Oakland, CA. She grew
               up with two wood stoves, a generator for electricity and a long
@@ -53,19 +60,31 @@ class About extends Component {
               informs her photography and fuels a constant search for the
               unusual and inspiring.
             </p>
-          </section>
-          <section className="press">
-            <h2>Press</h2>
-            <p>
-              American Photography Annual, 2007, 2011, 2012, and 2014 30 Top
-              Photographers PDN, 2008 1st Place, Taste Photo Contest, PDN, 2014
-              James Beard Award for “Bitter” Ten Speed Press, 2015 4
-              Forward-Thinking Food Photographers, PDN, 2017
-            </p>
-          </section>
-          <section className="clients">
-            <h2>Clients</h2>
-            <div className="client-lists">
+          </div>
+
+          <div className="press">
+            <h1>Press</h1>
+            <ul>
+              <li>American Photography Annual, 2007, 2011, 2012, and 2014</li>
+              <li>
+                <a href="#">30 Top Photographers</a> PDN, 2008
+              </li>
+              <li>
+                1st Place, <a href="#">Taste Photo Contest</a>, PDN, 2014
+              </li>
+              <li>
+                <a href="#">James Beard Award</a> for “Bitter” Ten Speed Press,
+                2015
+              </li>
+              <li>
+                <a href="#">4 Forward-Thinking Food Photographers</a>, PDN, 2017
+              </li>
+            </ul>
+          </div>
+
+          <div className="clients">
+            <h1>Clients</h1>
+            <div className="client-list">
               <ul>
                 <li>EDITORIAL</li>
                 <li>Anthology</li>
@@ -77,7 +96,7 @@ class About extends Component {
                 <li>Diner’s Journal</li>
                 <li>Dossier</li>
                 <li>Dwell</li>
-                <li>Elle & Elle å Table</li>
+                <li>Elle &amp; Elle å Table</li>
                 <li>Gastronomica</li>
                 <li>Martha Stewart</li>
                 <li>Men’s Health</li>
@@ -93,7 +112,7 @@ class About extends Component {
                 <li>Telegraph Sunday Magazine</li>
                 <li>Travel + Leisure</li>
                 <li>Vogue Japan / Australia</li>
-                <li>Wall Street Journal Magazine </li>
+                <li>Wall Street Journal Magazine</li>
                 <li>World of Interiors</li>
               </ul>
               <ul>
@@ -134,13 +153,13 @@ class About extends Component {
                 <li>Ten Speed Press</li>
               </ul>
             </div>
-          </section>
-        </div>
-        {/* <div className="content">
+          </div>
+          {/* <div className="content">
           <div className="page-container">
             <h1>About Page Coming Soon!</h1>
           </div>
         </div> */}
+        </div>
       </div>
     );
   }

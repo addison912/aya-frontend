@@ -58,7 +58,7 @@ class App extends React.Component {
   };
 
   galleryClick = e => {
-    let i = e.target.closest(".gridImageWrapper").getAttribute("data");
+    let i = e.target.closest("figure").getAttribute("data");
     let gallery = this.state.galleries[i];
     this.setState({ gallery, view: "gallery" });
     let photo = gallery.photos[0];
@@ -186,7 +186,7 @@ class App extends React.Component {
 
   /////
   photoClick = e => {
-    let i = e.target.closest(".gridImageWrapper").getAttribute("data");
+    let i = e.target.closest("figure").getAttribute("data");
     this.setState({ layout: "single", photoIndex: i });
     this.setPictureUrl(i);
     this.setGalleryLength();

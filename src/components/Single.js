@@ -48,7 +48,7 @@ class Single extends Component {
             role="button"
             id="next-photo"
           ></div>
-          <div className="image-wrapper">
+          <figure className="image-wrapper">
             <img
               className="single-pic"
               key={this.props.photo.url}
@@ -61,7 +61,7 @@ class Single extends Component {
             />
             <div className="image-info">
               <p className="caption">{this.props.photo.caption}</p>
-              <p className="index">
+              <p className="caption-nav">
                 <span onClick={() => this.props.clickPicture("prev")}>
                   <img
                     src={require("../assets/images/prev-arrow.svg")}
@@ -79,7 +79,7 @@ class Single extends Component {
                 </span>
               </p>
             </div>
-          </div>
+          </figure>
         </Swipeable>
       </div>
     );

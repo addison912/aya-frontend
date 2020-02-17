@@ -19,7 +19,7 @@ class LeftNav extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <ul className="category-list">
+          <ul className="projects">
             {categories.map(category => (
               <li
                 key={category}
@@ -42,10 +42,12 @@ class LeftNav extends Component {
             categoryClickHandler={this.props.categoryClickHandler}
             selectedLink={this.props.selectedLink}
           />
-          <LayoutIcons
-            layout={this.props.layout}
-            toggleGalleryLayout={this.props.toggleGalleryLayout}
-          />
+          {this.props.showToggle ? (
+            <LayoutIcons
+              layout={this.props.layout}
+              toggleGalleryLayout={this.props.toggleGalleryLayout}
+            />
+          ) : null}
         </div>
       </nav>
     );

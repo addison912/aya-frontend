@@ -32,7 +32,7 @@ class HamburgerMenu extends Component {
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
         />
-        <ul className="category-list">
+        <ul className="projects">
           {categories.map(category => (
             <li
               key={category}

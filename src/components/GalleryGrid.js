@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -11,10 +12,10 @@ class GalleryGrid extends Component {
   // }
   render() {
     return (
-      <div className="gallery-grid">
+      <div className="gallery-content">
         {this.props.gallery.photos.map((photo, i) => (
-          <div
-            className="gridImageWrapper"
+          <figure
+            className="grid-image"
             key={i}
             data={i}
             role="button"
@@ -29,11 +30,8 @@ class GalleryGrid extends Component {
               className="gridImage"
             />
             {/* <p className="caption">{name}</p> */}
-          </div>
+          </figure>
         ))}
-        <ImageSpacer />
-        <ImageSpacer />
-        <ImageSpacer />
       </div>
       //   <div>{JSON.stringify(this.props.gallery.photos[1])}</div>
     );
