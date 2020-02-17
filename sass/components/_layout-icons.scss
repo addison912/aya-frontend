@@ -1,0 +1,52 @@
+nav .gallery-toggle {
+  grid-area: nav;
+  position: relative;
+  bottom: 0;
+  width: 96px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.gallery-toggle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.layout-icon-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 64px;
+}
+
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+  img {
+    height: 24px;
+    width: 24px;
+    margin: 0 0 4px 0;
+  }
+  span {
+    font-family: "GT America";
+    text-transform: uppercase;
+    font-size: 8px;
+    line-height: 10px;
+    letter-spacing: 0.15em;
+  }
+}
+
+.gallery-toggle:hover {
+  cursor: pointer;
+}
+
+.selected-layout-icon {
+  opacity: 1;
+}
+
+.unselected-layout-icon {
+  opacity: 0.5;
+}

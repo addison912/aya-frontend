@@ -25,7 +25,7 @@ class LayoutIcons extends Component {
                     : "gallery-toggle unselected-layout-icon"
                 }
               />
-              <p>GRID</p>
+              <span>GRID</span>
             </div>
             <div
               className="icon-wrapper"
@@ -42,7 +42,7 @@ class LayoutIcons extends Component {
                     : "gallery-toggle unselected-layout-icon"
                 }
               />
-              <p>SINGLE</p>
+              <span>SINGLE</span>
             </div>
           </div>
         ) : null}

@@ -4,7 +4,6 @@ import Gallery from "../components/Gallery";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
-import LayoutIcons from "../components/LayoutIcons";
 import BackButton from "../components/BackButton";
 
 class Main extends Component {
@@ -20,7 +19,11 @@ class Main extends Component {
     return (
       <div className="main">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav categoryClickHandler={this.props.categoryClickHandler} />
+        <LeftNav
+          categoryClickHandler={this.props.categoryClickHandler}
+          layout={this.props.layout}
+          toggleGalleryLayout={this.props.toggleGalleryLayout}
+        />
         {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
           <BackButton
             category={this.props.category}
@@ -34,10 +37,7 @@ class Main extends Component {
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
         />
-        <LayoutIcons
-          layout={this.props.layout}
-          toggleGalleryLayout={this.props.toggleGalleryLayout}
-        />
+
         <div className="content">
           <Gallery
             photo={this.props.photo}

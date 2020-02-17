@@ -99,7 +99,6 @@ class App extends React.Component {
         return res.json();
       })
       .then(galleries => {
-        console.log(galleries);
         let photoIndex =
           category.toLowerCase() == "home"
             ? Math.floor(Math.random() * galleries[0].photos.length)
@@ -120,7 +119,6 @@ class App extends React.Component {
           });
         }
         this.setPictureUrl();
-        // console.log(this.state.galleries);
       });
   };
 
@@ -131,7 +129,6 @@ class App extends React.Component {
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });
     }
-    console.log(`searching for: ${this.state.searchInput}`);
     fetch(`${domain}/api/photo/search`, {
       method: "POST",
       headers: {
@@ -153,21 +150,11 @@ class App extends React.Component {
           galleryLength: photos.length,
           searchInput: ""
         });
-
-        if (photos.length > 1) {
-          console.log("length: " + photos.length);
-        }
-
-        console.log(this.state.gallery);
-
-        // this.setPictureUrl();
-        // console.log(this.state.galleries);
       });
   };
 
   handleSearchInput = e => {
     this.setState({ searchInput: e.target.value });
-    // console.log(e.target.value);
   };
 
   handleLogoClick = () => {

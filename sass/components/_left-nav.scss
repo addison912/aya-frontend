@@ -26,7 +26,7 @@ nav {
   }
 }
 
-.main > .gallery-toggle {
+nav .gallery-toggle {
   grid-area: nav;
   position: relative;
   bottom: 0;
@@ -45,6 +45,7 @@ nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 64px;
 }
 
 .icon-wrapper {
@@ -57,7 +58,7 @@ nav {
     width: 24px;
     margin: 0 0 4px 0;
   }
-  p {
+  span {
     font-family: "GT America";
     text-transform: uppercase;
     font-size: 8px;
@@ -128,7 +129,7 @@ li > span:hover {
   .logo {
     align-items: flex-start;
   }
-  .left-nav {
+  nav {
     display: none;
   }
 

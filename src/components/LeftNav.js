@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
 import { domain, categories } from "../config/constants";
 import Links from "./Links";
+import LayoutIcons from "./LayoutIcons";
 
 // require("../assets/images/grid.png")
 
@@ -17,30 +18,35 @@ class LeftNav extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper"></div>
-        <ul className="category-list">
-          {categories.map(category => (
-            <li
-              key={category}
+        <div className="nav-wrapper">
+          <ul className="category-list">
+            {categories.map(category => (
+              <li
+                key={category}
 
-              // to={category.replace(/\s+/g, "")}
-            >
-              <Link to={`/${category}`}>
-                <span
-                  data={category}
-                  onClick={this.props.categoryClickHandler}
-                  className="category-link"
-                >
-                  {category}{" "}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Links
-          categoryClickHandler={this.props.categoryClickHandler}
-          selectedLink={this.props.selectedLink}
-        />
+                // to={category.replace(/\s+/g, "")}
+              >
+                <Link to={`/${category}`}>
+                  <span
+                    data={category}
+                    onClick={this.props.categoryClickHandler}
+                    className="category-link"
+                  >
+                    {category}{" "}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Links
+            categoryClickHandler={this.props.categoryClickHandler}
+            selectedLink={this.props.selectedLink}
+          />
+          <LayoutIcons
+            layout={this.props.layout}
+            toggleGalleryLayout={this.props.toggleGalleryLayout}
+          />
+        </div>
       </nav>
     );
   }

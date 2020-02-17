@@ -29,7 +29,7 @@ nav .category-list .category-link:hover {
   transition: color ease-in-out 0.24s;
 }
 
-.main > .gallery-toggle {
+nav .gallery-toggle {
   grid-area: nav;
   position: relative;
   bottom: 0;
@@ -48,6 +48,7 @@ nav .category-list .category-link:hover {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 64px;
 }
 
 .icon-wrapper {
@@ -61,7 +62,7 @@ nav .category-list .category-link:hover {
   width: 24px;
   margin: 0 0 4px 0;
 }
-.icon-wrapper p {
+.icon-wrapper span {
   font-family: "GT America";
   text-transform: uppercase;
   font-size: 8px;
@@ -133,7 +134,7 @@ li > span:hover {
     align-items: flex-start;
   }
 
-  .left-nav {
+  nav {
     display: none;
   }
 
@@ -146,15 +147,6 @@ li > span:hover {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-html,
-body,
-#root,
-.router {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
 }
 
 .main {
@@ -858,6 +850,9 @@ a {
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 1;
+  grid-column: 2/2;
+  grid-row: 1/1;
 }
 .back-button span:hover {
   cursor: pointer;
@@ -866,11 +861,6 @@ a {
   height: 8px;
   width: auto;
   vertical-align: -1px;
-}
-
-.main .back-button {
-  grid-column: 2/2;
-  grid-row: 1/1;
 }
 
 @media only screen and (max-width: 560px) {
@@ -953,6 +943,58 @@ a {
   .logo {
     width: 100%;
   }
+}
+nav .gallery-toggle {
+  grid-area: nav;
+  position: relative;
+  bottom: 0;
+  width: 96px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.gallery-toggle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.layout-icon-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 64px;
+}
+
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+}
+.icon-wrapper img {
+  height: 24px;
+  width: 24px;
+  margin: 0 0 4px 0;
+}
+.icon-wrapper span {
+  font-family: "GT America";
+  text-transform: uppercase;
+  font-size: 8px;
+  line-height: 10px;
+  letter-spacing: 0.15em;
+}
+
+.gallery-toggle:hover {
+  cursor: pointer;
+}
+
+.selected-layout-icon {
+  opacity: 1;
+}
+
+.unselected-layout-icon {
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=index.css.map */
