@@ -16,7 +16,8 @@ class LeftNav extends Component {
 
   render() {
     return (
-      <nav className="left-nav">
+      <nav>
+        <div className="nav-wrapper"></div>
         <ul className="category-list">
           {categories.map(category => (
             <li

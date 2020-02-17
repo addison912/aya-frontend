@@ -10,7 +10,6 @@ $domain: "http://funky.haus/";
 @import url("#{$domain}assets/prev-arrow.svg");
 
 // components
-@import "components/home";
 @import "components/left-nav";
 @import "components/main";
 @import "components/gallery";
@@ -22,3 +21,4 @@ $domain: "http://funky.haus/";
 @import "components/mobile-info";
 @import "components/back-button";
 @import "components/blog-post";
+@import "components/logo";

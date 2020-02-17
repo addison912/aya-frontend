@@ -12,7 +12,7 @@ import Search from "./Search";
 class HamburgerMenu extends Component {
   render() {
     return (
-      <nav
+      <div
         className={
           this.props.hamburgerMenu == false
             ? "hamburger-menu hidden-menu"
@@ -52,7 +52,7 @@ class HamburgerMenu extends Component {
           ))}
         </ul>
         <Links toggleHamburgerMenu={this.props.toggleHamburgerMenu} />
-      </nav>
+      </div>
     );
   }
 }
