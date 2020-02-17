@@ -32,6 +32,7 @@ class HamburgerMenu extends Component {
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
         />
+
         <ul className="projects">
           {categories.map(category => (
             <li
@@ -39,14 +40,13 @@ class HamburgerMenu extends Component {
 
               // to={category.replace(/\s+/g, "")}
             >
-              <Link to={`/${category}`}>
-                <span
-                  data={category}
-                  onClick={this.props.categoryClickHandler}
-                  className="category-link"
-                >
-                  {category}{" "}
-                </span>
+              <Link
+                to={`/${category}`}
+                data={category}
+                onClick={this.props.categoryClickHandler}
+                className="category-link"
+              >
+                {category}{" "}
               </Link>
             </li>
           ))}

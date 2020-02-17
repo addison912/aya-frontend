@@ -1,13 +1,3 @@
-// .logo {
-//     grid-column-start: 1;
-//     grid-column-end: 5;
-//     grid-row-start: 2;
-//     grid-row-end: 2;
-//     display: flex;
-//     align-items: center;
-//   }
-
-//new
 .logo {
   grid-area: header;
   align-self: center;
@@ -19,16 +9,6 @@
 }
 
 @media only screen and (max-width: 560px) {
-  //   .logo {
-  //     text-align: center;
-  //     grid-column-start: 2;
-  //     grid-column-end: 12;
-  //     grid-row-start: 2;
-  //     grid-row-end: 2;
-  //     justify-content: center;
-  //   }
-
-  //new
   .logo {
     width: 100%;
   }

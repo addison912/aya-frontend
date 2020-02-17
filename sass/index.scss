@@ -1,8 +1,8 @@
 // variables
-// $domain: "http://localhost:3001/";
+$domain: "http://localhost:3001/";
 // $domain: "http://157.245.165.76:3001/";
 // $domain: "http://157.245.165.76/";
-$domain: "http://funky.haus/";
+// $domain: "http://funky.haus/";
 
 @import url("#{$domain}assets/fonts.css");
 @import "variables";

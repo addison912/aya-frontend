@@ -21,9 +21,7 @@
 .image-wrapper {
   display: flex;
   flex-direction: column;
-  // height: fit-content;
   max-height: 100%;
-  width: 100%;
 }
 
 .single-pic {
@@ -54,6 +52,7 @@
   justify-content: space-between;
   .caption {
     font-family: $body-text;
+    margin: 0;
   }
   .caption-nav {
     font-family: $headings;

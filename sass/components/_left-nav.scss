@@ -9,21 +9,29 @@ nav {
       text-decoration: none;
       margin: 6px 0px;
       font-family: $ui-text;
+      font-weight: bold;
       font-size: 32px;
       color: white;
       -webkit-text-stroke-width: 0.66px;
-      -webkit-text-stroke-color: #323844;
+      -webkit-text-stroke-color: $dark;
       line-height: 110%;
     }
     .category-link-selected {
-      color: #323844;
-      transition: color ease-in-out 0.24s;
+      color: $dark;
+      transition: color ease-in-out 0.25s;
     }
     .category-link:hover {
-      color: #323844;
-      transition: color ease-in-out 0.24s;
+      color: $dark;
+      transition: color ease-in-out 0.25s;
     }
   }
+}
+
+.nav-wrapper {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 64px;
 }
 
 .links {
@@ -32,7 +40,7 @@ nav {
   list-style: none;
   line-height: 140%;
   a {
-    color: #323844;
+    color: $dark;
     transition: ease-in-out 0.3s;
   }
   :hover {
@@ -64,6 +72,9 @@ li > span:hover {
 }
 
 @media only screen and (max-width: 760px) {
+  .projects {
+    font-size: 24px;
+  }
   .links {
     font-size: 16px;
   }

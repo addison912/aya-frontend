@@ -1,7 +1,7 @@
 @charset "UTF-8";
-@import url("http://funky.haus/assets/fonts.css");
-@import url("http://funky.haus/assets/next-arrow.svg");
-@import url("http://funky.haus/assets/prev-arrow.svg");
+@import url("http://localhost:3001/assets/fonts.css");
+@import url("http://localhost:3001/assets/next-arrow.svg");
+@import url("http://localhost:3001/assets/prev-arrow.svg");
 ::-moz-selection {
   background: var(blue);
 }
@@ -21,7 +21,8 @@ nav .projects {
 nav .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
-  font-family: "GT America Extended", sans-serif;
+  font-family: "GT America Bold", sans-serif;
+  font-weight: bold;
   font-size: 32px;
   color: white;
   -webkit-text-stroke-width: 0.66px;
@@ -30,11 +31,18 @@ nav .projects .category-link {
 }
 nav .projects .category-link-selected {
   color: #323844;
-  transition: color ease-in-out 0.24s;
+  transition: color ease-in-out 0.25s;
 }
 nav .projects .category-link:hover {
   color: #323844;
-  transition: color ease-in-out 0.24s;
+  transition: color ease-in-out 0.25s;
+}
+
+.nav-wrapper {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 64px;
 }
 
 .links {
@@ -76,6 +84,10 @@ li > span:hover {
 }
 
 @media only screen and (max-width: 760px) {
+  .projects {
+    font-size: 24px;
+  }
+
   .links {
     font-size: 16px;
   }
@@ -98,10 +110,13 @@ li > span:hover {
   }
 }
 * {
-  margin: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
 }
 
 .main {
@@ -124,18 +139,34 @@ li > span:hover {
   grid-area: content;
 }
 
+html {
+  font-family: "GT America Mono", monospace;
+  line-height: 150%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 h1 {
-  margin: 1em;
   font-family: "GT America", sans-serif;
+  font-weight: normal;
+  font-size: 24px;
 }
 
 ul {
   text-decoration: none;
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content img {
+  border-radius: 4px;
 }
 
 a {
   text-decoration: none;
+  cursor: pointer;
+  color: blue;
 }
 
 .horizontal-center {
@@ -155,7 +186,7 @@ a {
 }
 
 @media only screen and (max-width: 960px) {
-  .body {
+  .main {
     padding: 0 56px;
     grid-template-columns: 1fr 1.6fr;
   }
@@ -170,6 +201,7 @@ a {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 80px auto 80px;
     grid-template-areas: "header header" "content content" "nav nav";
+    padding: 0;
   }
 }
 .gallery-container {
@@ -196,7 +228,6 @@ a {
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  width: 100%;
 }
 
 .single-pic {
@@ -234,6 +265,7 @@ a {
 }
 .image-info .caption {
   font-family: "GT America Mono", monospace;
+  margin: 0;
 }
 .image-info .caption-nav {
   font-family: "GT America", sans-serif;
@@ -463,7 +495,6 @@ a {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .grid-image img {
@@ -531,7 +562,36 @@ figcaption h1 {
 
 @media only screen and (max-width: 960px) {
   .grid-image {
-    padding: 0 12px;
+    width: 44%;
+    min-height: auto;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .grid-image {
+    margin: 0;
+    padding: 0px;
+    width: 33.33%;
+  }
+
+  .image-wrapper {
+    padding: 0;
+  }
+
+  .grid-image:nth-of-type(3n) {
+    width: 33.34%;
+  }
+
+  .grid-image img {
+    height: 100%;
+    border-radius: 0;
+  }
+
+  figcaption {
+    display: none;
+  }
+
+  .product figcaption {
+    display: block;
   }
 }
 .search {
@@ -684,7 +744,8 @@ figcaption h1 {
 .hamburger-menu .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
-  font-family: "GT America Extended", sans-serif;
+  font-family: "GT America Bold", sans-serif;
+  font-weight: bold;
   font-size: 32px;
   color: white;
   -webkit-text-stroke-width: 0.66px;
@@ -717,6 +778,10 @@ figcaption h1 {
     bottom: -1000px;
     overflow: hidden;
     transition: bottom ease-in-out 0.7s;
+    display: flex;
+  }
+
+  .hamburger-menu .links {
     display: flex;
   }
 }
@@ -866,7 +931,7 @@ figcaption h1 {
   align-self: center;
   width: 180px;
   height: 16px;
-  background: url("http://funky.haus/assets/logo-aya_brackett.svg") center center/contain no-repeat;
+  background: url("http://localhost:3001/assets/logo-aya_brackett.svg") center center/contain no-repeat;
   color: transparent;
 }
 
@@ -895,6 +960,10 @@ nav .gallery-toggle {
   justify-content: space-between;
   width: 100%;
   margin-top: 64px;
+}
+
+#navbar .layout-icon-container {
+  margin-top: 0;
 }
 
 .icon-wrapper {
