@@ -518,6 +518,7 @@ a {
   /* min-height: auto;
   margin: 0;
   display: flex;
+  display: flex;
   flex-direction: column; */
 }
 
@@ -526,6 +527,10 @@ a {
   width: 100%;
   background-color: #eee;
   object-fit: cover;
+}
+
+.gallery-image img {
+    height: 100%;
 }
 
 .gallery-content {

@@ -12,7 +12,7 @@ class CategoryGrid extends Component {
       <div className="gallery-content">
         {this.props.galleries.map((gallery, i) => (
           <figure
-            className="grid-image"
+            className="grid-image category-image"
             key={i}
             data={i}
             onClick={this.props.galleryClick}

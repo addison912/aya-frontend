@@ -14,7 +14,7 @@ class GalleryGrid extends Component {
       <div className="gallery-content">
         {this.props.gallery.photos.map((photo, i) => (
           <figure
-            className="grid-image"
+            className="grid-image gallery-image"
             key={i}
             data={i}
             role="button"
