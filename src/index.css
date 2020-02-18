@@ -1,7 +1,7 @@
 @charset "UTF-8";
-@import url("http://localhost:3001/assets/fonts.css");
-@import url("http://localhost:3001/assets/next-arrow.svg");
-@import url("http://localhost:3001/assets/prev-arrow.svg");
+@import url("http://funky.haus/assets/fonts.css");
+@import url("http://funky.haus/assets/next-arrow.svg");
+@import url("http://funky.haus/assets/prev-arrow.svg");
 ::-moz-selection {
   background: var(blue);
 }
@@ -931,7 +931,7 @@ figcaption h1 {
   align-self: center;
   width: 180px;
   height: 16px;
-  background: url("http://localhost:3001/assets/logo-aya_brackett.svg") center center/contain no-repeat;
+  background: url("http://funky.haus/assets/logo-aya_brackett.svg") center center/contain no-repeat;
   color: transparent;
 }
 
