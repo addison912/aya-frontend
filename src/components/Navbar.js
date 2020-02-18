@@ -53,7 +53,7 @@ class Navbar extends Component {
                   alt="info"
                   onClick={this.props.toggleMobileInfo}
                 />
-                <p>info</p>
+                <span>info</span>
               </div>
             ) : null}
           </div>
