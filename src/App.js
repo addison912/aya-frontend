@@ -244,7 +244,7 @@ class App extends React.Component {
             className={
               this.state.hamburgerMenu || this.state.mobileInfo
                 ? "router background-blur"
-                : "router"
+                : "router unblur"
             }
           >
             <About

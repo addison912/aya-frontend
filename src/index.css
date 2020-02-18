@@ -11,6 +11,7 @@
 	--ui-font: "GT America", sans-serif;
 	--dark: #323844;
 	--blue: blue;
+    --light-gray: #eee;
 }
 
 /* Highlight */
@@ -200,11 +201,6 @@ a {
   text-align: center;
 }
 
-.hide {
-  display: none;
-    transition: display ease-in-out 1s;
-}
-
 @media only screen and (max-width: 960px) {
   .main {
     padding: 0 56px;
@@ -219,8 +215,10 @@ a {
 @media only screen and (max-width: 560px) {
   .main {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 80px auto 80px;
+    grid-template-rows: 87px auto 87px;
     grid-template-areas: "header header" "content content" "nav nav";
+    grid-column-gap: 0;
+    grid-row-gap: 0;
     padding: 0;
   }
 }
@@ -525,7 +523,7 @@ a {
 .grid-image img {
   height: 80%;
   width: 100%;
-  background-color: #eee;
+  background-color: var(--light-gray);
   object-fit: cover;
 }
 
@@ -621,10 +619,28 @@ figcaption h1 {
   .grid-image img {
     height: 100%;
     border-radius: 0;
-  }
+  }    
+    
+    .category-image {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    
+        .category-image img {
+            height: calc(100% - 32px);
+        }
 
   figcaption {
-    display: none;
+    /* display: none; */
+      padding: 0 8px;
+      font-size: 10px;
+      line-height: 110%;
+      background: var(--light-gray);
+      height: 32px;
+      width: 100%;
+      display: flex;
+      align-content: center;
   }
 
   .product figcaption {
@@ -720,7 +736,7 @@ figcaption h1 {
   display: none;
   background: #ffffff;
   padding: 24px 32px;
-  border-top: 1px solid black;
+  border-top: 1px solid var(--dark);
 }
 
 @media only screen and (max-width: 560px) {
@@ -763,6 +779,7 @@ figcaption h1 {
 .hamburger-menu {
   padding: 32px;
   background-color: white;
+  border-top: 1px solid var(--dark);
   display: none;
   z-index: 2;
   display: none;
@@ -786,11 +803,11 @@ figcaption h1 {
   font-size: 32px;
   color: white;
   -webkit-text-stroke-width: 0.66px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: var(--dark);
   line-height: 110%;
 }
 .hamburger-menu .projects .category-link-selected {
-  color: black;
+  color: var(--dark);
   transition: color ease-in-out 0.24s;
 }
 
@@ -801,6 +818,15 @@ figcaption h1 {
   -ms-filter: blur(3px);
   filter: blur(3px);
   transition: ease-in-out 0.82s;
+}
+
+.unblur {
+   -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  transition: ease-in-out 0.82s; 
 }
 
 @media only screen and (max-width: 560px) {
@@ -831,19 +857,21 @@ figcaption h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgba(250, 250, 250, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
   z-index: 6;
-  transition: display ease-in-out 1s;
-  -webkit-animation: fadein 1s;
-  /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1s;
-  /* Firefox < 16 */
-  -ms-animation: fadein 1s;
-  /* Internet Explorer */
-  -o-animation: fadein 1s;
-  /* Opera < 12.1 */
-  animation: fadein 1s;
+  transition: background-color 1s, opacity 1s, height 0s 2s;
+  -webkit-transition: background-color 1s, opacity 1s 0s, height 0s;
 }
+
+    .hide {
+        background-color: rgba( 255, 255, 255, 0 );
+        opacity: 0;
+        height: 0vh;
+        transition: background-color 1s, opacity 1s, height 0s 2s;
+        -webkit-transition: background-color 1s, opacity 1s, height 0s 1s;
+    }
+
 .mobile-info span {
   font-family: var(--body-font), monospace;
   font-size: 16px;
