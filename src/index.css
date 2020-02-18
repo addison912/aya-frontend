@@ -2,12 +2,25 @@
 @import url("http://funky.haus/assets/fonts.css");
 @import url("http://funky.haus/assets/next-arrow.svg");
 @import url("http://funky.haus/assets/prev-arrow.svg");
+
+/* Variables */
+
+ :root {
+	--category-font: "GT America Bold", sans-serif;
+	--body-font: "GT America Mono", monospace;
+	--ui-font: "GT America", sans-serif;
+	--dark: #323844;
+	--blue: blue;
+}
+
+/* Highlight */
+
 ::-moz-selection {
-  background: var(blue);
+  background: var(--blue);
 }
 
 ::selection {
-  background: var(blue);
+  background: var(--blue);
 }
 
 nav {
@@ -21,20 +34,20 @@ nav .projects {
 nav .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
-  font-family: "GT America Bold", sans-serif;
+  font-family: var(--category-font), sans-serif;
   font-weight: bold;
   font-size: 32px;
-  color: white;
+  color: rgba(255, 255, 255, 0);
   -webkit-text-stroke-width: 0.66px;
-  -webkit-text-stroke-color: #323844;
+  -webkit-text-stroke-color: var(--dark);
   line-height: 110%;
 }
 nav .projects .category-link-selected {
-  color: #323844;
+  color: var(--dark);
   transition: color ease-in-out 0.25s;
 }
 nav .projects .category-link:hover {
-  color: #323844;
+  color: var(--dark);
   transition: color ease-in-out 0.25s;
 }
 
@@ -52,7 +65,7 @@ nav .projects .category-link:hover {
   line-height: 140%;
 }
 .links a {
-  color: #323844;
+  color: var(--dark);
   transition: ease-in-out 0.3s;
 }
 .links :hover {
@@ -65,13 +78,13 @@ nav .projects .category-link:hover {
 }
 .links li {
   margin: 6px 0px;
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   text-align: left;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
   line-height: 140%;
-  color: #323844;
+  color: var(--dark);
 }
 
 li > span:hover {
@@ -140,14 +153,14 @@ body {
 }
 
 html {
-  font-family: "GT America Mono", monospace;
+  font-family: var(--body-font), monospace;
   line-height: 150%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   font-weight: normal;
   font-size: 24px;
 }
@@ -163,10 +176,16 @@ ul {
   border-radius: 4px;
 }
 
+    @media only screen and (max-width: 560px) {
+        .content img {
+            border-radius: 0;
+        }
+    }
+
 a {
   text-decoration: none;
   cursor: pointer;
-  color: blue;
+  color: var(--blue);
 }
 
 .horizontal-center {
@@ -183,6 +202,7 @@ a {
 
 .hide {
   display: none;
+    transition: display ease-in-out 1s;
 }
 
 @media only screen and (max-width: 960px) {
@@ -264,11 +284,11 @@ a {
   justify-content: space-between;
 }
 .image-info .caption {
-  font-family: "GT America Mono", monospace;
+  font-family: var(--body-font), monospace;
   margin: 0;
 }
 .image-info .caption-nav {
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;
@@ -466,7 +486,11 @@ a {
 @media only screen and (max-width: 960px) {
   .about-container {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "profile contact contact" "about about about" "press press press" "clients clients clients";
+    grid-template-areas: 
+        "profile contact contact" 
+        "about about about" 
+        "press press press" 
+        "clients clients clients";
   }
 
   .profile-pic {
@@ -490,11 +514,11 @@ a {
 }
 .grid-image {
   height: auto;
-  width: 30%;
-  min-height: auto;
+  width: 33.33%;
+  /* min-height: auto;
   margin: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
 }
 
 .grid-image img {
@@ -514,19 +538,20 @@ a {
 }
 
 figure {
-  display: inline-block;
-  overflow: hidden;
+  /* display: inline-block;
+  overflow: hidden; */
   padding: 8px;
   margin: 0;
   height: 62vh;
 }
+
 figure img {
-  display: inline-block;
+  /* display: inline-block;
   height: 240px;
   min-width: 100%;
+    object-fit: cover;
+  margin: 0 auto; */
   transition: transform 0.2s ease-in-out;
-  object-fit: cover;
-  margin: 0 auto;
   -webkit-animation: fadein 1s;
   /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1s;
@@ -538,13 +563,15 @@ figure img {
   animation: fadein 1s;
   border-radius: 4px;
 }
+
+
 figure img:hover {
-  transform: scale(1.024);
+  /* transform: scale(1.024); */
   cursor: pointer;
 }
 
 figcaption {
-  font-family: "GT America Mono", monospace;
+  font-family: var(--body-font), monospace;
   padding-top: 8px;
   display: flex;
   justify-content: space-between;
@@ -571,7 +598,12 @@ figcaption h1 {
     margin: 0;
     padding: 0px;
     width: 33.33%;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
   }
+    .grid-image:nth-of-type(3n) {
+        border-right: none;
+    }
 
   .image-wrapper {
     padding: 0;
@@ -595,7 +627,7 @@ figcaption h1 {
   }
 }
 .search {
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
   border: none;
   font-size: 8px;
@@ -744,7 +776,7 @@ figcaption h1 {
 .hamburger-menu .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
-  font-family: "GT America Bold", sans-serif;
+  font-family: var(--category-font), sans-serif;
   font-weight: bold;
   font-size: 32px;
   color: white;
@@ -808,7 +840,7 @@ figcaption h1 {
   animation: fadein 1s;
 }
 .mobile-info span {
-  font-family: "GT America Mono", monospace;
+  font-family: var(--body-font), monospace;
   font-size: 16px;
   line-height: 120%;
   max-width: 66.66%;
@@ -839,7 +871,7 @@ figcaption h1 {
   }
 }
 .back-button {
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   letter-spacing: 0.15em;
@@ -865,7 +897,7 @@ figcaption h1 {
   }
 }
 .blog-title {
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -874,7 +906,7 @@ figcaption h1 {
 }
 
 .blog-date {
-  font-family: "GT America Mono", monospace;
+  font-family: var(--body-font), monospace;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -883,7 +915,7 @@ figcaption h1 {
 }
 
 .blog-article {
-  font-family: "GT America Mono", monospace;
+  font-family: var(--body-font), monospace;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -978,7 +1010,7 @@ nav .gallery-toggle {
   margin: 0 0 4px 0;
 }
 .icon-wrapper span {
-  font-family: "GT America", sans-serif;
+  font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;
