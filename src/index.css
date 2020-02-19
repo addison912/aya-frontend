@@ -864,7 +864,7 @@ figcaption h1 {
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
   z-index: 6;
-  transition: background-color 1s, opacity 1s, height 0s 2s;
+  transition: background-color 1s, opacity 1s, height 0s;
   -webkit-transition: background-color 1s, opacity 1s 0s, height 0s;
 }
 
@@ -872,7 +872,7 @@ figcaption h1 {
         background-color: rgba( 255, 255, 255, 0 );
         opacity: 0;
         height: 0vh;
-        transition: background-color 1s, opacity 1s, height 0s 2s;
+        transition: background-color 1s, opacity 1s, height 0s 1s;
         -webkit-transition: background-color 1s, opacity 1s, height 0s 1s;
     }
 
