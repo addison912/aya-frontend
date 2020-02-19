@@ -24,6 +24,7 @@ class Main extends Component {
           layout={this.props.layout}
           toggleGalleryLayout={this.props.toggleGalleryLayout}
           showToggle={this.props.view == "gallery"}
+          category={this.props.category}
         />
         {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
           <BackButton

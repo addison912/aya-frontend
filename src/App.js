@@ -79,17 +79,25 @@ class App extends React.Component {
   categoryClickHandler = e => {
     this.setState({ category: e.target.getAttribute("data") });
     this.getGalleries(e.target.getAttribute("data"));
+    // if (document.querySelector(".category-link-selected")) {
+    //   document
+    //     .querySelector(".category-link-selected")
+    //     .classList.remove("category-link-selected");
+    //   e.target.classList.add("category-link-selected");
+    // } else {
+    //   e.target.classList.add("category-link-selected");
+    // }
+    if (this.state.hamburgerMenu == true) {
+      this.setState({ hamburgerMenu: false });
+    }
+  };
+
+  handleLogoClick = () => {
+    this.setCategory("Home");
     if (document.querySelector(".category-link-selected")) {
       document
         .querySelector(".category-link-selected")
         .classList.remove("category-link-selected");
-      e.target.classList.add("category-link-selected");
-    } else {
-      e.target.classList.add("category-link-selected");
-    }
-    // console.log(e.target.getAttribute("data"));
-    if (this.state.hamburgerMenu == true) {
-      this.setState({ hamburgerMenu: false });
     }
   };
 
@@ -157,15 +165,6 @@ class App extends React.Component {
 
   handleSearchInput = e => {
     this.setState({ searchInput: e.target.value });
-  };
-
-  handleLogoClick = () => {
-    this.setCategory("Home");
-    if (document.querySelector(".category-link-selected")) {
-      document
-        .querySelector(".category-link-selected")
-        .classList.remove("category-link-selected");
-    }
   };
 
   //////

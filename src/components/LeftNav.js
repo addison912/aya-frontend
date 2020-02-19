@@ -30,17 +30,18 @@ class LeftNav extends Component {
                   to={`/${category}`}
                   data={category}
                   onClick={this.props.categoryClickHandler}
-                  className="category-link"
+                  className={
+                    category == this.props.category
+                      ? "category-link category-link-selected"
+                      : "category-link"
+                  }
                 >
                   {category}{" "}
                 </Link>
               </li>
             ))}
           </ul>
-          <Links
-            categoryClickHandler={this.props.categoryClickHandler}
-            selectedLink={this.props.selectedLink}
-          />
+          <Links selectedLink={this.props.selectedLink} />
           {this.props.showToggle ? (
             <LayoutIcons
               layout={this.props.layout}
