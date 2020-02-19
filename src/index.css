@@ -679,6 +679,7 @@ figcaption h1 {
 .search-container button {
   border: none;
   outline: none;
+  background: transparent;
 }
 .search-container button img {
   margin-top: 2px;
