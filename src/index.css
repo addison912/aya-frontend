@@ -557,7 +557,7 @@ figure img {
   min-width: 100%;
     object-fit: cover;
   margin: 0 auto; */
-  transition: transform 0.2s ease-in-out;
+  /*transition: transform 0.2s ease-in-out; */
   -webkit-animation: fadein 1s;
   /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1s;
@@ -764,7 +764,7 @@ figcaption h1 {
     display: none;
   }
 }
-.navbar-icons {
+.navbar-icons, .navbar-hamburger {
   display: flex;
 }
 .navbar-icons .icon-wrapper {
@@ -856,7 +856,7 @@ figcaption h1 {
 }
 .mobile-info {
   position: fixed;
-  height: 100vh;
+  height: calc(100% - 91px);
   width: 100vw;
   top: 0;
   display: flex;
@@ -1037,23 +1037,23 @@ nav .gallery-toggle {
   margin-top: 0;
 }
 
-.icon-wrapper {
+.icon-wrapper, .navbar-hamburger {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 36px;
 }
-.icon-wrapper img {
+.icon-wrapper img, .navbar-hamburger img {
   height: 24px;
   width: 24px;
-  margin: 0 0 4px 0;
 }
-.icon-wrapper span {
+.icon-wrapper span, .navbar-hamburger span {
   font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;
   letter-spacing: 0.15em;
+    margin-top: 8px;
 }
 
 .gallery-toggle:hover {

@@ -41,7 +41,7 @@ class Navbar extends Component {
                   alt="info"
                   onClick={this.props.toggleMobileInfo}
                 />
-                <span>info</span>
+                <span>Caption</span>
               </div>
             ) : null}
             {this.props.layout == "single" &&
@@ -53,7 +53,7 @@ class Navbar extends Component {
                   alt="info"
                   onClick={this.props.toggleMobileInfo}
                 />
-                <span>info</span>
+                <span>Caption</span>
               </div>
             ) : null}
           </div>
@@ -65,6 +65,7 @@ class Navbar extends Component {
               onClick={this.props.toggleHamburgerMenu}
               role="button"
             />
+                <span>Menu</span>
           </div>
         </div>
       </div>
