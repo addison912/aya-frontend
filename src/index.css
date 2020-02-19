@@ -39,8 +39,10 @@ nav .projects .category-link {
   font-weight: bold;
   font-size: 32px;
   color: rgba(255, 255, 255, 0);
-  -webkit-text-stroke-width: 0.66px;
-  -webkit-text-stroke-color: var(--dark);
+    text-stroke: 0.66px var(--dark);
+    -webkit-text-stroke: 0.66px var(--dark);
+/*    -webkit-text-stroke-width: 0.66px;
+    -webkit-text-stroke-color: var(--dark); */
   line-height: 110%;
 }
 nav .projects .category-link-selected {
@@ -802,8 +804,10 @@ figcaption h1 {
   font-weight: bold;
   font-size: 32px;
   color: white;
-  -webkit-text-stroke-width: 0.66px;
-  -webkit-text-stroke-color: var(--dark);
+    text-stroke: 0.66px var(--dark);
+    -webkit-text-stroke: 0.66px var(--dark);
+  /* -webkit-text-stroke-width: 0.66px;
+  -webkit-text-stroke-color: var(--dark); */
   line-height: 110%;
 }
 .hamburger-menu .projects .category-link-selected {
