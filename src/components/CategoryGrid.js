@@ -22,9 +22,7 @@ class CategoryGrid extends Component {
               src={`${domain}/uploads/photos/${gallery.category.replace(
                 /\/?\s+/g,
                 "_"
-              )}/${gallery.name.replace(/\/?\s+/g, "_")}/${
-                gallery.photos[0].location
-              }`}
+              )}/${gallery.name.replace(/\/?\s+/g, "_")}/thumb.jpg`}
               alt={
                 gallery.photos && gallery.photos[0] && gallery.photos[0].caption
                   ? gallery.photos[0].caption
