@@ -28,14 +28,14 @@ class News extends Component {
           categoryClickHandler={this.categoryClickHandler}
           selectedLink={"News"}
         />
-        <div className="blog content">
+        {/* <div className="blog content">
           <BlogPost />
-        </div>
-        {/* <div className="content">
+        </div> */}
+        <div className="content">
           <div className="page-container">
             <h1>News, Coming Soon!</h1>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }
