@@ -27,12 +27,15 @@
 nav {
   grid-area: nav;
 }
+
+nav a, .projects a { color: inherit; }
+
 nav .projects {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-nav .projects .category-link {
+.projects {
   text-decoration: none;
   margin: 6px 0px;
   font-family: var(--category-font), sans-serif;
@@ -798,18 +801,16 @@ figcaption h1 {
   list-style: none;
 }
 .hamburger-menu .projects .category-link {
-  text-decoration: none;
+  font-size: 32px;
+  line-height: 110%;
+  /* text-decoration: none;
   margin: 6px 0px;
   font-family: var(--category-font), sans-serif;
   font-weight: bold;
-  font-size: 32px;
   color: white;
-    text-stroke: 0.66px var(--dark);
-    -webkit-text-stroke: 0.66px var(--dark);
-  /* -webkit-text-stroke-width: 0.66px;
-  -webkit-text-stroke-color: var(--dark); */
-  line-height: 110%;
-}
+  text-stroke: 0.66px var(--dark);
+  -webkit-text-stroke: 0.66px var(--dark); */
+} 
 
 .hamburger-menu .projects .category-link-selected {
   color: var(--dark);
