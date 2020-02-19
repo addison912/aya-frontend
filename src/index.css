@@ -5,13 +5,13 @@
 
 /* Variables */
 
- :root {
-	--category-font: "GT America Bold", sans-serif;
-	--body-font: "GT America Mono", monospace;
-	--ui-font: "GT America", sans-serif;
-	--dark: #323844;
-	--blue: blue;
-    --light-gray: #eee;
+:root {
+  --category-font: "GT America Bold", sans-serif;
+  --body-font: "GT America Mono", monospace;
+  --ui-font: "GT America", sans-serif;
+  --dark: #323844;
+  --blue: blue;
+  --light-gray: #eee;
 }
 
 /* Highlight */
@@ -180,11 +180,11 @@ ul {
   border-radius: 4px;
 }
 
-    @media only screen and (max-width: 560px) {
-        .content img {
-            border-radius: 0;
-        }
-    }
+@media only screen and (max-width: 560px) {
+  .content img {
+    border-radius: 0;
+  }
+}
 
 a {
   text-decoration: none;
@@ -487,11 +487,11 @@ a {
 @media only screen and (max-width: 960px) {
   .about-container {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        "profile contact contact" 
-        "about about about" 
-        "press press press" 
-        "clients clients clients";
+    grid-template-areas:
+      "profile contact contact"
+      "about about about"
+      "press press press"
+      "clients clients clients";
   }
 
   .profile-pic {
@@ -531,7 +531,7 @@ a {
 }
 
 .gallery-image img {
-    height: 100%;
+  height: 100%;
 }
 
 .gallery-content {
@@ -570,7 +570,6 @@ figure img {
   border-radius: 4px;
 }
 
-
 figure img:hover {
   /* transform: scale(1.024); */
   cursor: pointer;
@@ -607,9 +606,9 @@ figcaption h1 {
     border-right: 2px solid white;
     border-bottom: 2px solid white;
   }
-    .grid-image:nth-of-type(3n) {
-        border-right: none;
-    }
+  .grid-image:nth-of-type(3n) {
+    border-right: none;
+  }
 
   .image-wrapper {
     padding: 0;
@@ -622,28 +621,28 @@ figcaption h1 {
   .grid-image img {
     height: 100%;
     border-radius: 0;
-  }    
-    
-    .category-image {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-    }
-    
-        .category-image img {
-            height: calc(100% - 32px);
-        }
+  }
+
+  .category-image {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .category-image img {
+    height: calc(100% - 32px);
+  }
 
   figcaption {
     /* display: none; */
-      padding: 0 8px;
-      font-size: 10px;
-      line-height: 110%;
-      background: var(--light-gray);
-      height: 32px;
-      width: 100%;
-      display: flex;
-      align-content: center;
+    padding: 0 8px;
+    font-size: 10px;
+    line-height: 110%;
+    background: var(--light-gray);
+    height: 32px;
+    width: 100%;
+    display: flex;
+    align-content: center;
   }
 
   .product figcaption {
@@ -827,12 +826,12 @@ figcaption h1 {
 }
 
 .unblur {
-   -webkit-filter: blur(0px);
+  -webkit-filter: blur(0px);
   -moz-filter: blur(0px);
   -o-filter: blur(0px);
   -ms-filter: blur(0px);
   filter: blur(0px);
-  transition: ease-in-out 0.82s; 
+  transition: ease-in-out 0.82s;
 }
 
 @media only screen and (max-width: 560px) {
@@ -870,6 +869,7 @@ figcaption h1 {
   -webkit-transition: background-color 1s, opacity 1s 0s, height 0s;
 }
 
+
     .hide {
         background-color: rgba( 255, 255, 255, 0 );
         opacity: 0;
@@ -877,6 +877,7 @@ figcaption h1 {
         transition: background-color 1s, opacity 1s, height 0s 1s;
         -webkit-transition: background-color 1s, opacity 1s, height 0s 1s;
     }
+
 
 .mobile-info span {
   font-family: var(--body-font), monospace;
@@ -1002,7 +1003,8 @@ figcaption h1 {
   align-self: center;
   width: 180px;
   height: 16px;
-  background: url("http://funky.haus/assets/logo-aya_brackett.svg") center center/contain no-repeat;
+  background: url("http://funky.haus/assets/logo-aya_brackett.svg") center
+    center/contain no-repeat;
   color: transparent;
 }
 

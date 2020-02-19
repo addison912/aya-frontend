@@ -83,8 +83,10 @@ class App extends React.Component {
       document
         .querySelector(".category-link-selected")
         .classList.remove("category-link-selected");
+      e.target.classList.add("category-link-selected");
+    } else {
+      e.target.classList.add("category-link-selected");
     }
-    e.target.classList.add("category-link-selected");
     // console.log(e.target.getAttribute("data"));
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });

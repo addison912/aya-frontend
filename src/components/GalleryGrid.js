@@ -24,7 +24,9 @@ class GalleryGrid extends Component {
               src={`${domain}/uploads/photos/${photo.category.replace(
                 /\/?\s+/g,
                 "_"
-              )}/${photo.gallery.replace(/\/?\s+/g, "_")}/${photo.location}`}
+              )}/${photo.gallery.replace(/\/?\s+/g, "_")}/thumbs/${
+                photo.location
+              }`}
               alt={photo.caption}
               className="gridImage"
             />
