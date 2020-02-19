@@ -45,6 +45,7 @@ nav .projects .category-link {
     -webkit-text-stroke-color: var(--dark); */
   line-height: 110%;
 }
+
 nav .projects .category-link-selected {
   color: var(--dark);
   transition: color ease-in-out 0.25s;
@@ -810,6 +811,7 @@ figcaption h1 {
   -webkit-text-stroke-color: var(--dark); */
   line-height: 110%;
 }
+
 .hamburger-menu .projects .category-link-selected {
   color: var(--dark);
   transition: color ease-in-out 0.24s;
