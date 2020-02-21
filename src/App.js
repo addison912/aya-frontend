@@ -79,14 +79,7 @@ class App extends React.Component {
   categoryClickHandler = e => {
     this.setState({ category: e.target.getAttribute("data") });
     this.getGalleries(e.target.getAttribute("data"));
-    // if (document.querySelector(".category-link-selected")) {
-    //   document
-    //     .querySelector(".category-link-selected")
-    //     .classList.remove("category-link-selected");
-    //   e.target.classList.add("category-link-selected");
-    // } else {
-    //   e.target.classList.add("category-link-selected");
-    // }
+    window.scrollTo("height", 0);
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });
     }
