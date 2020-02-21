@@ -136,31 +136,35 @@ class App extends React.Component {
 
   search = e => {
     e.preventDefault(this.state.searchInput);
-    if (this.state.hamburgerMenu == true) {
-      this.setState({ hamburgerMenu: false });
-    }
-    fetch(`${domain}/api/photo/search`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ query: this.state.searchInput })
-    })
-      .then(res => {
-        return res.json();
+    if (this.state.searchInput.length > 0) {
+      if (this.state.hamburgerMenu == true) {
+        this.setState({ hamburgerMenu: false });
+      }
+      fetch(`${domain}/api/photo/search`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ query: this.state.searchInput })
       })
-      .then(photos => {
-        this.setState({
-          view: "gallery",
-          layout: "grid",
-          galleries: [{ photos }],
-          photoIndex: 0,
-          galleryIndex: 0,
-          gallery: { photos },
-          galleryLength: photos.length,
-          searchInput: ""
+        .then(res => {
+          return res.json();
+        })
+        .then(photos => {
+          this.setState({
+            view: "gallery",
+            layout: "grid",
+            galleries: [{ photos }],
+            photoIndex: 0,
+            galleryIndex: 0,
+            gallery: { photos },
+            galleryLength: photos.length,
+            searchInput: ""
+          });
         });
-      });
+    } else {
+      document.querySelector(".main .search").focus();
+    }
   };
 
   handleSearchInput = e => {
