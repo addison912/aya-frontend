@@ -79,7 +79,11 @@ class App extends React.Component {
   categoryClickHandler = e => {
     this.setState({ category: e.target.getAttribute("data") });
     this.getGalleries(e.target.getAttribute("data"));
-    window.scrollTo("height", 0);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });
     }
