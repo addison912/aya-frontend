@@ -28,7 +28,10 @@ nav {
   grid-area: nav;
 }
 
-nav a, .projects a { color: inherit; }
+nav a,
+.projects a {
+  color: inherit;
+}
 
 nav .projects {
   margin: 0;
@@ -42,9 +45,9 @@ nav .projects {
   font-weight: bold;
   font-size: 32px;
   color: rgba(255, 255, 255, 0);
-    text-stroke: 0.66px var(--dark);
-    -webkit-text-stroke: 0.66px var(--dark);
-/*    -webkit-text-stroke-width: 0.66px;
+  /* text-stroke: 0.66px var(--dark); */
+  -webkit-text-stroke: 0.66px var(--dark);
+  /*    -webkit-text-stroke-width: 0.66px;
     -webkit-text-stroke-color: var(--dark); */
   line-height: 110%;
 }
@@ -767,7 +770,8 @@ figcaption h1 {
     display: none;
   }
 }
-.navbar-icons, .navbar-hamburger {
+.navbar-icons,
+.navbar-hamburger {
   display: flex;
 }
 .navbar-icons .icon-wrapper {
@@ -811,7 +815,7 @@ figcaption h1 {
   color: white;
   text-stroke: 0.66px var(--dark);
   -webkit-text-stroke: 0.66px var(--dark); */
-} 
+}
 
 .hamburger-menu .projects .category-link-selected {
   color: var(--dark);
@@ -871,15 +875,13 @@ figcaption h1 {
   -webkit-transition: background-color 1s, opacity 1s 0s, height 0s;
 }
 
-
-    .hide {
-        background-color: rgba( 255, 255, 255, 0 );
-        opacity: 0;
-        height: 0vh;
-        transition: background-color 1s, opacity 1s, height 0s 1s;
-        -webkit-transition: background-color 1s, opacity 1s, height 0s 1s;
-    }
-
+.hide {
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0;
+  height: 0vh;
+  transition: background-color 1s, opacity 1s, height 0s 1s;
+  -webkit-transition: background-color 1s, opacity 1s, height 0s 1s;
+}
 
 .mobile-info span {
   font-family: var(--body-font), monospace;
@@ -1041,23 +1043,26 @@ nav .gallery-toggle {
   margin-top: 0;
 }
 
-.icon-wrapper, .navbar-hamburger {
+.icon-wrapper,
+.navbar-hamburger {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 36px;
 }
-.icon-wrapper img, .navbar-hamburger img {
+.icon-wrapper img,
+.navbar-hamburger img {
   height: 24px;
   width: 24px;
 }
-.icon-wrapper span, .navbar-hamburger span {
+.icon-wrapper span,
+.navbar-hamburger span {
   font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
   font-size: 8px;
   line-height: 10px;
   letter-spacing: 0.15em;
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .gallery-toggle:hover {
