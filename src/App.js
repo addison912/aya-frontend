@@ -124,8 +124,8 @@ class App extends React.Component {
             galleryLength: galleries[0].photos.length,
             gallery: galleries[0]
           });
+          this.setPictureUrl();
         }
-        this.setPictureUrl();
       });
   };
 
