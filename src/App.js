@@ -196,6 +196,7 @@ class App extends React.Component {
 
   setPictureUrl = i => {
     let index = i ? i : this.state.photoIndex;
+    // index = index == 0 ? 1 : index;
     index = index % this.state.gallery.photos.length;
     let photo = this.state.gallery.photos[index];
     let url =
@@ -283,9 +284,7 @@ class App extends React.Component {
               getGalleries={this.getGalleries}
               view={this.state.view}
               galleryLength={this.state.galleryLength}
-              photoIndex={
-                (this.state.photoIndex % this.state.galleryLength) + 1
-              }
+              photoIndex={this.state.photoIndex % this.state.galleryLength}
               galleryClick={this.galleryClick}
               gallery={this.state.gallery}
               photoClick={this.photoClick}
@@ -308,9 +307,7 @@ class App extends React.Component {
               getGalleries={this.getGalleries}
               view={this.state.view}
               galleryLength={this.state.galleryLength}
-              photoIndex={
-                (this.state.photoIndex % this.state.galleryLength) + 1
-              }
+              photoIndex={this.state.photoIndex % this.state.galleryLength}
               galleryClick={this.galleryClick}
               gallery={this.state.gallery}
               photoClick={this.photoClick}
