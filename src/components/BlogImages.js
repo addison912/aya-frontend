@@ -20,9 +20,7 @@ class BlogImages extends Component {
               className="grid-image"
               style={photo.order ? { order: photo.order } : { order: i }}
               onClick={() => this.handleClick(photo.link)}
-              href={photo.link}
             >
-              {" "}
               <img
                 src={photo.location}
                 alt={photo.caption ? photo.caption : `blog photo ${i}`}
@@ -30,25 +28,6 @@ class BlogImages extends Component {
               {photo.caption ? <figcaption>{photo.caption}</figcaption> : null}
             </figure>
           );
-          // } else {
-          //   return (
-          //     <a href={photo.location} key={i}>
-          //       <figure
-          //         className="grid-image"
-          //         style={photo.order ? { order: photo.order } : { order: i }}
-          //       >
-          //         {" "}
-          //         <img
-          //           src={photo.location}
-          //           alt={photo.caption ? photo.caption : `blog photo ${i}`}
-          //         />
-          //         {photo.caption ? (
-          //           <figcaption>{photo.caption}</figcaption>
-          //         ) : null}
-          //       </figure>
-          //     </a>
-          //   );
-          // }
         })}
       </div>
     );
