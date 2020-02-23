@@ -13,7 +13,6 @@ class BlogImages extends Component {
     return (
       <div className="post-images">
         {this.props.photos.map((photo, i) => {
-          // if (!photo.link) {
           return (
             <figure
               key={i}
