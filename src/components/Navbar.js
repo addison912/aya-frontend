@@ -53,11 +53,11 @@ class Navbar extends Component {
                   alt="info"
                   onClick={this.props.toggleMobileInfo}
                 />
-                <span>info</span>
+                <span>Caption</span>
               </div>
             ) : null}
           </div>
-          <div className="navbar-hamburger">
+          <div className="navbar-hamburger icon-wrapper">
             {" "}
             <img
               src={require("../assets/images/hamburger.svg")}
@@ -65,6 +65,7 @@ class Navbar extends Component {
               onClick={this.props.toggleHamburgerMenu}
               role="button"
             />
+            <span>Menu</span>
           </div>
         </div>
       </div>
