@@ -7,15 +7,15 @@ import BlogImages from "../components/BlogImages";
 class BlogPost extends Component {
   render() {
     return (
-      <div className="blog-post">
-        <div className="blog-text-container">
+      <div className="news-post">
+        <div className="post-text">
           {" "}
-          <BlogTitle />
-          <BlogDate />
-          <BlogArticle />
+          <BlogTitle title={this.props.post.title} />
+          <BlogDate date={this.props.post.date} />
+          <BlogArticle text={this.props.post.text} />
         </div>
 
-        <BlogImages />
+        <BlogImages photos={this.props.post.photos} />
       </div>
     );
   }

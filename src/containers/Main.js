@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Router, navigate, Link } from "@reach/router";
 import Gallery from "../components/Gallery";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
