@@ -53,9 +53,8 @@ class App extends React.Component {
   setCategory = category => {
     this.setState({ category });
     this.getGalleries(category);
-    this.state.hamburgerMenu == true
-      ? this.setState({ hamburgerMenu: false })
-      : null;
+    this.setState({ hamburgerMenu: false });
+    this.setState({ mobileInfo: false });
   };
 
   galleryClick = e => {
