@@ -31,7 +31,8 @@ class App extends React.Component {
     galleryLength: 0,
     searchInput: "",
     hamburgerMenu: false,
-    mobileInfo: false
+    mobileInfo: false,
+    location: ""
   };
 
   toggleGalleryLayout = e => {
@@ -213,6 +214,11 @@ class App extends React.Component {
     this.setGalleryLength();
   };
 
+  setLocation = location => {
+    console.log(1);
+    this.setState({ location });
+  };
+
   componentDidMount() {
     // if (this.state.category) {
     //   this.getGalleries(this.state.category);
@@ -255,18 +261,21 @@ class App extends React.Component {
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
             <News
               path="/news"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
             <Shop
               path="/shop"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
             <Main
               path="/"
@@ -289,6 +298,7 @@ class App extends React.Component {
               gallery={this.state.gallery}
               photoClick={this.photoClick}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
               default
             />
             <Main
@@ -312,9 +322,11 @@ class App extends React.Component {
               gallery={this.state.gallery}
               photoClick={this.photoClick}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
           </Router>
           <Navbar
+            category={this.state.category}
             layout={this.state.layout}
             view={this.state.view}
             toggleGalleryLayout={this.toggleGalleryLayout}
@@ -326,6 +338,8 @@ class App extends React.Component {
             searchInput={this.state.searchInput}
             mobileInfo={this.state.mobileInfo}
             toggleMobileInfo={this.toggleMobileInfo}
+            location={this.state.location}
+            setCategory={this.setCategory}
           />
           <MobileInfo
             mobileInfo={this.state.mobileInfo}

@@ -9,16 +9,10 @@ class About extends Component {
     message: ""
   };
 
-  //   getimages = () => {
-  //     fetch(`${domain}/api/test`)
-  //       .then(res => {
-  //         return res.json();
-  //       })
-  //       .then(text => {
-  //         console.log(text);
-  //         this.setState({ message: text.message });
-  //       });
-  //   };
+  componentDidMount() {
+    this.props.setLocation("About");
+  }
+
   render() {
     return (
       <div className="main">

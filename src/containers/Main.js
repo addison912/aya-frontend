@@ -12,7 +12,8 @@ class Main extends Component {
     } else if (!this.props.cat) {
       this.props.setCategory("Home");
     }
-    console.log(this.props);
+    // console.log(this.props);
+    this.props.setLocation("Main");
   }
   render() {
     return (

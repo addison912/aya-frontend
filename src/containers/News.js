@@ -21,6 +21,7 @@ class News extends Component {
   };
   componentDidMount() {
     this.getNews();
+    this.props.setLocation("News");
   }
   render() {
     return (

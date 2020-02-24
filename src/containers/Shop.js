@@ -9,6 +9,10 @@ class Shop extends Component {
     message: ""
   };
 
+  componentDidMount() {
+    this.props.setLocation("Shop");
+  }
+
   //   getimages = () => {
   //     fetch(`${domain}/api/test`)
   //       .then(res => {
