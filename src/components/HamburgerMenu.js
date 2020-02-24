@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
-import { domain, categories } from "../config/constants";
+import { categories } from "../config/constants";
 import Links from "./Links";
 import Search from "./Search";
 
@@ -18,13 +18,6 @@ class HamburgerMenu extends Component {
             ? "hamburger-menu hidden-menu"
             : "hamburger-menu visible-menu"
         }
-        // style={
-        //   this.props.hamburgerMenu == false
-        //     ? { top: "100vh" }
-        //     : {
-        //         top: window.innerHeight - this.offsetHight
-        //       }
-        // }
       >
         <Search
           id="search"
