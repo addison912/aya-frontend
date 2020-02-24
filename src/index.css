@@ -38,7 +38,7 @@ nav .projects {
   padding: 0;
   list-style: none;
 }
-.projects {
+nav .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
   font-family: var(--category-font), sans-serif;
@@ -322,11 +322,13 @@ a {
   z-index: 2;
   width: 50%;
   height: calc(100% - 32px);
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
+  padding: 48px 0;
+}
+
+.left-overlay > div,
+.right-overlay > div {
+  height: 100%;
+  width: 100%;
 }
 
 .left-overlay {
@@ -1060,7 +1062,7 @@ nav .gallery-toggle {
   opacity: 0.4;
 }
 
-/*/// ↓ Hamburger/Nav-icon ↓ ///*/
+/*/// ↓ Nav-icon ↓ ///*/
 
 #nav-icon {
   width: 24px;
@@ -1096,9 +1098,6 @@ nav .gallery-toggle {
   -moz-transition: 0.4s ease-in-out;
   -o-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
-}
-
-#nav-icon {
 }
 
 #nav-icon span:nth-child(1) {
@@ -1148,4 +1147,4 @@ nav .gallery-toggle {
   left: 4px;
 }
 
-/*/// ↑ Hamburger/Nav-icon ↑ ///*/
+/*/// ↑ Nav-icon ↑ ///*/
