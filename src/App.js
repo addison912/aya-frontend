@@ -234,10 +234,12 @@ class App extends React.Component {
 
   toggleHamburgerMenu = () => {
     this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
+    this.setState({ mobileInfo: false });
   };
 
   toggleMobileInfo = () => {
     this.setState({ mobileInfo: !this.state.mobileInfo });
+    this.setState({ hamburgerMenu: false });
   };
 
   render() {

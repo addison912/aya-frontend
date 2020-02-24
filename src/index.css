@@ -1056,7 +1056,7 @@ nav .gallery-toggle {
   opacity: 0.4;
 }
 
-/*/// ↓ Hamburger/Nav-icon ↓ ///*/
+/*/// ↓ Nav-icon ↓ ///*/
 
 #nav-icon {
   width: 24px;
@@ -1092,9 +1092,6 @@ nav .gallery-toggle {
   -moz-transition: 0.4s ease-in-out;
   -o-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
-}
-
-#nav-icon {
 }
 
 #nav-icon span:nth-child(1) {
@@ -1144,4 +1141,4 @@ nav .gallery-toggle {
   left: 4px;
 }
 
-/*/// ↑ Hamburger/Nav-icon ↑ ///*/
+/*/// ↑ Nav-icon ↑ ///*/
