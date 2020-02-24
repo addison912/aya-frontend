@@ -38,7 +38,7 @@ nav .projects {
   padding: 0;
   list-style: none;
 }
-.projects {
+nav .projects .category-link {
   text-decoration: none;
   margin: 6px 0px;
   font-family: var(--category-font), sans-serif;
