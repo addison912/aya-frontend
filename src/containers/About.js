@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { domain } from "../config/constants";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 
@@ -59,20 +58,27 @@ class About extends Component {
           <div className="press">
             <h1>Press</h1>
             <ul>
+              <li>
+                <a href="https://pdnonline.com/gear/lighting-techniques/photographers-bringing-life-still-lifes/">
+                  4 Forward-Thinking Food Photographers
+                </a>
+                , PDN, 2017
+              </li>
+              <li>
+                <a href="https://www.jamesbeard.org/blog/2015-james-beard-award-winners">
+                  James Beard Award
+                </a>{" "}
+                for “Bitter” Ten Speed Press, 2015
+              </li>
+              <li>
+                1st Place,{" "}
+                <a href="https://www.pdntaste.com/pastwinners/winners/PDNTaste/353">
+                  Taste Photo Contest
+                </a>
+                , PDN, 2014
+              </li>
               <li>American Photography Annual, 2007, 2011, 2012, and 2014</li>
-              <li>
-                <a href="#">30 Top Photographers</a> PDN, 2008
-              </li>
-              <li>
-                1st Place, <a href="#">Taste Photo Contest</a>, PDN, 2014
-              </li>
-              <li>
-                <a href="#">James Beard Award</a> for “Bitter” Ten Speed Press,
-                2015
-              </li>
-              <li>
-                <a href="#">4 Forward-Thinking Food Photographers</a>, PDN, 2017
-              </li>
+              <li>30 Top Photographers, PDN, 2008</li>
             </ul>
           </div>
 

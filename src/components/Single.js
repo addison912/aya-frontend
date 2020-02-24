@@ -30,24 +30,24 @@ class Single extends Component {
             this.props.clickPicture(e.dir);
           }}
         >
-          <div
-            className="left-overlay"
-            style={{
-              cursor: `url("${domain}/assets/prev-arrow.svg"), w-resize`
-            }}
-            onClick={() => this.props.clickPicture("prev")}
-            role="button"
-            id="prev-photo"
-          ></div>
-          <div
-            className="right-overlay"
-            style={{
-              cursor: `url("${domain}/assets/next-arrow.svg"), w-resize`
-            }}
-            onClick={() => this.props.clickPicture("next")}
-            role="button"
-            id="next-photo"
-          ></div>
+          <div className="left-overlay">
+            <div
+              style={{
+                cursor: `url("${domain}/assets/prev-arrow.svg"), w-resize`
+              }}
+              onClick={() => this.props.clickPicture("prev")}
+              role="button"
+            ></div>
+          </div>
+          <div className="right-overlay">
+            <div
+              style={{
+                cursor: `url("${domain}/assets/next-arrow.svg"), w-resize`
+              }}
+              onClick={() => this.props.clickPicture("next")}
+              role="button"
+            ></div>
+          </div>
           <figure className="image-wrapper">
             <img
               className="single-pic"
