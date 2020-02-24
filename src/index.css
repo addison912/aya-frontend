@@ -38,7 +38,7 @@ nav .projects {
   padding: 0;
   list-style: none;
 }
-nav .projects .category-link {
+.projects {
   text-decoration: none;
   margin: 6px 0px;
   font-family: var(--category-font), sans-serif;
@@ -51,12 +51,12 @@ nav .projects .category-link {
   line-height: 110%;
 }
 
-nav .projects .category-link-selected {
+.projects .category-link-selected {
   color: var(--dark);
   -webkit-text-fill-color: var(--dark); /* Overrides .projects */
   transition: color ease-in-out 0.25s;
 }
-nav .projects .category-link:hover {
+.projects .category-link:hover {
   color: var(--dark);
   -webkit-text-fill-color: var(--dark); /* Overrides .projects */
   transition: color ease-in-out 0.25s;
