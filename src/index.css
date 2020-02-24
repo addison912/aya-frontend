@@ -45,7 +45,12 @@ nav .projects {
   font-weight: bold;
   font-size: 32px;
   color: var(--dark);
-  -webkit-text-fill-color: rgba(255,255,255,0); /* Overrides color if webkit*/
+  -webkit-text-fill-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* Overrides color if webkit*/
   -webkit-text-stroke-width: 0.66px;
   -webkit-text-stroke-color: var(--dark);
   line-height: 110%;
@@ -108,16 +113,8 @@ li > span:hover {
 }
 
 @media only screen and (max-width: 760px) {
-  .projects {
-    font-size: 24px;
-  }
-
   .links {
     font-size: 16px;
-  }
-
-  .category-link {
-    font-size: 24px;
   }
 }
 @media only screen and (max-width: 560px) {
@@ -178,9 +175,9 @@ h1 {
 }
 
 em {
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 ul {
@@ -959,8 +956,8 @@ figcaption h1 {
 } */
 
 .post-images .grid-image img {
-        height: auto;
-    }
+  height: auto;
+}
 
 article {
   max-width: 620px;
@@ -979,10 +976,10 @@ time {
   .post-text {
     grid-column-start: 1;
   }
-    
-    .post-images .grid-image {
-        width: 100%;
-    }
+
+  .post-images .grid-image {
+    width: 100%;
+  }
 }
 
 /*/// ↑ News ↑ ///*/
