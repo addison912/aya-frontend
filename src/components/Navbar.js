@@ -73,14 +73,21 @@ class Navbar extends Component {
               </div>
             ) : null}
           </div>
-          <div className="navbar-hamburger icon-wrapper">
-            {" "}
-            <img
+          <div className="icon-wrapper">
+            <div
+              className={this.props.hamburgerMenu ? "open" : null}
+              id="nav-icon"
+              onClick={this.props.toggleHamburgerMenu}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              {/* <img
               src={require("../assets/images/hamburger.svg")}
               alt="menu"
-              onClick={this.props.toggleHamburgerMenu}
               role="button"
-            />
+            /> */}
+            </div>
             <span>Menu</span>
           </div>
         </div>
