@@ -34,7 +34,7 @@ class Navbar extends Component {
                 onClick={() => this.props.setCategory(this.props.category)}
               >
                 <img
-                  src={require("../assets/images/prev-arrow.svg")}
+                  src={require("../assets/images/back-nav.svg")}
                   alt="previous"
                   className="index-arrow"
                 />

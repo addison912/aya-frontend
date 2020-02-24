@@ -1026,7 +1026,6 @@ nav .gallery-toggle {
   flex-direction: column;
   align-items: center;
   width: 36px;
-  height: 38px;
 }
 .icon-wrapper img,
 .navbar-hamburger img {
@@ -1076,7 +1075,8 @@ nav .gallery-toggle {
 #nav-icon span {
   display: block;
   position: absolute;
-  height: 2px;
+  height: 1px;
+  margin-top: 0;
   width: 100%;
   background: var(--dark);
   border-radius: 2px;
@@ -1104,7 +1104,7 @@ nav .gallery-toggle {
 }
 
 #nav-icon span:nth-child(2) {
-  top: 9px;
+  top: 10px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -o-transform-origin: left center;
@@ -1112,7 +1112,7 @@ nav .gallery-toggle {
 }
 
 #nav-icon span:nth-child(3) {
-  top: 18px;
+  top: 20px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -o-transform-origin: left center;
