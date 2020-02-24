@@ -308,11 +308,13 @@ a {
   z-index: 2;
   width: 50%;
   height: calc(100% - 32px);
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
+  padding: 48px 0;
+}
+
+.left-overlay > div,
+.right-overlay > div {
+  height: 100%;
+  width: 100%;
 }
 
 .left-overlay {

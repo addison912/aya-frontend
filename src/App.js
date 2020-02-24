@@ -215,15 +215,10 @@ class App extends React.Component {
   };
 
   setLocation = location => {
-    console.log(1);
     this.setState({ location });
   };
 
   componentDidMount() {
-    // if (this.state.category) {
-    //   this.getGalleries(this.state.category);
-    // } else this.getGalleries("Home");
-
     //hide hamburger menu when background clicked
     window.addEventListener("click", e => {
       if (this.state.hamburgerMenu == true) {
@@ -340,6 +335,7 @@ class App extends React.Component {
             toggleMobileInfo={this.toggleMobileInfo}
             location={this.state.location}
             setCategory={this.setCategory}
+            galleries={this.state.galleries.length}
           />
           <MobileInfo
             mobileInfo={this.state.mobileInfo}

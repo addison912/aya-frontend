@@ -28,7 +28,7 @@ class Navbar extends Component {
           className={this.props.location != "Main" ? "hide-icons" : null}
         >
           <div className="navbar-icons">
-            {this.props.view == "gallery" ? (
+            {this.props.view == "gallery" && this.props.galleries > 1 ? (
               <div
                 className="icon-wrapper"
                 onClick={() => this.props.setCategory(this.props.category)}
