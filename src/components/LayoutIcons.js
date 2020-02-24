@@ -11,7 +11,11 @@ class LayoutIcons extends Component {
         !!window.location.pathname.indexOf("gallery") ? (
           <div className="layout-icon-container">
             <div
-              className="icon-wrapper"
+              className={
+                this.props.layout == "grid"
+                  ? "icon-wrapper selected-layout-icon"
+                  : "icon-wrapper unselected-layout-icon"
+              }
               layout-data="grid"
               onClick={this.props.toggleGalleryLayout}
               role="button"
@@ -19,16 +23,16 @@ class LayoutIcons extends Component {
               <img
                 src={require("../assets/images/grid.svg")}
                 alt="toggle grid gallery"
-                className={
-                  this.props.layout == "grid"
-                    ? "gallery-toggle selected-layout-icon"
-                    : "gallery-toggle unselected-layout-icon"
-                }
+                className="gallery-toggle"
               />
               <span>GRID</span>
             </div>
             <div
-              className="icon-wrapper"
+              className={
+                this.props.layout == "single"
+                  ? "icon-wrapper selected-layout-icon"
+                  : "icon-wrapper unselected-layout-icon"
+              }
               layout-data="single"
               onClick={this.props.toggleGalleryLayout}
               role="button"
@@ -36,11 +40,7 @@ class LayoutIcons extends Component {
               <img
                 src={require("../assets/images/single.svg")}
                 alt="toggle single gallery"
-                className={
-                  this.props.layout == "single"
-                    ? "gallery-toggle selected-layout-icon"
-                    : "gallery-toggle unselected-layout-icon"
-                }
+                className="gallery-toggle"
               />
               <span>SINGLE</span>
             </div>

@@ -31,7 +31,8 @@ class App extends React.Component {
     galleryLength: 0,
     searchInput: "",
     hamburgerMenu: false,
-    mobileInfo: false
+    mobileInfo: false,
+    location: ""
   };
 
   toggleGalleryLayout = e => {
@@ -79,14 +80,11 @@ class App extends React.Component {
   categoryClickHandler = e => {
     this.setState({ category: e.target.getAttribute("data") });
     this.getGalleries(e.target.getAttribute("data"));
-    // if (document.querySelector(".category-link-selected")) {
-    //   document
-    //     .querySelector(".category-link-selected")
-    //     .classList.remove("category-link-selected");
-    //   e.target.classList.add("category-link-selected");
-    // } else {
-    //   e.target.classList.add("category-link-selected");
-    // }
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });
     }
@@ -127,8 +125,8 @@ class App extends React.Component {
             galleryLength: galleries[0].photos.length,
             gallery: galleries[0]
           });
+          this.setPictureUrl();
         }
-        this.setPictureUrl();
       });
   };
 
@@ -136,31 +134,35 @@ class App extends React.Component {
 
   search = e => {
     e.preventDefault(this.state.searchInput);
-    if (this.state.hamburgerMenu == true) {
-      this.setState({ hamburgerMenu: false });
-    }
-    fetch(`${domain}/api/photo/search`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ query: this.state.searchInput })
-    })
-      .then(res => {
-        return res.json();
+    if (this.state.searchInput.length > 0) {
+      if (this.state.hamburgerMenu == true) {
+        this.setState({ hamburgerMenu: false });
+      }
+      fetch(`${domain}/api/photo/search`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ query: this.state.searchInput })
       })
-      .then(photos => {
-        this.setState({
-          view: "gallery",
-          layout: "grid",
-          galleries: [{ photos }],
-          photoIndex: 0,
-          galleryIndex: 0,
-          gallery: { photos },
-          galleryLength: photos.length,
-          searchInput: ""
+        .then(res => {
+          return res.json();
+        })
+        .then(photos => {
+          this.setState({
+            view: "gallery",
+            layout: "grid",
+            galleries: [{ photos }],
+            photoIndex: 0,
+            galleryIndex: 0,
+            gallery: { photos },
+            galleryLength: photos.length,
+            searchInput: ""
+          });
         });
-      });
+    } else {
+      document.querySelector(".main .search").focus();
+    }
   };
 
   handleSearchInput = e => {
@@ -195,6 +197,7 @@ class App extends React.Component {
 
   setPictureUrl = i => {
     let index = i ? i : this.state.photoIndex;
+    // index = index == 0 ? 1 : index;
     index = index % this.state.gallery.photos.length;
     let photo = this.state.gallery.photos[index];
     let url =
@@ -209,6 +212,11 @@ class App extends React.Component {
     this.setState({ photo });
     // console.log(photo);
     this.setGalleryLength();
+  };
+
+  setLocation = location => {
+    console.log(1);
+    this.setState({ location });
   };
 
   componentDidMount() {
@@ -253,18 +261,21 @@ class App extends React.Component {
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
             <News
               path="/news"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
             <Shop
               path="/shop"
               categoryClickHandler={this.categoryClickHandler}
               setCategory={this.setCategory}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
             <Main
               path="/"
@@ -282,13 +293,12 @@ class App extends React.Component {
               getGalleries={this.getGalleries}
               view={this.state.view}
               galleryLength={this.state.galleryLength}
-              photoIndex={
-                (this.state.photoIndex % this.state.galleryLength) + 1
-              }
+              photoIndex={this.state.photoIndex % this.state.galleryLength}
               galleryClick={this.galleryClick}
               gallery={this.state.gallery}
               photoClick={this.photoClick}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
               default
             />
             <Main
@@ -307,16 +317,16 @@ class App extends React.Component {
               getGalleries={this.getGalleries}
               view={this.state.view}
               galleryLength={this.state.galleryLength}
-              photoIndex={
-                (this.state.photoIndex % this.state.galleryLength) + 1
-              }
+              photoIndex={this.state.photoIndex % this.state.galleryLength}
               galleryClick={this.galleryClick}
               gallery={this.state.gallery}
               photoClick={this.photoClick}
               handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
             />
           </Router>
           <Navbar
+            category={this.state.category}
             layout={this.state.layout}
             view={this.state.view}
             toggleGalleryLayout={this.toggleGalleryLayout}
@@ -328,6 +338,8 @@ class App extends React.Component {
             searchInput={this.state.searchInput}
             mobileInfo={this.state.mobileInfo}
             toggleMobileInfo={this.toggleMobileInfo}
+            location={this.state.location}
+            setCategory={this.setCategory}
           />
           <MobileInfo
             mobileInfo={this.state.mobileInfo}

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Router, navigate, Link } from "@reach/router";
 import Gallery from "../components/Gallery";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
@@ -13,7 +12,8 @@ class Main extends Component {
     } else if (!this.props.cat) {
       this.props.setCategory("Home");
     }
-    console.log(this.props);
+    // console.log(this.props);
+    this.props.setLocation("Main");
   }
   render() {
     return (

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
@@ -8,6 +9,9 @@ import LayoutIcons from "./LayoutIcons";
 import HamburgerMenu from "./HamburgerMenu";
 
 class Navbar extends Component {
+  // componentDidUpdate() {
+  //   console.log(this.props);
+  // }
   render() {
     return (
       <div>
@@ -21,17 +25,29 @@ class Navbar extends Component {
         />
         <div
           id="navbar"
-          className={
-            !!window.location.pathname && window.location.pathname == "/about"
-              ? "hide-icons"
-              : null
-          }
+          className={this.props.location != "Main" ? "hide-icons" : null}
         >
           <div className="navbar-icons">
-            <LayoutIcons
-              layout={this.props.layout}
-              toggleGalleryLayout={this.props.toggleGalleryLayout}
-            />
+            {this.props.view == "gallery" ? (
+              <div
+                className="icon-wrapper"
+                onClick={() => this.props.setCategory(this.props.category)}
+              >
+                <img
+                  src={require("../assets/images/prev-arrow.svg")}
+                  alt="previous"
+                  className="index-arrow"
+                />
+                <span>Back</span>
+              </div>
+            ) : null}
+            {this.props.view == "gallery" ? (
+              <LayoutIcons
+                layout={this.props.layout}
+                toggleGalleryLayout={this.props.toggleGalleryLayout}
+              />
+            ) : null}
+
             {this.props.layout == "single" &&
             this.props.view == "gallery" &&
             !this.props.mobileInfo ? (
@@ -57,15 +73,18 @@ class Navbar extends Component {
               </div>
             ) : null}
           </div>
-          <div className="navbar-hamburger">
-            {" "}
-            <img
-              src={require("../assets/images/hamburger.svg")}
-              alt="menu"
+          <div className="icon-wrapper">
+            <div
+              className={this.props.hamburgerMenu ? "open" : null}
+              id="nav-icon"
               onClick={this.props.toggleHamburgerMenu}
-              role="button"
-            />
-                <span>Menu</span>
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              
+            </div>
+            <span>Menu</span>
           </div>
         </div>
       </div>
