@@ -45,7 +45,7 @@ nav .projects {
   font-weight: bold;
   font-size: 32px;
   color: var(--dark);
-  -webkit-text-fill-color: rgba(255,255,255,0); /* Override if webkit*/
+  -webkit-text-fill-color: rgba(255,255,255,0); /* Overrides color if webkit*/
   -webkit-text-stroke-width: 0.66px;
   -webkit-text-stroke-color: var(--dark);
   line-height: 110%;
@@ -53,12 +53,12 @@ nav .projects {
 
 nav .projects .category-link-selected {
   color: var(--dark);
-  -webkit-text-fill-color: var(--dark);
+  -webkit-text-fill-color: var(--dark); /* Overrides .projects */
   transition: color ease-in-out 0.25s;
 }
 nav .projects .category-link:hover {
   color: var(--dark);
-  -webkit-text-fill-color: var(--dark);
+  -webkit-text-fill-color: var(--dark); /* Overrides .projects */
   transition: color ease-in-out 0.25s;
 }
 
