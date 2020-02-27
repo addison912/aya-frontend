@@ -33,7 +33,7 @@ class Single extends Component {
           <div className="left-overlay">
             <div
               style={{
-                cursor: `url("${domain}/assets/prev-arrow.svg"), w-resize`
+                cursor: `url("${domain}/assets/prev-arrow-big.svg"), w-resize`
               }}
               onClick={() => this.props.clickPicture("prev")}
               role="button"
@@ -42,7 +42,7 @@ class Single extends Component {
           <div className="right-overlay">
             <div
               style={{
-                cursor: `url("${domain}/assets/next-arrow.svg"), w-resize`
+                cursor: `url("${domain}/assets/next-arrow-big.svg"), w-resize`
               }}
               onClick={() => this.props.clickPicture("next")}
               role="button"
