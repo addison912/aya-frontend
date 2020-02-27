@@ -42,7 +42,7 @@ nav .projects {
   text-decoration: none;
   margin: 6px 0px;
   font-family: var(--category-font), sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 32px;
   color: var(--dark);
   -webkit-text-fill-color: rgba(
@@ -132,9 +132,12 @@ li > span:hover {
 }
 * {
   box-sizing: border-box;
+}
+
+/* *{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 body {
   margin: 0;
