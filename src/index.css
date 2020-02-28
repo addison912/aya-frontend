@@ -94,11 +94,13 @@ nav .projects {
 }
 .links li {
   margin: 6px 0px;
-  font-family: var(--ui-font), sans-serif;
+  font-family: var(--body-font), sans-serif;
   text-align: left;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   line-height: 140%;
   color: var(--dark);
 }
@@ -109,7 +111,7 @@ li > span:hover {
 
 .selected-link::after {
   content: "•";
-  margin-left: 8px;
+  margin-left: 2px;
 }
 
 @media only screen and (max-width: 760px) {
@@ -294,10 +296,7 @@ a {
   margin-top: 12px;
   justify-content: space-between;
 }
-.image-info .caption {
-  font-family: var(--body-font), monospace;
-  margin: 0;
-}
+
 .image-info .caption-nav {
   font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
@@ -583,9 +582,10 @@ figure img:hover {
   cursor: pointer;
 }
 
-figcaption {
-  font-family: var(--body-font), monospace;
-  padding-top: 8px;
+figcaption, .caption {
+  font-family: var(--ui-font), monospace;
+  font-size: 12px;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
