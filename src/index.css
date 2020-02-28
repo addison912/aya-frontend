@@ -259,6 +259,10 @@ a {
   width: 100%;
 }
 
+.image-container svg {
+  transform: rotate(90deg);
+}
+
 .image-wrapper {
   display: flex;
   flex-direction: column;
@@ -1148,3 +1152,29 @@ nav .gallery-toggle {
 }
 
 /*/// ↑ Nav-icon ↑ ///*/
+/*/// ↓ Gallery Cursor ↓ ///*/
+
+#cursor {
+  position: absolute;
+  left: -28px;
+  top: -34px;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#cursor img {
+  will-change: transform;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.6, 1.46, 0.53, 0.92);
+  transition-property: transform, opacity;
+}
+
+.image-container {
+  cursor: none;
+}
+
+.image-container * {
+  cursor: inherit;
+}
+/*/// ↑ Gallery Cursor ↑ ///*/

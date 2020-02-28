@@ -18,32 +18,62 @@ class Single extends Component {
   //         .setAttribute("style={{ top: '16.66vh' }}");
   // };
 
-  // componentDidMount() {
-  //   this.setHeight();
-  // }
+  initializeCursor = () => {
+    let currentCursorPos;
+    let cursorEl = document.querySelector("#cursor");
+    let cursorImageEl = document.querySelector("#cursor > img");
+
+    window.addEventListener("mousemove", event => {
+      currentCursorPos = { x: event.clientX, y: event.clientY };
+      if (document.querySelector(".image-container>div>div:hover")) {
+        cursorEl.style.display = "inline-block";
+        cursorImageEl.style.opacity = "1";
+      } else if (document.querySelector(".image-container:hover")) {
+        cursorEl.style.display = "inline-block";
+        cursorImageEl.style.opacity = "0";
+      }
+      if (document.querySelector(".image-container:hover")) {
+        cursorEl.style.transform = `translate(${currentCursorPos.x}px, ${currentCursorPos.y}px)`;
+      } else if (!document.querySelector(".image-container:hover")) {
+        cursorEl.style.display = "none";
+      }
+      if (document.querySelector(".left-overlay>div:hover")) {
+        cursorImageEl.style.transform = `rotate(-90deg)`;
+      } else if (document.querySelector(".right-overlay>div:hover")) {
+        cursorImageEl.style.transform = `rotate(90deg)`;
+      } else {
+        cursorImageEl.style.transform = `rotate(0deg)`;
+      }
+    });
+  };
+
+  componentDidMount() {
+    // this.setHeight();
+    this.initializeCursor();
+  }
   render() {
     return (
       <div className="gallery center">
+        <div id="cursor">
+          <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
+        </div>
         <Swipeable
           className="image-container"
           onSwiped={e => {
             this.props.clickPicture(e.dir);
           }}
+          // style={{
+          //   cursor: `url("${domain}/assets/up-arrow.svg"), w-resize`
+          // }}
         >
           <div className="left-overlay">
             <div
-              style={{
-                cursor: `url("${domain}/assets/prev-arrow-big.svg"), w-resize`
-              }}
               onClick={() => this.props.clickPicture("prev")}
               role="button"
             ></div>
           </div>
           <div className="right-overlay">
             <div
-              style={{
-                cursor: `url("${domain}/assets/next-arrow-big.svg"), w-resize`
-              }}
               onClick={() => this.props.clickPicture("next")}
               role="button"
             ></div>
