@@ -6,7 +6,7 @@ import { Router, navigate, Link } from "@reach/router";
 class Logo extends Component {
   render() {
     return (
-      <Link to="/" className="logo" onClick={this.props.handleLogoClick}></Link>
+      <Link to="/" className="logo" onClick={this.props.handleLogoClick}>Aya Brackett</Link>
     );
   }
 }
