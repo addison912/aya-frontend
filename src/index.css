@@ -111,7 +111,6 @@ li > span:hover {
 
 .selected-link::after {
   content: "•";
-  margin-left: 2px;
 }
 
 @media only screen and (max-width: 760px) {
@@ -484,6 +483,11 @@ a {
 
 .press {
   grid-area: press;
+}
+
+.press ul {
+    list-style-type: circle;
+    padding-left: 1em;
 }
 
 .clients {
