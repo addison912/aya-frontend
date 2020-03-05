@@ -6,6 +6,9 @@ import Single from "../components/Single";
 import Grid from "../components/Grid";
 
 class Gallery extends Component {
+  // componentDidMount() {
+  //   this.props.toggleGalleryLayout("grid");
+  // }
   render() {
     return (
       <div className={"gallery-container"}>

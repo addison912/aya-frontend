@@ -35,9 +35,9 @@ class App extends React.Component {
     location: ""
   };
 
-  toggleGalleryLayout = e => {
+  toggleGalleryLayout = layout => {
     this.setState({
-      layout: e.target.closest(".icon-wrapper").getAttribute("layout-data")
+      layout
     });
   };
 

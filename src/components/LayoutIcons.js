@@ -16,8 +16,7 @@ class LayoutIcons extends Component {
                   ? "icon-wrapper selected-layout-icon"
                   : "icon-wrapper unselected-layout-icon"
               }
-              layout-data="grid"
-              onClick={this.props.toggleGalleryLayout}
+              onClick={() => this.props.toggleGalleryLayout("grid")}
               role="button"
             >
               <img
@@ -33,8 +32,7 @@ class LayoutIcons extends Component {
                   ? "icon-wrapper selected-layout-icon"
                   : "icon-wrapper unselected-layout-icon"
               }
-              layout-data="single"
-              onClick={this.props.toggleGalleryLayout}
+              onClick={() => this.props.toggleGalleryLayout("single")}
               role="button"
             >
               <img

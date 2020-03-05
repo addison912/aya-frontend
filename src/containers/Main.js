@@ -54,6 +54,7 @@ class Main extends Component {
             galleryClick={this.props.galleryClick}
             gallery={this.props.gallery}
             photoClick={this.props.photoClick}
+            toggleGalleryLayout={this.props.toggleGalleryLayout}
           />
           {/* <Gallery path={"/:gallery"} /> */}
         </div>
