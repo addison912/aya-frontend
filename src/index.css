@@ -1185,7 +1185,7 @@ nav .gallery-toggle {
   transition-property: transform, opacity;
 }
 
-.image-container {
+.image-container > div {
   cursor: none;
 }
 
