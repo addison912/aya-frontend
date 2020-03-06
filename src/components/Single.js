@@ -28,7 +28,7 @@ class Single extends Component {
       if (document.querySelector(".image-container>div>div:hover")) {
         cursorEl.style.display = "inline-block";
         cursorImageEl.style.opacity = "1";
-      } else if (document.querySelector(".image-container:hover")) {
+      } else if (document.querySelector(".image-container>div:hover")) {
         cursorEl.style.display = "inline-block";
         cursorImageEl.style.opacity = "0";
       }
