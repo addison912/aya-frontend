@@ -85,7 +85,7 @@ nav .projects {
   transition: ease-in-out 0.3s;
 }
 .links :hover {
-  color: var(--blue);
+  opacity: 0.8;
   transition: ease-in-out 0.3s;
 }
 .links ul {
