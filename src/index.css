@@ -85,7 +85,7 @@ nav .projects {
   transition: ease-in-out 0.3s;
 }
 .links :hover {
-  color: #aaa;
+  opacity: 0.8;
   transition: ease-in-out 0.3s;
 }
 .links ul {
@@ -94,11 +94,13 @@ nav .projects {
 }
 .links li {
   margin: 6px 0px;
-  font-family: var(--ui-font), sans-serif;
+  font-family: var(--body-font), sans-serif;
   text-align: left;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   line-height: 140%;
   color: var(--dark);
 }
@@ -109,7 +111,6 @@ li > span:hover {
 
 .selected-link::after {
   content: "•";
-  margin-left: 8px;
 }
 
 @media only screen and (max-width: 760px) {
@@ -146,7 +147,7 @@ body {
 .main {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 180px auto auto;
+  grid-template-rows: 160px auto auto;
   grid-template-areas: "header header" "nav content" "blank blank";
   grid-column-gap: 16px;
   grid-row-gap: 16px;
@@ -294,10 +295,7 @@ a {
   margin-top: 12px;
   justify-content: space-between;
 }
-.image-info .caption {
-  font-family: var(--body-font), monospace;
-  margin: 0;
-}
+
 .image-info .caption-nav {
   font-family: var(--ui-font), sans-serif;
   text-transform: uppercase;
@@ -487,6 +485,11 @@ a {
   grid-area: press;
 }
 
+.press ul {
+    list-style-type: circle;
+    padding-left: 1em;
+}
+
 .clients {
   grid-area: clients;
 }
@@ -560,7 +563,7 @@ figure {
   overflow: hidden; */
   padding: 8px;
   margin: 0;
-  height: 62vh;
+  height: 70vh;
 }
 
 figure img {
@@ -583,9 +586,11 @@ figure img:hover {
   cursor: pointer;
 }
 
-figcaption {
-  font-family: var(--body-font), monospace;
-  padding-top: 8px;
+figcaption, .caption {
+  font-family: var(--ui-font), monospace;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -994,16 +999,26 @@ time {
 .logo {
   grid-area: header;
   align-self: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  border-radius: 2px;
+  padding: 0 8px;
+  width: 145px;
+  white-space: nowrap;
+  /*
   width: 180px;
   height: 16px;
   background: url("http://funky.haus/assets/logo-aya_brackett.svg") center
     center/contain no-repeat;
-  color: transparent;
-}
+  color: transparent; */
+} 
 
 @media only screen and (max-width: 560px) {
   .logo {
-    width: 100%;
+    /* width: 100%; */
+      justify-self: center;
   }
 }
 nav .gallery-toggle {

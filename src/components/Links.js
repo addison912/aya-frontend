@@ -22,6 +22,9 @@ class Links extends Component {
             </Link>
           </li>
           <li>
+            <a href="https://www.instagram.com/ayabrackett/">Instagram</a>
+          </li>
+          <li>
             <Link to="/news">
               <span
                 onClick={this.props.toggleHamburgerMenu}
