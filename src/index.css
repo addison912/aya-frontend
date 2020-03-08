@@ -682,6 +682,9 @@ figcaption h1 {
   font-size: 8px;
   letter-spacing: 0.15em;
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .search-container img:hover {
   cursor: pointer;
@@ -696,17 +699,22 @@ figcaption h1 {
 }
 
 .search-wrapper {
-  height: 100%;
   display: flex;
   align-items: center;
-  width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
+  border: 1px solid var(--light-gray);
+  padding: 8px 12px;
+  border-radius: 32px;
+  width: 256px;
 }
 .search-wrapper input {
   width: 100%;
 }
 .search-wrapper input:hover {
   cursor: text;
+}
+
+.search-wrapper input:focus {
 }
 
 .search-component {
