@@ -7,6 +7,9 @@ import { domain } from "../config/constants";
 import ImageSpacer from "./ImageSpacer";
 
 class CategoryGrid extends Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     return (
       <div className="gallery-content">
@@ -17,12 +20,17 @@ class CategoryGrid extends Component {
             data={i}
             onClick={this.props.galleryClick}
             role="button"
+            style={{
+              order: gallery.order ? gallery.order : this.props.galleries.length
+            }}
           >
             <img
               src={`${domain}/uploads/photos/${gallery.category.replace(
                 /\/?\s+/g,
                 "_"
-              )}/${gallery.name.replace(/\/?\s+/g, "_")}/thumb.jpg`}
+              )}/${gallery.name
+                .replace(/\/?\s+/g, "_")
+                .replace(/[^\w\s]/gi, "")}/thumb.jpg`}
               alt={
                 gallery.photos && gallery.photos[0] && gallery.photos[0].caption
                   ? gallery.photos[0].caption

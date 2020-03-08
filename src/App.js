@@ -67,7 +67,7 @@ class App extends React.Component {
       "/uploads/photos/" +
       gallery.category.replace(/\/?\s+/g, "_") +
       "/" +
-      gallery.name.replace(/\/?\s+/g, "_") +
+      gallery.name.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "") +
       "/" +
       gallery.photos[0].location;
     photo.url = url;
@@ -110,6 +110,14 @@ class App extends React.Component {
           category.toLowerCase() == "home"
             ? Math.floor(Math.random() * galleries[0].photos.length)
             : 0;
+        // galleries.sort(function(a, b) {
+        //   return a.order - b.order;
+        // });
+        galleries.forEach(gallery => {
+          gallery.photos.sort(function(a, b) {
+            return a.order - b.order;
+          });
+        });
         this.setState({
           galleries,
           photoIndex,
@@ -119,10 +127,12 @@ class App extends React.Component {
         if (galleries.length > 1) {
           this.setState({ view: "category" });
         } else if (galleries.length == 1) {
+          let gallery = galleries[0];
           this.setState({
             view: "gallery",
-            galleryLength: galleries[0].photos.length,
-            gallery: galleries[0]
+            galleryLength: gallery.photos.length,
+            // gallery: galleries[0]
+            gallery
           });
           this.setPictureUrl();
         }

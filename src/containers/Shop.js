@@ -23,6 +23,7 @@ class Shop extends Component {
   //         this.setState({ message: text.message });
   //       });
   //   };
+
   render() {
     return (
       <div className="main">
