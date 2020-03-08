@@ -1003,6 +1003,7 @@ time {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--dark);
+  background: white;
   border: 1px solid var(--dark);
   border-radius: 2px;
   padding: 0 8px;
