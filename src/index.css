@@ -12,6 +12,18 @@
   --dark: #323844;
   --blue: blue;
   --light-gray: #eee;
+  --shadow: 0 1px 1px rgba(0, 0, 0, 0.02),
+      0 3px 3px rgba(0, 0, 0, 0.02),
+      0 6px 5px rgba(0, 0, 0, 0.03),
+      0 11px 9px rgba(0, 0, 0, 0.03),
+      0 20px 16px rgba(0, 0, 0, 0.03),
+      0 40px 30px rgba(0, 0, 0, 0.04);
+  --shadow-before: 0 2px 2px rgba(0, 0, 0, 0),
+      0 6px 5px rgba(0, 0, 0, 0),
+      0 12px 10px rgba(0, 0, 0, 0),
+      0 22px 18px rgba(0, 0, 0, 0),
+      0 40px 33px rgba(0, 0, 0, 0),
+      0 80px 60px rgba(0, 0, 0, 0);
 }
 
 /* Highlight */
@@ -566,6 +578,8 @@ figure {
   height: 70vh;
 }
 
+
+
 figure img {
   /* display: inline-block;
   height: 240px;
@@ -579,11 +593,24 @@ figure img {
   -o-animation: fadein 1s;
   animation: fadein 1s;
   border-radius: 4px;
+  box-shadow: var(--shadow-before);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  mix-blend-mode: multiply; /* fixes shadow transition overlap issue */
+    
+}
+
+figure img::after {
+    box-shadow: var(--shadow);
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 figure img:hover {
-  /* transform: scale(1.024); */
   cursor: pointer;
+    box-shadow: var(--shadow);
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
 }
 
 figcaption,
@@ -664,10 +691,9 @@ figcaption h1 {
 }
 .search {
   font-family: var(--ui-font), sans-serif;
-  text-transform: uppercase;
   border: none;
-  font-size: 8px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.03em;
 }
 
 .main .search {
@@ -679,9 +705,10 @@ figcaption h1 {
 }
 
 .search-container {
-  font-size: 8px;
-  letter-spacing: 0.15em;
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .search-container img:hover {
   cursor: pointer;
@@ -696,17 +723,25 @@ figcaption h1 {
 }
 
 .search-wrapper {
-  height: 100%;
   display: flex;
   align-items: center;
-  width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
+  border: 1px solid var(--light-gray);
+  padding: 8px 12px;
+  border-radius: 32px;
+  width: 256px;
 }
 .search-wrapper input {
   width: 100%;
 }
 .search-wrapper input:hover {
   cursor: text;
+}
+
+@media only screen and (max-width: 560px) {
+    .search-wrapper {
+        width: 100%;
+    }
 }
 
 .search-component {
@@ -730,13 +765,15 @@ figcaption h1 {
   .hamburger-menu .search-container {
     display: flex;
     width: 100%;
+    margin-bottom: 24px;
+    /*
     height: 52px;
     justify-content: space-between;
     align-items: center;
     padding: 6px 18px 6px 18px;
-    margin-bottom: 31px;
-    border: 1px solid #aaa;
+    border: 1px solid var(--light-gray);
     border-radius: 25px;
+    */
   }
   .hamburger-menu .search {
     width: 100%;
@@ -1003,6 +1040,7 @@ time {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--dark);
+  background: white;
   border: 1px solid var(--dark);
   border-radius: 2px;
   padding: 0 8px;
