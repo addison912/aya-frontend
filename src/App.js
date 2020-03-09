@@ -148,6 +148,12 @@ class App extends React.Component {
       if (this.state.hamburgerMenu == true) {
         this.setState({ hamburgerMenu: false });
       }
+      if (document.querySelector(".category-link-selected")) {
+        document
+          .querySelector(".category-link-selected")
+          .classList.remove("category-link-selected");
+      }
+      this.setState({ category: "" });
       fetch(`${domain}/api/photo/search`, {
         method: "POST",
         headers: {
