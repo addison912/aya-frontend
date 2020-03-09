@@ -20,7 +20,7 @@ class App extends React.Component {
   state = {
     photo: {},
     message: "",
-    category: "Home",
+    category: "",
     gallery: {},
     galleries: [],
     layout: "single",
@@ -87,10 +87,12 @@ class App extends React.Component {
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });
     }
+    this.setState({ layout: "grid" });
   };
 
   handleLogoClick = () => {
     this.setCategory("Home");
+    this.setState({ layout: "grid" });
     if (document.querySelector(".category-link-selected")) {
       document
         .querySelector(".category-link-selected")
@@ -100,7 +102,6 @@ class App extends React.Component {
 
   getGalleries = category => {
     this.setState({ category });
-
     fetch(`${domain}/api/gallery/c/${category}`)
       .then(res => {
         return res.json();
@@ -131,7 +132,7 @@ class App extends React.Component {
           this.setState({
             view: "gallery",
             galleryLength: gallery.photos.length,
-            // gallery: galleries[0]
+            layout: "grid",
             gallery
           });
           this.setPictureUrl();
@@ -227,6 +228,16 @@ class App extends React.Component {
     this.setState({ location });
   };
 
+  toggleHamburgerMenu = () => {
+    this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
+    this.setState({ mobileInfo: false });
+  };
+
+  toggleMobileInfo = () => {
+    this.setState({ mobileInfo: !this.state.mobileInfo });
+    this.setState({ hamburgerMenu: false });
+  };
+
   componentDidMount() {
     //hide hamburger menu when background clicked
     window.addEventListener("click", e => {
@@ -240,16 +251,6 @@ class App extends React.Component {
       }
     });
   }
-
-  toggleHamburgerMenu = () => {
-    this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
-    this.setState({ mobileInfo: false });
-  };
-
-  toggleMobileInfo = () => {
-    this.setState({ mobileInfo: !this.state.mobileInfo });
-    this.setState({ hamburgerMenu: false });
-  };
 
   render() {
     return (

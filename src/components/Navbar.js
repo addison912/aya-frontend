@@ -22,6 +22,7 @@ class Navbar extends Component {
           search={this.props.search}
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
+          category={this.props.category}
         />
         <div
           id="navbar"
@@ -82,7 +83,6 @@ class Navbar extends Component {
               <span></span>
               <span></span>
               <span></span>
-              
             </div>
             <span>Menu</span>
           </div>

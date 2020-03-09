@@ -7,9 +7,9 @@ import { domain } from "../config/constants";
 import ImageSpacer from "./ImageSpacer";
 
 class CategoryGrid extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
   render() {
     return (
       <div className="gallery-content">

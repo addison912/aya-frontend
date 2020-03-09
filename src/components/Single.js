@@ -25,7 +25,10 @@ class Single extends Component {
 
     window.addEventListener("mousemove", event => {
       currentCursorPos = { x: event.clientX, y: event.clientY };
-      if (document.querySelector(".image-container>div>div:hover")) {
+      if (
+        document.querySelector(".image-container>div>div:hover") &&
+        window.innerWidth > 560
+      ) {
         cursorEl.style.display = "inline-block";
         cursorImageEl.style.opacity = "1";
       } else if (document.querySelector(".image-container>div:hover")) {
@@ -90,7 +93,9 @@ class Single extends Component {
               }
             />
             <div className="image-info">
-              <p className="caption">{this.props.photo.caption}</p>
+              <p className="caption">
+                {this.props.photo.caption ? this.props.photo.caption : null}
+              </p>
               <p className="caption-nav">
                 <span onClick={() => this.props.clickPicture("prev")}>
                   <img
@@ -99,7 +104,11 @@ class Single extends Component {
                     className="index-arrow"
                   />
                 </span>{" "}
-                {this.props.photoIndex} of {this.props.galleryLength}{" "}
+                {this.props.photoIndex && this.props.galleryLength ? (
+                  <span>
+                    {this.props.photoIndex} of {this.props.galleryLength}{" "}
+                  </span>
+                ) : null}
                 <span onClick={() => this.props.clickPicture("next")}>
                   <img
                     src={require("../assets/images/next-arrow.svg")}

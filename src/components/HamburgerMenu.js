@@ -37,7 +37,11 @@ class HamburgerMenu extends Component {
                 to={`/${category}`}
                 data={category}
                 onClick={this.props.categoryClickHandler}
-                className="category-link"
+                className={
+                  category == this.props.category
+                    ? "category-link category-link-selected"
+                    : "category-link"
+                }
               >
                 {category}{" "}
               </Link>

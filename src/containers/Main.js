@@ -14,6 +14,7 @@ class Main extends Component {
     }
     // console.log(this.props);
     this.props.setLocation("Main");
+    // this.props.toggleGalleryLayout("grid");
   }
   render() {
     return (

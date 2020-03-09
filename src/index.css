@@ -629,7 +629,7 @@ figcaption h1 {
   }
 
   .grid-image:nth-of-type(3n) {
-    width: 33.34%;
+    width: 33.33%;
   }
 
   .grid-image img {
@@ -1192,5 +1192,14 @@ nav .gallery-toggle {
 
 .image-container * {
   cursor: inherit;
+}
+
+@media only screen and (max-width: 560px) {
+  #cursor {
+    display: none;
+  }
+  .image-container > div {
+    cursor: pointer;
+  }
 }
 /*/// ↑ Gallery Cursor ↑ ///*/
