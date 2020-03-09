@@ -691,10 +691,9 @@ figcaption h1 {
 }
 .search {
   font-family: var(--ui-font), sans-serif;
-  text-transform: uppercase;
   border: none;
-  font-size: 8px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.03em;
 }
 
 .main .search {
