@@ -705,8 +705,6 @@ figcaption h1 {
 }
 
 .search-container {
-  font-size: 8px;
-  letter-spacing: 0.15em;
   text-align: right;
   display: flex;
   align-items: center;
@@ -740,6 +738,12 @@ figcaption h1 {
   cursor: text;
 }
 
+@media only screen and (max-width: 560px) {
+    .search-wrapper {
+        width: 100%;
+    }
+}
+
 .search-component {
   display: flex;
   align-items: flex-end;
@@ -761,13 +765,15 @@ figcaption h1 {
   .hamburger-menu .search-container {
     display: flex;
     width: 100%;
+    margin-bottom: 24px;
+    /*
     height: 52px;
     justify-content: space-between;
     align-items: center;
     padding: 6px 18px 6px 18px;
-    margin-bottom: 31px;
-    border: 1px solid #aaa;
+    border: 1px solid var(--light-gray);
     border-radius: 25px;
+    */
   }
   .hamburger-menu .search {
     width: 100%;
