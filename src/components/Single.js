@@ -7,17 +7,6 @@ import { domain } from "../config/constants";
 import { useSwipeable, Swipeable } from "react-swipeable";
 
 class Single extends Component {
-  // setHeight = () => {
-  //   let gallery = document.getElementsByClassName("image-wrapper");
-  //   gallery.getAttribute("height") >= gallery.getAttribute("width")
-  //     ? document
-  //         .getElementsByClassName("gallery")
-  //         .setAttribute("style={{ top: '16.66vh' }}")
-  //     : document
-  //         .getElementsByClassName("gallery")
-  //         .setAttribute("style={{ top: '16.66vh' }}");
-  // };
-
   initializeCursor = () => {
     let currentCursorPos;
     let cursorEl = document.querySelector("#cursor");
@@ -51,7 +40,6 @@ class Single extends Component {
   };
 
   componentDidMount() {
-    // this.setHeight();
     this.initializeCursor();
   }
   render() {
@@ -65,9 +53,6 @@ class Single extends Component {
           onSwiped={e => {
             this.props.clickPicture(e.dir);
           }}
-          // style={{
-          //   cursor: `url("${domain}/assets/up-arrow.svg"), w-resize`
-          // }}
         >
           <div className="left-overlay">
             <div

@@ -15,7 +15,6 @@ class News extends Component {
         return res.json();
       })
       .then(news => {
-        console.log(news);
         this.setState({ news });
       });
   };

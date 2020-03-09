@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import { domain } from "../config/constants";
 
 class BlogImages extends Component {
   handleClick = e => {
@@ -21,7 +22,7 @@ class BlogImages extends Component {
               onClick={() => this.handleClick(photo.link)}
             >
               <img
-                src={photo.location}
+                src={`${domain}/uploads/news/${photo.location}`}
                 alt={photo.caption ? photo.caption : `blog photo ${i}`}
               />
               {photo.caption ? <figcaption>{photo.caption}</figcaption> : null}
