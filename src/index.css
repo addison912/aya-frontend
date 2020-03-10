@@ -12,18 +12,12 @@
   --dark: #323844;
   --blue: blue;
   --light-gray: #eee;
-  --shadow: 0 1px 1px rgba(0, 0, 0, 0.02),
-      0 3px 3px rgba(0, 0, 0, 0.02),
-      0 6px 5px rgba(0, 0, 0, 0.03),
-      0 11px 9px rgba(0, 0, 0, 0.03),
-      0 20px 16px rgba(0, 0, 0, 0.03),
-      0 40px 30px rgba(0, 0, 0, 0.04);
-  --shadow-before: 0 2px 2px rgba(0, 0, 0, 0),
-      0 6px 5px rgba(0, 0, 0, 0),
-      0 12px 10px rgba(0, 0, 0, 0),
-      0 22px 18px rgba(0, 0, 0, 0),
-      0 40px 33px rgba(0, 0, 0, 0),
-      0 80px 60px rgba(0, 0, 0, 0);
+  --shadow: 0 1px 1px rgba(0, 0, 0, 0.02), 0 3px 3px rgba(0, 0, 0, 0.02),
+    0 6px 5px rgba(0, 0, 0, 0.03), 0 11px 9px rgba(0, 0, 0, 0.03),
+    0 20px 16px rgba(0, 0, 0, 0.03), 0 40px 30px rgba(0, 0, 0, 0.04);
+  --shadow-before: 0 2px 2px rgba(0, 0, 0, 0), 0 6px 5px rgba(0, 0, 0, 0),
+    0 12px 10px rgba(0, 0, 0, 0), 0 22px 18px rgba(0, 0, 0, 0),
+    0 40px 33px rgba(0, 0, 0, 0), 0 80px 60px rgba(0, 0, 0, 0);
 }
 
 /* Highlight */
@@ -550,6 +544,10 @@ a {
   flex-direction: column; */
 }
 
+.grid-image.book-image:nth-of-type(2) {
+  width: 66.67%;
+}
+
 .grid-image img {
   height: 80%;
   width: 100%;
@@ -578,8 +576,6 @@ figure {
   height: 70vh;
 }
 
-
-
 figure img {
   /* display: inline-block;
   height: 240px;
@@ -597,20 +593,19 @@ figure img {
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   mix-blend-mode: multiply; /* fixes shadow transition overlap issue */
-    
 }
 
 figure img::after {
-    box-shadow: var(--shadow);
-    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--shadow);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 figure img:hover {
   cursor: pointer;
-    box-shadow: var(--shadow);
-    -webkit-transform: translateY(-1px);
-    transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 figcaption,
@@ -739,9 +734,9 @@ figcaption h1 {
 }
 
 @media only screen and (max-width: 560px) {
-    .search-wrapper {
-        width: 100%;
-    }
+  .search-wrapper {
+    width: 100%;
+  }
 }
 
 .search-component {
@@ -841,7 +836,7 @@ figcaption h1 {
   align-items: flex-start;
   position: fixed;
   left: 0;
-  height: fit-content;
+  height: auto;
   width: 100vw;
 }
 .hamburger-menu .projects {

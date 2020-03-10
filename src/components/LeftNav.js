@@ -28,8 +28,7 @@ class LeftNav extends Component {
               >
                 <Link
                   to={`/${category}`}
-                  data={category}
-                  onClick={this.props.categoryClickHandler}
+                  onClick={() => this.props.categoryChangeHandler(category)}
                   className={
                     category == this.props.category
                       ? "category-link category-link-selected"

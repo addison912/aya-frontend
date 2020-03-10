@@ -16,7 +16,7 @@ class Navbar extends Component {
     return (
       <div>
         <HamburgerMenu
-          categoryClickHandler={this.props.categoryClickHandler}
+          categoryChangeHandler={this.props.categoryChangeHandler}
           hamburgerMenu={this.props.hamburgerMenu}
           toggleHamburgerMenu={this.props.toggleHamburgerMenu}
           search={this.props.search}
@@ -32,7 +32,9 @@ class Navbar extends Component {
             {this.props.view == "gallery" && this.props.galleries > 1 ? (
               <div
                 className="icon-wrapper"
-                onClick={() => this.props.setCategory(this.props.category)}
+                onClick={() =>
+                  this.props.categoryChangeHandler(this.props.category)
+                }
               >
                 <img
                   src={require("../assets/images/back-nav.svg")}

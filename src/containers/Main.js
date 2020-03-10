@@ -8,9 +8,9 @@ import BackButton from "../components/BackButton";
 class Main extends Component {
   componentDidMount() {
     if (this.props.cat && this.props.cat != this.props.category) {
-      this.props.setCategory(this.props.cat);
+      this.props.categoryChangeHandler(this.props.cat);
     } else if (!this.props.cat) {
-      this.props.setCategory("Home");
+      this.props.categoryChangeHandler("Home");
     }
     // console.log(this.props);
     this.props.setLocation("Main");
@@ -21,7 +21,7 @@ class Main extends Component {
       <div className="main">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
         <LeftNav
-          categoryClickHandler={this.props.categoryClickHandler}
+          categoryChangeHandler={this.props.categoryChangeHandler}
           layout={this.props.layout}
           toggleGalleryLayout={this.props.toggleGalleryLayout}
           showToggle={this.props.view == "gallery"}
@@ -30,7 +30,7 @@ class Main extends Component {
         {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
           <BackButton
             category={this.props.category}
-            setCategory={this.props.setCategory}
+            categoryChangeHandler={this.props.categoryChangeHandler}
           />
         ) : null}
 

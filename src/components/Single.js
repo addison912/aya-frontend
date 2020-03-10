@@ -67,42 +67,46 @@ class Single extends Component {
             ></div>
           </div>
           <figure className="image-wrapper">
-            <img
-              className="single-pic"
-              key={this.props.photo.url}
-              src={this.props.photo.url}
-              alt={
-                this.props.photo.caption
-                  ? this.props.photo.caption
-                  : this.props.photo.gallery
-              }
-            />
-            <div className="image-info">
-              <p className="caption">
-                {this.props.photo.caption ? this.props.photo.caption : null}
-              </p>
-              <p className="caption-nav">
-                <span onClick={() => this.props.clickPicture("prev")}>
-                  <img
-                    src={require("../assets/images/prev-arrow.svg")}
-                    alt="previous"
-                    className="index-arrow"
-                  />
-                </span>{" "}
-                {this.props.photoIndex && this.props.galleryLength ? (
-                  <span>
-                    {this.props.photoIndex} of {this.props.galleryLength}{" "}
-                  </span>
-                ) : null}
-                <span onClick={() => this.props.clickPicture("next")}>
-                  <img
-                    src={require("../assets/images/next-arrow.svg")}
-                    alt="next"
-                    className="index-arrow"
-                  />
-                </span>
-              </p>
-            </div>
+            {this.props.photo.url ? (
+              <img
+                className="single-pic"
+                key={this.props.photo.url}
+                src={this.props.photo.url}
+                alt={
+                  this.props.photo.caption
+                    ? this.props.photo.caption
+                    : this.props.photo.gallery
+                }
+              />
+            ) : null}
+            {this.props.photo.url && this.props.photo.caption ? (
+              <div className="image-info">
+                <p className="caption">{this.props.photo.caption}</p>
+                <p className="caption-nav">
+                  <span onClick={() => this.props.clickPicture("prev")}>
+                    <img
+                      src={require("../assets/images/prev-arrow.svg")}
+                      alt="previous"
+                      className="index-arrow"
+                    />
+                  </span>{" "}
+                  {this.props.photoIndex && this.props.galleryLength ? (
+                    <span>
+                      {this.props.photoIndex} of {this.props.galleryLength}{" "}
+                    </span>
+                  ) : null}
+                  {this.props.photoIndex && this.props.galleryLength ? (
+                    <span onClick={() => this.props.clickPicture("next")}>
+                      <img
+                        src={require("../assets/images/next-arrow.svg")}
+                        alt="next"
+                        className="index-arrow"
+                      />
+                    </span>
+                  ) : null}
+                </p>
+              </div>
+            ) : null}
           </figure>
         </Swipeable>
       </div>

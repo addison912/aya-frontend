@@ -7,7 +7,7 @@ class BackButton extends Component {
     return (
       <div
         className="back-button"
-        onClick={() => this.props.setCategory(this.props.category)}
+        onClick={() => this.props.categoryChangeHandler(this.props.category)}
       >
         <span>
           <img

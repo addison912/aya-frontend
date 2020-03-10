@@ -19,6 +19,7 @@ class Grid extends Component {
           <GalleryGrid
             gallery={this.props.gallery}
             photoClick={this.props.photoClick}
+            category={this.props.category}
           />
         )}
       </div>

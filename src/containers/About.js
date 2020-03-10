@@ -17,7 +17,7 @@ class About extends Component {
       <div className="main">
         <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
         <LeftNav
-          categoryClickHandler={this.categoryClickHandler}
+          categoryChangeHandler={this.categoryChangeHandler}
           selectedLink={"About"}
         />
         <div className="about-container">
