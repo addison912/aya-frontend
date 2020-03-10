@@ -34,7 +34,7 @@ class HamburgerMenu extends Component {
               // to={category.replace(/\s+/g, "")}
             >
               <Link
-                to={`/${category}`}
+                to={`/${category.replace(/\/?\s+/g, "-")}`}
                 onClick={() => this.props.categoryChangeHandler(category)}
                 className={
                   category == this.props.category
