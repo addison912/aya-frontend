@@ -283,9 +283,12 @@ a {
 }
 
 .single-pic {
+
   height: calc(100% - 32px);
+/*
   max-width: 100%;
   object-fit: contain;
+*/
   -webkit-animation: fadein 1s;
   -moz-animation: fadein 1s;
   -ms-animation: fadein 1s;
