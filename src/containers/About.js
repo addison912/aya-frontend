@@ -10,6 +10,7 @@ class About extends Component {
 
   componentDidMount() {
     this.props.setLocation("About");
+    console.log(this.props);
   }
 
   render() {

@@ -3,11 +3,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
-import { domain, categories } from "../config/constants";
+import { categories } from "../config/constants";
 import Links from "./Links";
-import LayoutIcons from "./LayoutIcons";
-
-// require("../assets/images/grid.png")
 
 class LeftNav extends Component {
   state = {

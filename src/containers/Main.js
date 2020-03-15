@@ -5,23 +5,13 @@ import Gallery from "../components/Gallery";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
-import BackButton from "../components/BackButton";
-import LayoutIcons from "../components/BackButton";
-import {
-  Location,
-  LocationProvider,
-  Router,
-  createHistory
-} from "@reach/router";
-import axios from "axios";
-import { domain } from "../config/constants";
 import TopNav from "../components/TopNav";
 
 class Main extends Component {
   componentDidMount() {
-    if (this.props.cat) {
-      this.props.categoryChangeHandler(this.props.cat);
-    } else if (!this.props.cat) {
+    if (this.props.category) {
+      this.props.categoryChangeHandler(this.props.category);
+    } else if (!this.props.category) {
       this.props.categoryChangeHandler("Home");
     }
     console.log(this.props);
@@ -38,13 +28,13 @@ class Main extends Component {
           layout={this.props.layout}
           toggleGalleryLayout={this.props.toggleGalleryLayout}
           showToggle={this.props.view == "gallery"}
-          category={this.props.cat || this.props.category}
+          category={this.props.category}
         />
         {this.props.view == "gallery" ? (
           <TopNav
             view={this.props.view}
             galleries={this.props.galleries}
-            category={this.props.cat || this.props.category}
+            category={this.props.category}
             categoryChangeHandler={this.props.categoryChangeHandler}
             layout={this.props.layout}
             toggleGalleryLayout={this.props.toggleGalleryLayout}

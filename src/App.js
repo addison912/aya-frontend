@@ -1,16 +1,15 @@
 import React from "react";
-import {
-  createHistory,
-  LocationProvider,
-  Router,
-  navigate
-} from "@reach/router";
-import mainContext from "./mainContext";
+import { createHistory, LocationProvider, Router } from "@reach/router";
+// import mainContext from "./mainContext";
 import { categories } from "./config/constants";
-import createHashSource from "hash-source";
+import { createHashSource } from "reach-router-hash-history";
 
-let source = createHashSource();
-let history = createHistory(source);
+const history = createHistory(createHashSource());
+
+// import createHashSource from "hash-source";
+
+// let source = createHashSource();
+// let history = createHistory(source);
 // let history = createHistory(window);
 // let source = createMemorySource("/");
 // let history = createHistory(source);
@@ -58,13 +57,6 @@ class App extends React.Component {
 
   setGalleryLength = () => {
     this.setState({ galleryLength: this.state.gallery.photos.length });
-  };
-
-  setCategory = category => {
-    this.setState({ category });
-    this.getGalleries(category);
-    this.setState({ hamburgerMenu: false });
-    this.setState({ mobileInfo: false });
   };
 
   galleryClick = e => {
@@ -275,35 +267,18 @@ class App extends React.Component {
   render() {
     return (
       <LocationProvider history={history}>
-        <div className="App" path="/">
-          <Router
-            className={
-              this.state.hamburgerMenu || this.state.mobileInfo
-                ? "router background-blur"
-                : "router unblur"
-            }
-          >
-            <About
-              path="/about"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <News
-              path="/news"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <Shop
-              path="/shop"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
+        <Router
+          className={
+            this.state.hamburgerMenu || this.state.mobileInfo
+              ? "router background-blur"
+              : "router unblur"
+          }
+        >
+          {categories.map(category => (
             <Main
-              path="/"
-              setCategory={this.setCategory}
+              // path="/:cat"
+              key={category}
+              path={`/${category.replace(/\/?\s+/g, "-")}`}
               categoryChangeHandler={this.categoryChangeHandler}
               search={this.search}
               searchInput={this.state.searchInput}
@@ -312,7 +287,7 @@ class App extends React.Component {
               toggleGalleryLayout={this.toggleGalleryLayout}
               photo={this.state.photo}
               clickPicture={this.clickPicture}
-              category={this.state.category}
+              category={category}
               galleries={this.state.galleries} // don't forget to remove this
               getGalleries={this.getGalleries}
               view={this.state.view}
@@ -324,55 +299,69 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
               setLocation={this.setLocation}
             />
-            {categories.map(category => (
-              <Main
-                path="/:cat"
-                key={category}
-                // path={`/${category.replace(/\/?\s+/g, "-")}`}
-                categoryChangeHandler={this.categoryChangeHandler}
-                search={this.search}
-                searchInput={this.state.searchInput}
-                handleSearchInput={this.handleSearchInput}
-                layout={this.state.layout}
-                toggleGalleryLayout={this.toggleGalleryLayout}
-                photo={this.state.photo}
-                clickPicture={this.clickPicture}
-                category={category}
-                galleries={this.state.galleries} // don't forget to remove this
-                getGalleries={this.getGalleries}
-                view={this.state.view}
-                galleryLength={this.state.galleryLength}
-                photoIndex={this.state.photoIndex % this.state.galleryLength}
-                galleryClick={this.galleryClick}
-                gallery={this.state.gallery}
-                photoClick={this.photoClick}
-                handleLogoClick={this.handleLogoClick}
-                setLocation={this.setLocation}
-              />
-            ))}
-          </Router>
-          <Navbar
-            category={this.state.category}
-            layout={this.state.layout}
-            view={this.state.view}
-            toggleGalleryLayout={this.toggleGalleryLayout}
+          ))}
+          <About
+            path="/about"
             categoryChangeHandler={this.categoryChangeHandler}
-            toggleHamburgerMenu={this.toggleHamburgerMenu}
-            hamburgerMenu={this.state.hamburgerMenu}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
+          <News
+            path="/news"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
+          <Shop
+            path="/shop"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
+          <Main
+            path="/"
+            categoryChangeHandler={this.categoryChangeHandler}
             search={this.search}
-            handleSearchInput={this.handleSearchInput}
             searchInput={this.state.searchInput}
-            mobileInfo={this.state.mobileInfo}
-            toggleMobileInfo={this.toggleMobileInfo}
-            location={this.state.location}
-            galleries={this.state.galleries.length}
-          />
-          <MobileInfo
-            mobileInfo={this.state.mobileInfo}
-            toggleMobileInfo={this.toggleMobileInfo}
+            handleSearchInput={this.handleSearchInput}
+            layout={this.state.layout}
+            toggleGalleryLayout={this.toggleGalleryLayout}
             photo={this.state.photo}
+            clickPicture={this.clickPicture}
+            category={this.state.category}
+            galleries={this.state.galleries} // don't forget to remove this
+            getGalleries={this.getGalleries}
+            view={this.state.view}
+            galleryLength={this.state.galleryLength}
+            photoIndex={this.state.photoIndex % this.state.galleryLength}
+            galleryClick={this.galleryClick}
+            gallery={this.state.gallery}
+            photoClick={this.photoClick}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
           />
-        </div>
+        </Router>
+        <Navbar
+          category={this.state.category}
+          layout={this.state.layout}
+          view={this.state.view}
+          toggleGalleryLayout={this.toggleGalleryLayout}
+          categoryChangeHandler={this.categoryChangeHandler}
+          toggleHamburgerMenu={this.toggleHamburgerMenu}
+          hamburgerMenu={this.state.hamburgerMenu}
+          search={this.search}
+          handleSearchInput={this.handleSearchInput}
+          searchInput={this.state.searchInput}
+          mobileInfo={this.state.mobileInfo}
+          toggleMobileInfo={this.toggleMobileInfo}
+          container={this.state.location}
+          galleries={this.state.galleries.length}
+        />
+        <MobileInfo
+          mobileInfo={this.state.mobileInfo}
+          toggleMobileInfo={this.toggleMobileInfo}
+          photo={this.state.photo}
+        />
       </LocationProvider>
     );
   }

@@ -10,7 +10,7 @@ const mainContext = React.createContext({
   galleries: "",
   photo: "",
   layout: "",
-  setCategory() {},
+  // setCategory() {},
   categoryChangeHandler() {},
   search() {},
   handleSearchInput() {},
