@@ -7,11 +7,11 @@ import {
 } from "@reach/router";
 import mainContext from "./mainContext";
 import { categories } from "./config/constants";
-// import createHashSource from "hash-source";
+import createHashSource from "hash-source";
 
-// let source = createHashSource();
-// let history = createHistory(source);
-let history = createHistory(window);
+let source = createHashSource();
+let history = createHistory(source);
+// let history = createHistory(window);
 // let source = createMemorySource("/");
 // let history = createHistory(source);
 
@@ -116,7 +116,7 @@ class App extends React.Component {
 
   getGalleries = category => {
     this.setState({ category });
-    fetch(`${domain}/api/gallery/c/${category}`)
+    fetch(`${domain}/api/gallery/c/${category.replace(/[^\w\s]/gi, " ")}`)
       .then(res => {
         return res.json();
       })
@@ -326,8 +326,9 @@ class App extends React.Component {
             />
             {categories.map(category => (
               <Main
+                path="/:cat"
                 key={category}
-                path={`/${category.replace(/\/?\s+/g, "-")}`}
+                // path={`/${category.replace(/\/?\s+/g, "-")}`}
                 categoryChangeHandler={this.categoryChangeHandler}
                 search={this.search}
                 searchInput={this.state.searchInput}

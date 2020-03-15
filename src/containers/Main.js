@@ -19,8 +19,8 @@ import TopNav from "../components/TopNav";
 
 class Main extends Component {
   componentDidMount() {
-    if (this.props.category) {
-      this.props.categoryChangeHandler(this.props.category);
+    if (this.props.cat) {
+      this.props.categoryChangeHandler(this.props.cat);
     } else if (!this.props.cat) {
       this.props.categoryChangeHandler("Home");
     }
@@ -38,13 +38,13 @@ class Main extends Component {
           layout={this.props.layout}
           toggleGalleryLayout={this.props.toggleGalleryLayout}
           showToggle={this.props.view == "gallery"}
-          category={this.props.category}
+          category={this.props.cat || this.props.category}
         />
         {this.props.view == "gallery" ? (
           <TopNav
             view={this.props.view}
             galleries={this.props.galleries}
-            category={this.props.category}
+            category={this.props.cat || this.props.category}
             categoryChangeHandler={this.props.categoryChangeHandler}
             layout={this.props.layout}
             toggleGalleryLayout={this.props.toggleGalleryLayout}
@@ -63,7 +63,7 @@ class Main extends Component {
           <Gallery
             photo={this.props.photo}
             clickPicture={this.props.clickPicture}
-            category={this.props.category}
+            category={this.props.cat || this.props.category}
             galleries={this.props.galleries} // don't forget to remove this
             getGalleries={this.props.getGalleries}
             layout={this.props.layout}
