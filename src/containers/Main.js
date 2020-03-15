@@ -40,32 +40,17 @@ class Main extends Component {
           showToggle={this.props.view == "gallery"}
           category={this.props.category}
         />
-        <TopNav
-          view={this.props.view}
-          galleries={this.props.galleries}
-          category={this.props.category}
-          categoryChangeHandler={this.props.categoryChangeHandler}
-          layout={this.props.layout}
-          toggleGalleryLayout={this.props.toggleGalleryLayout}
-          showToggle={this.props.showToggle}
-        ></TopNav>
-
-        {/* {this.props.view == "gallery" && this.props.galleries > 1 ? (
-          <div
-            className="icon-wrapper"
-            onClick={() =>
-              this.props.categoryChangeHandler(this.props.category)
-            }
-          >
-            <img
-              src={require("../assets/images/back-nav.svg")}
-              alt="previous"
-              className="index-arrow"
-            />
-            <span>Back</span>
-          </div>
-        ) : null} */}
-
+        {this.props.view == "gallery" ? (
+          <TopNav
+            view={this.props.view}
+            galleries={this.props.galleries}
+            category={this.props.category}
+            categoryChangeHandler={this.props.categoryChangeHandler}
+            layout={this.props.layout}
+            toggleGalleryLayout={this.props.toggleGalleryLayout}
+            showToggle={this.props.showToggle}
+          ></TopNav>
+        ) : null}
         <Search
           className="search-component"
           search={this.props.search}
