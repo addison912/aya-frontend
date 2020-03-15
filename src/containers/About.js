@@ -23,7 +23,7 @@ class About extends Component {
         <div className="about-container">
           <img
             className="profile-pic"
-            src={require("../assets/images/profile-pic.png")}
+            src={require("../assets/images/profile-pic.jpg")}
             alt="Aya"
           />
           <div className="contact-info">

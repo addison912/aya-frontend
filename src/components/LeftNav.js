@@ -41,12 +41,6 @@ class LeftNav extends Component {
             ))}
           </ul>
           <Links selectedLink={this.props.selectedLink} />
-          {this.props.showToggle ? (
-            <LayoutIcons
-              layout={this.props.layout}
-              toggleGalleryLayout={this.props.toggleGalleryLayout}
-            />
-          ) : null}
         </div>
       </nav>
     );

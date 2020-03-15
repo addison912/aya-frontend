@@ -1,16 +1,21 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from "react";
 import Gallery from "../components/Gallery";
 import LeftNav from "../components/LeftNav";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
 import BackButton from "../components/BackButton";
+import LayoutIcons from "../components/BackButton";
 import {
   Location,
   LocationProvider,
   Router,
   createHistory
 } from "@reach/router";
-// import createHashSource from "hash-source";
+import axios from "axios";
+import { domain } from "../config/constants";
+import TopNav from "../components/TopNav";
 
 class Main extends Component {
   componentDidMount() {
@@ -19,8 +24,9 @@ class Main extends Component {
     } else if (!this.props.cat) {
       this.props.categoryChangeHandler("Home");
     }
-    // console.log(this.props);
+    console.log(this.props);
     this.props.setLocation("Main");
+    // axios.get(`${domain}/api/fail`);
     // this.props.toggleGalleryLayout("grid");
   }
   render() {
@@ -34,12 +40,31 @@ class Main extends Component {
           showToggle={this.props.view == "gallery"}
           category={this.props.category}
         />
-        {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
-          <BackButton
-            category={this.props.category}
-            categoryChangeHandler={this.props.categoryChangeHandler}
-          />
-        ) : null}
+        <TopNav
+          view={this.props.view}
+          galleries={this.props.galleries}
+          category={this.props.category}
+          categoryChangeHandler={this.props.categoryChangeHandler}
+          layout={this.props.layout}
+          toggleGalleryLayout={this.props.toggleGalleryLayout}
+          showToggle={this.props.showToggle}
+        ></TopNav>
+
+        {/* {this.props.view == "gallery" && this.props.galleries > 1 ? (
+          <div
+            className="icon-wrapper"
+            onClick={() =>
+              this.props.categoryChangeHandler(this.props.category)
+            }
+          >
+            <img
+              src={require("../assets/images/back-nav.svg")}
+              alt="previous"
+              className="index-arrow"
+            />
+            <span>Back</span>
+          </div>
+        ) : null} */}
 
         <Search
           className="search-component"
