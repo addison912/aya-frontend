@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import Gallery from "../components/Gallery";
 import LeftNav from "../components/LeftNav";
-import Logo from "../components/Logo";
+
 import Search from "../components/Search";
 import TopNav from "../components/TopNav";
 
@@ -22,15 +22,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav
-          categoryChangeHandler={this.props.categoryChangeHandler}
-          layout={this.props.layout}
-          toggleGalleryLayout={this.props.toggleGalleryLayout}
-          showToggle={this.props.view == "gallery"}
-          category={this.props.category}
-        />
-        {this.props.view == "gallery" ? (
+        {/* {this.props.view == "gallery" ? (
           <TopNav
             view={this.props.view}
             galleries={this.props.galleries}
@@ -46,7 +38,7 @@ class Main extends Component {
           search={this.props.search}
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
-        />
+        /> */}
 
         <div className="content">
           {/* <Router> */}

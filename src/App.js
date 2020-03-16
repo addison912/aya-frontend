@@ -3,18 +3,12 @@ import { createHistory, LocationProvider, Router } from "@reach/router";
 // import mainContext from "./mainContext";
 import { categories } from "./config/constants";
 import { createHashSource } from "reach-router-hash-history";
+import Logo from "./components/Logo";
+import Search from "./components/Search";
+import TopNav from "./components/TopNav";
 
 const history = createHistory(createHashSource());
 
-// import createHashSource from "hash-source";
-
-// let source = createHashSource();
-// let history = createHistory(source);
-// let history = createHistory(window);
-// let source = createMemorySource("/");
-// let history = createHistory(source);
-
-// import Header from "./components/Header";
 import Main from "./containers/Main";
 import About from "./containers/About";
 import News from "./containers/News";
@@ -22,8 +16,8 @@ import Shop from "./containers/Shop";
 import { domain } from "./config/constants";
 import Navbar from "./components/Navbar";
 import MobileInfo from "./components/MobileInfo";
-
-// import LeftNav from "./components/LeftNav";
+import LeftNav from "./components/LeftNav";
+import Test from "./containers/Test";
 
 class App extends React.Component {
   state = {
@@ -46,7 +40,8 @@ class App extends React.Component {
 
   toggleGalleryLayout = layout => {
     this.setState({
-      layout
+      layout,
+      mobileInfo: false
     });
   };
 
@@ -268,6 +263,7 @@ class App extends React.Component {
     return (
       <LocationProvider history={history}>
         <Router
+          path="/"
           className={
             this.state.hamburgerMenu || this.state.mobileInfo
               ? "router background-blur"
@@ -276,7 +272,6 @@ class App extends React.Component {
         >
           {categories.map(category => (
             <Main
-              // path="/:cat"
               key={category}
               path={`/${category.replace(/\/?\s+/g, "-")}`}
               categoryChangeHandler={this.categoryChangeHandler}
@@ -340,7 +335,13 @@ class App extends React.Component {
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
           />
+          <Test
+            path="/Test"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+          ></Test>
         </Router>
+        <Logo className="logo" handleLogoClick={this.handleLogoClick} />
         <Navbar
           category={this.state.category}
           layout={this.state.layout}
@@ -362,6 +363,33 @@ class App extends React.Component {
           toggleMobileInfo={this.toggleMobileInfo}
           photo={this.state.photo}
         />
+        <LeftNav
+          location={this.state.location}
+          view={this.state.view}
+          category={this.state.category}
+          layout={this.state.layout}
+          categoryChangeHandler={this.categoryChangeHandler}
+          toggleGalleryLayout={this.toggleGalleryLayout}
+        />
+        {this.state.view == "gallery" && this.state.location == "Main" ? (
+          <TopNav
+            view={this.state.view}
+            galleries={this.state.galleries}
+            category={this.state.category}
+            categoryChangeHandler={this.categoryChangeHandler}
+            layout={this.state.layout}
+            toggleGalleryLayout={this.toggleGalleryLayout}
+          ></TopNav>
+        ) : null}
+        {this.state.location == "Main" ? (
+          <Search
+            className="search-component"
+            search={this.search}
+            searchInput={this.state.searchInput}
+            handleSearchInput={this.handleSearchInput}
+          />
+        ) : null}
+        {this.state.location == "About" ? <div className="spacer"></div> : null}
       </LocationProvider>
     );
   }

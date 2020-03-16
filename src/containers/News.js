@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
-import LeftNav from "../components/LeftNav";
-import Logo from "../components/Logo";
 import BlogPost from "../components/BlogPost";
 
 class News extends Component {
@@ -25,12 +23,6 @@ class News extends Component {
   render() {
     return (
       <div className="main">
-        <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav
-          categoryChangeHandler={this.categoryChangeHandler}
-          selectedLink={"News"}
-        />
-
         {/* {this.state.news.map((post, i) => {
             <BlogPost key={i} />;
             <span>-</span>;

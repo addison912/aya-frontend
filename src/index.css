@@ -30,7 +30,7 @@
   background: var(--blue);
 }
 
-nav {
+#left-nav {
   grid-area: nav;
 }
 
@@ -150,7 +150,7 @@ body {
   margin: 0;
 }
 
-.main {
+#root {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 160px auto auto;
@@ -201,6 +201,10 @@ ul {
   border-radius: 4px;
 }
 
+.spacer {
+  height: 100%;
+}
+
 @media only screen and (max-width: 560px) {
   .content img {
     border-radius: 0;
@@ -226,21 +230,24 @@ a {
 }
 
 @media only screen and (max-width: 960px) {
-  .main {
+  #root {
     padding: 0 56px;
     grid-template-columns: 1fr 1.6fr;
   }
 }
 @media only screen and (max-width: 760px) {
-  .main {
+  #root {
     padding: 0 32px;
   }
 }
 @media only screen and (max-width: 560px) {
-  .main {
-    grid-template-columns: 1fr 1fr;
+  #root {
+    grid-template-columns: 1fr;
     grid-template-rows: 87px auto 87px;
-    grid-template-areas: "header header" "content content" "nav nav";
+    grid-template-areas:
+      "header"
+      "content"
+      "nav";
     grid-column-gap: 0;
     grid-row-gap: 0;
     padding: 0;
@@ -468,7 +475,6 @@ a {
   grid-template-areas: "profile about about" "contact press press" "clients clients clients";
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-  height: auto;
   grid-area: content;
   margin-bottom: 128px;
 }
@@ -711,6 +717,8 @@ figcaption h1 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  grid-column: 2/2;
+  grid-row: 1/1;
 }
 .search-container img:hover {
   cursor: pointer;
@@ -802,6 +810,7 @@ figcaption h1 {
     width: 100vw;
     position: fixed;
     bottom: 0;
+    left: 0;
     z-index: 4;
   }
 
@@ -1036,14 +1045,14 @@ time {
     justify-self: center;
   }
 }
-nav .gallery-toggle {
+/* nav .gallery-toggle {
   grid-area: nav;
   position: relative;
   bottom: 0;
   width: 96px;
   display: flex;
   align-items: flex-end;
-}
+} */
 
 .gallery-toggle {
   height: 100%;
