@@ -23,17 +23,11 @@ class News extends Component {
   render() {
     return (
       <div className="main">
-        {/* {this.state.news.map((post, i) => {
-            <BlogPost key={i} />;
-            <span>-</span>;
-          })} */}
-
         <div className="content">
           {this.state.news.map((post, i) => (
             <BlogPost key={i} post={post} />
           ))}
         </div>
-
         {/* <div className="content">
           <div className="page-container">
             <h1>News, Coming Soon!</h1>

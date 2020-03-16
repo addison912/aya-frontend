@@ -2,10 +2,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from "react";
 import Gallery from "../components/Gallery";
-import LeftNav from "../components/LeftNav";
-
-import Search from "../components/Search";
-import TopNav from "../components/TopNav";
 
 class Main extends Component {
   componentDidMount() {
@@ -22,26 +18,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        {/* {this.props.view == "gallery" ? (
-          <TopNav
-            view={this.props.view}
-            galleries={this.props.galleries}
-            category={this.props.category}
-            categoryChangeHandler={this.props.categoryChangeHandler}
-            layout={this.props.layout}
-            toggleGalleryLayout={this.props.toggleGalleryLayout}
-            showToggle={this.props.showToggle}
-          ></TopNav>
-        ) : null}
-        <Search
-          className="search-component"
-          search={this.props.search}
-          searchInput={this.props.searchInput}
-          handleSearchInput={this.props.handleSearchInput}
-        /> */}
-
         <div className="content">
-          {/* <Router> */}
           <Gallery
             photo={this.props.photo}
             clickPicture={this.props.clickPicture}
@@ -57,8 +34,6 @@ class Main extends Component {
             photoClick={this.props.photoClick}
             toggleGalleryLayout={this.props.toggleGalleryLayout}
           />
-          {/* <Gallery path={"/:gallery"} /> */}
-          {/* </Router> */}
         </div>
       </div>
     );

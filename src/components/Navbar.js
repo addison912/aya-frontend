@@ -28,7 +28,7 @@ class Navbar extends Component {
           id="navbar"
           className={this.props.container != "Main" ? "hide-icons" : null}
         >
-          <div className="navbar-icons">
+          <div className="navbar-icons no-highlight">
             {this.props.view == "gallery" && this.props.galleries > 1 ? (
               <div
                 className="icon-wrapper"

@@ -334,6 +334,9 @@ a {
   width: 50%;
   height: calc(100% - 56px);
   padding: 48px 0;
+}
+
+.no-highlight {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -831,6 +834,13 @@ figcaption h1 {
 }
 .navbar-icons .icon-wrapper {
   margin-right: 24px;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .navbar-icons .icon-wrapper :hover {
   cursor: pointer;

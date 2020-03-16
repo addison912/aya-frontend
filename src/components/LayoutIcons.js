@@ -6,7 +6,7 @@ import React, { Component } from "react";
 class LayoutIcons extends Component {
   render() {
     return (
-      <div className="gallery-toggle">
+      <div className="gallery-toggle no-highlight">
         {window.location.pathname == "?" ||
         !!window.location.pathname.indexOf("gallery") ? (
           <div className="layout-icon-container">

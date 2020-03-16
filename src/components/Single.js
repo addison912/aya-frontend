@@ -59,13 +59,13 @@ class Single extends Component {
             this.props.clickPicture(e.dir);
           }}
         >
-          <div className="left-overlay">
+          <div className="left-overlay no-highlight">
             <div
               onClick={() => this.props.clickPicture("prev")}
               role="button"
             ></div>
           </div>
-          <div className="right-overlay">
+          <div className="right-overlay no-highlight">
             <div
               onClick={() => this.props.clickPicture("next")}
               role="button"
