@@ -11,9 +11,14 @@ class Single extends Component {
     let currentCursorPos;
     let cursorEl = document.querySelector("#cursor");
     let cursorImageEl = document.querySelector("#cursor > img");
+    let routerY = document.querySelector(".router").offsetTop;
+    let routerX = document.querySelector(".router").offsetLeft;
 
     window.addEventListener("mousemove", event => {
-      currentCursorPos = { x: event.clientX, y: event.clientY };
+      currentCursorPos = {
+        x: event.clientX - routerX,
+        y: event.clientY - routerY
+      };
       if (
         document.querySelector(".image-container>div>div:hover") &&
         window.innerWidth > 560

@@ -19,7 +19,6 @@ class About extends Component {
   };
   componentDidMount() {
     this.props.setLocation("About");
-    window.scrollTo({ top: 0 });
     this.getAbout();
   }
   render() {
