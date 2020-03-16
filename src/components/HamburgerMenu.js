@@ -38,8 +38,8 @@ class HamburgerMenu extends Component {
                 onClick={() => this.props.categoryChangeHandler(category)}
                 className={
                   category == this.props.category
-                    ? "category-link category-link-selected"
-                    : "category-link"
+                    ? "no-highlight category-link category-link-selected"
+                    : "no-highlight category-link"
                 }
               >
                 {category}{" "}

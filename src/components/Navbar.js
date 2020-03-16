@@ -78,7 +78,9 @@ class Navbar extends Component {
           </div>
           <div className="icon-wrapper">
             <div
-              className={this.props.hamburgerMenu ? "open" : null}
+              className={
+                this.props.hamburgerMenu ? "no-highlight open" : "no-highlight"
+              }
               id="nav-icon"
               onClick={this.props.toggleHamburgerMenu}
             >
