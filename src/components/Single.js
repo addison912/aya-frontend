@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
-import { useSwipeable, Swipeable } from "react-swipeable";
+import { Swipeable } from "react-swipeable";
 
 class Single extends Component {
   initializeCursor = () => {

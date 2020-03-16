@@ -6,7 +6,7 @@ class TopNav extends Component {
   render() {
     return (
       <div className="topNav-icons">
-        {this.props.galleries.length > 1 ? (
+        {this.props.view == "gallery" && this.props.galleries.length > 1 ? (
           <BackButton
             category={this.props.category}
             categoryChangeHandler={this.props.categoryChangeHandler}

@@ -389,7 +389,6 @@ class App extends React.Component {
             handleSearchInput={this.handleSearchInput}
           />
         ) : null}
-        {this.state.location == "About" ? <div className="spacer"></div> : null}
       </LocationProvider>
     );
   }

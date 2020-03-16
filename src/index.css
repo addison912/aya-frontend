@@ -201,10 +201,6 @@ ul {
   border-radius: 4px;
 }
 
-.spacer {
-  height: 100%;
-}
-
 @media only screen and (max-width: 560px) {
   .content img {
     border-radius: 0;
@@ -748,6 +744,10 @@ figcaption h1 {
   cursor: text;
 }
 
+.search-wrapper button:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 560px) {
   .search-wrapper {
     width: 100%;
@@ -1031,28 +1031,13 @@ time {
   padding: 0 8px;
   width: 145px;
   white-space: nowrap;
-  /*
-  width: 180px;
-  height: 16px;
-  background: url("http://funky.haus/assets/logo-aya_brackett.svg") center
-    center/contain no-repeat;
-  color: transparent; */
 }
 
 @media only screen and (max-width: 560px) {
   .logo {
-    /* width: 100%; */
     justify-self: center;
   }
 }
-/* nav .gallery-toggle {
-  grid-area: nav;
-  position: relative;
-  bottom: 0;
-  width: 96px;
-  display: flex;
-  align-items: flex-end;
-} */
 
 .gallery-toggle {
   height: 100%;
@@ -1064,7 +1049,6 @@ time {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  /* margin-top: 64px; */
 }
 
 #navbar .layout-icon-container {
@@ -1234,7 +1218,6 @@ time {
   height: 100%;
   display: flex;
   align-items: center;
-  z-index: 1;
   grid-column: 2/2;
   grid-row: 1/1;
 }
