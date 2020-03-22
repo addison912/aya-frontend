@@ -341,7 +341,7 @@ class App extends React.Component {
             handleLogoClick={this.handleLogoClick}
           ></Test>
         </Router>
-        <Logo className="logo" handleLogoClick={this.handleLogoClick} />
+        <Logo handleLogoClick={this.handleLogoClick} />
         <Navbar
           category={this.state.category}
           layout={this.state.layout}
