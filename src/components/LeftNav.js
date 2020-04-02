@@ -2,22 +2,14 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
-import { Router, Link } from "@reach/router";
-import { domain, categories } from "../config/constants";
+import { Link } from "@reach/router";
+import { categories } from "../config/constants";
 import Links from "./Links";
-import LayoutIcons from "./LayoutIcons";
-
-// require("../assets/images/grid.png")
 
 class LeftNav extends Component {
-  state = {
-    message: "",
-    galleries: []
-  };
-
   render() {
     return (
-      <nav>
+      <nav id="left-nav">
         <div className="nav-wrapper">
           <ul className="projects">
             {categories.map(category => (
@@ -27,9 +19,8 @@ class LeftNav extends Component {
                 // to={category.replace(/\s+/g, "")}
               >
                 <Link
-                  to={`/${category}`}
-                  data={category}
-                  onClick={this.props.categoryClickHandler}
+                  to={`/${category.replace(/\/?\s+/g, "-")}`}
+                  onClick={() => this.props.categoryChangeHandler(category)}
                   className={
                     category == this.props.category
                       ? "category-link category-link-selected"
@@ -41,13 +32,7 @@ class LeftNav extends Component {
               </li>
             ))}
           </ul>
-          <Links selectedLink={this.props.selectedLink} />
-          {this.props.showToggle ? (
-            <LayoutIcons
-              layout={this.props.layout}
-              toggleGalleryLayout={this.props.toggleGalleryLayout}
-            />
-          ) : null}
+          <Links selectedLink={this.props.location} />
         </div>
       </nav>
     );

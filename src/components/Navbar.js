@@ -16,22 +16,25 @@ class Navbar extends Component {
     return (
       <div>
         <HamburgerMenu
-          categoryClickHandler={this.props.categoryClickHandler}
+          categoryChangeHandler={this.props.categoryChangeHandler}
           hamburgerMenu={this.props.hamburgerMenu}
           toggleHamburgerMenu={this.props.toggleHamburgerMenu}
           search={this.props.search}
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
+          category={this.props.category}
         />
         <div
           id="navbar"
-          className={this.props.location != "Main" ? "hide-icons" : null}
+          className={this.props.container != "Main" ? "hide-icons" : null}
         >
-          <div className="navbar-icons">
+          <div className="navbar-icons no-highlight">
             {this.props.view == "gallery" && this.props.galleries > 1 ? (
               <div
                 className="icon-wrapper"
-                onClick={() => this.props.setCategory(this.props.category)}
+                onClick={() =>
+                  this.props.categoryChangeHandler(this.props.category)
+                }
               >
                 <img
                   src={require("../assets/images/back-nav.svg")}
@@ -75,14 +78,15 @@ class Navbar extends Component {
           </div>
           <div className="icon-wrapper">
             <div
-              className={this.props.hamburgerMenu ? "open" : null}
+              className={
+                this.props.hamburgerMenu ? "no-highlight open" : "no-highlight"
+              }
               id="nav-icon"
               onClick={this.props.toggleHamburgerMenu}
             >
               <span></span>
               <span></span>
               <span></span>
-              
             </div>
             <span>Menu</span>
           </div>

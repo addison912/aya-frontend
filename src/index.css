@@ -12,18 +12,13 @@
   --dark: #323844;
   --blue: blue;
   --light-gray: #eee;
-  --shadow: 0 1px 1px rgba(0, 0, 0, 0.02),
-      0 3px 3px rgba(0, 0, 0, 0.02),
-      0 6px 5px rgba(0, 0, 0, 0.03),
-      0 11px 9px rgba(0, 0, 0, 0.03),
-      0 20px 16px rgba(0, 0, 0, 0.03),
-      0 40px 30px rgba(0, 0, 0, 0.04);
-  --shadow-before: 0 2px 2px rgba(0, 0, 0, 0),
-      0 6px 5px rgba(0, 0, 0, 0),
-      0 12px 10px rgba(0, 0, 0, 0),
-      0 22px 18px rgba(0, 0, 0, 0),
-      0 40px 33px rgba(0, 0, 0, 0),
-      0 80px 60px rgba(0, 0, 0, 0);
+  --row-height: 87px;
+  --shadow: 0 1px 1px rgba(0, 0, 0, 0.02), 0 3px 3px rgba(0, 0, 0, 0.02),
+    0 6px 5px rgba(0, 0, 0, 0.03), 0 11px 9px rgba(0, 0, 0, 0.03),
+    0 20px 16px rgba(0, 0, 0, 0.03), 0 40px 30px rgba(0, 0, 0, 0.04);
+  --shadow-before: 0 2px 2px rgba(0, 0, 0, 0), 0 6px 5px rgba(0, 0, 0, 0),
+    0 12px 10px rgba(0, 0, 0, 0), 0 22px 18px rgba(0, 0, 0, 0),
+    0 40px 33px rgba(0, 0, 0, 0), 0 80px 60px rgba(0, 0, 0, 0);
 }
 
 /* Highlight */
@@ -36,7 +31,7 @@
   background: var(--blue);
 }
 
-nav {
+#left-nav {
   grid-area: nav;
 }
 
@@ -156,7 +151,7 @@ body {
   margin: 0;
 }
 
-.main {
+#root {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 160px auto auto;
@@ -231,22 +226,36 @@ a {
   text-align: center;
 }
 
-@media only screen and (max-width: 960px) {
+.main {
+  grid-area: content;
+}
+
+@media only screen and (max-width: 560px) {
   .main {
+    top: 87px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #root {
     padding: 0 56px;
     grid-template-columns: 1fr 1.6fr;
   }
 }
 @media only screen and (max-width: 760px) {
-  .main {
+  #root {
     padding: 0 32px;
   }
 }
 @media only screen and (max-width: 560px) {
-  .main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 87px auto 87px;
-    grid-template-areas: "header header" "content content" "nav nav";
+  #root {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--row-height) auto var(--row-height);
+    grid-template-areas:
+      "header"
+      "content"
+      "nav";
     grid-column-gap: 0;
     grid-row-gap: 0;
     padding: 0;
@@ -340,6 +349,16 @@ a {
   width: 50%;
   height: calc(100% - 56px);
   padding: 48px 0;
+}
+
+.no-highlight {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .left-overlay > div,
@@ -470,7 +489,6 @@ a {
   grid-template-areas: "profile about about" "contact press press" "clients clients clients";
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-  height: auto;
   grid-area: content;
   margin-bottom: 128px;
 }
@@ -553,6 +571,10 @@ a {
   flex-direction: column; */
 }
 
+.grid-image.book-image:nth-of-type(2) {
+  width: 66.67%;
+}
+
 .grid-image img {
   height: 80%;
   width: 100%;
@@ -581,8 +603,6 @@ figure {
   height: 70vh;
 }
 
-
-
 figure img {
   /* display: inline-block;
   height: 240px;
@@ -600,20 +620,19 @@ figure img {
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   mix-blend-mode: multiply; /* fixes shadow transition overlap issue */
-    
 }
 
 figure img::after {
-    box-shadow: var(--shadow);
-    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--shadow);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 figure img:hover {
   cursor: pointer;
-    box-shadow: var(--shadow);
-    -webkit-transform: translateY(-1px);
-    transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 figcaption,
@@ -659,7 +678,7 @@ figcaption h1 {
   }
 
   .grid-image:nth-of-type(3n) {
-    width: 33.34%;
+    width: 33.33%;
   }
 
   .grid-image img {
@@ -712,6 +731,8 @@ figcaption h1 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  grid-column: 2/2;
+  grid-row: 1/1;
 }
 .search-container img:hover {
   cursor: pointer;
@@ -741,23 +762,20 @@ figcaption h1 {
   cursor: text;
 }
 
+.search-wrapper button:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 560px) {
-    .search-wrapper {
-        width: 100%;
-    }
+  .search-wrapper {
+    width: 100%;
+  }
 }
 
 .search-component {
   display: flex;
   align-items: flex-end;
   width: 100%;
-}
-
-.main .search-container {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
 }
 
 @media only screen and (max-width: 560px) {
@@ -803,6 +821,7 @@ figcaption h1 {
     width: 100vw;
     position: fixed;
     bottom: 0;
+    left: 0;
     z-index: 4;
   }
 
@@ -823,6 +842,13 @@ figcaption h1 {
 }
 .navbar-icons .icon-wrapper {
   margin-right: 24px;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .navbar-icons .icon-wrapper :hover {
   cursor: pointer;
@@ -844,7 +870,7 @@ figcaption h1 {
   align-items: flex-start;
   position: fixed;
   left: 0;
-  height: fit-content;
+  height: auto;
   width: 100vw;
 }
 .hamburger-menu .projects {
@@ -946,32 +972,6 @@ figcaption h1 {
     display: none;
   }
 }
-.back-button {
-  font-family: var(--ui-font), sans-serif;
-  text-transform: uppercase;
-  font-size: 8px;
-  letter-spacing: 0.15em;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-  grid-column: 2/2;
-  grid-row: 1/1;
-}
-.back-button span:hover {
-  cursor: pointer;
-}
-.back-button .index-arrow {
-  height: 8px;
-  width: auto;
-  vertical-align: -1px;
-}
-
-@media only screen and (max-width: 560px) {
-  .back-button {
-    display: none;
-  }
-}
 
 /*/// ↓ News ↓ ///*/
 
@@ -1037,8 +1037,12 @@ time {
 
 /*/// ↑ News ↑ ///*/
 
-.logo {
+.logo-wrapper {
   grid-area: header;
+  display: flex;
+}
+
+.logo {
   align-self: center;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1049,27 +1053,18 @@ time {
   padding: 0 8px;
   width: 145px;
   white-space: nowrap;
-  /*
-  width: 180px;
-  height: 16px;
-  background: url("http://funky.haus/assets/logo-aya_brackett.svg") center
-    center/contain no-repeat;
-  color: transparent; */
 }
 
 @media only screen and (max-width: 560px) {
-  .logo {
-    /* width: 100%; */
-    justify-self: center;
+  .logo-wrapper {
+    justify-content: center;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--row-height);
   }
-}
-nav .gallery-toggle {
-  grid-area: nav;
-  position: relative;
-  bottom: 0;
-  width: 96px;
-  display: flex;
-  align-items: flex-end;
 }
 
 .gallery-toggle {
@@ -1082,7 +1077,6 @@ nav .gallery-toggle {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 64px;
 }
 
 #navbar .layout-icon-container {
@@ -1234,4 +1228,39 @@ nav .gallery-toggle {
 .image-container * {
   cursor: inherit;
 }
+
+@media only screen and (max-width: 560px) {
+  #cursor {
+    display: none;
+  }
+  .image-container > div {
+    cursor: pointer;
+  }
+}
+
 /*/// ↑ Gallery Cursor ↑ ///*/
+/*/// ↓ TopNav ↓ ///*/
+
+.topNav-icons {
+  text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  grid-column: 2/2;
+  grid-row: 1/1;
+}
+.topNav-icons span:hover {
+  cursor: pointer;
+}
+
+.topNav-icons .icon-wrapper {
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 560px) {
+  .topNav-icons {
+    display: none;
+  }
+}
+
+/*/// ↑ TopNav ↑ ///*/

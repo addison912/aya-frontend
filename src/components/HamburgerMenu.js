@@ -34,10 +34,13 @@ class HamburgerMenu extends Component {
               // to={category.replace(/\s+/g, "")}
             >
               <Link
-                to={`/${category}`}
-                data={category}
-                onClick={this.props.categoryClickHandler}
-                className="category-link"
+                to={`/${category.replace(/\/?\s+/g, "-")}`}
+                onClick={() => this.props.categoryChangeHandler(category)}
+                className={
+                  category == this.props.category
+                    ? "no-highlight category-link category-link-selected"
+                    : "no-highlight category-link"
+                }
               >
                 {category}{" "}
               </Link>

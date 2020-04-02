@@ -27,11 +27,6 @@ class Shop extends Component {
   render() {
     return (
       <div className="main">
-        <Logo className="logo" handleLogoClick={this.props.handleLogoClick} />
-        <LeftNav
-          categoryClickHandler={this.categoryClickHandler}
-          selectedLink={"Shop"}
-        />
         <div className="content">
           <div className="page-container">
             <h1>Shop, Coming Soon!</h1>

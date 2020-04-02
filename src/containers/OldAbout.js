@@ -1,26 +1,10 @@
 import React, { Component } from "react";
-import { domain } from "../config/constants";
-import ClientList from "../components/ClientList";
 
 class About extends Component {
-  state = {
-    about: {},
-    clients: []
-  };
-
-  getAbout = () => {
-    fetch(`${domain}/api/about/all`)
-      .then(res => {
-        return res.json();
-      })
-      .then(about => {
-        this.setState({ about, clients: about.clients ? about.clients : null });
-      });
-  };
   componentDidMount() {
     this.props.setLocation("About");
-    this.getAbout();
   }
+
   render() {
     return (
       <div className="main">
@@ -58,6 +42,7 @@ class About extends Component {
               unusual and inspiring.
             </p>
           </div>
+
           <div className="press">
             <h1>Press</h1>
             <ul>
@@ -84,7 +69,79 @@ class About extends Component {
               <li>30 Top Photographers, PDN, 2008</li>
             </ul>
           </div>
-          <ClientList clients={this.state.clients} />
+
+          <div className="clients">
+            <h1>Clients</h1>
+            <div className="client-list">
+              <ul>
+                <li>EDITORIAL</li>
+                <li>Anthology</li>
+                <li>Afar</li>
+                <li>Bon Appetit</li>
+                <li>Brutus/Casa Brutus</li>
+                <li>Budget Travel</li>
+                <li>Cherry Bombe</li>
+                <li>Diner’s Journal</li>
+                <li>Dossier</li>
+                <li>Dwell</li>
+                <li>Elle &amp; Elle å Table</li>
+                <li>Gastronomica</li>
+                <li>Martha Stewart</li>
+                <li>Men’s Health</li>
+                <li>Metropolis</li>
+                <li>Monocle</li>
+                <li>More</li>
+                <li>New York Times Magazine</li>
+                <li>O The Oprah Magazine</li>
+                <li>PDN</li>
+                <li>Real Simple</li>
+                <li>San Francisco Magazine</li>
+                <li>Sunset</li>
+                <li>Telegraph Sunday Magazine</li>
+                <li>Travel + Leisure</li>
+                <li>Vogue Japan / Australia</li>
+                <li>Wall Street Journal Magazine</li>
+                <li>World of Interiors</li>
+              </ul>
+              <ul>
+                <li>ADVERTISING</li>
+                <li>Apple</li>
+                <li>Airbnb</li>
+                <li>Chez Panisse</li>
+                <li>Dosa Clothing</li>
+                <li>Equal Exchange</li>
+                <li>Fairmont Hotels</li>
+                <li>Landscape Products</li>
+                <li>Method</li>
+                <li>Moderntwist</li>
+                <li>Nest Labs Inc</li>
+                <li>Orange Chef</li>
+                <li>Rintaro Restaurant</li>
+                <li>Ritz Carlton</li>
+                <li>Quince Restaurant</li>
+                <li>Sightglass Coffee</li>
+                <li>Slanted Door Restaurant</li>
+                <li>Slow Food USA</li>
+                <li>Small Trade Company</li>
+                <li>Susan/Grocery Store</li>
+                <li>Urban Research Clothing</li>
+              </ul>
+              <ul>
+                <li>PUBLISHERS</li>
+                <li>Artisan Books</li>
+                <li>American Express Publishing</li>
+                <li>Chelsea Green Publishing</li>
+                <li>Clarkson Potter</li>
+                <li>Gestalten</li>
+                <li>Gibbs Smith Publishing</li>
+                <li>Harry Abrams Inc.</li>
+                <li>Houghton Mifflin Harcourt</li>
+                <li>Rodale Publishing</li>
+                <li>Taunton Press</li>
+                <li>Ten Speed Press</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     );

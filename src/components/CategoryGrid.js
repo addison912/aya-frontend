@@ -8,7 +8,7 @@ import ImageSpacer from "./ImageSpacer";
 
 class CategoryGrid extends Component {
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
   render() {
     return (

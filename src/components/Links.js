@@ -14,7 +14,9 @@ class Links extends Component {
               <span
                 onClick={this.props.toggleHamburgerMenu}
                 className={
-                  this.props.selectedLink == "About" ? "selected-link" : null
+                  this.props.selectedLink == "About"
+                    ? "selected-link no-highlight"
+                    : "no-highlight"
                 }
               >
                 About
@@ -29,7 +31,9 @@ class Links extends Component {
               <span
                 onClick={this.props.toggleHamburgerMenu}
                 className={
-                  this.props.selectedLink == "News" ? "selected-link" : null
+                  this.props.selectedLink == "News"
+                    ? "selected-link no-highlight"
+                    : "no-highlight"
                 }
               >
                 News
@@ -41,7 +45,9 @@ class Links extends Component {
               <span
                 onClick={this.props.toggleHamburgerMenu}
                 className={
-                  this.props.selectedLink == "Shop" ? "selected-link" : null
+                  this.props.selectedLink == "Shop"
+                    ? "selected-link no-highlight"
+                    : "no-highlight"
                 }
               >
                 Shop

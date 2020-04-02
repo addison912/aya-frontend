@@ -1,11 +1,14 @@
 import React from "react";
 import { createHistory, LocationProvider, Router } from "@reach/router";
-import createHashSource from "hash-source";
+// import mainContext from "./mainContext";
+import { categories } from "./config/constants";
+import { createHashSource } from "reach-router-hash-history";
+import Logo from "./components/Logo";
+import Search from "./components/Search";
+import TopNav from "./components/TopNav";
 
-let source = createHashSource();
-let history = createHistory(source);
+const history = createHistory(createHashSource());
 
-// import Header from "./components/Header";
 import Main from "./containers/Main";
 import About from "./containers/About";
 import News from "./containers/News";
@@ -13,14 +16,14 @@ import Shop from "./containers/Shop";
 import { domain } from "./config/constants";
 import Navbar from "./components/Navbar";
 import MobileInfo from "./components/MobileInfo";
-
-// import LeftNav from "./components/LeftNav";
+import LeftNav from "./components/LeftNav";
+import Test from "./containers/Test";
 
 class App extends React.Component {
   state = {
     photo: {},
     message: "",
-    category: "Home",
+    category: "",
     gallery: {},
     galleries: [],
     layout: "single",
@@ -37,7 +40,8 @@ class App extends React.Component {
 
   toggleGalleryLayout = layout => {
     this.setState({
-      layout
+      layout,
+      mobileInfo: false
     });
   };
 
@@ -48,13 +52,6 @@ class App extends React.Component {
 
   setGalleryLength = () => {
     this.setState({ galleryLength: this.state.gallery.photos.length });
-  };
-
-  setCategory = category => {
-    this.setState({ category });
-    this.getGalleries(category);
-    this.setState({ hamburgerMenu: false });
-    this.setState({ mobileInfo: false });
   };
 
   galleryClick = e => {
@@ -76,21 +73,27 @@ class App extends React.Component {
     this.setState({ galleryLength: this.state.galleries[i].photos.length });
   };
 
-  categoryClickHandler = e => {
-    this.setState({ category: e.target.getAttribute("data") });
-    this.getGalleries(e.target.getAttribute("data"));
+  categoryChangeHandler = category => {
+    this.setState({
+      category,
+      gallery: {},
+      galleries: [],
+      photoIndex: 0,
+      galleryIndex: 0,
+      galleryLength: 0
+    });
+    this.getGalleries(category);
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth"
     });
-    if (this.state.hamburgerMenu == true) {
-      this.setState({ hamburgerMenu: false });
-    }
+    this.setState({ hamburgerMenu: false, mobileInfo: false, layout: "grid" });
   };
 
   handleLogoClick = () => {
-    this.setCategory("Home");
+    this.categoryChangeHandler("Home");
+    this.setState({ layout: "grid" });
     if (document.querySelector(".category-link-selected")) {
       document
         .querySelector(".category-link-selected")
@@ -100,8 +103,7 @@ class App extends React.Component {
 
   getGalleries = category => {
     this.setState({ category });
-
-    fetch(`${domain}/api/gallery/c/${category}`)
+    fetch(`${domain}/api/gallery/c/${category.replace(/[^\w\s]/gi, " ")}`)
       .then(res => {
         return res.json();
       })
@@ -131,7 +133,7 @@ class App extends React.Component {
           this.setState({
             view: "gallery",
             galleryLength: gallery.photos.length,
-            // gallery: galleries[0]
+            layout: "grid",
             gallery
           });
           this.setPictureUrl();
@@ -147,6 +149,12 @@ class App extends React.Component {
       if (this.state.hamburgerMenu == true) {
         this.setState({ hamburgerMenu: false });
       }
+      if (document.querySelector(".category-link-selected")) {
+        document
+          .querySelector(".category-link-selected")
+          .classList.remove("category-link-selected");
+      }
+      this.setState({ category: "" });
       fetch(`${domain}/api/photo/search`, {
         method: "POST",
         headers: {
@@ -227,6 +235,16 @@ class App extends React.Component {
     this.setState({ location });
   };
 
+  toggleHamburgerMenu = () => {
+    this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
+    this.setState({ mobileInfo: false });
+  };
+
+  toggleMobileInfo = () => {
+    this.setState({ mobileInfo: !this.state.mobileInfo });
+    this.setState({ hamburgerMenu: false });
+  };
+
   componentDidMount() {
     //hide hamburger menu when background clicked
     window.addEventListener("click", e => {
@@ -241,52 +259,22 @@ class App extends React.Component {
     });
   }
 
-  toggleHamburgerMenu = () => {
-    this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
-    this.setState({ mobileInfo: false });
-  };
-
-  toggleMobileInfo = () => {
-    this.setState({ mobileInfo: !this.state.mobileInfo });
-    this.setState({ hamburgerMenu: false });
-  };
-
   render() {
     return (
       <LocationProvider history={history}>
-        <div className="App" path="/">
-          <Router
-            className={
-              this.state.hamburgerMenu || this.state.mobileInfo
-                ? "router background-blur"
-                : "router unblur"
-            }
-          >
-            <About
-              path="/about"
-              categoryClickHandler={this.categoryClickHandler}
-              setCategory={this.setCategory}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <News
-              path="/news"
-              categoryClickHandler={this.categoryClickHandler}
-              setCategory={this.setCategory}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <Shop
-              path="/shop"
-              categoryClickHandler={this.categoryClickHandler}
-              setCategory={this.setCategory}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
+        <Router
+          path="/"
+          className={
+            this.state.hamburgerMenu || this.state.mobileInfo
+              ? "router background-blur"
+              : "router unblur"
+          }
+        >
+          {categories.map(category => (
             <Main
-              path="/"
-              setCategory={this.setCategory}
-              categoryClickHandler={this.categoryClickHandler}
+              key={category}
+              path={`/${category.replace(/\/?\s+/g, "-")}`}
+              categoryChangeHandler={this.categoryChangeHandler}
               search={this.search}
               searchInput={this.state.searchInput}
               handleSearchInput={this.handleSearchInput}
@@ -294,31 +282,7 @@ class App extends React.Component {
               toggleGalleryLayout={this.toggleGalleryLayout}
               photo={this.state.photo}
               clickPicture={this.clickPicture}
-              category={this.state.category}
-              galleries={this.state.galleries} // don't forget to remove this
-              getGalleries={this.getGalleries}
-              view={this.state.view}
-              galleryLength={this.state.galleryLength}
-              photoIndex={this.state.photoIndex % this.state.galleryLength}
-              galleryClick={this.galleryClick}
-              gallery={this.state.gallery}
-              photoClick={this.photoClick}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-              default
-            />
-            <Main
-              path="/:cat"
-              setCategory={this.setCategory}
-              categoryClickHandler={this.categoryClickHandler}
-              search={this.search}
-              searchInput={this.state.searchInput}
-              handleSearchInput={this.handleSearchInput}
-              layout={this.state.layout}
-              toggleGalleryLayout={this.toggleGalleryLayout}
-              photo={this.state.photo}
-              clickPicture={this.clickPicture}
-              category={this.state.category}
+              category={category}
               galleries={this.state.galleries} // don't forget to remove this
               getGalleries={this.getGalleries}
               view={this.state.view}
@@ -330,30 +294,101 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
               setLocation={this.setLocation}
             />
-          </Router>
-          <Navbar
-            category={this.state.category}
-            layout={this.state.layout}
-            view={this.state.view}
-            toggleGalleryLayout={this.toggleGalleryLayout}
-            categoryClickHandler={this.categoryClickHandler}
-            toggleHamburgerMenu={this.toggleHamburgerMenu}
-            hamburgerMenu={this.state.hamburgerMenu}
+          ))}
+          <About
+            path="/about"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
+          <News
+            path="/news"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
+          <Shop
+            path="/shop"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
+          <Main
+            path="/"
+            categoryChangeHandler={this.categoryChangeHandler}
             search={this.search}
-            handleSearchInput={this.handleSearchInput}
             searchInput={this.state.searchInput}
-            mobileInfo={this.state.mobileInfo}
-            toggleMobileInfo={this.toggleMobileInfo}
-            location={this.state.location}
-            setCategory={this.setCategory}
-            galleries={this.state.galleries.length}
-          />
-          <MobileInfo
-            mobileInfo={this.state.mobileInfo}
-            toggleMobileInfo={this.toggleMobileInfo}
+            handleSearchInput={this.handleSearchInput}
+            layout={this.state.layout}
+            toggleGalleryLayout={this.toggleGalleryLayout}
             photo={this.state.photo}
+            clickPicture={this.clickPicture}
+            category={this.state.category}
+            galleries={this.state.galleries} // don't forget to remove this
+            getGalleries={this.getGalleries}
+            view={this.state.view}
+            galleryLength={this.state.galleryLength}
+            photoIndex={this.state.photoIndex % this.state.galleryLength}
+            galleryClick={this.galleryClick}
+            gallery={this.state.gallery}
+            photoClick={this.photoClick}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
           />
-        </div>
+          <Test
+            path="/Test"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+          ></Test>
+        </Router>
+        <Logo handleLogoClick={this.handleLogoClick} />
+        <Navbar
+          category={this.state.category}
+          layout={this.state.layout}
+          view={this.state.view}
+          toggleGalleryLayout={this.toggleGalleryLayout}
+          categoryChangeHandler={this.categoryChangeHandler}
+          toggleHamburgerMenu={this.toggleHamburgerMenu}
+          hamburgerMenu={this.state.hamburgerMenu}
+          search={this.search}
+          handleSearchInput={this.handleSearchInput}
+          searchInput={this.state.searchInput}
+          mobileInfo={this.state.mobileInfo}
+          toggleMobileInfo={this.toggleMobileInfo}
+          container={this.state.location}
+          galleries={this.state.galleries.length}
+        />
+        <MobileInfo
+          mobileInfo={this.state.mobileInfo}
+          toggleMobileInfo={this.toggleMobileInfo}
+          photo={this.state.photo}
+        />
+        <LeftNav
+          location={this.state.location}
+          view={this.state.view}
+          category={this.state.category}
+          layout={this.state.layout}
+          categoryChangeHandler={this.categoryChangeHandler}
+          toggleGalleryLayout={this.toggleGalleryLayout}
+        />
+        {this.state.view == "gallery" && this.state.location == "Main" ? (
+          <TopNav
+            view={this.state.view}
+            galleries={this.state.galleries}
+            category={this.state.category}
+            categoryChangeHandler={this.categoryChangeHandler}
+            layout={this.state.layout}
+            toggleGalleryLayout={this.toggleGalleryLayout}
+          ></TopNav>
+        ) : null}
+        {this.state.location == "Main" ? (
+          <Search
+            className="search-component"
+            search={this.search}
+            searchInput={this.state.searchInput}
+            handleSearchInput={this.handleSearchInput}
+          />
+        ) : null}
       </LocationProvider>
     );
   }
