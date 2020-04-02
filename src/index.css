@@ -637,8 +637,9 @@ figure img:hover {
 
 figcaption,
 .caption {
-  font-family: var(--ui-font), monospace;
+  font-family: var(--body-font), monospace;
   font-size: 12px;
+  text-transform: uppercase;
   letter-spacing: 0.03em;
   margin: 0;
   display: flex;
