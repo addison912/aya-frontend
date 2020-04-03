@@ -494,6 +494,10 @@ a {
   margin-bottom: 8px;
 }
 
+.about-container img {
+  border-radius: 4px;
+}
+
 .profile-pic {
   grid-area: profile;
   width: 62%;
