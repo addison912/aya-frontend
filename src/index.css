@@ -292,9 +292,12 @@ a {
 }
 
 .single-pic {
+
   height: calc(100% - 32px);
+/*
   max-width: 100%;
   object-fit: contain;
+*/
   -webkit-animation: fadein 1s;
   -moz-animation: fadein 1s;
   -ms-animation: fadein 1s;
@@ -491,7 +494,7 @@ a {
 }
 
 .about-container ul li {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .about-container img {
@@ -638,8 +641,9 @@ figure img:hover {
 
 figcaption,
 .caption {
-  font-family: var(--ui-font), monospace;
+  font-family: var(--body-font), monospace;
   font-size: 12px;
+  text-transform: uppercase;
   letter-spacing: 0.03em;
   margin: 0;
   display: flex;
@@ -1060,7 +1064,7 @@ time {
   .logo-wrapper {
     justify-content: center;
     position: fixed;
-    background-color: white;
+    background-color: transparent;
     top: 0;
     left: 0;
     width: 100%;
