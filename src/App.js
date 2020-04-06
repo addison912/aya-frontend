@@ -184,6 +184,7 @@ class App extends React.Component {
   };
   search = e => {
     e.preventDefault(this.state.searchInput);
+    this.setState({ category: "Search" });
     if (this.state.searchInput.length > 0) {
       navigate(`/#/Search/${this.state.searchInput}`);
       this.searchQuery(this.state.searchInput);
@@ -267,6 +268,7 @@ class App extends React.Component {
         }
       }
     });
+    //initialize cursor
   }
 
   render() {
@@ -431,6 +433,10 @@ class App extends React.Component {
             handleSearchInput={this.handleSearchInput}
           />
         ) : null}
+
+        <div id="cursor">
+          <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
+        </div>
       </LocationProvider>
     );
   }

@@ -11,13 +11,11 @@ class Single extends Component {
     let currentCursorPos;
     let cursorEl = document.querySelector("#cursor");
     let cursorImageEl = document.querySelector("#cursor > img");
-    let routerY = document.querySelector(".router").offsetTop;
-    let routerX = document.querySelector(".router").offsetLeft;
 
     window.addEventListener("mousemove", event => {
       currentCursorPos = {
-        x: event.clientX - routerX,
-        y: event.clientY - routerY
+        x: event.clientX,
+        y: event.clientY
       };
       if (
         document.querySelector(".image-container>div>div:hover") &&
@@ -50,9 +48,6 @@ class Single extends Component {
   render() {
     return (
       <div className="gallery center">
-        <div id="cursor">
-          <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
-        </div>
         <Swipeable
           className="image-container"
           onSwiped={e => {
