@@ -1,5 +1,10 @@
 import React from "react";
-import { createHistory, LocationProvider, Router } from "@reach/router";
+import {
+  createHistory,
+  LocationProvider,
+  Router,
+  navigate
+} from "@reach/router";
 // import mainContext from "./mainContext";
 import { categories } from "./config/constants";
 import { createHashSource } from "reach-router-hash-history";
@@ -17,6 +22,7 @@ import { domain } from "./config/constants";
 import Navbar from "./components/Navbar";
 import MobileInfo from "./components/MobileInfo";
 import LeftNav from "./components/LeftNav";
+import SearchMessage from "./components/SearchMessage";
 import Test from "./containers/Test";
 
 class App extends React.Component {
@@ -35,7 +41,8 @@ class App extends React.Component {
     searchInput: "",
     hamburgerMenu: false,
     mobileInfo: false,
-    location: ""
+    location: "",
+    searchQuery: ""
   };
 
   toggleGalleryLayout = layout => {
@@ -142,43 +149,46 @@ class App extends React.Component {
   };
 
   //search
-
+  searchQuery = q => {
+    this.setState({ category: "Search", searchQuery: q });
+    if (this.state.hamburgerMenu == true) {
+      this.setState({ hamburgerMenu: false });
+    }
+    if (document.querySelector(".category-link-selected")) {
+      document
+        .querySelector(".category-link-selected")
+        .classList.remove("category-link-selected");
+    }
+    fetch(`${domain}/api/photo/search`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ query: q })
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(photos => {
+        this.setState({
+          view: "gallery",
+          layout: "grid",
+          galleries: [{ photos }],
+          photoIndex: 0,
+          galleryIndex: 0,
+          gallery: { photos },
+          galleryLength: photos.length,
+          searchInput: ""
+        });
+      });
+  };
   search = e => {
     e.preventDefault(this.state.searchInput);
     if (this.state.searchInput.length > 0) {
-      if (this.state.hamburgerMenu == true) {
-        this.setState({ hamburgerMenu: false });
-      }
-      if (document.querySelector(".category-link-selected")) {
-        document
-          .querySelector(".category-link-selected")
-          .classList.remove("category-link-selected");
-      }
-      this.setState({ category: "" });
-      fetch(`${domain}/api/photo/search`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ query: this.state.searchInput })
-      })
-        .then(res => {
-          return res.json();
-        })
-        .then(photos => {
-          this.setState({
-            view: "gallery",
-            layout: "grid",
-            galleries: [{ photos }],
-            photoIndex: 0,
-            galleryIndex: 0,
-            gallery: { photos },
-            galleryLength: photos.length,
-            searchInput: ""
-          });
-        });
+      navigate(`/#/Search/${this.state.searchInput}`);
+      this.searchQuery(this.state.searchInput);
     } else {
-      document.querySelector(".main .search").focus();
+      document.querySelector(".search").focus();
     }
   };
 
@@ -293,6 +303,7 @@ class App extends React.Component {
               photoClick={this.photoClick}
               handleLogoClick={this.handleLogoClick}
               setLocation={this.setLocation}
+              searchQuery={this.searchQuery}
             />
           ))}
           <About
@@ -334,6 +345,30 @@ class App extends React.Component {
             photoClick={this.photoClick}
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
+            searchQuery={this.searchQuery}
+          />
+          <Main
+            path="/Search/:query"
+            categoryChangeHandler={this.categoryChangeHandler}
+            search={this.search}
+            searchInput={this.state.searchInput}
+            handleSearchInput={this.handleSearchInput}
+            layout={this.state.layout}
+            toggleGalleryLayout={this.toggleGalleryLayout}
+            photo={this.state.photo}
+            clickPicture={this.clickPicture}
+            category={this.state.category}
+            galleries={this.state.galleries} // don't forget to remove this
+            getGalleries={this.getGalleries}
+            view={this.state.view}
+            galleryLength={this.state.galleryLength}
+            photoIndex={this.state.photoIndex % this.state.galleryLength}
+            galleryClick={this.galleryClick}
+            gallery={this.state.gallery}
+            photoClick={this.photoClick}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+            searchQuery={this.searchQuery}
           />
           <Test
             path="/Test"
@@ -372,14 +407,21 @@ class App extends React.Component {
           toggleGalleryLayout={this.toggleGalleryLayout}
         />
         {this.state.view == "gallery" && this.state.location == "Main" ? (
-          <TopNav
-            view={this.state.view}
-            galleries={this.state.galleries}
-            category={this.state.category}
-            categoryChangeHandler={this.categoryChangeHandler}
-            layout={this.state.layout}
-            toggleGalleryLayout={this.toggleGalleryLayout}
-          ></TopNav>
+          this.state.layout == "grid" && this.state.category == "Search" ? (
+            <SearchMessage
+              searchQuery={this.state.searchQuery}
+              galleryLength={this.state.galleryLength}
+            ></SearchMessage>
+          ) : (
+            <TopNav
+              view={this.state.view}
+              galleries={this.state.galleries}
+              category={this.state.category}
+              categoryChangeHandler={this.categoryChangeHandler}
+              layout={this.state.layout}
+              toggleGalleryLayout={this.toggleGalleryLayout}
+            ></TopNav>
+          )
         ) : null}
         {this.state.location == "Main" ? (
           <Search

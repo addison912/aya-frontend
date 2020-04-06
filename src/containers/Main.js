@@ -5,7 +5,15 @@ import Gallery from "../components/Gallery";
 
 class Main extends Component {
   componentDidMount() {
-    if (this.props.category) {
+    if (this.props.path && this.props.path.indexOf("/Search/") > -1) {
+      if (this.props.searchInput) {
+        console.log("search input:", this.props.searchInput);
+      }
+      if (this.props.query) {
+        console.log(`searching for "${this.props.query}"`);
+        this.props.searchQuery(this.props.query);
+      }
+    } else if (this.props.category) {
       this.props.categoryChangeHandler(this.props.category);
     } else if (!this.props.category) {
       this.props.categoryChangeHandler("Home");
