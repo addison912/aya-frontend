@@ -688,6 +688,10 @@ figcaption h1 {
     border-right: none;
   }
 
+  .grid-image:last-of-type {
+    margin-bottom: 92px;
+  }
+
   .image-wrapper {
     padding: 0;
   }
@@ -1074,7 +1078,7 @@ time {
   .logo-wrapper {
     justify-content: center;
     position: fixed;
-    background-color: transparent;
+    background-color: white;
     top: 0;
     left: 0;
     width: 100%;
