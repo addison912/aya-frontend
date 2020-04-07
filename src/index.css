@@ -959,6 +959,9 @@ figcaption h1 {
   .hamburger-menu {
     padding: 24px 32px;
   }
+  #navbar {
+    padding: 16px 16px;
+  }
 }
 
 .mobile-info {
