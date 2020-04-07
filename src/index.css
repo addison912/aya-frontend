@@ -308,9 +308,11 @@ a {
   .single-pic {
     max-width: 100%;
     object-fit: contain;
+    height: calc(100% - 48px);
   }
-  .image-wrapper {
-    justify-content: center;
+  .right-overlay,
+  .left-overlay {
+    height: 100%;
   }
 }
 
@@ -486,10 +488,6 @@ a {
   .image-info {
     padding: 0 8.33%;
     display: none;
-  }
-
-  .single-pic {
-    height: 100%;
   }
 }
 .about-container {
