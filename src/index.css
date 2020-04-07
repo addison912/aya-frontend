@@ -294,14 +294,24 @@ a {
 
 .single-pic {
   height: calc(100% - 32px);
-  max-width: 100%;
-  object-fit: contain;
+  /* max-width: 100%;
+  object-fit: contain; */
 
   -webkit-animation: fadein 1s;
   -moz-animation: fadein 1s;
   -ms-animation: fadein 1s;
   -o-animation: fadein 1s;
   animation: fadein 1s;
+}
+
+@media only screen and (max-width: 560px) {
+  .single-pic {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .image-wrapper {
+    justify-content: center;
+  }
 }
 
 .fade-out {
