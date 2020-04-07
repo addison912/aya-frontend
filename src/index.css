@@ -317,6 +317,7 @@ a {
   }
   .image-wrapper {
     justify-content: start;
+    width: auto;
   }
 }
 
