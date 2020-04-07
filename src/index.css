@@ -962,6 +962,12 @@ figcaption h1 {
   #navbar {
     padding: 16px 16px;
   }
+  .logo-wrapper {
+    height: 64px;
+  }
+  .main {
+    top: 64px;
+  }
 }
 
 .mobile-info {
