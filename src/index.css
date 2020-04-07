@@ -314,6 +314,9 @@ a {
   .left-overlay {
     height: 100%;
   }
+  .image-wrapper {
+    justify-content: start;
+  }
 }
 
 .fade-out {
