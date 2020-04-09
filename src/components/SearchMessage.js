@@ -9,8 +9,7 @@ class SearchMessage extends Component {
       </div>
     ) : (
       <div id="search-message">
-        <h1>No results found for</h1>
-        <h1>{`'${this.props.searchQuery}'`}</h1>
+        <h1>No results found for {`'${this.props.searchQuery}'`}</h1>
       </div>
     );
   }
