@@ -23,6 +23,7 @@ class Navbar extends Component {
           searchInput={this.props.searchInput}
           handleSearchInput={this.props.handleSearchInput}
           category={this.props.category}
+          location={this.props.location}
         />
         <div
           id="navbar"

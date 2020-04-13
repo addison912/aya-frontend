@@ -41,6 +41,15 @@ class Single extends Component {
       }
     });
   };
+  wait = () => {
+    let caption = document.querySelector(".image-info");
+    if (caption) {
+      caption.style.opacity = 0;
+      setTimeout(function() {
+        caption.style.opacity = 1;
+      }, 100);
+    }
+  };
 
   componentDidMount() {
     this.initializeCursor();
@@ -80,7 +89,7 @@ class Single extends Component {
               />
             ) : null}
             {this.props.photo.url && this.props.photo.caption ? (
-              <div className="image-info">
+              <div className="image-info" onChange={this.wait()}>
                 <p className="caption">{this.props.photo.caption}</p>
                 <p className="caption-nav">
                   <span onClick={() => this.props.clickPicture("prev")}>

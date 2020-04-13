@@ -662,6 +662,7 @@ figcaption,
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 figcaption h1 {
   width: 100%;
   margin: 4px 0;
@@ -966,7 +967,7 @@ figcaption h1 {
     height: 64px;
   }
   .main {
-    top: 64px;
+    top: 87px;
   }
 }
 
@@ -1070,6 +1071,25 @@ time {
   font-family: var(--ui-font);
 }
 
+#show-more-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 48px 0;
+}
+
+#show-more {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  width: 187px;
+  height: 41px;
+  text-transform: uppercase;
+}
+
+#show-more:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 960px) {
   .news-post {
     padding: 0 24px;
@@ -1081,6 +1101,18 @@ time {
 
   .post-images .grid-image {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  #show-more-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .news-post:last-of-type {
+    margin-bottom: 64px;
   }
 }
 
@@ -1332,3 +1364,62 @@ time {
   }
 }
 /*/// ↑ Search Message ↑ ///*/
+/*/// ↓ Shop ↓ ///*/
+.shop-item {
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+  height: auto;
+  margin-bottom: 48px;
+}
+
+.shop-item img {
+  width: 100%;
+  background-color: var(--light-gray);
+  object-fit: cover;
+}
+
+.sold-out {
+  opacity: 0.4;
+}
+
+.checkout-link {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  width: 187px;
+  height: 41px;
+  text-transform: uppercase;
+  font-family: var(--body-font), monospace;
+  font-size: 16px;
+}
+
+.checkout-link:hover {
+  cursor: pointer;
+}
+.sold-out .checkout-link:hover {
+  cursor: default;
+}
+
+.sold-out img:hover {
+  cursor: default;
+  box-shadow: none;
+  -webkit-transform: none;
+  transform: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .shop-item {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .shop-item {
+    width: 100%;
+    align-items: center;
+  }
+  .shop-item p {
+    text-align: center;
+  }
+}
+
+/*/// ↑ Shop ↑ ///*/

@@ -394,6 +394,7 @@ class App extends React.Component {
           toggleMobileInfo={this.toggleMobileInfo}
           container={this.state.location}
           galleries={this.state.galleries.length}
+          location={this.state.location}
         />
         <MobileInfo
           mobileInfo={this.state.mobileInfo}

@@ -22,7 +22,8 @@ class LeftNav extends Component {
                   to={`/${category.replace(/\/?\s+/g, "-")}`}
                   onClick={() => this.props.categoryChangeHandler(category)}
                   className={
-                    category == this.props.category
+                    category == this.props.category &&
+                    this.props.location == "Main"
                       ? "category-link category-link-selected"
                       : "category-link"
                   }
