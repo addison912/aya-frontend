@@ -1350,7 +1350,7 @@ time {
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 560px) {
   #search-message {
     display: block;
     grid-column: 1/1;
