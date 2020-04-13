@@ -21,11 +21,6 @@ class GalleryGrid extends Component {
                 data={i}
                 role="button"
                 onClick={this.props.photoClick}
-                // style={{
-                //   order: photo.order
-                //     ? photo.order
-                //     : this.props.gallery.photos.length
-                // }}
               >
                 <img
                   src={`${domain}/uploads/photos/${photo.category.replace(

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
-import LeftNav from "../components/LeftNav";
-import Logo from "../components/Logo";
 
 class Shop extends Component {
   state = {
