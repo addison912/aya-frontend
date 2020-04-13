@@ -6,12 +6,6 @@ import React, { Component } from "react";
 import { domain } from "../config/constants";
 
 class GalleryGrid extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
-  componentDidUpdate() {
-    console.log(this.props);
-  }
   render() {
     return (
       <div className="gallery-content">

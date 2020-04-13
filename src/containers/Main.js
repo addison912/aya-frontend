@@ -6,9 +6,6 @@ import Gallery from "../components/Gallery";
 class Main extends Component {
   componentDidMount() {
     if (this.props.path && this.props.path.indexOf("/Search/") > -1) {
-      if (this.props.searchInput) {
-        console.log("search input:", this.props.searchInput);
-      }
       if (this.props.query) {
         console.log(`searching for "${this.props.query}"`);
         this.props.searchQuery(this.props.query);
@@ -18,7 +15,7 @@ class Main extends Component {
     } else if (!this.props.category) {
       this.props.categoryChangeHandler("Home");
     }
-    console.log(this.props);
+    // console.log(this.props);
     this.props.setLocation("Main");
     // axios.get(`${domain}/api/fail`);
     // this.props.toggleGalleryLayout("grid");

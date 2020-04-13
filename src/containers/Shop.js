@@ -16,7 +16,7 @@ class Shop extends Component {
       })
       .then(shopItems => {
         this.setState({ shopItems });
-        console.log(shopItems);
+        // console.log(shopItems);
       });
   };
   showMore = () => {
@@ -28,17 +28,6 @@ class Shop extends Component {
     this.getProducts();
     this.props.setLocation("Shop");
   }
-
-  getimages = () => {
-    fetch(`${domain}/api/test`)
-      .then(res => {
-        return res.json();
-      })
-      .then(text => {
-        console.log(text);
-        this.setState({ message: text.message });
-      });
-  };
 
   render() {
     return (
