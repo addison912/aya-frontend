@@ -1358,7 +1358,7 @@ time {
     z-index: 1;
     width: 100vw;
     max-width: 100%;
-    padding: 16px 0 0 32px;
+    padding: 16px 32px 0 32px;
     background-color: white;
   }
 }
