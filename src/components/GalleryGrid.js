@@ -37,12 +37,10 @@ class GalleryGrid extends Component {
                   alt={photo.caption}
                   className="gridImage"
                 />
-                {/* <p className="caption">{name}</p> */}
               </figure>
             ))
           : null}
       </div>
-      // <div></div>
     );
   }
 }

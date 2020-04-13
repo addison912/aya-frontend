@@ -18,7 +18,6 @@ class News extends Component {
           return Date.parse(a.date) + Date.parse(b.date);
         });
         this.setState({ news });
-        console.log(news);
       });
   };
   showMore = () => {

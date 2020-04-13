@@ -17,8 +17,6 @@ class Main extends Component {
     }
     // console.log(this.props);
     this.props.setLocation("Main");
-    // axios.get(`${domain}/api/fail`);
-    // this.props.toggleGalleryLayout("grid");
   }
   render() {
     return (

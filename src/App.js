@@ -238,7 +238,6 @@ class App extends React.Component {
       photo.location;
     photo.url = url;
     this.setState({ photo });
-    // console.log(photo);
     this.setGalleryLength();
   };
 

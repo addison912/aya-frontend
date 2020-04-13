@@ -7,8 +7,6 @@ import { categories } from "../config/constants";
 import Links from "./Links";
 import Search from "./Search";
 
-// require("../assets/images/grid.png")
-
 class HamburgerMenu extends Component {
   render() {
     return (
@@ -28,11 +26,7 @@ class HamburgerMenu extends Component {
 
         <ul className="projects">
           {categories.map(category => (
-            <li
-              key={category}
-
-              // to={category.replace(/\s+/g, "")}
-            >
+            <li key={category}>
               <Link
                 to={`/${category.replace(/\/?\s+/g, "-")}`}
                 onClick={() => this.props.categoryChangeHandler(category)}
