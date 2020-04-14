@@ -5,18 +5,20 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import ImageSpacer from "./ImageSpacer";
+import { Link } from "@reach/router";
 
 class CategoryGrid extends Component {
-  // componentDidMount() {
-  //   console.log(this.props);
-  // }
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     return (
       <div className="gallery-content">
         {this.props.galleries.map((gallery, i) => (
+          // <Link to={gallery.name.replace(/\/?\s+/g, "-")} key={i}>
           <figure
-            className="grid-image category-image"
             key={i}
+            className="grid-image category-image"
             data={i}
             onClick={this.props.galleryClick}
             role="button"
@@ -40,6 +42,7 @@ class CategoryGrid extends Component {
             />
             <figcaption>{gallery.name}</figcaption>
           </figure>
+          /* </Link> */
         ))}
         <ImageSpacer />
         <ImageSpacer />

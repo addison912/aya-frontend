@@ -7,29 +7,34 @@ import Grid from "../components/Grid";
 
 class Gallery extends Component {
   // componentDidMount() {
-  //   this.props.toggleGalleryLayout("grid");
+  //   console.log(this.props);
   // }
   render() {
     return (
-      <div className={"gallery-container"}>
-        {this.props.layout == "single" && this.props.view == "gallery" ? (
-          <Single
-            photo={this.props.photo}
-            clickPicture={this.props.clickPicture}
-            category={this.props.category}
-            galleryLength={this.props.galleryLength}
-            photoIndex={this.props.photoIndex}
-          />
-        ) : (
-          <Grid
-            galleries={this.props.galleries}
-            category={this.props.category}
-            view={this.props.view}
-            galleryClick={this.props.galleryClick}
-            gallery={this.props.gallery}
-            photoClick={this.props.photoClick}
-          />
-        )}
+      <div className="main">
+        <div className="content">
+          <div className={"gallery-container"}>
+            {this.props.layout == "single" && this.props.view == "gallery" ? (
+              <Single
+                photo={this.props.photo}
+                clickPicture={this.props.clickPicture}
+                category={this.props.category}
+                galleryLength={this.props.galleryLength}
+                photoIndex={this.props.photoIndex}
+              />
+            ) : (
+              <Grid
+                path="/"
+                galleries={this.props.galleries}
+                category={this.props.category}
+                view={this.props.view}
+                galleryClick={this.props.galleryClick}
+                gallery={this.props.gallery}
+                photoClick={this.props.photoClick}
+              />
+            )}
+          </div>
+        </div>
       </div>
     );
   }

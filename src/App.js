@@ -78,6 +78,8 @@ class App extends React.Component {
     this.setState({ photo, photoIndex: 0 });
     this.setGallery(i);
     this.setState({ galleryLength: this.state.galleries[i].photos.length });
+    console.log(this.state.galleries); //delete me
+    window.galleries = this.state.galleries; //delete me
   };
 
   categoryChangeHandler = category => {
