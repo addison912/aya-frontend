@@ -298,11 +298,11 @@ a {
   /* max-width: 100%;
   object-fit: contain; */
 
-  -webkit-animation: fadein 1s;
-  -moz-animation: fadein 1s;
-  -ms-animation: fadein 1s;
-  -o-animation: fadein 1s;
-  animation: fadein 1s;
+  -webkit-animation: fadein 0.12s;
+  -moz-animation: fadein 0.12s;
+  -ms-animation: fadein 0.12s;
+  -o-animation: fadein 0.12s;
+  animation: fadein 0.12s;
 }
 
 @media only screen and (max-width: 560px) {
@@ -322,11 +322,11 @@ a {
 }
 
 .fade-out {
-  -webkit-animation: fadeout 0.6s;
-  -moz-animation: fadeout 0.6s;
-  -ms-animation: fadeout 0.6s;
-  -o-animation: fadeout 0.6s;
-  animation: fadeout 0.6s;
+  -webkit-animation: fadeout 0.2s;
+  -moz-animation: fadeout 0.2s;
+  -ms-animation: fadeout 0.2s;
+  -o-animation: fadeout 0.2s;
+  animation: fadeout 0.2s;
 }
 
 .image-info {
@@ -794,7 +794,6 @@ figcaption h1 {
   }
 }
 
-
 @media only screen and (max-width: 560px) {
   .search-wrapper {
     width: 100%;
@@ -1141,17 +1140,17 @@ time {
 }
 
 @media only screen and (max-width: 1080px) {
-    .logo {
-        font-size: 16px; 
-        letter-spacing: 0.1em;
-    }
+  .logo {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+  }
 }
 
 @media only screen and (max-width: 560px) {
-    .logo {
-        font-size: 24px; 
-        letter-spacing: 0.125em;
-    }
+  .logo {
+    font-size: 24px;
+    letter-spacing: 0.125em;
+  }
 }
 
 @media only screen and (max-width: 560px) {
@@ -1411,7 +1410,7 @@ time {
 }
 
 .sold-out {
-  opacity: 0.4;
+  /* opacity: 0.4; */
 }
 
 .checkout-link {

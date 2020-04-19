@@ -30,8 +30,8 @@ class Grid extends Component {
             category={this.props.category}
           />
         )}
-        {/* </Router>  */}
       </div>
+      // </Router>
     );
   }
 }

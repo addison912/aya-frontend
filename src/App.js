@@ -201,7 +201,7 @@ class App extends React.Component {
 
   //////
   clickPicture = dir => {
-    document.querySelector(".single-pic").classList.add("fade-out");
+    // document.querySelector(".single-pic").classList.add("fade-out");
     let newIndex = this.state.photoIndex;
     if (dir == "next" || dir == "Left") {
       newIndex++;
@@ -211,10 +211,10 @@ class App extends React.Component {
     if (newIndex <= -1) {
       newIndex = this.state.galleryLength - 1;
     }
-    setTimeout(() => {
-      this.setState({ photoIndex: newIndex });
-      this.setPictureUrl(newIndex);
-    }, 500);
+    // setTimeout(() => {
+    this.setState({ photoIndex: newIndex });
+    this.setPictureUrl(newIndex);
+    // }, 500);
   };
 
   /////
