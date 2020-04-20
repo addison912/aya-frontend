@@ -99,12 +99,12 @@ class Single extends Component {
                       className="index-arrow"
                     />
                   </span>{" "}
-                  {this.props.photoIndex && this.props.galleryLength ? (
+                  {this.props.galleryLength ? (
                     <span>
-                      {this.props.photoIndex} of {this.props.galleryLength}{" "}
+                      {this.props.photoIndex + 1} of {this.props.galleryLength}{" "}
                     </span>
                   ) : null}
-                  {this.props.photoIndex && this.props.galleryLength ? (
+                  {this.props.galleryLength ? (
                     <span onClick={() => this.props.clickPicture("next")}>
                       <img
                         src={require("../assets/images/next-arrow.svg")}
