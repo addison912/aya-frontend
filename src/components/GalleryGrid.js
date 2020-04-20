@@ -27,10 +27,11 @@ class GalleryGrid extends Component {
                 onClick={this.props.photoClick}
               >
                 <img
-                  src={`${domain}/uploads/photos/${photo.category.replace(
-                    /\/?\s+/g,
-                    "_"
-                  )}/${photo.gallery
+                  src={`${domain}/uploads/photos/${
+                    photo.category.toLowerCase() == "advertising"
+                      ? "Client-Work"
+                      : photo.category.replace(/\/?\s+/g, "_")
+                  }/${photo.gallery
                     .replace(/\/?\s+/g, "_")
                     .replace(/[^\w\s]/gi, "")}/thumbs/${photo.location}`}
                   alt={photo.caption}

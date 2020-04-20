@@ -27,10 +27,11 @@ class CategoryGrid extends Component {
             }}
           >
             <img
-              src={`${domain}/uploads/photos/${gallery.category.replace(
-                /\/?\s+/g,
-                "_"
-              )}/${gallery.name
+              src={`${domain}/uploads/photos/${
+                gallery.category.toLowerCase() == "advertising"
+                  ? "Client-Work"
+                  : gallery.category.replace(/\/?\s+/g, "_")
+              }/${gallery.name
                 .replace(/\/?\s+/g, "_")
                 .replace(/[^\w\s]/gi, "")}/thumb.jpg`}
               alt={
