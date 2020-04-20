@@ -203,8 +203,8 @@ class App extends React.Component {
   };
   search = e => {
     e.preventDefault(this.state.searchInput);
-    this.setState({ category: "Search" });
     if (this.state.searchInput.length > 0) {
+      this.setState({ category: "Search" });
       navigate(`#/Search/${this.state.searchInput}`);
       this.searchQuery(this.state.searchInput);
     } else {
@@ -215,6 +215,8 @@ class App extends React.Component {
   handleSearchInput = e => {
     this.setState({ searchInput: e.target.value });
   };
+
+  clearSearch = () => this.setState({ searchInput: "" });
 
   //////
   clickPicture = dir => {
@@ -324,6 +326,7 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
               setLocation={this.setLocation}
               searchQuery={this.searchQuery}
+              clearSearch={this.clearSearch}
             />
           ))}
           {categories.map(category => (
@@ -350,6 +353,7 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
               setLocation={this.setLocation}
               searchQuery={this.searchQuery}
+              clearSearch={this.clearSearch}
             />
           ))}
           <About
@@ -392,6 +396,7 @@ class App extends React.Component {
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
             searchQuery={this.searchQuery}
+            clearSearch={this.clearSearch}
           />
           <Main
             path="Search/:query"
@@ -415,6 +420,7 @@ class App extends React.Component {
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
             searchQuery={this.searchQuery}
+            clearSearch={this.clearSearch}
           />
           <Test
             path="Test"

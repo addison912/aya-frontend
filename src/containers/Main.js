@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from "react";
-import Gallery from "../components/Gallery";
 import { Router } from "@reach/router";
-import { categories } from "../config/constants";
 import Single from "../components/Single";
 import Grid from "../components/Grid";
 
@@ -27,26 +25,11 @@ class Main extends Component {
     }
     // console.log(this.props);
     this.props.setLocation("Main");
+    this.props.clearSearch();
     console.log(this.props);
   }
   render() {
     return (
-      // <Gallery
-      //   path="/"
-      //   photo={this.props.photo}
-      //   clickPicture={this.props.clickPicture}
-      //   category={this.props.cat || this.props.category}
-      //   galleries={this.props.galleries} // don't forget to remove this
-      //   getGalleries={this.props.getGalleries}
-      //   layout={this.props.layout}
-      //   view={this.props.view}
-      //   galleryLength={this.props.galleryLength}
-      //   photoIndex={(this.props.photoIndex % this.props.galleryLength) + 1}
-      //   galleryClick={this.props.galleryClick}
-      //   gallery={this.props.gallery}
-      //   photoClick={this.props.photoClick}
-      //   toggleGalleryLayout={this.props.toggleGalleryLayout}
-      // />
       <div className="main">
         <div className="content">
           <div className={"gallery-container"}>
@@ -62,14 +45,6 @@ class Main extends Component {
             ) : (
               <Grid
                 path={`/`}
-                // path={
-                //   this.props.category &&
-                //   this.prop.category &&
-                //   this.props.gallery &&
-                //   this.props.gallery.name != "Home"
-                //     ? "/"
-                //     : "/"
-                // }
                 galleries={this.props.galleries}
                 category={this.props.category}
                 view={this.props.view}
