@@ -1475,4 +1475,9 @@ time {
   width: auto;
   object-fit: contain;
 }
+
+.redirect {
+  width: 100%;
+  height: 100%;
+}
 /*/// ↑ Not Found ↑ ///*/

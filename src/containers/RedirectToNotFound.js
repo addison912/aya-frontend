@@ -11,7 +11,7 @@ class RedirectToNotFound extends Component {
   }
   render() {
     return (
-      <div className="pageContainer">
+      <div className="pageContainer redirect">
         <h1>Page not found. Redirecting your request.</h1>
       </div>
     );
