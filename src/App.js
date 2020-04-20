@@ -368,6 +368,12 @@ class App extends React.Component {
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
           />
+          <News
+            path="news/:postId"
+            categoryChangeHandler={this.categoryChangeHandler}
+            handleLogoClick={this.handleLogoClick}
+            setLocation={this.setLocation}
+          />
           <Shop
             path="shop"
             categoryChangeHandler={this.categoryChangeHandler}

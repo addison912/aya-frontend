@@ -7,7 +7,10 @@ import BlogImages from "../components/BlogImages";
 class BlogPost extends Component {
   render() {
     return (
-      <div className="news-post">
+      <div
+        className="news-post"
+        id={this.props.post.title.replace(/[^A-Z0-9]/gi, "-").toLowerCase()}
+      >
         <div className="post-text">
           {" "}
           <BlogTitle title={this.props.post.title} />

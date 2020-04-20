@@ -28,15 +28,32 @@ class News extends Component {
   componentDidMount() {
     this.getNews();
     this.props.setLocation("News");
+    if (this.props.postId) {
+      let post = this.props.postId.toLowerCase();
+      this.setState({ show: "all" });
+      setTimeout(function() {
+        if (document.getElementById(post)) {
+          console.log("post found");
+        }
+        window.scroll({
+          top: document.getElementById(post)
+            ? document.getElementById(post).offsetTop
+            : 0,
+          left: 0
+        });
+      }, 1000);
+    }
   }
   render() {
     return (
       <div className="main">
         <div className="content">
           {this.state.news.map((post, i) => {
-            if (i < this.state.show) return <BlogPost key={i} post={post} />;
+            if (this.state.show == "all" || i < this.state.show)
+              return <BlogPost key={i} post={post} />;
           })}
-          {this.state.show < this.state.news.length ? (
+          {this.state.show != "all" &&
+          this.state.show < this.state.news.length ? (
             <div id="show-more-container">
               <button id="show-more" onClick={this.showMore}>
                 Show More
