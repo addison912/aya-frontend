@@ -5,7 +5,10 @@ import { Router } from "@reach/router";
 
 class Grid extends Component {
   componentDidMount() {
-    console.log(this.props);
+    console.log("Grid props:", this.props);
+    if (this.props.galleryName) {
+      console.log("view:", this.props.view);
+    }
   }
   render() {
     return (
@@ -13,17 +16,17 @@ class Grid extends Component {
       <div className="gallery">
         {this.props.view == "category" ? (
           <CategoryGrid
-            // path="/"
+            path="/"
             galleries={this.props.galleries}
             galleryClick={this.props.galleryClick}
           />
         ) : (
           <GalleryGrid
-            // path={
-            //   this.props.gallery && this.props.gallery.name
-            //     ? `/${this.props.gallery.name.replace(/\/?\s+/g, "-")}`
-            //     : "/*"
-            // }
+            path={
+              this.props.gallery && this.props.gallery.name
+                ? `${this.props.gallery.name.replace(/\/?\s+/g, "-")}`
+                : null
+            }
             // path="/:galleryName"
             gallery={this.props.gallery}
             photoClick={this.props.photoClick}

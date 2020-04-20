@@ -20,7 +20,7 @@ class CategoryGrid extends Component {
             key={i}
             className="grid-image category-image"
             data={i}
-            onClick={this.props.galleryClick}
+            onClick={() => this.props.galleryClick(gallery)}
             role="button"
             style={{
               order: gallery.order ? gallery.order : this.props.galleries.length

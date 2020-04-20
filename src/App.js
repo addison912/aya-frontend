@@ -61,9 +61,15 @@ class App extends React.Component {
     this.setState({ galleryLength: this.state.gallery.photos.length });
   };
 
-  galleryClick = e => {
-    let i = e.target.closest("figure").getAttribute("data");
-    let gallery = this.state.galleries[i];
+  galleryClick = gallery => {
+    navigate(
+      `/#/${this.state.category.replace(/\/?\s+/g, "-")}/${gallery.name.replace(
+        /\/?\s+/g,
+        "-"
+      )}`
+    );
+    // let i = e.target.closest("figure").getAttribute("data");
+    // let gallery = this.state.galleries[i];
     this.setState({ gallery, view: "gallery" });
     let photo = gallery.photos[0];
     let url =
@@ -76,13 +82,13 @@ class App extends React.Component {
       gallery.photos[0].location;
     photo.url = url;
     this.setState({ photo, photoIndex: 0 });
-    this.setGallery(i);
-    this.setState({ galleryLength: this.state.galleries[i].photos.length });
+    // this.setGallery(i);
+    this.setState({ galleryLength: gallery.photos.length });
     console.log(this.state.galleries); //delete me
     window.galleries = this.state.galleries; //delete me
   };
 
-  categoryChangeHandler = category => {
+  categoryChangeHandler = (category, galleryName) => {
     this.setState({
       category,
       gallery: {},
@@ -91,7 +97,7 @@ class App extends React.Component {
       galleryIndex: 0,
       galleryLength: 0
     });
-    this.getGalleries(category);
+    this.getGalleries(category, galleryName);
     window.scroll({
       top: 0,
       left: 0,
@@ -110,7 +116,7 @@ class App extends React.Component {
     }
   };
 
-  getGalleries = category => {
+  getGalleries = (category, galleryName) => {
     this.setState({ category });
     fetch(`${domain}/api/gallery/c/${category.replace(/[^\w\s]/gi, " ")}`)
       .then(res => {
@@ -135,8 +141,19 @@ class App extends React.Component {
           galleryIndex: 0
         });
 
-        if (galleries.length > 1) {
+        if (galleries.length > 1 && !galleryName) {
           this.setState({ view: "category" });
+        } else if (galleryName) {
+          let gallery = galleries.find(galleries => {
+            return galleries.name.replace(/\/?\s+/g, "-") == galleryName;
+          });
+          this.setState({
+            view: "gallery",
+            galleryLength: gallery.photos.length,
+            layout: "grid",
+            gallery
+          });
+          this.setPictureUrl();
         } else if (galleries.length == 1) {
           let gallery = galleries[0];
           this.setState({
@@ -188,7 +205,7 @@ class App extends React.Component {
     e.preventDefault(this.state.searchInput);
     this.setState({ category: "Search" });
     if (this.state.searchInput.length > 0) {
-      navigate(`/#/Search/${this.state.searchInput}`);
+      navigate(`#/Search/${this.state.searchInput}`);
       this.searchQuery(this.state.searchInput);
     } else {
       document.querySelector(".search").focus();
@@ -286,7 +303,33 @@ class App extends React.Component {
           {categories.map(category => (
             <Main
               key={category}
-              path={`/${category.replace(/\/?\s+/g, "-")}`}
+              path={`${category.replace(/\/?\s+/g, "-")}`}
+              categoryChangeHandler={this.categoryChangeHandler}
+              search={this.search}
+              searchInput={this.state.searchInput}
+              handleSearchInput={this.handleSearchInput}
+              layout={this.state.layout}
+              toggleGalleryLayout={this.toggleGalleryLayout}
+              photo={this.state.photo}
+              clickPicture={this.clickPicture}
+              category={category}
+              galleries={this.state.galleries} // don't forget to remove this
+              getGalleries={this.getGalleries}
+              view={this.state.view}
+              galleryLength={this.state.galleryLength}
+              photoIndex={this.state.photoIndex % this.state.galleryLength}
+              galleryClick={this.galleryClick}
+              gallery={this.state.gallery}
+              photoClick={this.photoClick}
+              handleLogoClick={this.handleLogoClick}
+              setLocation={this.setLocation}
+              searchQuery={this.searchQuery}
+            />
+          ))}
+          {categories.map(category => (
+            <Main
+              key={category}
+              path={`${category.replace(/\/?\s+/g, "-")}/:galleryName`}
               categoryChangeHandler={this.categoryChangeHandler}
               search={this.search}
               searchInput={this.state.searchInput}
@@ -310,19 +353,19 @@ class App extends React.Component {
             />
           ))}
           <About
-            path="/about"
+            path="about"
             categoryChangeHandler={this.categoryChangeHandler}
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
           />
           <News
-            path="/news"
+            path="news"
             categoryChangeHandler={this.categoryChangeHandler}
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
           />
           <Shop
-            path="/shop"
+            path="shop"
             categoryChangeHandler={this.categoryChangeHandler}
             handleLogoClick={this.handleLogoClick}
             setLocation={this.setLocation}
@@ -351,7 +394,7 @@ class App extends React.Component {
             searchQuery={this.searchQuery}
           />
           <Main
-            path="/Search/:query"
+            path="Search/:query"
             categoryChangeHandler={this.categoryChangeHandler}
             search={this.search}
             searchInput={this.state.searchInput}
@@ -374,7 +417,7 @@ class App extends React.Component {
             searchQuery={this.searchQuery}
           />
           <Test
-            path="/Test"
+            path="Test"
             categoryChangeHandler={this.categoryChangeHandler}
             handleLogoClick={this.handleLogoClick}
           ></Test>
