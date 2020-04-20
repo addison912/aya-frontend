@@ -31,6 +31,10 @@
   background: var(--blue);
 }
 
+#App {
+  width: 100%;
+}
+
 #left-nav {
   grid-area: nav;
 }
@@ -151,7 +155,7 @@ body {
   margin: 0;
 }
 
-#root {
+#App {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 160px auto auto;
@@ -238,18 +242,18 @@ a {
 }
 
 @media only screen and (max-width: 960px) {
-  #root {
+  #App {
     padding: 0 56px;
     grid-template-columns: 1fr 1.6fr;
   }
 }
 @media only screen and (max-width: 760px) {
-  #root {
+  #App {
     padding: 0 32px;
   }
 }
 @media only screen and (max-width: 560px) {
-  #root {
+  #App {
     grid-template-columns: 1fr;
     grid-template-rows: var(--row-height) auto var(--row-height);
     grid-template-areas:
@@ -1451,3 +1455,24 @@ time {
 }
 
 /*/// ↑ Shop ↑ ///*/
+/*/// ↓ Not Found ↓ ///*/
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.not-found-container h1 {
+  padding: 0 12px;
+}
+
+.not-found-container figure {
+  max-height: 50vh;
+  margin-top: 24px;
+}
+.not-found-container figure img {
+  border-radius: 4px;
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+/*/// ↑ Not Found ↑ ///*/

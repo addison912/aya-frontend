@@ -37,7 +37,7 @@ class News extends Component {
         }
         window.scroll({
           top: document.getElementById(post)
-            ? document.getElementById(post).offsetTop
+            ? document.getElementById(post).offsetTop + 96
             : 0,
           left: 0
         });
