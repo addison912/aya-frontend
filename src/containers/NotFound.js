@@ -16,7 +16,7 @@ class NotFound extends Component {
           <div className="page-container">
             <div className="not-found-container">
               <h1 id="404">
-                Oops! We couldn&apos;t find the page you&apos;re looking for.
+                Oops! We couldn&rsquo;t find the page you&rsquo;re looking for.
               </h1>
               <figure className="image-wrapper">
                 <img
