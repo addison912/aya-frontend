@@ -1459,6 +1459,7 @@ time {
 .not-found-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .not-found-container h1 {
@@ -1468,6 +1469,7 @@ time {
 .not-found-container figure {
   max-height: 50vh;
   margin-top: 24px;
+  width: min-content;
 }
 .not-found-container figure img {
   border-radius: 4px;
