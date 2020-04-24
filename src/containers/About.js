@@ -36,7 +36,7 @@ class About extends Component {
               <li>aya@ayabrackett.com</li>
               <li>(510) 292-5719</li>
               <li>
-                <a href="https://www.instagram.com/ayabrackett/">
+                <a href="https://www.instagram.com/ayabrackett/" target="_blank">
                   @ayabrackett
                 </a>
               </li>
