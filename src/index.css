@@ -1087,14 +1087,6 @@ time {
   margin: 24px 0 48px 0;
 }
 
-#show-more {
-  border: 1px solid #000000;
-  border-radius: 4px;
-  width: 187px;
-  height: 41px;
-  text-transform: uppercase;
-}
-
 #show-more:hover {
   cursor: pointer;
 }
@@ -1412,18 +1404,16 @@ time {
   object-fit: cover;
 }
 
-.sold-out {
-  /* opacity: 0.4; */
-}
-
-.checkout-link {
-  border: 1px solid #000000;
+.checkout-link,
+#show-more {
+  border: 1px solid #000;
   border-radius: 4px;
   width: 187px;
   height: 41px;
   text-transform: uppercase;
-  font-family: var(--body-font), monospace;
-  font-size: 16px;
+  font-family: var(--ui-font), monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
 }
 
 .checkout-link:hover {
