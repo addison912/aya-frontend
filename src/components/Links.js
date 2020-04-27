@@ -24,7 +24,7 @@ class Links extends Component {
             </Link>
           </li>
           <li>
-            <a href="https://www.instagram.com/ayabrackett/">Instagram</a>
+            <a href="https://www.instagram.com/ayabrackett/" target="_blank">Instagram</a>
           </li>
           <li>
             <Link to="/news">
