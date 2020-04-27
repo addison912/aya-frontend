@@ -15,8 +15,10 @@ class LeftNav extends Component {
             {categories.map(category => (
               <li key={category}>
                 <Link
-                  to={`/${category.replace(/\/?\s+/g, "-")}`}
-                  onClick={() => this.props.categoryChangeHandler(category)}
+                  to={`/${category.toLowerCase().replace(/\/?\s+/g, "-")}`}
+                  onClick={() =>
+                    this.props.categoryChangeHandler(category.toLowerCase())
+                  }
                   className={
                     category == this.props.category &&
                     this.props.location == "Main"

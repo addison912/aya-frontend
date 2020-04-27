@@ -24,7 +24,9 @@ class Grid extends Component {
           <GalleryGrid
             path={
               this.props.gallery && this.props.gallery.name
-                ? `${this.props.gallery.name.replace(/\/?\s+/g, "-")}`
+                ? `${this.props.gallery.name
+                    .toLowerCase()
+                    .replace(/\/?\s+/g, "-")}`
                 : null
             }
             // path="/:galleryName"

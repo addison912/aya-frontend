@@ -63,10 +63,11 @@ class App extends React.Component {
 
   galleryClick = gallery => {
     navigate(
-      `/#/${this.state.category.replace(/\/?\s+/g, "-")}/${gallery.name.replace(
-        /\/?\s+/g,
-        "-"
-      )}`
+      `/#/${this.state.category
+        .toLowerCase()
+        .replace(/\/?\s+/g, "-")}/${gallery.name
+        .toLowerCase()
+        .replace(/\/?\s+/g, "-")}`
     );
     // let i = e.target.closest("figure").getAttribute("data");
     // let gallery = this.state.galleries[i];
@@ -145,7 +146,10 @@ class App extends React.Component {
           this.setState({ view: "category" });
         } else if (galleryName) {
           let gallery = galleries.find(galleries => {
-            return galleries.name.replace(/\/?\s+/g, "-") == galleryName;
+            return (
+              galleries.name.replace(/\/?\s+/g, "-").toLowerCase() ==
+              galleryName.toLowerCase()
+            );
           });
           this.setState({
             view: "gallery",
@@ -307,60 +311,66 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
               default
             ></NotFound>
-            {categories.map(category => (
-              <Main
-                key={category}
-                path={`${category.replace(/\/?\s+/g, "-")}`}
-                categoryChangeHandler={this.categoryChangeHandler}
-                search={this.search}
-                searchInput={this.state.searchInput}
-                handleSearchInput={this.handleSearchInput}
-                layout={this.state.layout}
-                toggleGalleryLayout={this.toggleGalleryLayout}
-                photo={this.state.photo}
-                clickPicture={this.clickPicture}
-                category={category}
-                galleries={this.state.galleries} // don't forget to remove this
-                getGalleries={this.getGalleries}
-                view={this.state.view}
-                galleryLength={this.state.galleryLength}
-                photoIndex={this.state.photoIndex % this.state.galleryLength}
-                galleryClick={this.galleryClick}
-                gallery={this.state.gallery}
-                photoClick={this.photoClick}
-                handleLogoClick={this.handleLogoClick}
-                setLocation={this.setLocation}
-                searchQuery={this.searchQuery}
-                clearSearch={this.clearSearch}
-              />
-            ))}
-            {categories.map(category => (
-              <Main
-                key={category}
-                path={`${category.replace(/\/?\s+/g, "-")}/:galleryName`}
-                categoryChangeHandler={this.categoryChangeHandler}
-                search={this.search}
-                searchInput={this.state.searchInput}
-                handleSearchInput={this.handleSearchInput}
-                layout={this.state.layout}
-                toggleGalleryLayout={this.toggleGalleryLayout}
-                photo={this.state.photo}
-                clickPicture={this.clickPicture}
-                category={category}
-                galleries={this.state.galleries} // don't forget to remove this
-                getGalleries={this.getGalleries}
-                view={this.state.view}
-                galleryLength={this.state.galleryLength}
-                photoIndex={this.state.photoIndex % this.state.galleryLength}
-                galleryClick={this.galleryClick}
-                gallery={this.state.gallery}
-                photoClick={this.photoClick}
-                handleLogoClick={this.handleLogoClick}
-                setLocation={this.setLocation}
-                searchQuery={this.searchQuery}
-                clearSearch={this.clearSearch}
-              />
-            ))}
+            {categories.map(category => {
+              category = category.toLowerCase().replace(/\/?\s+/g, "-");
+              return (
+                <Main
+                  key={category}
+                  path={category}
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  search={this.search}
+                  searchInput={this.state.searchInput}
+                  handleSearchInput={this.handleSearchInput}
+                  layout={this.state.layout}
+                  toggleGalleryLayout={this.toggleGalleryLayout}
+                  photo={this.state.photo}
+                  clickPicture={this.clickPicture}
+                  category={category}
+                  galleries={this.state.galleries} // don't forget to remove this
+                  getGalleries={this.getGalleries}
+                  view={this.state.view}
+                  galleryLength={this.state.galleryLength}
+                  photoIndex={this.state.photoIndex % this.state.galleryLength}
+                  galleryClick={this.galleryClick}
+                  gallery={this.state.gallery}
+                  photoClick={this.photoClick}
+                  handleLogoClick={this.handleLogoClick}
+                  setLocation={this.setLocation}
+                  searchQuery={this.searchQuery}
+                  clearSearch={this.clearSearch}
+                />
+              );
+            })}
+            {categories.map(category => {
+              category = category.toLowerCase().replace(/\/?\s+/g, "-");
+              return (
+                <Main
+                  key={category}
+                  path={`${category}/:galleryName`}
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  search={this.search}
+                  searchInput={this.state.searchInput}
+                  handleSearchInput={this.handleSearchInput}
+                  layout={this.state.layout}
+                  toggleGalleryLayout={this.toggleGalleryLayout}
+                  photo={this.state.photo}
+                  clickPicture={this.clickPicture}
+                  category={category}
+                  galleries={this.state.galleries} // don't forget to remove this
+                  getGalleries={this.getGalleries}
+                  view={this.state.view}
+                  galleryLength={this.state.galleryLength}
+                  photoIndex={this.state.photoIndex % this.state.galleryLength}
+                  galleryClick={this.galleryClick}
+                  gallery={this.state.gallery}
+                  photoClick={this.photoClick}
+                  handleLogoClick={this.handleLogoClick}
+                  setLocation={this.setLocation}
+                  searchQuery={this.searchQuery}
+                  clearSearch={this.clearSearch}
+                />
+              );
+            })}
             <About
               path="about"
               categoryChangeHandler={this.categoryChangeHandler}
