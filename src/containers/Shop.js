@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import ShopItem from "../components/ShopItem";
 
 class Shop extends Component {
   state = {
@@ -13,8 +14,11 @@ class Shop extends Component {
         return res.json();
       })
       .then(shopItems => {
+        shopItems.sort(function(a, b) {
+          return a.order - b.order;
+        });
         this.setState({ shopItems });
-        // console.log(shopItems);
+        console.log(shopItems);
       });
   };
   showMore = () => {
@@ -32,45 +36,8 @@ class Shop extends Component {
       <div className="main">
         <div className="content shop">
           {this.state.shopItems.map((item, i) => (
-            <figure
-              className={
-                (item.availability && item.availability == "0") ||
-                item.availability == "sold out"
-                  ? "shop-item sold-out"
-                  : "shop-item"
-              }
-              key={i}
-            >
-              {item.photos[0] && item.photos.length == 1 ? (
-                <img src={item.photos[0]} alt={item.name} />
-              ) : (
-                <h2>No image available</h2>
-              )}
-              <h1>{item.name}</h1>
-              {item.price ? <p>${item.price}</p> : null}
-              {item.description ? <p>{item.description}</p> : null}
-              {item.availability &&
-              !isNaN(parseInt(item.availability)) &&
-              parseInt(item.availability) > 0 ? (
-                <p>{item.availability} remaining</p>
-              ) : null}
-              {(item.availability && item.availability == "0") ||
-              item.availability == "sold out" ? (
-                <button className="checkout-link">Sold Out</button>
-              ) : (item.availability &&
-                  !isNaN(parseInt(item.availability)) &&
-                  parseInt(item.availability) > 0) ||
-                item.availability == "unlimited" ? (
-                <a href="/">
-                  <button className="checkout-link">Buy Now</button>
-                </a>
-              ) : null}
-            </figure>
+            <ShopItem key={i} item={item}></ShopItem>
           ))}
-
-          {/* <div id="page-container">
-            <h1>Shop, Coming Soon!</h1>
-          </div> */}
         </div>
       </div>
     );
