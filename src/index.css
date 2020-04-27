@@ -653,6 +653,12 @@ figure img::after {
   -webkit-transform: translateY(-1px);
   transform: translateY(-1px);
 }
+.post-images img:hover {
+  cursor: default;
+  box-shadow: var(--shadow-before);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
 
 figcaption,
 .caption {

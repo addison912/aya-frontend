@@ -24,6 +24,7 @@ import MobileInfo from "./components/MobileInfo";
 import LeftNav from "./components/LeftNav";
 import SearchMessage from "./components/SearchMessage";
 import NotFound from "./containers/NotFound";
+import Test from "./containers/Test";
 
 class App extends React.Component {
   state = {
@@ -443,6 +444,7 @@ class App extends React.Component {
               searchQuery={this.searchQuery}
               clearSearch={this.clearSearch}
             />
+            <Test path="test"></Test>
           </Router>
           <Logo handleLogoClick={this.handleLogoClick} />
           <Navbar
@@ -500,7 +502,6 @@ class App extends React.Component {
               handleSearchInput={this.handleSearchInput}
             />
           ) : null}
-
           <div id="cursor">
             <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
           </div>

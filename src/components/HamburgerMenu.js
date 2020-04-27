@@ -28,7 +28,7 @@ class HamburgerMenu extends Component {
           {categories.map(category => (
             <li key={category}>
               <Link
-                to={`/${category.replace(/\/?\s+/g, "-")}`}
+                to={`/${category.toLowerCase().replace(/\/?\s+/g, "-")}`}
                 onClick={() => this.props.categoryChangeHandler(category)}
                 className={
                   category == this.props.category &&
