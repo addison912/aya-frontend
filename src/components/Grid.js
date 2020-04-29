@@ -5,10 +5,10 @@ import { Router } from "@reach/router";
 
 class Grid extends Component {
   componentDidMount() {
-    console.log("Grid props:", this.props);
-    if (this.props.galleryName) {
-      console.log("view:", this.props.view);
-    }
+    // console.log("Grid props:", this.props);
+    // if (this.props.galleryName) {
+    //   console.log("view:", this.props.view);
+    // }
   }
   render() {
     return (

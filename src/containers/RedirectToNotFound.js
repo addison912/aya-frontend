@@ -5,17 +5,13 @@ import App from "../App";
 
 class RedirectToNotFound extends Component {
   componentDidMount() {
-    console.log(this.props);
     if (window.location && window.location.href.indexOf("/#/") > -1) {
-      console.log(1);
       navigate(`/#/404`);
       window.location.reload();
     } else if (window.location && window.location.pathname) {
-      console.log(2);
       navigate(`${window.location.origin}/#${window.location.pathname}`);
       window.location.reload();
     } else {
-      console.log(3);
       navigate(`/#/404`);
       window.location.reload();
     }

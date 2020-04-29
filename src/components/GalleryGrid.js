@@ -21,10 +21,15 @@ class GalleryGrid extends Component {
                     ? "grid-image gallery-image book-image"
                     : "grid-image gallery-image"
                 }
-                key={photo.order ? photo.order : photo.location}
+                key={photo.location}
                 data={i}
                 role="button"
                 onClick={this.props.photoClick}
+                style={
+                  photo.order
+                    ? { order: photo.order }
+                    : { order: this.props.gallery.photos.length + i }
+                }
               >
                 <img
                   src={`${domain}/uploads/photos/${

@@ -129,9 +129,9 @@ class App extends React.Component {
           category.toLowerCase() == "home"
             ? Math.floor(Math.random() * galleries[0].photos.length)
             : 0;
-        // galleries.sort(function(a, b) {
-        //   return a.order - b.order;
-        // });
+        galleries.sort(function(a, b) {
+          return a.order - b.order;
+        });
         galleries.forEach(gallery => {
           gallery.photos.sort(function(a, b) {
             return a.order - b.order;
@@ -142,6 +142,7 @@ class App extends React.Component {
           photoIndex,
           galleryIndex: 0
         });
+        console.log(galleries);
 
         if (galleries.length > 1 && !galleryName) {
           this.setState({ view: "category" });

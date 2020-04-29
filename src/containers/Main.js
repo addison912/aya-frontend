@@ -8,14 +8,14 @@ import Grid from "../components/Grid";
 class Main extends Component {
   componentDidMount() {
     if (!!this.props.galleryName && this.props.galleries) {
-      console.log(this.props.galleryName);
+      // console.log(this.props.galleryName);
       this.props.categoryChangeHandler(
         this.props.category,
         this.props.galleryName
       );
     } else if (this.props.path && this.props.path.indexOf("Search/") > -1) {
       if (this.props.query) {
-        console.log(`searching for "${this.props.query}"`);
+        // console.log(`searching for "${this.props.query}"`);
         this.props.searchQuery(this.props.query);
       }
     } else if (this.props.category) {
@@ -26,7 +26,7 @@ class Main extends Component {
     // console.log(this.props);
     this.props.setLocation("Main");
     this.props.clearSearch();
-    console.log(this.props);
+    // console.log(this.props);
   }
   render() {
     return (
