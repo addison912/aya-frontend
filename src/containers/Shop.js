@@ -18,7 +18,6 @@ class Shop extends Component {
           return a.order - b.order;
         });
         this.setState({ shopItems });
-        console.log(shopItems);
       });
   };
   showMore = () => {

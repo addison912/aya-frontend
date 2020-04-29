@@ -86,7 +86,6 @@ class App extends React.Component {
     this.setState({ photo, photoIndex: 0 });
     // this.setGallery(i);
     this.setState({ galleryLength: gallery.photos.length });
-    console.log(this.state.galleries); //delete me
     window.galleries = this.state.galleries; //delete me
   };
 
@@ -142,7 +141,6 @@ class App extends React.Component {
           photoIndex,
           galleryIndex: 0
         });
-        console.log(galleries);
 
         if (galleries.length > 1 && !galleryName) {
           this.setState({ view: "category" });

@@ -8,9 +8,9 @@ import ImageSpacer from "./ImageSpacer";
 import { Link } from "@reach/router";
 
 class CategoryGrid extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
   render() {
     return (
       <div className="gallery-content">

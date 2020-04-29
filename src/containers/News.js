@@ -32,9 +32,6 @@ class News extends Component {
       let post = this.props.postId.toLowerCase();
       this.setState({ show: "all" });
       setTimeout(function() {
-        if (document.getElementById(post)) {
-          console.log("post found");
-        }
         window.scroll({
           top: document.getElementById(post)
             ? document.getElementById(post).offsetTop + 96
