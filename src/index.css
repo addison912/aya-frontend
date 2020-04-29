@@ -1069,9 +1069,29 @@ figcaption h1 {
   justify-content: flex-end;
 }
 
-/* HIDE NEWS CAPTIONS .post-images * figcaption {
-    display: none;
-} */
+.newsLink {
+  border: none;
+  outline: none;
+}
+
+.newsLink:hover {
+  cursor: pointer;
+}
+
+.copied {
+  font-family: var(--ui-font);
+  font-size: 12px;
+  margin-left: 1em;
+  opacity: 0;
+  transition: opacity ease-in 1s;
+}
+
+.hide-copied {
+  font-family: var(--ui-font);
+  font-size: 12px;
+  margin-left: 1em;
+  opacity: 1;
+}
 
 .post-images .grid-image img {
   height: auto;

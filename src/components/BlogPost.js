@@ -13,7 +13,10 @@ class BlogPost extends Component {
       >
         <div className="post-text">
           {" "}
-          <BlogTitle title={this.props.post.title} />
+          <BlogTitle
+            title={this.props.post.title}
+            // copyLink={this.props.copyLink}
+          />
           <BlogDate date={this.props.post.date} />
           <BlogArticle text={this.props.post.text} />
         </div>
