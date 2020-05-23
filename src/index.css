@@ -1093,6 +1093,12 @@ figcaption h1 {
   opacity: 1;
 }
 
+.hidden {
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
 .post-images .grid-image img {
   height: auto;
 }

@@ -5,14 +5,17 @@ class BlogTitle extends Component {
     showCopied: false
   };
 
-  copyLink = link => {
-    navigator.clipboard.writeText(link);
+  copyLink = () => {
+    const el = this.textArea;
+    el.select();
+    document.execCommand("copy");
     this.setState({ showCopied: true });
     setTimeout(() => {
       this.setState({ showCopied: false });
     }, 300);
     //
   };
+
   render() {
     return (
       <h1>
@@ -21,12 +24,11 @@ class BlogTitle extends Component {
           <button
             className="newsLink"
             onClick={() => {
-              this.copyLink(
-                `${window.location.origin}/#/news/${this.props.title
-                  .replace(/[^A-Z0-9]/gi, "-")
-                  .toLowerCase()}`
-              );
+              this.copyLink();
             }}
+            value={`${window.location.origin}/#/news/${this.props.title
+              .replace(/[^A-Z0-9]/gi, "-")
+              .toLowerCase()}`}
           >
             <img
               src={require("../assets/images/link.svg")}
@@ -41,6 +43,14 @@ class BlogTitle extends Component {
             </span>
           </button>
         </span>
+        <textarea
+          readOnly
+          className="hidden"
+          ref={textarea => (this.textArea = textarea)}
+          value={`${window.location.origin}/#/news/${this.props.title
+            .replace(/[^A-Z0-9]/gi, "-")
+            .toLowerCase()}`}
+        />
       </h1>
     );
   }
