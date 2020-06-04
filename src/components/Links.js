@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
-import { domain } from "../config/constants";
-import { Router, navigate, Link } from "@reach/router";
+import { Link } from "@reach/router";
 
 class Links extends Component {
   render() {
@@ -24,7 +23,13 @@ class Links extends Component {
             </Link>
           </li>
           <li>
-            <a href="https://www.instagram.com/ayabrackett/" target="_blank">Instagram</a>
+            <a
+              href="https://www.instagram.com/ayabrackett/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
           </li>
           <li>
             <Link to="/news">

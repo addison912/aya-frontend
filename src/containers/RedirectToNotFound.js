@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import { frontendDomain } from "../config/constants";
-import App from "../App";
 
 class RedirectToNotFound extends Component {
   componentDidMount() {
