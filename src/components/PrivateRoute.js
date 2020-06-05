@@ -9,7 +9,11 @@ class PrivateRoute extends React.Component {
   }
   render() {
     let { as: Comp, ...props } = this.props;
-    return this.context.verified ? <Comp {...props} /> : <Login />;
+    return this.context.verified ? (
+      <Comp {...props} />
+    ) : this.context.loaded ? (
+      <Login setLocation={this.props.setLocation} />
+    ) : null;
   }
 }
 

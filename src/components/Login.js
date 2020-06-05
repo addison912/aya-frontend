@@ -5,6 +5,10 @@ import UserContext from "../userContext";
 class Login extends React.Component {
   static contextType = UserContext;
 
+  componentDidMount() {
+    this.props.setLocation("Login");
+  }
+
   render() {
     return (
       <UserContext.Consumer>

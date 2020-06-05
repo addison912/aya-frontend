@@ -50,10 +50,11 @@ class App extends React.Component {
       searchQuery: "",
       //admin
       email: "",
-      token: window.sessionStorage.ayaToken || null,
-      verified: false,
       user: false,
       password: "",
+      token: window.sessionStorage.ayaToken || null,
+      verified: false,
+      loaded: null,
       login: this.login,
       logout: this.logout,
       toState: this.toState,
@@ -86,7 +87,9 @@ class App extends React.Component {
       )
     })
       .then(res => {
-        console.log(res);
+        this.setState({
+          password: ""
+        });
         if (res.status != 200) {
           alert(`Error ${res.status}: ${res.statusText}`);
         }
@@ -96,7 +99,10 @@ class App extends React.Component {
         console.log(data);
         if (data.signedJwt) {
           sessionStorage.setItem("ayaToken", data.signedJwt);
-          this.setState({ token: data.signedJwt, verified: true });
+          this.setState({
+            token: data.signedJwt,
+            verified: true
+          });
         }
       });
   };
@@ -104,8 +110,16 @@ class App extends React.Component {
   logout = () => {
     console.log("logging out ...");
     sessionStorage.removeItem("ayaToken");
-    this.setState({ token: null });
+    navigate("/");
+    this.setState({
+      token: null,
+      verified: false,
+      email: "",
+      user: false,
+      password: ""
+    });
   };
+
   toState = input => {
     this.setState(input);
   };
@@ -163,7 +177,7 @@ class App extends React.Component {
       return await verified;
     }
     evaluateToken().then(verified => {
-      this.setState({ verified });
+      this.setState({ verified, loaded: true });
     });
   };
   /*/// ↑ ADMIN ↑ ///*/
@@ -331,7 +345,7 @@ class App extends React.Component {
     e.preventDefault(this.state.searchInput);
     if (this.state.searchInput.length > 0) {
       this.setState({ category: "Search" });
-      navigate(`#/Search/${this.state.searchInput}`);
+      navigate(`/#/Search/${this.state.searchInput}`);
       this.searchQuery(this.state.searchInput);
     } else {
       document.querySelector(".search").focus();
@@ -403,6 +417,7 @@ class App extends React.Component {
 
   componentDidMount() {
     //hide hamburger menu when background clicked
+    this.setState({ loaded: false });
     window.addEventListener("click", e => {
       if (this.state.hamburgerMenu == true) {
         if (
@@ -421,7 +436,10 @@ class App extends React.Component {
       <React.StrictMode>
         <LocationProvider history={history}>
           <userContext.Provider value={this.state}>
-            <div id="App">
+            <div
+              id="App"
+              className={this.state.location == "Login" ? "no-padding" : null}
+            >
               <Router
                 className={
                   this.state.hamburgerMenu || this.state.mobileInfo
@@ -581,37 +599,45 @@ class App extends React.Component {
                 />
                 <Test path="test"></Test>
               </Router>
-              <Logo handleLogoClick={this.handleLogoClick} />
-              <Navbar
-                category={this.state.category}
-                layout={this.state.layout}
-                view={this.state.view}
-                toggleGalleryLayout={this.toggleGalleryLayout}
-                categoryChangeHandler={this.categoryChangeHandler}
-                toggleHamburgerMenu={this.toggleHamburgerMenu}
-                hamburgerMenu={this.state.hamburgerMenu}
-                search={this.search}
-                handleSearchInput={this.handleSearchInput}
-                searchInput={this.state.searchInput}
-                mobileInfo={this.state.mobileInfo}
-                toggleMobileInfo={this.toggleMobileInfo}
-                container={this.state.location}
-                galleries={this.state.galleries.length}
-                location={this.state.location}
-              />
-              <MobileInfo
-                mobileInfo={this.state.mobileInfo}
-                toggleMobileInfo={this.toggleMobileInfo}
-                photo={this.state.photo}
-              />
-              <LeftNav
-                location={this.state.location}
-                view={this.state.view}
-                category={this.state.category}
-                layout={this.state.layout}
-                categoryChangeHandler={this.categoryChangeHandler}
-                toggleGalleryLayout={this.toggleGalleryLayout}
-              />
+              {this.state.verified ? (
+                <Logo handleLogoClick={this.handleLogoClick} />
+              ) : null}
+              {this.state.verified ? (
+                <Navbar
+                  category={this.state.category}
+                  layout={this.state.layout}
+                  view={this.state.view}
+                  toggleGalleryLayout={this.toggleGalleryLayout}
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  toggleHamburgerMenu={this.toggleHamburgerMenu}
+                  hamburgerMenu={this.state.hamburgerMenu}
+                  search={this.search}
+                  handleSearchInput={this.handleSearchInput}
+                  searchInput={this.state.searchInput}
+                  mobileInfo={this.state.mobileInfo}
+                  toggleMobileInfo={this.toggleMobileInfo}
+                  container={this.state.location}
+                  galleries={this.state.galleries.length}
+                  location={this.state.location}
+                />
+              ) : null}
+              {this.state.verified ? (
+                <MobileInfo
+                  mobileInfo={this.state.mobileInfo}
+                  toggleMobileInfo={this.toggleMobileInfo}
+                  photo={this.state.photo}
+                />
+              ) : null}
+              {this.state.verified ? (
+                <LeftNav
+                  location={this.state.location}
+                  view={this.state.view}
+                  category={this.state.category}
+                  layout={this.state.layout}
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  toggleGalleryLayout={this.toggleGalleryLayout}
+                />
+              ) : null}
               {this.state.view == "gallery" && this.state.location == "Main" ? (
                 this.state.layout == "grid" &&
                 this.state.category == "Search" ? (

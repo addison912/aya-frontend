@@ -17,14 +17,30 @@ h1 {
 }
 
 .loginContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 48px 0;
+  background-color: aliceblue;
 }
 .loginContainer .loginForm {
   display: flex;
   flex-direction: column;
+  min-width: 256px;
+}
+
+.loginForm input {
+  margin-top: 12px;
+  height: 24px;
+  border-style: none;
+  border: 1px #333 solid;
+  border-radius: 4px;
 }
 
 /*# sourceMappingURL=index.css.map */
@@ -39,18 +55,46 @@ h1 {
   user-select: none;
 }
 
-.logoutButton {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  grid-column: 2/2;
-  grid-row: 1/1;
+.icon-wrapper.logoutButton {
+  margin-left: 24px;
 }
 
-.logoutButton img {
-  height: 24px;
-}
-
-.logoutButton img:hover {
+.logoutButton span:hover {
   cursor: pointer;
+}
+
+#App.no-padding {
+  padding: 0;
+}
+
+/*Gallery*/
+
+.grid-image {
+  height: auto;
+  width: 100%;
+  display: flex;
+  border: 1px solid #333;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+figure {
+  margin: 0;
+}
+
+.grid-image img {
+  width: 12.5%;
+}
+
+figure {
+  padding: 0;
+}
+
+figure img,
+.content img {
+  border-radius: 0;
+}
+
+.grid-image img:hover {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
 }

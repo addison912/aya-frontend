@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
+import LogoutButton from "./LogoutButton";
 
 class Search extends Component {
   render() {
@@ -28,6 +29,7 @@ class Search extends Component {
             ></img>
           </button>
         </div>
+        <LogoutButton />
       </form>
     );
   }
