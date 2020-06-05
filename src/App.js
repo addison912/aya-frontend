@@ -24,27 +24,98 @@ import MobileInfo from "./components/MobileInfo";
 import LeftNav from "./components/LeftNav";
 import SearchMessage from "./components/SearchMessage";
 import NotFound from "./containers/NotFound";
+import userContext from "./userContext";
+import PrivateRoute from "./components/PrivateRoute";
 import Test from "./containers/Test";
 
 class App extends React.Component {
-  state = {
-    photo: {},
-    message: "",
-    category: "",
-    gallery: {},
-    galleries: [],
-    layout: "single",
-    view: "gallery",
-    pictureUrl: require("./assets/images/spinner.gif"),
-    photoIndex: 0,
-    galleryIndex: 0,
-    galleryLength: 0,
-    searchInput: "",
-    hamburgerMenu: false,
-    mobileInfo: false,
-    location: "",
-    searchQuery: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      photo: {},
+      message: "",
+      category: "",
+      gallery: {},
+      galleries: [],
+      layout: "single",
+      view: "gallery",
+      pictureUrl: require("./assets/images/spinner.gif"),
+      photoIndex: 0,
+      galleryIndex: 0,
+      galleryLength: 0,
+      searchInput: "",
+      hamburgerMenu: false,
+      mobileInfo: false,
+      location: "",
+      searchQuery: "",
+      //admin
+      email: "",
+      token: window.sessionStorage.ayaToken || null,
+      user: false,
+      password: "",
+      login: this.login,
+      logout: this.logout,
+      toState: this.toState,
+      tokenCheck: this.tokenCheck
+    };
+  }
+
+  /*/// ↓ ADMIN ↓ ///*/
+  login = e => {
+    e.preventDefault;
+    console.log(`logging in ${this.state.email}...`);
+    async function postData(url = "", data = {}) {
+      const response = await fetch(url, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      return await response;
+    }
+    postData(`${domain}/auth/login`, {
+      data: btoa(
+        JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
+      )
+    })
+      .then(res => {
+        console.log(res);
+        if (res.status != 200) {
+          alert(`Error ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (data.signedJwt) {
+          sessionStorage.setItem("ayaToken", data.signedJwt);
+          this.setState({ token: data.signedJwt });
+        }
+      });
   };
+
+  logout = () => {
+    console.log("logging out ...");
+    sessionStorage.removeItem("ayaToken");
+    this.setState({ token: null });
+  };
+  toState = input => {
+    this.setState(input);
+  };
+
+  tokenCheck = () => {
+    if (window.sessionStorage.ayaToken) {
+      this.setState({ token: window.sessionStorage.ayaToken });
+    } else {
+      this.setState({ token: null });
+    }
+  };
+  /*/// ↑ ADMIN ↑ ///*/
 
   toggleGalleryLayout = layout => {
     this.setState({
@@ -296,27 +367,120 @@ class App extends React.Component {
 
   render() {
     return (
-      <LocationProvider history={history}>
-        <div id="App">
-          <Router
-            className={
-              this.state.hamburgerMenu || this.state.mobileInfo
-                ? "router background-blur"
-                : "router unblur"
-            }
-          >
-            <NotFound
-              path="404"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              default
-            ></NotFound>
-            {categories.map(category => {
-              category = category.toLowerCase().replace(/\/?\s+/g, "-");
-              return (
-                <Main
-                  key={category}
-                  path={category}
+      <React.StrictMode>
+        <LocationProvider history={history}>
+          <userContext.Provider value={this.state}>
+            <div id="App">
+              <Router
+                className={
+                  this.state.hamburgerMenu || this.state.mobileInfo
+                    ? "router background-blur"
+                    : "router unblur"
+                }
+              >
+                <NotFound
+                  path="404"
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  handleLogoClick={this.handleLogoClick}
+                  default
+                ></NotFound>
+                {categories.map(category => {
+                  category = category.toLowerCase().replace(/\/?\s+/g, "-");
+                  return (
+                    <PrivateRoute
+                      as={Main}
+                      key={category}
+                      path={category}
+                      categoryChangeHandler={this.categoryChangeHandler}
+                      search={this.search}
+                      searchInput={this.state.searchInput}
+                      handleSearchInput={this.handleSearchInput}
+                      layout={this.state.layout}
+                      toggleGalleryLayout={this.toggleGalleryLayout}
+                      photo={this.state.photo}
+                      clickPicture={this.clickPicture}
+                      category={category}
+                      galleries={this.state.galleries} // don't forget to remove this
+                      getGalleries={this.getGalleries}
+                      view={this.state.view}
+                      galleryLength={this.state.galleryLength}
+                      photoIndex={
+                        this.state.photoIndex % this.state.galleryLength
+                      }
+                      galleryClick={this.galleryClick}
+                      gallery={this.state.gallery}
+                      photoClick={this.photoClick}
+                      handleLogoClick={this.handleLogoClick}
+                      setLocation={this.setLocation}
+                      searchQuery={this.searchQuery}
+                      clearSearch={this.clearSearch}
+                    />
+                  );
+                })}
+                {categories.map(category => {
+                  category = category.toLowerCase().replace(/\/?\s+/g, "-");
+                  return (
+                    <PrivateRoute
+                      as={Main}
+                      key={category}
+                      path={`${category}/:galleryName`}
+                      categoryChangeHandler={this.categoryChangeHandler}
+                      search={this.search}
+                      searchInput={this.state.searchInput}
+                      handleSearchInput={this.handleSearchInput}
+                      layout={this.state.layout}
+                      toggleGalleryLayout={this.toggleGalleryLayout}
+                      photo={this.state.photo}
+                      clickPicture={this.clickPicture}
+                      category={category}
+                      galleries={this.state.galleries} // don't forget to remove this
+                      getGalleries={this.getGalleries}
+                      view={this.state.view}
+                      galleryLength={this.state.galleryLength}
+                      photoIndex={
+                        this.state.photoIndex % this.state.galleryLength
+                      }
+                      galleryClick={this.galleryClick}
+                      gallery={this.state.gallery}
+                      photoClick={this.photoClick}
+                      handleLogoClick={this.handleLogoClick}
+                      setLocation={this.setLocation}
+                      searchQuery={this.searchQuery}
+                      clearSearch={this.clearSearch}
+                    />
+                  );
+                })}
+                <PrivateRoute
+                  as={About}
+                  path="about"
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  handleLogoClick={this.handleLogoClick}
+                  setLocation={this.setLocation}
+                />
+                <PrivateRoute
+                  as={News}
+                  path="news"
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  handleLogoClick={this.handleLogoClick}
+                  setLocation={this.setLocation}
+                />
+                <PrivateRoute
+                  as={News}
+                  path="news/:postId"
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  handleLogoClick={this.handleLogoClick}
+                  setLocation={this.setLocation}
+                />
+                <PrivateRoute
+                  as={Shop}
+                  path="shop"
+                  categoryChangeHandler={this.categoryChangeHandler}
+                  handleLogoClick={this.handleLogoClick}
+                  setLocation={this.setLocation}
+                />
+                <PrivateRoute
+                  as={Main}
+                  path="/"
                   categoryChangeHandler={this.categoryChangeHandler}
                   search={this.search}
                   searchInput={this.state.searchInput}
@@ -325,7 +489,7 @@ class App extends React.Component {
                   toggleGalleryLayout={this.toggleGalleryLayout}
                   photo={this.state.photo}
                   clickPicture={this.clickPicture}
-                  category={category}
+                  category={this.state.category}
                   galleries={this.state.galleries} // don't forget to remove this
                   getGalleries={this.getGalleries}
                   view={this.state.view}
@@ -339,14 +503,9 @@ class App extends React.Component {
                   searchQuery={this.searchQuery}
                   clearSearch={this.clearSearch}
                 />
-              );
-            })}
-            {categories.map(category => {
-              category = category.toLowerCase().replace(/\/?\s+/g, "-");
-              return (
-                <Main
-                  key={category}
-                  path={`${category}/:galleryName`}
+                <PrivateRoute
+                  as={Main}
+                  path="Search/:query"
                   categoryChangeHandler={this.categoryChangeHandler}
                   search={this.search}
                   searchInput={this.state.searchInput}
@@ -355,7 +514,7 @@ class App extends React.Component {
                   toggleGalleryLayout={this.toggleGalleryLayout}
                   photo={this.state.photo}
                   clickPicture={this.clickPicture}
-                  category={category}
+                  category={this.state.category}
                   galleries={this.state.galleries} // don't forget to remove this
                   getGalleries={this.getGalleries}
                   view={this.state.view}
@@ -369,143 +528,72 @@ class App extends React.Component {
                   searchQuery={this.searchQuery}
                   clearSearch={this.clearSearch}
                 />
-              );
-            })}
-            <About
-              path="about"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <News
-              path="news"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <News
-              path="news/:postId"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <Shop
-              path="shop"
-              categoryChangeHandler={this.categoryChangeHandler}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-            />
-            <Main
-              path="/"
-              categoryChangeHandler={this.categoryChangeHandler}
-              search={this.search}
-              searchInput={this.state.searchInput}
-              handleSearchInput={this.handleSearchInput}
-              layout={this.state.layout}
-              toggleGalleryLayout={this.toggleGalleryLayout}
-              photo={this.state.photo}
-              clickPicture={this.clickPicture}
-              category={this.state.category}
-              galleries={this.state.galleries} // don't forget to remove this
-              getGalleries={this.getGalleries}
-              view={this.state.view}
-              galleryLength={this.state.galleryLength}
-              photoIndex={this.state.photoIndex % this.state.galleryLength}
-              galleryClick={this.galleryClick}
-              gallery={this.state.gallery}
-              photoClick={this.photoClick}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-              searchQuery={this.searchQuery}
-              clearSearch={this.clearSearch}
-            />
-            <Main
-              path="Search/:query"
-              categoryChangeHandler={this.categoryChangeHandler}
-              search={this.search}
-              searchInput={this.state.searchInput}
-              handleSearchInput={this.handleSearchInput}
-              layout={this.state.layout}
-              toggleGalleryLayout={this.toggleGalleryLayout}
-              photo={this.state.photo}
-              clickPicture={this.clickPicture}
-              category={this.state.category}
-              galleries={this.state.galleries} // don't forget to remove this
-              getGalleries={this.getGalleries}
-              view={this.state.view}
-              galleryLength={this.state.galleryLength}
-              photoIndex={this.state.photoIndex % this.state.galleryLength}
-              galleryClick={this.galleryClick}
-              gallery={this.state.gallery}
-              photoClick={this.photoClick}
-              handleLogoClick={this.handleLogoClick}
-              setLocation={this.setLocation}
-              searchQuery={this.searchQuery}
-              clearSearch={this.clearSearch}
-            />
-            <Test path="test"></Test>
-          </Router>
-          <Logo handleLogoClick={this.handleLogoClick} />
-          <Navbar
-            category={this.state.category}
-            layout={this.state.layout}
-            view={this.state.view}
-            toggleGalleryLayout={this.toggleGalleryLayout}
-            categoryChangeHandler={this.categoryChangeHandler}
-            toggleHamburgerMenu={this.toggleHamburgerMenu}
-            hamburgerMenu={this.state.hamburgerMenu}
-            search={this.search}
-            handleSearchInput={this.handleSearchInput}
-            searchInput={this.state.searchInput}
-            mobileInfo={this.state.mobileInfo}
-            toggleMobileInfo={this.toggleMobileInfo}
-            container={this.state.location}
-            galleries={this.state.galleries.length}
-            location={this.state.location}
-          />
-          <MobileInfo
-            mobileInfo={this.state.mobileInfo}
-            toggleMobileInfo={this.toggleMobileInfo}
-            photo={this.state.photo}
-          />
-          <LeftNav
-            location={this.state.location}
-            view={this.state.view}
-            category={this.state.category}
-            layout={this.state.layout}
-            categoryChangeHandler={this.categoryChangeHandler}
-            toggleGalleryLayout={this.toggleGalleryLayout}
-          />
-          {this.state.view == "gallery" && this.state.location == "Main" ? (
-            this.state.layout == "grid" && this.state.category == "Search" ? (
-              <SearchMessage
-                searchQuery={this.state.searchQuery}
-                galleryLength={this.state.galleryLength}
-              ></SearchMessage>
-            ) : (
-              <TopNav
-                view={this.state.view}
-                galleries={this.state.galleries}
+                <Test path="test"></Test>
+              </Router>
+              <Logo handleLogoClick={this.handleLogoClick} />
+              <Navbar
                 category={this.state.category}
-                categoryChangeHandler={this.categoryChangeHandler}
                 layout={this.state.layout}
+                view={this.state.view}
                 toggleGalleryLayout={this.toggleGalleryLayout}
-              ></TopNav>
-            )
-          ) : null}
-          {this.state.location == "Main" ? (
-            <Search
-              className="search-component"
-              search={this.search}
-              searchInput={this.state.searchInput}
-              handleSearchInput={this.handleSearchInput}
-            />
-          ) : null}
-          <div id="cursor">
-            <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
-          </div>
-        </div>
-      </LocationProvider>
+                categoryChangeHandler={this.categoryChangeHandler}
+                toggleHamburgerMenu={this.toggleHamburgerMenu}
+                hamburgerMenu={this.state.hamburgerMenu}
+                search={this.search}
+                handleSearchInput={this.handleSearchInput}
+                searchInput={this.state.searchInput}
+                mobileInfo={this.state.mobileInfo}
+                toggleMobileInfo={this.toggleMobileInfo}
+                container={this.state.location}
+                galleries={this.state.galleries.length}
+                location={this.state.location}
+              />
+              <MobileInfo
+                mobileInfo={this.state.mobileInfo}
+                toggleMobileInfo={this.toggleMobileInfo}
+                photo={this.state.photo}
+              />
+              <LeftNav
+                location={this.state.location}
+                view={this.state.view}
+                category={this.state.category}
+                layout={this.state.layout}
+                categoryChangeHandler={this.categoryChangeHandler}
+                toggleGalleryLayout={this.toggleGalleryLayout}
+              />
+              {this.state.view == "gallery" && this.state.location == "Main" ? (
+                this.state.layout == "grid" &&
+                this.state.category == "Search" ? (
+                  <SearchMessage
+                    searchQuery={this.state.searchQuery}
+                    galleryLength={this.state.galleryLength}
+                  ></SearchMessage>
+                ) : (
+                  <TopNav
+                    view={this.state.view}
+                    galleries={this.state.galleries}
+                    category={this.state.category}
+                    categoryChangeHandler={this.categoryChangeHandler}
+                    layout={this.state.layout}
+                    toggleGalleryLayout={this.toggleGalleryLayout}
+                  ></TopNav>
+                )
+              ) : null}
+              {this.state.location == "Main" ? (
+                <Search
+                  className="search-component"
+                  search={this.search}
+                  searchInput={this.state.searchInput}
+                  handleSearchInput={this.handleSearchInput}
+                />
+              ) : null}
+              <div id="cursor">
+                <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
+              </div>
+            </div>
+          </userContext.Provider>
+        </LocationProvider>
+      </React.StrictMode>
     );
   }
 }
