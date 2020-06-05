@@ -5,10 +5,12 @@ const userContext = React.createContext({
   password: "",
   token: null,
   user: false,
+  verified: false,
   login() {},
   logout() {},
   toState() {},
-  tokenCheck() {}
+  tokenCheck() {},
+  verifyToken() {}
 });
 
 export default userContext;

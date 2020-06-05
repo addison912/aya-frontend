@@ -51,12 +51,14 @@ class App extends React.Component {
       //admin
       email: "",
       token: window.sessionStorage.ayaToken || null,
+      verified: false,
       user: false,
       password: "",
       login: this.login,
       logout: this.logout,
       toState: this.toState,
-      tokenCheck: this.tokenCheck
+      tokenCheck: this.tokenCheck,
+      verifyToken: this.verifyToken
     };
   }
 
@@ -94,7 +96,7 @@ class App extends React.Component {
         console.log(data);
         if (data.signedJwt) {
           sessionStorage.setItem("ayaToken", data.signedJwt);
-          this.setState({ token: data.signedJwt });
+          this.setState({ token: data.signedJwt, verified: true });
         }
       });
   };
@@ -114,6 +116,55 @@ class App extends React.Component {
     } else {
       this.setState({ token: null });
     }
+  };
+
+  verifyToken = () => {
+    async function evaluateToken() {
+      let verified = new Promise((resolve, reject) => {
+        // setTimeout(() => {
+        //   reject;
+        // }, 3000);
+        console.log("checking credentials");
+        async function postData(url = "", data = {}) {
+          const response = await fetch(url, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: "bearer " + window.sessionStorage.ayaToken
+            }
+          });
+          return await response;
+        }
+        if (window.sessionStorage.ayaToken) {
+          postData(`${domain}/auth/verify`, {})
+            .then(res => {
+              if (res.status != 200) {
+                // alert(`Error ${res.status}: ${res.statusText}`);
+                window.sessionStorage.removeItem("ayaToken");
+                resolve(false);
+              }
+              return res.json();
+            })
+            .then(data => {
+              console.log(data);
+              if (data.token && data.token == window.sessionStorage.ayaToken) {
+                resolve(true);
+              } else {
+                window.sessionStorage.removeItem("ayaToken");
+                resolve(false);
+              }
+            });
+        } else {
+          window.sessionStorage.removeItem("ayaToken");
+          resolve(false);
+        }
+      });
+      return await verified;
+    }
+    evaluateToken().then(verified => {
+      this.setState({ verified });
+    });
   };
   /*/// ↑ ADMIN ↑ ///*/
 

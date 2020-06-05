@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  margin: 1em;
+}
+
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginContainer .loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=index.css.map */
+
+.no-highlights {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  grid-column: 2/2;
+  grid-row: 1/1;
+}
+
+.logoutButton img {
+  height: 24px;
+}
+
+.logoutButton img:hover {
+  cursor: pointer;
+}

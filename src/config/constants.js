@@ -1,7 +1,7 @@
 module.exports = {
   // domain: "http://157.245.165.76",
-  domain: "http://64.227.97.131",
-  // domain: "http://localhost:3001",
+  // domain: "http://64.227.97.131",
+  domain: "http://localhost:3001",
   // domain: "https://funky.haus",
   categories: [
     "Still Life",
