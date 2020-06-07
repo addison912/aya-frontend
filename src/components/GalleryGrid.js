@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import EditPhoto from "../components/EditPhoto";
 
 class GalleryGrid extends Component {
   // componentDidMount() {
@@ -24,7 +25,7 @@ class GalleryGrid extends Component {
                 key={photo.location}
                 data={i}
                 role="button"
-                onClick={this.props.photoClick}
+                // onClick={this.props.photoClick}
                 style={
                   photo.order
                     ? { order: photo.order }
@@ -42,6 +43,10 @@ class GalleryGrid extends Component {
                   alt={photo.caption}
                   className="gridImage"
                 />
+                <div className="item">
+                  <figcaption>{photo.caption}</figcaption>
+                  <EditPhoto photo={photo} />
+                </div>
               </figure>
             ))
           : null}

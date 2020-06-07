@@ -98,3 +98,36 @@ figure img,
   -webkit-transform: translateY(0px);
   transform: translateY(0px);
 }
+
+.grid-image figcaption {
+  margin-left: 24px;
+  align-items: center;
+}
+
+.editDelete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editDelete button {
+  margin-right: 24px;
+  margin-right: 24px;
+  border-style: none;
+  background: none;
+}
+
+button.delete {
+  color: red;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}

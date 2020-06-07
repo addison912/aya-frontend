@@ -30,6 +30,7 @@ class Login extends React.Component {
                 name="email"
                 onChange={e => context.toState({ email: e.target.value })}
                 value={context.email}
+                placeholder="email"
               />
               <input
                 type="password"
@@ -37,6 +38,7 @@ class Login extends React.Component {
                 name="password"
                 onChange={e => context.toState({ password: e.target.value })}
                 value={context.password}
+                placeholder="password"
               />
               <input type="submit" value="Submit" onClick={context.login} />
             </div>
