@@ -7,6 +7,8 @@ const adminContext = React.createContext({
   categoryChangeHandler() {},
   uploadPhoto() {},
   addPhoto: false,
+  editPhoto: false,
+  photoEdit() {},
   location: "",
   category: "",
   galleryName: "",

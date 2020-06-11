@@ -8,6 +8,7 @@ import EditPhoto from "../components/EditPhoto";
 import AddPhoto from "./AddPhoto";
 import AdminContext from "../adminContext";
 import Breadcrumb from "./Breadcrumb";
+import EditPhotoForm from "./EditPhotoForm";
 
 class GalleryGrid extends Component {
   static contextType = AdminContext;
@@ -33,41 +34,51 @@ class GalleryGrid extends Component {
             ) : null}
 
             {this.props.gallery && this.props.gallery.photos
-              ? this.props.gallery.photos.map((photo, i) => (
-                  <figure
-                    className={
-                      this.props.category == "Books"
-                        ? "grid-image gallery-image book-image"
-                        : "grid-image gallery-image"
-                    }
-                    key={photo.location}
-                    role="button"
-                    style={
-                      photo.order
-                        ? { order: photo.order }
-                        : { order: this.props.gallery.photos.length + i }
-                    }
-                  >
-                    <img
-                      src={`${domain}/uploads/photos/${
-                        photo.category.toLowerCase() == "advertising"
-                          ? "Client-Work"
-                          : photo.category.replace(/\/?\s+/g, "_")
-                      }/${photo.gallery
-                        .replace(/\/?\s+/g, "_")
-                        .replace(/[^\w\s]/gi, "")}/thumbs/${photo.location}`}
-                      alt={photo.caption}
-                      className="gridImage"
-                    />
-                    <div className="item">
-                      <figcaption>{photo.caption}</figcaption>
-                      <EditPhoto
-                        photo={photo}
-                        photoClick={() => this.props.photoClick(i)}
+              ? this.props.gallery.photos.map((photo, i) =>
+                  context.editPhoto != photo._id ? (
+                    <figure
+                      className={
+                        this.props.category == "Books"
+                          ? "grid-image gallery-image book-image"
+                          : "grid-image gallery-image"
+                      }
+                      key={photo._id}
+                      role="button"
+                      style={
+                        photo.order
+                          ? { order: photo.order }
+                          : { order: this.props.gallery.photos.length + i }
+                      }
+                    >
+                      <img
+                        src={`${domain}/uploads/photos/${
+                          photo.category.toLowerCase() == "advertising"
+                            ? "Client-Work"
+                            : photo.category.replace(/\/?\s+/g, "_")
+                        }/${photo.gallery
+                          .replace(/\/?\s+/g, "_")
+                          .replace(/[^\w\s]/gi, "")}/thumbs/${photo.location}`}
+                        alt={photo.caption}
+                        className="gridImage"
                       />
-                    </div>
-                  </figure>
-                ))
+                      <div className="item">
+                        <figcaption>{photo.caption}</figcaption>
+                        <EditPhoto
+                          photo={photo}
+                          photoClick={() => this.props.photoClick(i)}
+                        />
+                      </div>
+                    </figure>
+                  ) : (
+                    <EditPhotoForm
+                      photo={photo}
+                      key={photo._id}
+                      gallery={this.props.gallery}
+                      category={this.props.category}
+                      i={i}
+                    />
+                  )
+                )
               : null}
           </div>
         )}

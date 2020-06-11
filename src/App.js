@@ -69,6 +69,8 @@ class App extends React.Component {
       updateGalleryName: this.updateGalleryName,
       uploadPhoto: this.uploadPhoto,
       addPhoto: false,
+      editPhoto: false,
+      photoEdit: this.photoEdit,
       editgalleryName: false,
       galleryName: ""
     };
@@ -282,6 +284,65 @@ class App extends React.Component {
       });
   };
 
+  photoEdit = (photo, edits) => {
+    let reordered = false;
+    if (photo.order != edits.order) {
+      let oldOrder = photo.order;
+      let newOrder = edits.order;
+      let updatedGallery = this.state.gallery;
+      if (newOrder > oldOrder) {
+        updatedGallery.photos.forEach(photo => {
+          if (
+            photo.order &&
+            photo.order > oldOrder &&
+            photo.order <= newOrder
+          ) {
+            photo.order--;
+          }
+        });
+      } else if (newOrder < oldOrder) {
+        updatedGallery.photos.forEach(photo => {
+          if (
+            photo.order &&
+            photo.order < oldOrder &&
+            photo.order >= newOrder
+          ) {
+            photo.order++;
+          }
+        });
+      }
+
+      this.setState({ gallery: updatedGallery });
+      reordered = updatedGallery;
+    }
+
+    try {
+      let newPhoto = photo;
+      newPhoto.caption = edits.caption;
+      newPhoto.order = edits.order;
+      newPhoto.searchTags = edits.searchTags;
+      axios
+        .post(
+          `${domain}/api/photo/edit/${photo._id}`,
+          { newPhoto, reordered },
+          {
+            headers: {
+              authorization: `bearer ${window.sessionStorage.ayaToken}`,
+              "Content-Type": "application/json"
+            }
+          }
+        )
+        .then(res => {
+          if (res.data) {
+            // console.log(res);
+            this.setState({ gallery: res.data, editPhoto: false });
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   deletePhoto = (id, location) => {
     try {
       let d = confirm("Are you sure you want to delete this photo?");
@@ -307,7 +368,7 @@ class App extends React.Component {
             this.setState({ gallery });
           })
           .catch(error => {
-            console.log(error.response.status);
+            console.log(error.response);
 
             if (error.response.status == 403) {
               this.logout();

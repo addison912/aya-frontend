@@ -25,7 +25,7 @@ class AddPhoto extends Component {
             role="button"
             onClick={
               context.addPhoto == false
-                ? () => context.toState({ addPhoto: true })
+                ? () => context.toState({ addPhoto: true, editPhoto: false })
                 : null
             }
           >

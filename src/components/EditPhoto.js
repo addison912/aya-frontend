@@ -8,7 +8,18 @@ class EditPhoto extends Component {
       <AdminContext.Consumer>
         {context => (
           <div className="editDelete">
-            <button className="edit" onClick={this.props.photoClick}>
+            <button
+              className="edit"
+              onClick={
+                context.editPhoto != this.props.photo._id
+                  ? () =>
+                      context.toState({
+                        addPhoto: false,
+                        editPhoto: this.props.photo._id
+                      })
+                  : null
+              }
+            >
               EDIT
             </button>
             <button

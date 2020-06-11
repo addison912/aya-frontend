@@ -116,17 +116,21 @@ figure img,
 
 .editDelete {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  width: 25%;
 }
 
 .editDelete button {
+  min-width: 64px;
   margin-right: 24px;
   border-style: none;
   background: none;
   font-family: var(--admin-font);
   font-size: 16px;
   font-weight: bold;
+  text-align: left;
+  /* width: 50%; */
 }
 
 button.delete {
@@ -178,7 +182,7 @@ button:hover {
   margin-top: 12px;
 }
 
-.add-photo form input[type="file"] {
+form input[type="file"] {
   border: none;
 }
 .cancel-submit {
@@ -235,4 +239,45 @@ input.submit-button {
 
 .edit-icon:hover {
   cursor: pointer;
+}
+
+.edit-photo-form .gridImage {
+  width: 25%;
+}
+
+.edit-photo-form form {
+  margin: 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-photo-form form input {
+  width: 80%;
+  margin-bottom: 12px;
+  height: 32px;
+  border-style: none;
+  border: 1px #333 solid;
+  border-radius: 4px;
+  font-family: var(--admin-font);
+}
+.edit-photo-form form label:first-of-type {
+  margin-top: 12px;
+}
+
+.edit-photo-form label {
+  width: 80%;
+}
+
+.edit-photo-form .cancel-submit {
+  margin: 0;
+  width: 25%;
+  align-items: center;
+}
+.edit-photo-form .cancel-submit input {
+  margin: 0 24 0 0;
+  height: 36px;
+  border-radius: 4px;
+  margin-right: 24px;
 }
