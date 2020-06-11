@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --admin-font: "Courier New", Courier, monospace;
+  --category-font: "GT America Bold", sans-serif;
+  --body-font: "GT America Mono", monospace;
+  --ui-font: "GT America", sans-serif;
+}
+
 h1 {
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -37,7 +44,7 @@ h1 {
 
 .loginForm input {
   margin-top: 12px;
-  height: 24px;
+  height: 32px;
   border-style: none;
   border: 1px #333 solid;
   border-radius: 4px;
@@ -102,6 +109,9 @@ figure img,
 .grid-image figcaption {
   margin-left: 24px;
   align-items: center;
+  font-family: var(--admin-font);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .editDelete {
@@ -112,9 +122,11 @@ figure img,
 
 .editDelete button {
   margin-right: 24px;
-  margin-right: 24px;
   border-style: none;
   background: none;
+  font-family: var(--admin-font);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 button.delete {
@@ -130,4 +142,97 @@ button:hover {
   width: 100%;
   align-items: center;
   justify-content: space-between;
+}
+
+.add-photo {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: var(--admin-font);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hover-cursor {
+  cursor: pointer;
+}
+
+.add-photo form {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.add-photo form input {
+  margin-bottom: 12px;
+  height: 32px;
+  border-style: none;
+  border: 1px #333 solid;
+  border-radius: 4px;
+  font-family: var(--admin-font);
+}
+.add-photo form input:first-of-type {
+  margin-top: 12px;
+}
+
+.add-photo form input[type="file"] {
+  border: none;
+}
+.cancel-submit {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.cancel-submit input {
+  margin-top: 12px;
+  margin-left: 12px;
+  border-style: none;
+  background: none;
+  font-family: var(--admin-font);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cancel-submit input:hover {
+  cursor: pointer;
+}
+
+input.submit-button {
+  color: white;
+  background-color: #333;
+}
+
+.breadcrumb {
+  min-height: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.breadcrumb .cancel-submit {
+  display: inline;
+}
+
+.breadcrumb .cancel-submit input {
+  margin-top: 0;
+}
+
+.breadcrumb span {
+  height: 32px;
+}
+
+.edit-gallery-name {
+  height: 32px;
+  font-size: 24px;
+}
+
+.edit-icon {
+  height: 16px;
+}
+
+.edit-icon:hover {
+  cursor: pointer;
 }

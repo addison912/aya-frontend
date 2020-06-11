@@ -6,6 +6,7 @@ import {
   navigate
 } from "@reach/router";
 // import mainContext from "./mainContext";
+import axios from "axios";
 import { categories } from "./config/constants";
 
 import Logo from "./components/Logo";
@@ -62,7 +63,14 @@ class App extends React.Component {
       tokenCheck: this.tokenCheck,
       verifyToken: this.verifyToken,
       //admin adminContext
-      deletePhoto: this.deletePhoto
+      deletePhoto: this.deletePhoto,
+      deleteGallery: this.deleteGallery,
+      categoryChangeHandler: this.categoryChangeHandler,
+      updateGalleryName: this.updateGalleryName,
+      uploadPhoto: this.uploadPhoto,
+      addPhoto: false,
+      editgalleryName: false,
+      galleryName: ""
     };
   }
 
@@ -135,7 +143,7 @@ class App extends React.Component {
     }
   };
 
-  verifyToken = () => {
+  verifyToken = cb => {
     async function evaluateToken() {
       let verified = new Promise((resolve, reject) => {
         // setTimeout(() => {
@@ -181,24 +189,130 @@ class App extends React.Component {
     }
     evaluateToken().then(verified => {
       this.setState({ verified, loaded: true });
+      if (cb) {
+        cb;
+      }
     });
   };
 
-  deletePhoto = id => {
+  deleteGallery = id => {
+    let confirmed = confirm(
+      "Are you sure you want to delete this gallery? This will permanently delete the gallery and all photos contained within."
+    );
+    if (confirmed == true) {
+      axios
+        .delete(`${domain}/api/gallery/delete/${id}`, {
+          headers: {
+            authorization: `bearer ${window.sessionStorage.ayaToken}`
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          console.log("Deleting gallery " + id);
+          let galleries = this.state.galleries;
+          galleries.splice(
+            galleries
+              .map(i => {
+                return i._id;
+              })
+              .indexOf(id),
+            1
+          );
+          this.setState({ galleries });
+        })
+        .catch(error => {
+          alert("A server error occured");
+          throw error.response.data;
+        });
+    }
+  };
+
+  updateGalleryName = (name, id, category) => {
+    this.setState({ editgalleryName: false });
+    axios
+      .post(
+        `${domain}/api/gallery/rename/${id}`,
+        { name },
+        {
+          headers: {
+            authorization: `bearer ${window.sessionStorage.ayaToken}`
+          }
+        }
+      )
+      .then(res => {
+        if (res.data) {
+          this.setState({ gallery: res.data });
+        }
+        navigate(
+          `/#/${category
+            .toLowerCase()
+            .replace(/\/?\s+/g, "-")}/${name
+            .toLowerCase()
+            .replace(/\/?\s+/g, "-")}`
+        );
+      });
+  };
+
+  uploadPhoto = (photoData, gallery, category, galleryId) => {
+    this.verifyToken;
+
+    photoData.category = category;
+    photoData.gallery = gallery;
+
+    let formData = new FormData();
+    formData.append("file", photoData.photo);
+    formData.append("category", category);
+    formData.append("gallery", gallery);
+    formData.append("order", photoData.order);
+    formData.append("caption", photoData.caption);
+    formData.append("searchTags", photoData.searchTags);
+
+    axios
+      .post(`${domain}/api/photo/add/${galleryId}`, formData, {
+        headers: {
+          authorization: `bearer ${window.sessionStorage.ayaToken}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(res => {
+        if (res.data) {
+          console.log(res);
+          this.setState({ gallery: res.data, addPhoto: false });
+        }
+      });
+  };
+
+  deletePhoto = (id, location) => {
     try {
       let d = confirm("Are you sure you want to delete this photo?");
       if (d == true) {
-        console.log("Deleting photo " + id);
-        let gallery = this.state.gallery;
-        gallery.photos.splice(
-          gallery.photos
-            .map(i => {
-              return i._id;
-            })
-            .indexOf(id),
-          1
-        );
-        this.setState({ gallery });
+        axios
+          .delete(`${domain}/api/photo/id/${id}/location/${location}`, {
+            headers: {
+              authorization: `bearer ${window.sessionStorage.ayaToken}`
+            }
+          })
+          .then(response => {
+            console.log(response.data);
+            console.log("Deleting photo " + id);
+            let gallery = this.state.gallery;
+            gallery.photos.splice(
+              gallery.photos
+                .map(i => {
+                  return i._id;
+                })
+                .indexOf(id),
+              1
+            );
+            this.setState({ gallery });
+          })
+          .catch(error => {
+            console.log(error.response.status);
+
+            if (error.response.status == 403) {
+              this.logout();
+            }
+          });
       } else {
         console.log("Deletion cancelled");
       }
@@ -356,6 +470,7 @@ class App extends React.Component {
       })
       .then(photos => {
         this.setState({
+          category: "Search",
           view: "gallery",
           layout: "grid",
           galleries: [{ photos }],
@@ -403,8 +518,7 @@ class App extends React.Component {
   };
 
   /////
-  photoClick = e => {
-    let i = e.target.closest("figure").getAttribute("data");
+  photoClick = i => {
     this.setState({ layout: "single", photoIndex: i });
     this.setPictureUrl(i);
     this.setGalleryLength();
@@ -669,6 +783,7 @@ class App extends React.Component {
                     toggleGalleryLayout={this.toggleGalleryLayout}
                   />
                 ) : null}
+
                 {this.state.view == "gallery" &&
                 this.state.location == "Main" ? (
                   this.state.layout == "grid" &&
@@ -685,6 +800,7 @@ class App extends React.Component {
                       categoryChangeHandler={this.categoryChangeHandler}
                       layout={this.state.layout}
                       toggleGalleryLayout={this.toggleGalleryLayout}
+                      location={this.state.locations}
                     ></TopNav>
                   )
                 ) : null}

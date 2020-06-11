@@ -19,6 +19,8 @@ class Grid extends Component {
             path="/"
             galleries={this.props.galleries}
             galleryClick={this.props.galleryClick}
+            category={this.props.category}
+            view={this.props.view}
           />
         ) : (
           <GalleryGrid
@@ -33,6 +35,7 @@ class Grid extends Component {
             gallery={this.props.gallery}
             photoClick={this.props.photoClick}
             category={this.props.category}
+            view={this.props.view}
           />
         )}
       </div>
