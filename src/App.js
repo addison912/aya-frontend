@@ -90,6 +90,11 @@ class App extends React.Component {
   };
 
   categoryChangeHandler = (category, galleryName) => {
+    if (category.toLowerCase() != "home") {
+      navigate(`/#/${category.replace(/\/?\s+/g, "-").toLowerCase()}`);
+    } else {
+      navigate(`/`);
+    }
     this.setState({
       category,
       gallery: {},

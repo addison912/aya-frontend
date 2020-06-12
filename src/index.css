@@ -1,10 +1,7 @@
 @charset "UTF-8";
 @import url("https://admin.ayabrackett.com/assets/fonts.css");
-@import url("https://admin.ayabrackett.com/assets/next-arrow.svg");
-@import url("https://admin.ayabrackett.com/assets/prev-arrow.svg");
 
 /* Variables */
-
 :root {
   --category-font: "GT America Bold", sans-serif;
   --body-font: "GT America Mono", monospace;
@@ -1400,6 +1397,8 @@ time {
 }
 #search-message h1 {
   line-height: 100%;
+  text-align: left;
+  margin-left: 0;
 }
 
 @media only screen and (max-width: 960px) {
