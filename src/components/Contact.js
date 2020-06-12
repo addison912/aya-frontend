@@ -3,15 +3,15 @@
 import React, { Component } from "react";
 import AboutContext from "../aboutContext";
 
-class ClientList extends Component {
+class Contact extends Component {
   static contextType = AboutContext;
   render() {
     return (
       <AboutContext.Consumer>
         {context => (
-          <div className="clients">
+          <div className="contact-info">
             <h1>
-              Clients{" "}
+              Contact{" "}
               <span>
                 <img
                   className="edit-icon"
@@ -25,16 +25,11 @@ class ClientList extends Component {
                 />
               </span>
             </h1>
-            <div className="client-list">
-              {context.clients.map(category => (
-                <ul key={category.name}>
-                  <li>{category.name}</li>
-                  {category.clients.map(client => (
-                    <li key={client}>{client}</li>
-                  ))}
-                </ul>
+            <ul>
+              {context.contact.map((contact, i) => (
+                <li key={i} dangerouslySetInnerHTML={{ __html: contact }}></li>
               ))}
-            </div>
+            </ul>
           </div>
         )}
       </AboutContext.Consumer>
@@ -42,4 +37,4 @@ class ClientList extends Component {
   }
 }
 
-export default ClientList;
+export default Contact;

@@ -3,15 +3,15 @@
 import React, { Component } from "react";
 import AboutContext from "../aboutContext";
 
-class ClientList extends Component {
+class Press extends Component {
   static contextType = AboutContext;
   render() {
     return (
       <AboutContext.Consumer>
         {context => (
-          <div className="clients">
+          <div className="press">
             <h1>
-              Clients{" "}
+              Press{" "}
               <span>
                 <img
                   className="edit-icon"
@@ -19,22 +19,17 @@ class ClientList extends Component {
                   alt="edit"
                   onClick={() =>
                     this.props.toState({
-                      edit: "contact"
+                      edit: "press"
                     })
                   }
                 />
               </span>
             </h1>
-            <div className="client-list">
-              {context.clients.map(category => (
-                <ul key={category.name}>
-                  <li>{category.name}</li>
-                  {category.clients.map(client => (
-                    <li key={client}>{client}</li>
-                  ))}
-                </ul>
+            <ul>
+              {context.press.map((press, i) => (
+                <li key={i} dangerouslySetInnerHTML={{ __html: press }}></li>
               ))}
-            </div>
+            </ul>
           </div>
         )}
       </AboutContext.Consumer>
@@ -42,4 +37,4 @@ class ClientList extends Component {
   }
 }
 
-export default ClientList;
+export default Press;

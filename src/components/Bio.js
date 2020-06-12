@@ -2,16 +2,19 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import AboutContext from "../aboutContext";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
-class ClientList extends Component {
+class Bio extends Component {
   static contextType = AboutContext;
+
   render() {
     return (
       <AboutContext.Consumer>
         {context => (
-          <div className="clients">
+          <div className="bio">
             <h1>
-              Clients{" "}
+              About{" "}
               <span>
                 <img
                   className="edit-icon"
@@ -19,22 +22,21 @@ class ClientList extends Component {
                   alt="edit"
                   onClick={() =>
                     this.props.toState({
-                      edit: "contact"
+                      edit: "bio"
                     })
                   }
                 />
               </span>
             </h1>
-            <div className="client-list">
-              {context.clients.map(category => (
-                <ul key={category.name}>
-                  <li>{category.name}</li>
-                  {category.clients.map(client => (
-                    <li key={client}>{client}</li>
-                  ))}
-                </ul>
-              ))}
-            </div>
+            {this.context.edit == "bio" ? (
+              <ReactQuill
+                theme="snow"
+                value={context.bio}
+                onChange={e => this.props.toState({ bio: e.target.value })}
+              />
+            ) : (
+              <p>{context.bio}</p>
+            )}
           </div>
         )}
       </AboutContext.Consumer>
@@ -42,4 +44,4 @@ class ClientList extends Component {
   }
 }
 
-export default ClientList;
+export default Bio;
