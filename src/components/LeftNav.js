@@ -20,8 +20,10 @@ class LeftNav extends Component {
                     this.props.categoryChangeHandler(category.toLowerCase())
                   }
                   className={
-                    category.toLowerCase() ==
-                      this.props.category.toLowerCase() &&
+                    category.toLowerCase().replace(/\/?\s+/g, "-") ==
+                      this.props.category
+                        .toLowerCase()
+                        .replace(/\/?\s+/g, "-") &&
                     this.props.location == "Main"
                       ? "category-link category-link-selected"
                       : "category-link"

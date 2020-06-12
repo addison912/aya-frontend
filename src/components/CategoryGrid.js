@@ -8,6 +8,7 @@ import ImageSpacer from "./ImageSpacer";
 import EditGallery from "./EditGallery";
 import Breadcrumb from "./Breadcrumb";
 import AdminContext from "../adminContext";
+import AddGallery from "./AddGallery";
 
 class CategoryGrid extends Component {
   static contextType = AdminContext;
@@ -17,6 +18,9 @@ class CategoryGrid extends Component {
         {context => (
           <div className="gallery-content">
             <Breadcrumb category={this.props.category} view={this.props.view} />
+            {this.props.category != "Search" && context.category != "Search" ? (
+              <AddGallery />
+            ) : null}
             {this.props.galleries.map((gallery, i) => (
               <figure
                 key={i}

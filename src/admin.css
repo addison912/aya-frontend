@@ -148,7 +148,8 @@ button:hover {
   justify-content: space-between;
 }
 
-.add-photo {
+.add-photo,
+.add-gallery {
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -164,13 +165,15 @@ button:hover {
   cursor: pointer;
 }
 
-.add-photo form {
+.add-photo form,
+.add-gallery form {
   display: flex;
   flex-direction: column;
   min-width: 300px;
 }
 
-.add-photo form input {
+.add-photo form input,
+.add-gallery form input {
   margin-bottom: 12px;
   height: 32px;
   border-style: none;
@@ -178,13 +181,18 @@ button:hover {
   border-radius: 4px;
   font-family: var(--admin-font);
 }
-.add-photo form input:first-of-type {
+.add-photo form input:first-of-type .add-gallery form input:first-of-type {
   margin-top: 12px;
 }
 
 form input[type="file"] {
   border: none;
 }
+
+/* .add-photo form input[type="file"] {
+  
+} */
+
 .cancel-submit {
   display: flex;
   justify-content: flex-end;
@@ -266,8 +274,12 @@ input.submit-button {
   margin-top: 12px;
 }
 
-.edit-photo-form label {
+form label {
   width: 80%;
+  font-family: var(--body-font);
+  font-size: 14px;
+  font-weight: 300;
+  text-transform: lowercase;
 }
 
 .edit-photo-form .cancel-submit {

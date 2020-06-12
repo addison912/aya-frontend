@@ -72,7 +72,9 @@ class App extends React.Component {
       editPhoto: false,
       photoEdit: this.photoEdit,
       editgalleryName: false,
-      galleryName: ""
+      galleryName: "",
+      addGallery: false,
+      createGallery: this.createGallery
     };
   }
 
@@ -195,6 +197,38 @@ class App extends React.Component {
         cb;
       }
     });
+  };
+
+  createGallery = (gallery, category) => {
+    let newGallery = new FormData();
+    newGallery.append("name", gallery.name);
+    newGallery.append("order", gallery.order);
+    newGallery.append("category", category);
+    newGallery.append("thumb", gallery.thumb);
+    newGallery.append("published", false);
+
+    for (var value of newGallery.values()) {
+      console.log(value);
+    }
+    axios
+      .post(`${domain}/api/gallery/create`, newGallery, {
+        headers: {
+          authorization: `bearer ${window.sessionStorage.ayaToken}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(res => {
+        if (res.data) {
+          this.setState({ gallery: res.data });
+        }
+        navigate(
+          `/#/${category
+            .toLowerCase()
+            .replace(/\/?\s+/g, "-")}/${name
+            .toLowerCase()
+            .replace(/\/?\s+/g, "-")}`
+        );
+      });
   };
 
   deleteGallery = id => {
@@ -427,6 +461,11 @@ class App extends React.Component {
   };
 
   categoryChangeHandler = (category, galleryName) => {
+    if (category.toLowerCase() != "home") {
+      navigate(`/#/${category.replace(/\/?\s+/g, "-").toLowerCase()}`);
+    } else {
+      navigate(`/`);
+    }
     this.setState({
       category,
       gallery: {},
@@ -656,12 +695,12 @@ class App extends React.Component {
                     default
                   ></NotFound>
                   {categories.map(category => {
-                    category = category.toLowerCase().replace(/\/?\s+/g, "-");
+                    // category = category.toLowerCase().replace(/\/?\s+/g, "-");
                     return (
                       <PrivateRoute
                         as={Main}
                         key={category}
-                        path={category}
+                        path={category.toLowerCase().replace(/\/?\s+/g, "-")}
                         categoryChangeHandler={this.categoryChangeHandler}
                         search={this.search}
                         searchInput={this.state.searchInput}
@@ -689,12 +728,14 @@ class App extends React.Component {
                     );
                   })}
                   {categories.map(category => {
-                    category = category.toLowerCase().replace(/\/?\s+/g, "-");
+                    // category = category.toLowerCase().replace(/\/?\s+/g, "-");
                     return (
                       <PrivateRoute
                         as={Main}
                         key={category}
-                        path={`${category}/:galleryName`}
+                        path={`${category
+                          .toLowerCase()
+                          .replace(/\/?\s+/g, "-")}/:galleryName`}
                         categoryChangeHandler={this.categoryChangeHandler}
                         search={this.search}
                         searchInput={this.state.searchInput}
