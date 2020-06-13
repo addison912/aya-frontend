@@ -73,14 +73,14 @@ class About extends Component {
               src={require("../assets/images/profile-pic.jpg")}
               alt="Aya"
             />
-            <Contact toState={this.toState} />
+            <Contact toState={this.toState} submitEdit={this.submitEdit} />
             <Bio
               toState={this.toState}
               bio={this.state.bio}
               submitEdit={this.submitEdit}
             />
-            <Press toState={this.toState} />
-            <ClientList toState={this.toState} />
+            <Press toState={this.toState} submitEdit={this.submitEdit} />
+            <ClientList toState={this.toState} submitEdit={this.submitEdit} />
           </div>
         </div>
       </AboutContext.Provider>

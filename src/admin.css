@@ -9,6 +9,7 @@
   --category-font: "GT America Bold", sans-serif;
   --body-font: "GT America Mono", monospace;
   --ui-font: "GT America", sans-serif;
+  --input-border: #aaa;
 }
 
 .landingContainer {
@@ -40,7 +41,7 @@
   margin-top: 12px;
   height: 32px;
   border-style: none;
-  border: 1px #333 solid;
+  border: 1px var(--input-border) solid;
   border-radius: 4px;
 }
 
@@ -70,7 +71,7 @@
 
 /*Gallery*/
 
-.grid-image {
+.gallery-content .grid-image {
   height: auto;
   width: 100%;
   display: flex;
@@ -78,29 +79,29 @@
   border-radius: 4px;
   margin-bottom: 8px;
 }
-figure {
+
+.gallery-content figure {
   margin: 0;
 }
 
-.grid-image img {
+.gallery-content .grid-image img {
   width: 12.5%;
 }
 
-figure {
+.gallery-image {
   padding: 0;
 }
 
-figure img,
-.content img {
+.gallery .gallery-image img {
   border-radius: 0;
 }
 
-.grid-image img:hover {
+.gallery-content .grid-image img:hover {
   -webkit-transform: translateY(0px);
   transform: translateY(0px);
 }
 
-.grid-image figcaption {
+.gallery-content .grid-image figcaption {
   margin-left: 24px;
   align-items: center;
   font-family: var(--admin-font);
@@ -108,7 +109,7 @@ figure img,
   font-weight: bold;
 }
 
-.editDelete {
+.gallery-content .editDelete {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -143,8 +144,10 @@ button:hover {
 }
 
 .add-photo,
-.add-gallery {
+.add-gallery,
+.add-post {
   min-height: 100px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,6 +163,7 @@ button:hover {
 }
 
 .add-photo form,
+.add-post form,
 .add-gallery form {
   display: flex;
   flex-direction: column;
@@ -167,15 +171,18 @@ button:hover {
 }
 
 .add-photo form input,
+.add-post form input,
 .add-gallery form input {
   margin-bottom: 12px;
   height: 32px;
   border-style: none;
-  border: 1px #333 solid;
+  border: 1px var(--input-border) solid;
   border-radius: 4px;
   font-family: var(--admin-font);
 }
-.add-photo form input:first-of-type .add-gallery form input:first-of-type {
+.add-photo form input:first-of-type,
+.add-post form input:first-of-type,
+.add-gallery form input:first-of-type {
   margin-top: 12px;
 }
 
@@ -243,7 +250,7 @@ input.submit-button {
   cursor: pointer;
 }
 
-.edit-photo-form .gridImage {
+.gallery-content .edit-photo-form .gridImage {
   width: 25%;
 }
 
@@ -260,7 +267,7 @@ input.submit-button {
   margin-bottom: 12px;
   height: 32px;
   border-style: none;
-  border: 1px #333 solid;
+  border: 1px var(--input-border) solid;
   border-radius: 4px;
   font-family: var(--admin-font);
 }
@@ -286,4 +293,63 @@ form label {
   height: 36px;
   border-radius: 4px;
   margin-right: 24px;
+}
+
+.add-post {
+  border: 1px #333 solid;
+  border-radius: 4px;
+  font-family: var(--admin-font);
+  margin-bottom: 24px;
+}
+
+.add-post form {
+  width: 75%;
+  align-items: flex-start;
+}
+
+.add-post form input[type="text"] {
+  width: 100%;
+}
+.add-post form input[type="date"] {
+  width: 300px;
+}
+.add-post form .quill {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.add-post form .ql-editor {
+  min-height: 200px;
+}
+
+.ql-editor {
+  font-family: var(--admin-font);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.ql-toolbar {
+  border-radius: 4px 4px 0 0;
+  border: #aaa;
+}
+
+.ql-container.ql-snow {
+  border: #aaa;
+  border-radius: 0 0 4px 4px;
+}
+
+form input[type="text"] {
+  font-size: 14px;
+}
+
+.add-post .add-post-photo {
+  padding: 8px;
+  color: #aaa;
+  width: 100%;
+  border: 1px #aaa solid;
+  border-radius: 4px;
+}
+
+.add-post-photo h3 {
+  font-size: 14px;
 }

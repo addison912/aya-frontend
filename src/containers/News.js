@@ -1,12 +1,20 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { domain } from "../config/constants";
 import BlogPost from "../components/BlogPost";
+import NewsContext from "../newsContext";
+import AddPost from "../components/AddPost";
 
 class News extends Component {
-  state = {
-    news: [],
-    show: 5
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      news: [],
+      show: 5,
+      editPost: "",
+      addPost: false,
+      toState: this.toState
+    };
+  }
 
   getNews = () => {
     fetch(`${domain}/api/news/all`)
@@ -20,9 +28,20 @@ class News extends Component {
         this.setState({ news });
       });
   };
+
   showMore = () => {
     let show = this.state.show + 5;
     this.setState({ show });
+  };
+
+  toState = input => {
+    this.setState(input);
+  };
+
+  numDate = date => {
+    return `${date.getFullYear()}-${
+      date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()
+    }-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`;
   };
 
   componentDidMount() {
@@ -43,22 +62,25 @@ class News extends Component {
   }
   render() {
     return (
-      <div className="main">
-        <div className="content">
-          {this.state.news.map((post, i) => {
-            if (this.state.show == "all" || i < this.state.show)
-              return <BlogPost key={i} post={post} />;
-          })}
-          {this.state.show != "all" &&
-          this.state.show < this.state.news.length ? (
-            <div id="show-more-container">
-              <button id="show-more" onClick={this.showMore}>
-                Show More
-              </button>
-            </div>
-          ) : null}
+      <NewsContext.Provider value={this.state}>
+        <div className="main">
+          <div className="content">
+            <AddPost numDate={this.numDate} />
+            {this.state.news.map((post, i) => {
+              if (this.state.show == "all" || i < this.state.show)
+                return <BlogPost key={i} post={post} />;
+            })}
+            {this.state.show != "all" &&
+            this.state.show < this.state.news.length ? (
+              <div id="show-more-container">
+                <button id="show-more" onClick={this.showMore}>
+                  Show More
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
-      </div>
+      </NewsContext.Provider>
     );
   }
 }

@@ -19,22 +19,24 @@ class ClientList extends Component {
                   alt="edit"
                   onClick={() =>
                     this.props.toState({
-                      edit: "contact"
+                      edit: "clients"
                     })
                   }
                 />
               </span>
             </h1>
-            <div className="client-list">
-              {context.clients.map(category => (
-                <ul key={category.name}>
-                  <li>{category.name}</li>
-                  {category.clients.map(client => (
-                    <li key={client}>{client}</li>
-                  ))}
-                </ul>
-              ))}
-            </div>
+            {this.context.edit == "clients" ? null : (
+              <div className="client-list">
+                {context.clients.map(category => (
+                  <ul key={category.name}>
+                    <li>{category.name}</li>
+                    {category.clients.map(client => (
+                      <li key={client}>{client}</li>
+                    ))}
+                  </ul>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </AboutContext.Consumer>

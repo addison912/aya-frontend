@@ -60,7 +60,7 @@ class AddPhoto extends Component {
                   id="imageUpload"
                   type="file"
                   name="photoUpload"
-                  accept="image/*"
+                  accept="image/png,image/jpeg"
                   onChange={e =>
                     this.setState({
                       photo: e.target.files[0]

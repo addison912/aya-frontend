@@ -19,6 +19,12 @@ function Bio(props) {
     setEdit(false);
   }
 
+  const modules = {
+    toolbar: [["bold", "italic", "underline"], ["link"]]
+  };
+
+  const formats = ["bold", "italic", "underline", "list", "bullet", "link"];
+
   //   setValue(context.bio);
   return (
     <div className="bio">
@@ -34,7 +40,13 @@ function Bio(props) {
         </span>
       </h1>
       {edit == "bio" ? (
-        <ReactQuill theme="snow" value={value} onChange={setValue} />
+        <ReactQuill
+          theme="snow"
+          value={value}
+          onChange={setValue}
+          modules={modules}
+          formats={formats}
+        />
       ) : (
         <p dangerouslySetInnerHTML={{ __html: value }}></p>
       )}
