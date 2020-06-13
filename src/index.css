@@ -1069,6 +1069,7 @@ figcaption h1 {
 .newsLink {
   border: none;
   outline: none;
+  background: none;
 }
 
 .newsLink:hover {

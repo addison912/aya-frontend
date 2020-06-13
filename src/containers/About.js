@@ -42,7 +42,7 @@ class About extends Component {
           <Contact contact={this.state.contact} />
           <div className="bio">
             <h1>About</h1>
-            <p>{this.state.bio}</p>
+            <p dangerouslySetInnerHTML={{ __html: this.state.bio }}></p>
           </div>
           <Press press={this.state.press} />
           <ClientList clients={this.state.clients} />

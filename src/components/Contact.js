@@ -5,11 +5,7 @@ class Contact extends Component {
     return (
       <div className="contact-info">
         <h1>Contact</h1>
-        <ul>
-          {this.props.contact.map((contact, i) => (
-            <li key={i} dangerouslySetInnerHTML={{ __html: contact }}></li>
-          ))}
-        </ul>
+        <div dangerouslySetInnerHTML={{ __html: this.props.contact }}></div>
       </div>
     );
   }
