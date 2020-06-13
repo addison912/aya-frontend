@@ -21,9 +21,9 @@ class Login extends React.Component {
                 data-onsuccess="onSignIn"
                 data-theme="dark"
               ></div> */}
-              <a href={`${domain}/auth/login/google`}>
+              {/* <a href={`${domain}/auth/login/google`}>
                 <button>Google</button>
-              </a>
+              </a> */}
               <input
                 type="email"
                 id="loginEmail"
