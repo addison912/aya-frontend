@@ -357,3 +357,7 @@ form input[type="text"] {
 .gallery-grid-item {
   width: 100%;
 }
+
+.client-list .ql-container {
+  height: auto;
+}

@@ -52,7 +52,7 @@ class AddPhoto extends Component {
             }
           >
             {/* {this.props.addPost == false ? <h3>Add a New Photo +</h3> : null} */}
-            <h3>Add a Post +</h3>
+            <h3>Add a Post + (under construction)</h3>
             {context.addPost == true ? (
               <form>
                 <input

@@ -12,7 +12,7 @@ import Bio from "../components/Bio";
 
 class About extends Component {
   state = {
-    clients: [],
+    clients: {},
     bio: "",
     press: [],
     contact: [],
