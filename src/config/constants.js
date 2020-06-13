@@ -12,5 +12,8 @@ module.exports = {
     "Magazines",
     "Books",
     "Advertising"
-  ]
+  ],
+  ItemTypes: {
+    CARD: "card"
+  }
 };

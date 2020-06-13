@@ -353,3 +353,7 @@ form input[type="text"] {
 .add-post-photo h3 {
   font-size: 14px;
 }
+
+.gallery-grid-item {
+  width: 100%;
+}

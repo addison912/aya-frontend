@@ -26,8 +26,6 @@ class EditPhotoForm extends Component {
         {context => (
           <figure
             className={"grid-image gallery-image edit-photo-form"}
-            key={this.props.photo._id}
-            role="button"
             style={
               this.props.photo.order
                 ? { order: this.props.photo.order }
