@@ -361,3 +361,7 @@ form input[type="text"] {
 .client-list .ql-container {
   height: auto;
 }
+
+.edit-icon {
+  border-radius: 0;
+}

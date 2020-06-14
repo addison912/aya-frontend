@@ -98,13 +98,13 @@ class App extends React.Component {
       return await response;
     }
     postData(`${domain}/auth/login`, {
-      // data: btoa(
-      // JSON.stringify({
-      email: this.state.email,
-      password: this.state.password
+      data: btoa(
+        JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
+      )
     })
-      // )
-      // })
       .then(res => {
         this.setState({
           password: ""
