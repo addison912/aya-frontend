@@ -9,6 +9,7 @@ import ClientList from "../components/ClientList";
 import Contact from "../components/Contact";
 import Press from "../components/Press";
 import Bio from "../components/Bio";
+import ProfilePicUpload from "../components/ProfilePicUpload";
 
 class About extends Component {
   state = {
@@ -17,7 +18,9 @@ class About extends Component {
     press: [],
     contact: [],
     edit: "",
-    toState: this.toState
+    toState: this.toState,
+    profilePic: `${domain}/uploads/about/profile-pic.jpg`,
+    imageHash: Date.now()
   };
 
   toState = input => {
@@ -68,11 +71,20 @@ class About extends Component {
       <AboutContext.Provider value={this.state}>
         <div className="main">
           <div className="about-container">
-            <img
-              className="profile-pic"
-              src={require("../assets/images/profile-pic.jpg")}
-              alt="Aya"
-            />
+            {this.state.edit == "profilePic" ? (
+              <ProfilePicUpload
+                toState={this.toState}
+                profilePicUpdates={this.state.profilePicUpdates}
+              />
+            ) : (
+              <img
+                className="profile-pic"
+                data={this.state.profilePicUpdates}
+                src={`${this.state.profilePic}?${this.state.imageHash}`}
+                alt="Aya"
+                onClick={() => this.setState({ edit: "profilePic" })}
+              />
+            )}
             <Contact toState={this.toState} submitEdit={this.submitEdit} />
             <Bio
               toState={this.toState}

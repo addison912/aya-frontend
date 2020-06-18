@@ -366,3 +366,21 @@ form input[type="text"] {
 .edit-icon {
   border-radius: 0;
 }
+
+.profile-pic {
+  cursor: pointer;
+}
+
+.profile-pic-form {
+  display: flex;
+  flex-direction: column;
+}
+.profile-pic-form .cancel-submit input {
+  height: 32px;
+  border-radius: 4px;
+}
+.profile-pic-form .cancel-submit {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+}
