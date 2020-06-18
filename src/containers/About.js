@@ -36,7 +36,7 @@ class About extends Component {
         <div className="about-container">
           <img
             className="profile-pic"
-            src={require("../assets/images/profile-pic.jpg")}
+            src={`${domain}/uploads/about/profile-pic.jpg`}
             alt="Aya"
           />
           <Contact contact={this.state.contact} />
