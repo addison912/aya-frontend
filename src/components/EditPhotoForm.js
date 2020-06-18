@@ -103,14 +103,6 @@ class EditPhotoForm extends Component {
                 name="submitPhoto"
                 className="submit-button"
                 value="Submit Photo"
-                // onClick={() =>
-                //   context.uploadPhoto(
-                //     this.state,
-                //     this.props.gallery.name,
-                //     this.props.gallery.category,
-                //     this.props.gallery._id
-                //   )
-                // }
                 onClick={() => context.photoEdit(this.props.photo, this.state)}
               />
             </div>

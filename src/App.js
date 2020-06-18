@@ -359,9 +359,15 @@ class App extends React.Component {
 
     try {
       let newPhoto = photo;
-      newPhoto.caption = edits.caption;
-      newPhoto.order = edits.order;
-      newPhoto.searchTags = edits.searchTags;
+      if (edits.caption) {
+        newPhoto.caption = edits.caption;
+      }
+      if (edits.order) {
+        newPhoto.order = edits.order;
+      }
+      if (edits.csearchTags) {
+        newPhoto.searchTags = edits.searchTags;
+      }
       axios
         .post(
           `${domain}/api/photo/edit/${photo._id}`,
@@ -522,6 +528,9 @@ class App extends React.Component {
           gallery.photos.sort(function(a, b) {
             return a.order - b.order;
           });
+          for (let i = 0; i < gallery.photos.length; i++) {
+            gallery.photos[i].order = i + 1;
+          }
         });
         this.setState({
           galleries,

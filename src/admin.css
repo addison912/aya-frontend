@@ -356,6 +356,7 @@ form input[type="text"] {
 
 .gallery-grid-item {
   width: 100%;
+  margin-top: 2px;
 }
 
 .client-list .ql-container {
