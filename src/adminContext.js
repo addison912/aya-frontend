@@ -15,7 +15,8 @@ const adminContext = React.createContext({
   editgalleryName: false,
   updateGalleryName() {},
   createGallery() {},
-  gallery: {}
+  gallery: {},
+  reorderGallery() {}
 });
 
 export default adminContext;

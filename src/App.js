@@ -78,7 +78,8 @@ class App extends React.Component {
       editgalleryName: false,
       galleryName: "",
       addGallery: false,
-      createGallery: this.createGallery
+      createGallery: this.createGallery,
+      reorderGallery: this.reorderGallery
     };
   }
 
@@ -247,8 +248,8 @@ class App extends React.Component {
           }
         })
         .then(response => {
-          console.log(response.data);
-          console.log("Deleting gallery " + id);
+          // console.log(response.data);
+          // console.log("Deleting gallery " + id);
           let galleries = this.state.galleries;
           galleries.splice(
             galleries
@@ -290,6 +291,33 @@ class App extends React.Component {
             .toLowerCase()
             .replace(/\/?\s+/g, "-")}`
         );
+      });
+  };
+
+  reorderGallery = () => {
+    console.log("reordering gallery");
+    let updatedGalleryOrder = [];
+    let galleries = this.state.galleries;
+    for (let i = 0; i < galleries.length; i++) {
+      let gallery = { _id: galleries[i]._id, order: i + 1 };
+      updatedGalleryOrder.push(gallery);
+    }
+    // console.log("updatedGalleryOrder");
+    axios
+      .post(`${domain}/api/gallery/reorder`, updatedGalleryOrder, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${window.sessionStorage.ayaToken}`
+        }
+      })
+      // .then(res => {
+      //   if (res) {
+      //     console.log(res);
+      //   }
+      // })
+      .catch(err => {
+        console.log(err);
+        alert("reordering gallery failed");
       });
   };
 
