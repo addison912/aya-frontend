@@ -5,6 +5,7 @@ import NewsContext from "../newsContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import AddPostPhoto from "../components/AddPostPhoto";
+import PostGalleryPreview from "./PostGalleryPreview";
 
 class AddPhoto extends Component {
   static contextType = NewsContext;
@@ -13,10 +14,6 @@ class AddPhoto extends Component {
     date: this.props.numDate(new Date()),
     text: "",
     photos: [],
-    photo: "",
-    photoCaption: "",
-    photoLink: "",
-    photoOrder: 0,
     addPhoto: false
   };
 
@@ -24,11 +21,6 @@ class AddPhoto extends Component {
     toolbar: [["bold", "italic", "underline"], ["link"]]
   };
   formats = ["bold", "italic", "underline", "list", "bullet", "link"];
-
-  savePhoto = photo => {
-    let photos = this.state.photos;
-    photos.push(photo);
-  };
 
   toState = input => {
     this.setState(input);
@@ -84,22 +76,18 @@ class AddPhoto extends Component {
                   modules={this.modules}
                   formats={this.formats}
                 />
+                {this.state.photos.length > 0 ? (
+                  <PostGalleryPreview photos={this.state.photos} />
+                ) : null}
+
                 <AddPostPhoto
                   addPhoto={this.state.addPhoto}
                   toState={this.toState}
+                  photos={this.state.photos}
+                  submitPhoto={this.submitPhoto}
+                  length={this.state.photos.length}
                 />
 
-                {/* <input
-                  id="newsPhotoUpload"
-                  type="file"
-                  name="photoUpload"
-                  accept="image/*"
-                  onChange={e =>
-                    this.setState({
-                      photo: e.target.files[0]
-                    })
-                  }
-                /> */}
                 {this.state.addPhoto == true ? null : (
                   <div className="cancel-submit">
                     <input
@@ -115,14 +103,7 @@ class AddPhoto extends Component {
                       name="submitPost"
                       className="submit-button"
                       value="Submit Post"
-                      onClick={() =>
-                        context.uploadPost(
-                          this.state,
-                          this.props.gallery.name,
-                          this.props.gallery.category,
-                          this.props.gallery._id
-                        )
-                      }
+                      onClick={() => context.uploadPost(this.state)}
                     />
                   </div>
                 )}

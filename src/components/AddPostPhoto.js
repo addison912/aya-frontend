@@ -5,9 +5,26 @@ import React, { Component } from "react";
 class AddPostPhoto extends Component {
   state = {
     caption: "",
-    order: "",
+    // order: this.props.length + 1,
     photo: "",
-    link: ""
+    link: "",
+    preview: ""
+  };
+
+  submitPhoto = () => {
+    console.log("submitting photo");
+    if (this.state.photo) {
+      let newPhoto = {
+        photo: this.state.photo,
+        caption: this.state.caption,
+        link: this.state.link,
+        // order: this.state.order,
+        preview: this.state.preview
+      };
+      let photos = this.props.photos;
+      photos.push(newPhoto);
+      this.props.toState({ photos, addPhoto: false });
+    }
   };
 
   render() {
@@ -40,7 +57,7 @@ class AddPostPhoto extends Component {
                 })
               }
             ></input>
-            <input
+            {/* <input
               type="number"
               placeholder="order"
               name="order"
@@ -50,7 +67,7 @@ class AddPostPhoto extends Component {
                   order: e.target.value
                 })
               }
-            ></input>
+            ></input> */}
 
             <input
               id="imageUpload"
@@ -59,7 +76,8 @@ class AddPostPhoto extends Component {
               accept="image/png,image/jpeg"
               onChange={e =>
                 this.setState({
-                  photo: e.target.files[0]
+                  photo: e.target.files[0],
+                  preview: URL.createObjectURL(e.target.files[0])
                 })
               }
             />
@@ -81,7 +99,11 @@ class AddPostPhoto extends Component {
                 name="cancel"
                 className="cancel-button"
                 value="Cancel"
-                onClick={() => this.props.toState({ addPhoto: false })}
+                onClick={() =>
+                  this.props.toState({
+                    addPhoto: false
+                  })
+                }
               />
 
               <input
@@ -89,7 +111,7 @@ class AddPostPhoto extends Component {
                 name="submitPhoto"
                 className="submit-button"
                 value="Submit Photo"
-                onClick={() => console.log("Adding Photo")}
+                onClick={() => this.submitPhoto()}
               />
             </div>
           </form>

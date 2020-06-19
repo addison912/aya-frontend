@@ -44,6 +44,10 @@ class News extends Component {
     }-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`;
   };
 
+  uploadPost = post => {
+    console.log(post);
+  };
+
   componentDidMount() {
     this.getNews();
     this.props.setLocation("News");
