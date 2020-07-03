@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AboutContext from "../aboutContext";
+import AboutContext from "../context/aboutContext";
 import axios from "axios";
 import { domain } from "../config/constants";
 

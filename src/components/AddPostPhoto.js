@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { Component } from "react";
@@ -14,26 +15,36 @@ class AddPostPhoto extends Component {
   submitPhoto = () => {
     console.log("submitting photo");
     if (this.state.photo) {
-      let newPhoto = {
-        photo: this.state.photo,
-        caption: this.state.caption,
-        link: this.state.link,
-        // order: this.state.order,
-        preview: this.state.preview
-      };
+      let newPhoto = this.state.photo;
+      newPhoto.caption = this.state.caption;
+      newPhoto.photoLink = this.state.link;
+      newPhoto.preview = this.state.preview;
+      // let newPhoto = {
+      //   photo: this.state.photo,
+      //   caption: this.state.caption,
+      //   link: this.state.link,
+      //   // order: this.state.order,
+      //   preview: this.state.preview
+      // };
       let photos = this.props.photos;
       photos.push(newPhoto);
-      this.props.toState({ photos, addPhoto: false });
+      this.props.toState({
+        photos,
+        addPhoto: false
+      });
+      this.setState({ caption: "", link: "", photo: "" });
+    } else {
+      alert("Please select a photo");
     }
   };
 
   render() {
     return (
-      <figure
+      <div
         className={
           this.props.addPhoto == false
-            ? "hover-cursor grid-image add-post-photo"
-            : "grid-image add-post-photo"
+            ? "hover-cursor add-post-photo"
+            : "add-post-photo"
         }
         role="button"
         onClick={
@@ -45,18 +56,7 @@ class AddPostPhoto extends Component {
         {/* {this.props.addPhoto == false ? <h3>Add a New Photo +</h3> : null} */}
         <h3>Add a New Photo +</h3>
         {this.props.addPhoto == true ? (
-          <form>
-            <input
-              type="text"
-              placeholder="caption"
-              name="caption"
-              value={this.state.caption}
-              onChange={e =>
-                this.setState({
-                  caption: e.target.value
-                })
-              }
-            ></input>
+          <div>
             {/* <input
               type="number"
               placeholder="order"
@@ -81,7 +81,17 @@ class AddPostPhoto extends Component {
                 })
               }
             />
-
+            <input
+              type="text"
+              placeholder="caption (optional)"
+              name="caption (optional)"
+              value={this.state.caption}
+              onChange={e =>
+                this.setState({
+                  caption: e.target.value
+                })
+              }
+            ></input>
             <input
               type="text"
               placeholder="photo link (optional)"
@@ -101,7 +111,10 @@ class AddPostPhoto extends Component {
                 value="Cancel"
                 onClick={() =>
                   this.props.toState({
-                    addPhoto: false
+                    addPhoto: false,
+                    caption: "",
+                    link: "",
+                    photo: ""
                   })
                 }
               />
@@ -110,13 +123,13 @@ class AddPostPhoto extends Component {
                 type="button"
                 name="submitPhoto"
                 className="submit-button"
-                value="Submit Photo"
+                value="Add Photo"
                 onClick={() => this.submitPhoto()}
               />
             </div>
-          </form>
+          </div>
         ) : null}
-      </figure>
+      </div>
     );
   }
 }

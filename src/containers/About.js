@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import axios from "axios";
-import AboutContext from "../aboutContext";
+import AboutContext from "../context/aboutContext";
 import { domain } from "../config/constants";
 import ClientList from "../components/ClientList";
 import Contact from "../components/Contact";

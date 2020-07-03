@@ -26,7 +26,7 @@ import LeftNav from "./components/LeftNav";
 import SearchMessage from "./components/SearchMessage";
 import NotFound from "./containers/NotFound";
 import userContext from "./userContext";
-import adminContext from "./adminContext";
+import adminContext from "./context/adminContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Test from "./containers/Test";
 

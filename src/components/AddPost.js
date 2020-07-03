@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { Component } from "react";
-import NewsContext from "../newsContext";
+import NewsContext from "../context/newsContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import AddPostPhoto from "../components/AddPostPhoto";

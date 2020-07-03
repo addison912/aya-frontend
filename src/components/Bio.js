@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState, useContext, useEffect } from "react";
-import AboutContext from "../aboutContext";
+import AboutContext from "../context/aboutContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 

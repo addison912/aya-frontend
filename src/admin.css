@@ -180,7 +180,7 @@ button:hover {
   border-radius: 4px;
   font-family: var(--admin-font);
 }
-.add-photo form input:first-of-type,
+.add-photo input:first-of-type,
 .add-post form input:first-of-type,
 .add-gallery form input:first-of-type {
   margin-top: 12px;
@@ -189,10 +189,6 @@ button:hover {
 form input[type="file"] {
   border: none;
 }
-
-/* .add-photo form input[type="file"] {
-  
-} */
 
 .cancel-submit {
   display: flex;
@@ -354,6 +350,10 @@ form input[type="text"] {
   font-size: 14px;
 }
 
+.add-post .post-images {
+  width: 100%;
+}
+
 .gallery-grid-item {
   width: 100%;
   margin-top: 2px;
@@ -383,4 +383,8 @@ form input[type="text"] {
   height: 100px;
   display: flex;
   align-items: flex-end;
+}
+
+.add-post-photos .grid-image img {
+  height: 80%;
 }

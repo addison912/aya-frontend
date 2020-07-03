@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
-import AboutContext from "../aboutContext";
+import AboutContext from "../context/aboutContext";
 import ReactQuill from "react-quill";
 
 class Press extends Component {

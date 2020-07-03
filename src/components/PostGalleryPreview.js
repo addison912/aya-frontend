@@ -6,15 +6,12 @@ export class PostGalleryPreview extends Component {
   }
   render() {
     return (
-      <div className="add-post-photos">
+      <div className="add-post-photos post-images">
         {this.props.photos.map((photo, i) => (
-          <div className="addPostPhoto" key={i}>
-            <img
-              src={photo.preview}
-              alt={photo.caption}
-              style={{ width: "33.33%", height: "auto" }}
-            />
-          </div>
+          <figure className="grid-image" key={i}>
+            <img src={photo.preview} alt={photo.caption} />
+            {photo.caption ? <figcaption>{photo.caption}</figcaption> : null}
+          </figure>
         ))}
       </div>
     );

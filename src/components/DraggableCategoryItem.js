@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import EditGallery from "./EditGallery";
-import AdminContext from "../adminContext";
+import AdminContext from "../context/adminContext";
 import { findDOMNode } from "react-dom";
 import PropTypes from "prop-types";
 import { XYCoord } from "dnd-core";

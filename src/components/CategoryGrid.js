@@ -5,7 +5,7 @@
 import React, { Component } from "react";
 import ImageSpacer from "./ImageSpacer";
 import Breadcrumb from "./Breadcrumb";
-import AdminContext from "../adminContext";
+import AdminContext from "../context/adminContext";
 import AddGallery from "./AddGallery";
 import DraggableCategoryItem from "./DraggableCategoryItem";
 const update = require("immutability-helper");

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import BlogPost from "../components/BlogPost";
-import NewsContext from "../newsContext";
+import NewsContext from "../context/newsContext";
 import AddPost from "../components/AddPost";
+import axios from "axios";
 
 class News extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class News extends Component {
       show: 5,
       editPost: "",
       addPost: false,
-      toState: this.toState
+      toState: this.toState,
+      uploadPost: this.uploadPost
     };
   }
 
@@ -45,7 +47,42 @@ class News extends Component {
   };
 
   uploadPost = post => {
-    console.log(post);
+    let newPost = new FormData();
+    newPost.append("title", post.title);
+    newPost.append("date", post.date);
+    newPost.append("text", post.text);
+    for (const key of Object.keys(post.photos)) {
+      newPost.append("photos", post.photos[key]);
+    }
+    let photoData = [];
+    post.photos.forEach(photo => {
+      let newPhoto = {
+        location: photo.name,
+        caption: photo.caption,
+        link: photo.photoLink
+      };
+      photoData.push(newPhoto);
+    });
+    // console.log(photoData);
+    // for (const key of Object.keys(photoData)) {
+    //   newPost.append("photoData", photoData[key]);
+    // }
+    newPost.append("photoData", JSON.stringify(photoData));
+    for (var value of newPost.values()) {
+      console.log(value);
+    }
+    axios
+      .post(`${domain}/api/news/post`, newPost, {
+        headers: {
+          authorization: `bearer ${window.sessionStorage.ayaToken}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(res => {
+        if (res.data) {
+          this.setState({ gallery: res.data });
+        }
+      });
   };
 
   componentDidMount() {

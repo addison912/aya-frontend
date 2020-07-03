@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import AddPhoto from "./AddPhoto";
-import AdminContext from "../adminContext";
+import AdminContext from "../context/adminContext";
 import Breadcrumb from "./Breadcrumb";
 import DraggableGalleryItem from "./DraggableGalleryItem";
 const update = require("immutability-helper");

@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import EditPhoto from "../components/EditPhoto";
-import AdminContext from "../adminContext";
+import AdminContext from "../context/adminContext";
 import EditPhotoForm from "./EditPhotoForm";
 import { findDOMNode } from "react-dom";
 import PropTypes from "prop-types";

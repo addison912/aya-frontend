@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AdminContext from "../adminContext";
+import AdminContext from "../context/adminContext";
 
 class EditGallery extends Component {
   deleteGallery = id => {

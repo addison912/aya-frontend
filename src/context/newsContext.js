@@ -5,6 +5,7 @@ const aboutContext = React.createContext({
   addPost: false,
   toState() {},
   numDate() {},
+  uploadPost() {},
   stringDate: date => {
     const d = new Date(date);
     const monthNames = [

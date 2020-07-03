@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
-import AdminContext from "../adminContext";
+import AdminContext from "../context/adminContext";
 
 class Breadcrumb extends Component {
   static contextType = AdminContext;
