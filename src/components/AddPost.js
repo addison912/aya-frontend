@@ -26,6 +26,28 @@ class AddPhoto extends Component {
     this.setState(input);
   };
 
+  cancel = () => {
+    this.context.toState({ addPost: false });
+    this.setState({
+      title: "",
+      date: this.props.numDate(new Date()),
+      text: "",
+      photos: [],
+      addPhoto: false
+    });
+  };
+
+  handleAddPostClick = () => {
+    this.context.toState({ addPost: true, editPhoto: false });
+    this.setState({
+      title: "",
+      date: this.props.numDate(new Date()),
+      text: "",
+      photos: [],
+      addPhoto: false
+    });
+  };
+
   render() {
     return (
       <NewsContext.Consumer>
@@ -37,11 +59,7 @@ class AddPhoto extends Component {
                 : "grid-image add-post"
             }
             role="button"
-            onClick={
-              context.addPost == false
-                ? () => context.toState({ addPost: true, editPhoto: false })
-                : null
-            }
+            onClick={context.addPost == false ? this.handleAddPostClick : null}
           >
             {/* {this.props.addPost == false ? <h3>Add a New Photo +</h3> : null} */}
             <h3>Add a Post</h3>
@@ -95,7 +113,7 @@ class AddPhoto extends Component {
                       name="cancel"
                       className="cancel-button"
                       value="Cancel"
-                      onClick={() => context.toState({ addPost: false })}
+                      onClick={this.cancel}
                     />
 
                     <input

@@ -19,23 +19,29 @@ class AddPostPhoto extends Component {
       newPhoto.caption = this.state.caption;
       newPhoto.photoLink = this.state.link;
       newPhoto.preview = this.state.preview;
-      // let newPhoto = {
-      //   photo: this.state.photo,
-      //   caption: this.state.caption,
-      //   link: this.state.link,
-      //   // order: this.state.order,
-      //   preview: this.state.preview
-      // };
       let photos = this.props.photos;
       photos.push(newPhoto);
       this.props.toState({
         photos,
         addPhoto: false
       });
-      this.setState({ caption: "", link: "", photo: "" });
+      this.setState({ caption: "", link: "", photo: "", preview: "" });
     } else {
       alert("Please select a photo");
     }
+  };
+
+  cancel = () => {
+    console.log("cancel clicked");
+    this.props.toState({
+      addPhoto: false
+    });
+    this.setState({
+      caption: "",
+      photo: "",
+      link: "",
+      preview: ""
+    });
   };
 
   render() {
@@ -109,14 +115,7 @@ class AddPostPhoto extends Component {
                 name="cancel"
                 className="cancel-button"
                 value="Cancel"
-                onClick={() =>
-                  this.props.toState({
-                    addPhoto: false,
-                    caption: "",
-                    link: "",
-                    photo: ""
-                  })
-                }
+                onClick={this.cancel}
               />
 
               <input

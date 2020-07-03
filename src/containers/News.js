@@ -83,14 +83,8 @@ class News extends Component {
       };
       photoData.push(newPhoto);
     });
-    // console.log(photoData);
-    // for (const key of Object.keys(photoData)) {
-    //   newPost.append("photoData", photoData[key]);
-    // }
+
     newPost.append("photoData", JSON.stringify(photoData));
-    for (var value of newPost.values()) {
-      console.log(value);
-    }
     axios
       .post(`${domain}/api/news/post`, newPost, {
         headers: {
@@ -107,7 +101,7 @@ class News extends Component {
             news.sort(function(a, b) {
               return Date.parse(b.date) - Date.parse(a.date);
             });
-            this.setState({ news });
+            this.setState({ news, addPost: false });
           }
         }
       });
