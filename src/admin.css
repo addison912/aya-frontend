@@ -388,3 +388,18 @@ form input[type="text"] {
 .add-post-photos .grid-image img {
   height: 80%;
 }
+
+.blog-edit-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.blog-edit-buttons .delete {
+  font-weight: bold;
+  font-family: var(--admin-font);
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  /* border-style: none; */
+  background: none;
+}

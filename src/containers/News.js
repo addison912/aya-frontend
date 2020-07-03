@@ -25,7 +25,7 @@ class News extends Component {
       })
       .then(news => {
         news = news.sort(function(a, b) {
-          return Date.parse(a.date) + Date.parse(b.date);
+          return Date.parse(b.date) - Date.parse(a.date);
         });
         this.setState({ news });
       });
@@ -46,10 +46,30 @@ class News extends Component {
     }-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`;
   };
 
+  stringDate = date => {
+    const d = new Date(date);
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    let m = monthNames[d.getMonth()];
+    return `${m} ${d.getDate()}, ${d.getFullYear()}`;
+  };
+
   uploadPost = post => {
     let newPost = new FormData();
     newPost.append("title", post.title);
-    newPost.append("date", post.date);
+    newPost.append("date", this.stringDate(post.date));
     newPost.append("text", post.text);
     for (const key of Object.keys(post.photos)) {
       newPost.append("photos", post.photos[key]);
@@ -80,9 +100,57 @@ class News extends Component {
       })
       .then(res => {
         if (res.data) {
-          this.setState({ gallery: res.data });
+          if (res.data.title && res.data.date) {
+            console.log(res.data);
+            let news = this.state.news;
+            news.push(res.data);
+            news.sort(function(a, b) {
+              return Date.parse(b.date) - Date.parse(a.date);
+            });
+            this.setState({ news });
+          }
         }
       });
+  };
+
+  deletePost = id => {
+    try {
+      console.log(`deleting: ${id}`);
+      let d = confirm("Are you sure you want to delete this post?");
+      if (d == true) {
+        axios
+          .delete(`${domain}/api/news/${id}`, {
+            headers: {
+              authorization: `bearer ${window.sessionStorage.ayaToken}`
+            }
+          })
+          .then(response => {
+            console.log("post deleted");
+            let news = this.state.news;
+            //remove post from state
+            news.splice(
+              news.indexOf(
+                news.find(post => {
+                  return post._id == id;
+                })
+              ),
+              1
+            );
+            this.setState({ news });
+          })
+          .catch(error => {
+            console.log(error.response);
+
+            if (error.response.status == 403) {
+              this.logout();
+            }
+          });
+      } else {
+        console.log("Deletion cancelled");
+      }
+    } catch (err) {
+      console.log("Deletion Error: " + err);
+    }
   };
 
   componentDidMount() {
@@ -109,7 +177,9 @@ class News extends Component {
             <AddPost numDate={this.numDate} />
             {this.state.news.map((post, i) => {
               if (this.state.show == "all" || i < this.state.show)
-                return <BlogPost key={i} post={post} />;
+                return (
+                  <BlogPost key={i} post={post} deletePost={this.deletePost} />
+                );
             })}
             {this.state.show != "all" &&
             this.state.show < this.state.news.length ? (

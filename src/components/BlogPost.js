@@ -3,6 +3,7 @@ import BlogTitle from "../components/BlogTitle";
 import BlogDate from "../components/BlogDate";
 import BlogArticle from "../components/BlogArticle";
 import BlogImages from "../components/BlogImages";
+import BlogEditButtons from "./BlogEditButtons";
 
 class BlogPost extends Component {
   render() {
@@ -11,6 +12,10 @@ class BlogPost extends Component {
         className="news-post"
         id={this.props.post.title.replace(/[^A-Z0-9]/gi, "-").toLowerCase()}
       >
+        <BlogEditButtons
+          deletePost={this.props.deletePost}
+          post={this.props.post}
+        />
         <div className="post-text">
           {" "}
           <BlogTitle
