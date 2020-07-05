@@ -15,7 +15,7 @@ class News extends Component {
       })
       .then(news => {
         news = news.sort(function(a, b) {
-          return Date.parse(a.date) + Date.parse(b.date);
+          return Date.parse(b.date) - Date.parse(a.date);
         });
         this.setState({ news });
       });

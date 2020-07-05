@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { domain } from "../config/constants";
+import { navigate } from "@reach/router";
 
 class BlogImages extends Component {
   render() {
@@ -13,6 +14,9 @@ class BlogImages extends Component {
               key={i}
               className="grid-image"
               style={photo.order ? { order: photo.order } : { order: i }}
+              onClick={
+                photo.caption ? () => navigate("http://www.google.com") : null
+              }
             >
               <img
                 src={`${domain}/uploads/news/${photo.location}`}
