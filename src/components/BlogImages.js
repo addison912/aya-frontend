@@ -14,9 +14,7 @@ class BlogImages extends Component {
               key={i}
               className="grid-image"
               style={photo.order ? { order: photo.order } : { order: i }}
-              onClick={
-                photo.caption ? () => navigate("http://www.google.com") : null
-              }
+              onClick={photo.link ? () => navigate(photo.link) : null}
             >
               <img
                 src={`${domain}/uploads/news/${photo.location}`}
