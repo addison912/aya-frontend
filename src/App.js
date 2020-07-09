@@ -254,7 +254,7 @@ class App extends React.Component {
   };
 
   setPictureUrl = i => {
-    let index = i ? i : this.state.photoIndex;
+    let index = i || i == 0 ? i : this.state.photoIndex;
     // index = index == 0 ? 1 : index;
     index = index % this.state.gallery.photos.length;
     let photo = this.state.gallery.photos[index];
