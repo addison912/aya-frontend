@@ -1,9 +1,15 @@
 import React from "react";
 import UserContext from "../userContext";
 import { domain } from "../config/constants";
+import { navigate } from "@reach/router";
 
 class Login extends React.Component {
   static contextType = UserContext;
+
+  googleLogin = e => {
+    e.preventDefault;
+    navigate(`${domain}/auth/login/google`);
+  };
 
   componentDidMount() {
     this.props.setLocation("Login");
@@ -14,16 +20,25 @@ class Login extends React.Component {
       <UserContext.Consumer>
         {context => (
           <div className="loginContainer">
-            <h2>Login</h2>
+            {/* <h2>Login</h2> */}
             <div className="loginForm">
-              {/* <div
-                className="g-signin2"
-                data-onsuccess="onSignIn"
-                data-theme="dark"
-              ></div> */}
-              {/* <a href={`${domain}/auth/login/google`}>
-                <button>Google</button>
-              </a> */}
+              <a href={`${domain}/auth/login/google`} className="google-login">
+                <button type="button" className="google-button">
+                  <span className="google-button__icon">
+                    <img
+                      src={require("../assets/images/google_sign-in.svg")}
+                      alt="Google"
+                    />
+                  </span>
+                  <span className="google-button__text">
+                    Sign in with Google
+                  </span>
+                </button>
+              </a>
+
+              {/*  */}
+              {/* <button>Google</button> */}
+              {/*  */}
               <input
                 type="email"
                 id="loginEmail"

@@ -29,6 +29,7 @@ import userContext from "./userContext";
 import adminContext from "./context/adminContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Test from "./containers/Test";
+import LoginRedirect from "./containers/LoginRedirect";
 
 //dnd
 import { DndProvider } from "react-dnd";
@@ -125,6 +126,22 @@ class App extends React.Component {
           });
         }
       });
+  };
+
+  googleLogin = token => {
+    if (token) {
+      console.log(token);
+      sessionStorage.setItem("ayaToken", token);
+      this.setState({
+        token,
+        verified: true
+      });
+      navigate(`/`);
+      window.location.reload();
+    } else {
+      navigate(`/#/404`);
+      window.location.reload();
+    }
   };
 
   logout = () => {
@@ -745,6 +762,10 @@ class App extends React.Component {
                       handleLogoClick={this.handleLogoClick}
                       default
                     ></NotFound>
+                    <LoginRedirect
+                      path="google-redirect/:token"
+                      googleLogin={this.googleLogin}
+                    ></LoginRedirect>
                     {categories.map(category => {
                       // category = category.toLowerCase().replace(/\/?\s+/g, "-");
                       return (

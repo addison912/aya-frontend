@@ -14,9 +14,18 @@ class Shop extends Component {
         return res.json();
       })
       .then(shopItems => {
-        shopItems.sort(function(a, b) {
-          return a.order - b.order;
-        });
+        try {
+          shopItems.sort(function(a, b) {
+            return (
+              a.item_data.variations[0].item_variation_data.ordinal -
+              b.item_data.variations[0].item_variation_data.ordinal
+            );
+          });
+        } catch (err) {
+          console.log(err);
+        }
+
+        console.log(shopItems);
         this.setState({ shopItems });
       });
   };
