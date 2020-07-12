@@ -1,5 +1,5 @@
 import React from "react";
-import UserContext from "../userContext";
+import UserContext from "../context/userContext";
 import Login from "./Login";
 
 class PrivateRoute extends React.Component {

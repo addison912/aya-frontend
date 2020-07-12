@@ -25,7 +25,7 @@ import MobileInfo from "./components/MobileInfo";
 import LeftNav from "./components/LeftNav";
 import SearchMessage from "./components/SearchMessage";
 import NotFound from "./containers/NotFound";
-import userContext from "./userContext";
+import userContext from "./context/userContext";
 import adminContext from "./context/adminContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Test from "./containers/Test";
@@ -67,6 +67,7 @@ class App extends React.Component {
       toState: this.toState,
       tokenCheck: this.tokenCheck,
       verifyToken: this.verifyToken,
+      googleLogin: this.googleLogin,
       //admin adminContext
       deletePhoto: this.deletePhoto,
       deleteGallery: this.deleteGallery,
@@ -128,19 +129,56 @@ class App extends React.Component {
       });
   };
 
-  googleLogin = token => {
-    if (token) {
-      console.log(token);
-      sessionStorage.setItem("ayaToken", token);
-      this.setState({
-        token,
-        verified: true
-      });
-      navigate(`/`);
-      window.location.reload();
-    } else {
-      navigate(`/#/404`);
-      window.location.reload();
+  // googleLogin = token => {
+  //   if (token) {
+  //     console.log(token);
+  //     sessionStorage.setItem("ayaToken", token);
+  //     this.setState({
+  //       token,
+  //       verified: true
+  //     });
+  //     navigate(`/`);
+  //     window.location.reload();
+  //   } else {
+  //     navigate(`/#/404`);
+  //     window.location.reload();
+  //   }
+  // };
+
+  googleLogin = response => {
+    if (response.tokenId) {
+      this.setState(state => ({
+        isLogined: true,
+        tokenId: response.tokenId
+      }));
+      console.log(response);
+      axios
+        .post(
+          `${domain}/auth/login/google`,
+          { token: response.tokenId },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        )
+        .then(res => {
+          // if (res.data) {
+          //   console.log(res);
+          // }
+          if (res.data.signedJwt) {
+            sessionStorage.setItem("ayaToken", res.data.signedJwt);
+            this.setState({
+              token: res.data.signedJwt,
+              verified: true
+            });
+          } else if (res.status != 200) {
+            alert(`Error ${res.status}: ${res.statusText}`);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   };
 

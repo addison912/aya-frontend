@@ -1,19 +1,23 @@
 import React from "react";
-import UserContext from "../userContext";
+import UserContext from "../context/userContext";
 import { domain } from "../config/constants";
 import { navigate } from "@reach/router";
+import GoogleButton from "./GoogleButton";
 
 class Login extends React.Component {
   static contextType = UserContext;
 
-  googleLogin = e => {
-    e.preventDefault;
-    navigate(`${domain}/auth/login/google`);
-  };
-
   componentDidMount() {
     this.props.setLocation("Login");
   }
+
+  onSignIn = googleUser => {
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log("Name: " + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+  };
 
   render() {
     return (
@@ -22,7 +26,7 @@ class Login extends React.Component {
           <div className="loginContainer">
             {/* <h2>Login</h2> */}
             <div className="loginForm">
-              <a href={`${domain}/auth/login/google`} className="google-login">
+              {/* <a href={`${domain}/auth/login/google`} className="google-login">
                 <button type="button" className="google-button">
                   <span className="google-button__icon">
                     <img
@@ -34,11 +38,8 @@ class Login extends React.Component {
                     Sign in with Google
                   </span>
                 </button>
-              </a>
-
-              {/*  */}
-              {/* <button>Google</button> */}
-              {/*  */}
+              </a> */}
+              <GoogleButton />
               <input
                 type="email"
                 id="loginEmail"

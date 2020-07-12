@@ -11,7 +11,8 @@ const userContext = React.createContext({
   logout() {},
   toState() {},
   tokenCheck() {},
-  verifyToken() {}
+  verifyToken() {},
+  googleLogin() {}
 });
 
 export default userContext;
