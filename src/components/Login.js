@@ -11,34 +11,12 @@ class Login extends React.Component {
     this.props.setLocation("Login");
   }
 
-  onSignIn = googleUser => {
-    var profile = googleUser.getBasicProfile();
-    console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log("Name: " + profile.getName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
-  };
-
   render() {
     return (
       <UserContext.Consumer>
         {context => (
           <div className="loginContainer">
-            {/* <h2>Login</h2> */}
             <div className="loginForm">
-              {/* <a href={`${domain}/auth/login/google`} className="google-login">
-                <button type="button" className="google-button">
-                  <span className="google-button__icon">
-                    <img
-                      src={require("../assets/images/google_sign-in.svg")}
-                      alt="Google"
-                    />
-                  </span>
-                  <span className="google-button__text">
-                    Sign in with Google
-                  </span>
-                </button>
-              </a> */}
               <GoogleButton />
               <input
                 type="email"

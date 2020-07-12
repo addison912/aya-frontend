@@ -129,22 +129,6 @@ class App extends React.Component {
       });
   };
 
-  // googleLogin = token => {
-  //   if (token) {
-  //     console.log(token);
-  //     sessionStorage.setItem("ayaToken", token);
-  //     this.setState({
-  //       token,
-  //       verified: true
-  //     });
-  //     navigate(`/`);
-  //     window.location.reload();
-  //   } else {
-  //     navigate(`/#/404`);
-  //     window.location.reload();
-  //   }
-  // };
-
   googleLogin = response => {
     if (response.tokenId) {
       this.setState(state => ({
