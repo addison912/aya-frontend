@@ -17,7 +17,12 @@ class BlogPost extends Component {
             title={this.props.post.title}
             // copyLink={this.props.copyLink}
           />
-          <BlogDate date={this.props.post.date} />
+          <BlogDate
+            date={this.props.post.date}
+            hideDate={
+              this.props.post.hideDate ? this.props.post.hideDate : false
+            }
+          />
           <BlogArticle text={this.props.post.text} />
         </div>
 
