@@ -13,6 +13,12 @@ class BlogEdit extends Component {
         >
           DELETE POST
         </button>
+        <button
+          className="edit"
+          onClick={() => this.props.handleEditClick(this.props.post)}
+        >
+          EDIT POST
+        </button>
       </div>
     );
   }

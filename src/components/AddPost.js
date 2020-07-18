@@ -38,7 +38,7 @@ class AddPhoto extends Component {
   };
 
   handleAddPostClick = () => {
-    this.context.toState({ addPost: true, editPhoto: false });
+    this.context.toState({ addPost: true, editPhoto: false, editPost: {} });
     this.setState({
       title: "",
       date: this.props.numDate(new Date()),
@@ -89,7 +89,7 @@ class AddPhoto extends Component {
 
                 <ReactQuill
                   theme="snow"
-                  defaultValue={context.contact}
+                  defaultValue=""
                   onChange={value => this.setState({ text: value })}
                   modules={this.modules}
                   formats={this.formats}

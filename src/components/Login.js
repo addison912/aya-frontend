@@ -1,7 +1,5 @@
 import React from "react";
 import UserContext from "../context/userContext";
-import { domain } from "../config/constants";
-import { navigate } from "@reach/router";
 import GoogleButton from "./GoogleButton";
 
 class Login extends React.Component {

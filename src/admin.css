@@ -128,6 +128,10 @@
   /* width: 50%; */
 }
 
+/* button.edit {
+  color: red;
+} */
+
 button.delete {
   color: red;
 }
@@ -181,7 +185,7 @@ button:hover {
   font-family: var(--admin-font);
 }
 .add-photo input:first-of-type,
-.add-post form input:first-of-type,
+.add-post form > input:first-of-type,
 .add-gallery form input:first-of-type {
   margin-top: 12px;
 }
@@ -391,15 +395,18 @@ form input[type="text"] {
 
 .blog-edit-buttons {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.blog-edit-buttons .delete {
+.blog-edit-buttons button {
   font-weight: bold;
   font-family: var(--admin-font);
   font-size: 16px;
   border: 1px solid #aaa;
   border-radius: 4px;
+  width: 120px;
+  margin-bottom: 12px;
   /* border-style: none; */
   background: none;
 }
@@ -413,4 +420,33 @@ form input[type="text"] {
 .google-button span {
   width: 100%;
   text-align: center;
+}
+
+.add-post-photos .grid-image .trash {
+  width: 16px;
+  height: auto;
+  background-color: #fff;
+}
+.add-post-photos .grid-image .trash:hover {
+  cursor: pointer;
+}
+
+.editDate {
+  display: flex;
+}
+
+.hideDate {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.hideDate input {
+  margin-right: 8px;
+}
+.hideDate span {
+  font-family: var(--admin-font);
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 12px;
 }

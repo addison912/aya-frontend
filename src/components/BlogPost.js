@@ -14,6 +14,7 @@ class BlogPost extends Component {
       >
         <BlogEditButtons
           deletePost={this.props.deletePost}
+          handleEditClick={this.props.handleEditClick}
           post={this.props.post}
         />
         <div className="post-text">

@@ -4,6 +4,7 @@ import BlogPost from "../components/BlogPost";
 import NewsContext from "../context/newsContext";
 import AddPost from "../components/AddPost";
 import axios from "axios";
+import EditPost from "../components/EditPost";
 
 class News extends Component {
   constructor(props) {
@@ -11,10 +12,14 @@ class News extends Component {
     this.state = {
       news: [],
       show: 5,
-      editPost: "",
+      editPost: {},
       addPost: false,
+      numDate: this.numDate,
       toState: this.toState,
-      uploadPost: this.uploadPost
+      uploadPost: this.uploadPost,
+      newsEdit: this.newsEdit,
+      handlePostEdit: this.handlePostEdit,
+      deletePhoto: this.deletePhoto
     };
   }
 
@@ -41,9 +46,14 @@ class News extends Component {
   };
 
   numDate = date => {
-    return `${date.getFullYear()}-${
-      date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()
-    }-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`;
+    if (date.getFullYear() > 1970) {
+      date = new Date(date.getTimezoneOffset() * 60000 + date.getTime());
+      return `${date.getFullYear()}-${
+        date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1).toString()
+          : (date.getMonth() + 1).toString()
+      }-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`;
+    }
   };
 
   stringDate = date => {
@@ -107,6 +117,81 @@ class News extends Component {
       });
   };
 
+  newsEdit = post => {
+    let date = new Date(post.date);
+    date = new Date(date.getTimezoneOffset() * 60000 + date.getTime());
+    let updatedPost = new FormData();
+    updatedPost.append("_id", post._id);
+    updatedPost.append("title", post.title);
+    updatedPost.append("date", this.stringDate(date));
+    updatedPost.append("text", post.text);
+    updatedPost.append("hideDate", post.hideDate ? post.hideDate : false);
+    updatedPost.append("deletePhotos", JSON.stringify(post.deletePhotos));
+    if (post.newPhotos) {
+      for (const key of Object.keys(post.newPhotos)) {
+        updatedPost.append("newPhotos", post.newPhotos[key]);
+      }
+      let photoData = [];
+      post.newPhotos.forEach(photo => {
+        let newPhoto = {
+          location: photo.name,
+          caption: photo.caption,
+          link: photo.photoLink
+        };
+        photoData.push(newPhoto);
+      });
+
+      updatedPost.append("photoData", JSON.stringify(photoData));
+    }
+    axios
+      .post(`${domain}/api/news/edit`, updatedPost, {
+        headers: {
+          authorization: `bearer ${window.sessionStorage.ayaToken}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(res => {
+        if (res.data) {
+          if (res.data.title && res.data.date) {
+            console.log(res.data);
+            let news = this.state.news;
+            let i = news.indexOf(
+              news.find(post => {
+                return post._id == res.data._id;
+              })
+            );
+            news.splice(i, 1, res.data);
+            news.sort(function(a, b) {
+              return Date.parse(b.date) - Date.parse(a.date);
+            });
+            this.setState({ news, addPost: false });
+            this.setState({ editPost: {}, news });
+          }
+        }
+      });
+  };
+
+  handlePostEdit = edits => {
+    let editPost = this.state.editPost;
+    for (let i = 0; i < Object.keys(edits).length; i++) {
+      editPost[Object.keys(edits)[i]] = edits[Object.keys(edits)[i]];
+    }
+    this.setState({ editPost });
+  };
+
+  deletePhoto = photo => {
+    let editPost = this.state.editPost;
+    if (photo._id) {
+      if (!editPost.deletePhotos) {
+        editPost.deletePhotos = [];
+      }
+      editPost.deletePhotos.push(photo);
+    }
+    let i = editPost.photos.indexOf(photo);
+    editPost.photos.splice(i, 1);
+    this.setState({ editPost });
+  };
+
   deletePost = id => {
     try {
       console.log(`deleting: ${id}`);
@@ -147,6 +232,11 @@ class News extends Component {
     }
   };
 
+  handleEditClick = post => {
+    this.setState({ editPost: post, addPost: false });
+    console.log(this.state.editPost);
+  };
+
   componentDidMount() {
     this.getNews();
     this.props.setLocation("News");
@@ -171,8 +261,15 @@ class News extends Component {
             <AddPost numDate={this.numDate} />
             {this.state.news.map((post, i) => {
               if (this.state.show == "all" || i < this.state.show)
-                return (
-                  <BlogPost key={i} post={post} deletePost={this.deletePost} />
+                return post._id == this.state.editPost._id ? (
+                  <EditPost key={post._id} />
+                ) : (
+                  <BlogPost
+                    key={i}
+                    post={post}
+                    deletePost={this.deletePost}
+                    handleEditClick={this.handleEditClick}
+                  />
                 );
             })}
             {this.state.show != "all" &&
