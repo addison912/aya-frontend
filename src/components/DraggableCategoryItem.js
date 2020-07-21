@@ -20,6 +20,8 @@ import {
   DragSourceMonitor
 } from "react-dnd";
 import flow from "lodash/flow";
+import EditGalleryThumb from "./EditGalleryThumb";
+import GalleryThumbnail from "./GalleryThumbnail";
 
 let initialIndex = Number;
 
@@ -90,7 +92,10 @@ class DraggableCategoryItem extends Component {
     moveItem: PropTypes.func.isRequired,
     gallery: PropTypes.object.isRequired,
     galleryClick: PropTypes.func.isRequired,
-    reorderGallery: PropTypes.func.isRequired
+    reorderGallery: PropTypes.func.isRequired,
+    editGalleryThumb: PropTypes.object.isRequired,
+    submitNewThumb: PropTypes.func.isRequired,
+    setEditGalleryThumb: PropTypes.func.isRequired
   };
 
   render() {
@@ -100,7 +105,10 @@ class DraggableCategoryItem extends Component {
       index,
       galleryClick,
       connectDragSource,
-      connectDropTarget
+      connectDropTarget,
+      editGalleryThumb,
+      setEditGalleryThumb,
+      submitNewThumb
     } = this.props;
     const opacity = isDragging ? 0 : 1;
 
@@ -113,23 +121,18 @@ class DraggableCategoryItem extends Component {
           //     {context => (
           <div className={"gallery-grid-item"} style={{ opacity }}>
             <figure className="grid-image gallery-image" role="button">
-              <img
-                src={`${domain}/uploads/photos/${
-                  gallery.category.toLowerCase() == "advertising"
-                    ? "Client-Work"
-                    : gallery.category.replace(/\/?\s+/g, "_")
-                }/${gallery.name
-                  .replace(/\/?\s+/g, "_")
-                  .replace(/[^\w\s]/gi, "")}/thumb.jpg`}
-                alt={
-                  gallery.photos &&
-                  gallery.photos[0] &&
-                  gallery.photos[0].caption
-                    ? gallery.photos[0].caption
-                    : null
-                }
-                className="gridImage"
-              />
+              {gallery._id == editGalleryThumb._id ? (
+                <EditGalleryThumb
+                  gallery={gallery}
+                  setEditGalleryThumb={setEditGalleryThumb}
+                  submitNewThumb={submitNewThumb}
+                />
+              ) : (
+                <GalleryThumbnail
+                  gallery={gallery}
+                  setEditGalleryThumb={setEditGalleryThumb}
+                />
+              )}
 
               <div className="item">
                 <figcaption>{gallery.name}</figcaption>

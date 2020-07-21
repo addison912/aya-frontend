@@ -251,9 +251,9 @@ class App extends React.Component {
     newGallery.append("thumb", gallery.thumb);
     newGallery.append("published", false);
 
-    for (var value of newGallery.values()) {
-      console.log(value);
-    }
+    // for (var value of newGallery.values()) {
+    //   console.log(value);
+    // }
     axios
       .post(`${domain}/api/gallery/create`, newGallery, {
         headers: {
@@ -262,16 +262,24 @@ class App extends React.Component {
         }
       })
       .then(res => {
-        if (res.data) {
-          this.setState({ gallery: res.data });
+        let newGallery = res.data;
+        console.log(newGallery);
+        if (newGallery) {
+          this.setState({ gallery: newGallery });
+        } else {
+          alert(
+            "There was an error creating the gallery. Please refresh the page."
+          );
         }
+
         navigate(
-          `/#/${category
+          `/#/${newGallery.category
             .toLowerCase()
-            .replace(/\/?\s+/g, "-")}/${name
+            .replace(/\/?\s+/g, "-")}/${newGallery.name
             .toLowerCase()
             .replace(/\/?\s+/g, "-")}`
         );
+        this.setState({ view: "gallery" });
       });
   };
 
@@ -383,7 +391,6 @@ class App extends React.Component {
       })
       .then(res => {
         if (res.data) {
-          console.log(res);
           this.setState({ gallery: res.data, addPhoto: false });
         }
       });
@@ -448,7 +455,6 @@ class App extends React.Component {
         )
         .then(res => {
           if (res.data) {
-            console.log(res);
             let gallery = res.data;
             gallery.photos.sort(function(a, b) {
               return a.order - b.order;
@@ -472,8 +478,6 @@ class App extends React.Component {
             }
           })
           .then(response => {
-            console.log(response.data);
-            console.log("Deleting photo " + id);
             let gallery = this.state.gallery;
             gallery.photos.splice(
               gallery.photos

@@ -47,7 +47,7 @@ class AddGallery extends Component {
                     })
                   }
                 ></input>
-                <input
+                {/* <input
                   type="number"
                   placeholder="order"
                   name="order"
@@ -57,7 +57,7 @@ class AddGallery extends Component {
                       order: e.target.value
                     })
                   }
-                ></input>
+                ></input> */}
                 <label htmlFor="thumbnailUpload">gallery thumbnail:</label>
                 <input
                   id="thumbnailUpload"
@@ -84,7 +84,7 @@ class AddGallery extends Component {
                     type="button"
                     name="submitPhoto"
                     className="submit-button"
-                    value="Submit Gallery"
+                    value="Create Gallery"
                     onClick={() =>
                       context.createGallery(this.state, this.context.category)
                     }

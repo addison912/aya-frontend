@@ -8,12 +8,33 @@ import Breadcrumb from "./Breadcrumb";
 import AdminContext from "../context/adminContext";
 import AddGallery from "./AddGallery";
 import DraggableCategoryItem from "./DraggableCategoryItem";
+import axios from "axios";
+import { domain } from "../config/constants";
 const update = require("immutability-helper");
 
 class CategoryGrid extends Component {
   static contextType = AdminContext;
   state = {
-    editGalleryImage: {}
+    editGalleryThumb: {}
+  };
+
+  setEditGalleryThumb = gallery => {
+    console.log(gallery);
+    this.setState({ editGalleryThumb: gallery });
+  };
+
+  submitNewThumb = photo => {
+    axios
+      .post(`${domain}/api/gallery/thumb`, photo, {
+        headers: {
+          authorization: `bearer ${window.sessionStorage.ayaToken}`,
+          "Content-Type": "application/json"
+        }
+      })
+      .then(thumb => {
+        console.log(thumb.data);
+        this.setState({ editGalleryThumb: {} });
+      });
   };
 
   moveItem = (dragIndex, hoverIndex) => {
@@ -51,6 +72,9 @@ class CategoryGrid extends Component {
                 id={gallery._id}
                 moveItem={this.moveItem}
                 reorderGallery={this.context.reorderGallery}
+                editGalleryThumb={this.state.editGalleryThumb}
+                setEditGalleryThumb={this.setEditGalleryThumb}
+                submitNewThumb={this.submitNewThumb}
                 // galleries={this.props.galleries}
               />
             ))}

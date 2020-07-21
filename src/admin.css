@@ -454,3 +454,68 @@ form input[type="text"] {
 .grid-image {
   background-color: #fff;
 }
+
+.editGalleryThumb {
+  width: 24%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.editGalleryThumb .cancel-submit {
+  flex-direction: column;
+  align-items: center;
+}
+
+.chooseGalleryThumb {
+  width: 100%;
+  margin: 12px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editGalleryThumb button,
+.editGalleryThumb select,
+.editGalleryThumb input {
+  width: 180px;
+  margin: 0 12px 12px 12px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.editGalleryThumb select {
+  text-align-last: center;
+}
+
+.editGalleryThumb .or {
+  margin-bottom: 12px;
+}
+.editGalleryThumb .cancel-submit .cancel-button {
+  border: 1px solid #666;
+  background-color: #fff;
+}
+.editGalleryThumb .cancel-submit .submit-button {
+  border: 1px solid #666;
+}
+
+.galleryThumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24%;
+}
+
+.gallery-content .grid-image .galleryThumb img {
+  width: 100%;
+}
+
+.changeThumbButton {
+  position: relative;
+  bottom: 31px;
+  padding: 8px;
+  width: calc(100% + 1px);
+  border: none;
+  border-radius: 0 0 0 2px;
+}
