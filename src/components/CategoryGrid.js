@@ -12,6 +12,9 @@ const update = require("immutability-helper");
 
 class CategoryGrid extends Component {
   static contextType = AdminContext;
+  state = {
+    editGalleryImage: {}
+  };
 
   moveItem = (dragIndex, hoverIndex) => {
     // console.log(dragIndex, hoverIndex);
@@ -50,42 +53,6 @@ class CategoryGrid extends Component {
                 reorderGallery={this.context.reorderGallery}
                 // galleries={this.props.galleries}
               />
-              // <figure
-              //   key={i}
-              //   className="grid-image gallery-image"
-              //   role="button"
-              //   style={{
-              //     order: gallery.order
-              //       ? gallery.order
-              //       : this.props.galleries.length
-              //   }}
-              // >
-              //   <img
-              //     src={`${domain}/uploads/photos/${
-              //       gallery.category.toLowerCase() == "advertising"
-              //         ? "Client-Work"
-              //         : gallery.category.replace(/\/?\s+/g, "_")
-              //     }/${gallery.name
-              //       .replace(/\/?\s+/g, "_")
-              //       .replace(/[^\w\s]/gi, "")}/thumb.jpg`}
-              //     alt={
-              //       gallery.photos &&
-              //       gallery.photos[0] &&
-              //       gallery.photos[0].caption
-              //         ? gallery.photos[0].caption
-              //         : null
-              //     }
-              //     className="gridImage"
-              //   />
-
-              //   <div className="item">
-              //     <figcaption>{gallery.name}</figcaption>
-              //     <EditGallery
-              //       gallery={gallery}
-              //       galleryClick={() => this.props.galleryClick(gallery)}
-              //     />
-              //   </div>
-              // </figure>
             ))}
             <ImageSpacer />
             <ImageSpacer />

@@ -450,3 +450,7 @@ form input[type="text"] {
   font-size: 14px;
   margin-bottom: 12px;
 }
+
+.grid-image {
+  background-color: #fff;
+}
