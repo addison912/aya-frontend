@@ -76,6 +76,7 @@ class App extends React.Component {
       uploadPhoto: this.uploadPhoto,
       addPhoto: false,
       editPhoto: false,
+      copyPhoto: false,
       photoEdit: this.photoEdit,
       editgalleryName: false,
       galleryName: "",
@@ -369,7 +370,9 @@ class App extends React.Component {
   };
 
   uploadPhoto = (photoData, gallery, category, galleryId) => {
-    this.verifyToken;
+    if (!photoData.photo) {
+      return alert("Please choose a photo to upload!");
+    }
 
     photoData.category = category;
     photoData.gallery = gallery;

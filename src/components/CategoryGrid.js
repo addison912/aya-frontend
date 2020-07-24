@@ -54,6 +54,14 @@ class CategoryGrid extends Component {
     }
   };
 
+  componentDidMount() {
+    this.context.toState({
+      addPhoto: false,
+      editPhoto: false,
+      copyPhoto: false
+    });
+  }
+
   render() {
     return (
       <AdminContext.Consumer>

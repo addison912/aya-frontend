@@ -22,6 +22,7 @@ import {
   DragSourceMonitor
 } from "react-dnd";
 import flow from "lodash/flow";
+import CopyPhoto from "./CopyPhoto";
 
 let initialIndex = Number;
 
@@ -117,7 +118,8 @@ class DraggableGalleryItem extends Component {
             <AdminContext.Consumer>
               {context => (
                 <div>
-                  {context.editPhoto != photo._id ? (
+                  {context.editPhoto != photo._id &&
+                  context.copyPhoto != photo._id ? (
                     <figure
                       className={"grid-image gallery-image"}
                       role="button"
@@ -141,7 +143,7 @@ class DraggableGalleryItem extends Component {
                         />
                       </div>
                     </figure>
-                  ) : (
+                  ) : context.editPhoto == photo._id ? (
                     <EditPhotoForm
                       style={{ opacity }}
                       photo={photo}
@@ -149,7 +151,15 @@ class DraggableGalleryItem extends Component {
                       category={category}
                       i={index}
                     />
-                  )}
+                  ) : context.copyPhoto == photo._id ? (
+                    <CopyPhoto
+                      style={{ opacity }}
+                      photo={photo}
+                      gallery={gallery}
+                      category={category}
+                      i={index}
+                    />
+                  ) : null}
                 </div>
               )}
             </AdminContext.Consumer>

@@ -23,6 +23,21 @@ class EditPhoto extends Component {
               EDIT
             </button>
             <button
+              className="edit"
+              onClick={
+                context.editPhoto != this.props.photo._id
+                  ? () =>
+                      context.toState({
+                        addPhoto: false,
+                        editPhoto: false,
+                        copyPhoto: this.props.photo._id
+                      })
+                  : null
+              }
+            >
+              COPY
+            </button>
+            <button
               className="delete"
               onClick={() =>
                 context.deletePhoto(

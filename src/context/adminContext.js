@@ -8,6 +8,7 @@ const adminContext = React.createContext({
   uploadPhoto() {},
   addPhoto: false,
   editPhoto: false,
+  copyPhoto: false,
   photoEdit() {},
   location: "",
   category: "",

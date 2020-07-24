@@ -102,7 +102,7 @@ class EditPhotoForm extends Component {
                 type="button"
                 name="submitPhoto"
                 className="submit-button"
-                value="Submit Photo"
+                value="Submit Changes"
                 onClick={() => context.photoEdit(this.props.photo, this.state)}
               />
             </div>

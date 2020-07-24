@@ -518,4 +518,39 @@ form input[type="text"] {
   width: calc(100% + 1px);
   border: none;
   border-radius: 0 0 0 2px;
+  background-color: rgba(255, 255, 255, 0.72);
+}
+
+.copy-photo-form .copy-button {
+  color: white;
+  background-color: #333;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.copy-photo-form .cancel-button,
+.copy-photo-form .copy-button {
+  height: 32px;
+  margin: 0 24px 0 0;
+}
+
+.copy-photo-form .cancel-submit {
+  display: flex;
+  align-items: center;
+  width: 25%;
+}
+
+.copy-photo-form {
+  width: 100%;
+}
+
+.select-gallery {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#select-copy-gallery {
+  margin-left: 8px;
 }
