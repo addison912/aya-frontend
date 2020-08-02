@@ -3,11 +3,13 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import NewsContext from "../context/newsContext";
+import PostPhotoEdit from "./PostPhotoEdit";
 
 export class EditPostGalleryPreview extends Component {
   static contextType = NewsContext;
+
   componentDidUpdate() {
-    // console.log(this.props);
+    // if(this.props.p){}
   }
   render() {
     return (
@@ -24,18 +26,30 @@ export class EditPostGalleryPreview extends Component {
                 ) : (
                   <img src={photo.preview} alt={photo.caption} />
                 )}
-
-                {photo.caption ? (
+                {/* {context.editPhoto == } */}
+                {photo.caption && context.editPhoto._id != photo._id ? (
                   <figcaption>{photo.caption}</figcaption>
                 ) : null}
-
-                <img
-                  className="trash"
-                  src={require("../assets/images/trash.png")}
-                  alt="delete"
-                  role="button"
-                  onClick={() => context.deletePhoto(photo)}
-                />
+                {context.editPhoto != {} && context.editPhoto == photo ? (
+                  <PostPhotoEdit toState={context.toState} photo={photo} />
+                ) : (
+                  <div className="post-image-edit-icons">
+                    <img
+                      className="trash"
+                      src={require("../assets/images/trash.png")}
+                      alt="delete"
+                      role="button"
+                      onClick={() => context.deletePhoto(photo)}
+                    />
+                    <img
+                      className="edit-icon"
+                      src={require("../assets/images/edit.svg")}
+                      alt="edit"
+                      role="button"
+                      onClick={() => context.toState({ editPhoto: photo })}
+                    />
+                  </div>
+                )}
               </figure>
             ))}
           </div>

@@ -348,6 +348,7 @@ form input[type="text"] {
   width: 100%;
   border: 1px #aaa solid;
   border-radius: 4px;
+  margin-top: 44px;
 }
 
 .add-post-photo h3 {
@@ -356,6 +357,7 @@ form input[type="text"] {
 
 .add-post .post-images {
   width: 100%;
+  margin-top: 48px;
 }
 
 .gallery-grid-item {
@@ -389,10 +391,6 @@ form input[type="text"] {
   align-items: flex-end;
 }
 
-.add-post-photos .grid-image img {
-  height: 80%;
-}
-
 .blog-edit-buttons {
   display: flex;
   flex-direction: column;
@@ -422,12 +420,20 @@ form input[type="text"] {
   text-align: center;
 }
 
-.add-post-photos .grid-image .trash {
+.post-image-edit-icons {
+  display: flex;
+}
+
+.add-post-photos .grid-image .trash,
+.add-post-photos .grid-image .edit-icon {
   width: 16px;
   height: auto;
   background-color: #fff;
+  border-radius: 0;
+  margin-right: 12px;
 }
-.add-post-photos .grid-image .trash:hover {
+.add-post-photos .grid-image .trash:hover,
+.add-post-photos .grid-image .edit-icon:hover {
   cursor: pointer;
 }
 
@@ -553,4 +559,8 @@ form input[type="text"] {
 
 #select-copy-gallery {
   margin-left: 8px;
+}
+
+.postPhotoEdit .cancel-submit input {
+  margin-top: 0;
 }

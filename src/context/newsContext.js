@@ -8,7 +8,9 @@ const aboutContext = React.createContext({
   uploadPost() {},
   newsEdit() {},
   handlePostEdit() {},
-  deletePhoto() {}
+  deletePhoto() {},
+  editPhoto: {},
+  handlePhotoEditInputChange() {}
 });
 
 export default aboutContext;

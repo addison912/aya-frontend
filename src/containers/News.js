@@ -14,12 +14,14 @@ class News extends Component {
       show: 5,
       editPost: {},
       addPost: false,
+      editPhoto: {},
       numDate: this.numDate,
       toState: this.toState,
       uploadPost: this.uploadPost,
       newsEdit: this.newsEdit,
       handlePostEdit: this.handlePostEdit,
-      deletePhoto: this.deletePhoto
+      deletePhoto: this.deletePhoto,
+      handlePhotoEditInputChange: this.handlePhotoEditInputChange
     };
   }
 
@@ -127,6 +129,7 @@ class News extends Component {
     updatedPost.append("text", post.text);
     updatedPost.append("hideDate", post.hideDate ? post.hideDate : false);
     updatedPost.append("deletePhotos", JSON.stringify(post.deletePhotos));
+    updatedPost.append("editPhotos", JSON.stringify(post.deletePhotos));
     if (post.newPhotos) {
       for (const key of Object.keys(post.newPhotos)) {
         updatedPost.append("newPhotos", post.newPhotos[key]);
@@ -140,7 +143,6 @@ class News extends Component {
         };
         photoData.push(newPhoto);
       });
-
       updatedPost.append("photoData", JSON.stringify(photoData));
     }
     axios
@@ -177,6 +179,12 @@ class News extends Component {
       editPost[Object.keys(edits)[i]] = edits[Object.keys(edits)[i]];
     }
     this.setState({ editPost });
+  };
+
+  handlePhotoEditInputChange = (photo, key, newValue) => {
+    this.state.editPost.photos.find(editPhoto => editPhoto == photo)[
+      key
+    ] = newValue;
   };
 
   deletePhoto = photo => {
