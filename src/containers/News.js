@@ -17,6 +17,7 @@ class News extends Component {
         news = news.sort(function(a, b) {
           return Date.parse(b.date) - Date.parse(a.date);
         });
+        news = news.filter(post => post.hidePost != true);
         this.setState({ news });
       });
   };

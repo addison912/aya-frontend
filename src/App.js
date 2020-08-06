@@ -129,6 +129,7 @@ class App extends React.Component {
         return res.json();
       })
       .then(galleries => {
+        galleries = galleries.filter(gallery => gallery.hideGallery != true);
         let photoIndex =
           category.toLowerCase() == "home"
             ? Math.floor(Math.random() * galleries[0].photos.length)
