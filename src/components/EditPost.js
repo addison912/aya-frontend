@@ -83,22 +83,41 @@ export class EditPost extends Component {
                 />
 
                 {context.editPost.addPhoto == true ? null : (
-                  <div className="cancel-submit">
-                    <input
-                      type="button"
-                      name="cancel"
-                      className="cancel-button"
-                      value="Cancel"
-                      onClick={this.cancel}
-                    />
+                  <div className="hide-submit-container">
+                    <div className="hidePost">
+                      <input
+                        type="checkbox"
+                        checked={
+                          context.editPost.hidePost
+                            ? context.editPost.hidePost
+                            : false
+                        }
+                        onChange={e =>
+                          context.handlePostEdit({
+                            hidePost: e.target.checked
+                          })
+                        }
+                      />
+                      <span>hide post</span>
+                    </div>
 
-                    <input
-                      type="button"
-                      name="submitPost"
-                      className="submit-button"
-                      value="Submit Changes"
-                      onClick={() => context.newsEdit(context.editPost)}
-                    />
+                    <div className="cancel-submit">
+                      <input
+                        type="button"
+                        name="cancel"
+                        className="cancel-button"
+                        value="Cancel"
+                        onClick={this.cancel}
+                      />
+
+                      <input
+                        type="button"
+                        name="submitPost"
+                        className="submit-button"
+                        value="Submit Changes"
+                        onClick={() => context.newsEdit(context.editPost)}
+                      />
+                    </div>
                   </div>
                 )}
               </form>

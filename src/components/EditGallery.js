@@ -7,13 +7,15 @@ class EditGallery extends Component {
       "Are you sure you want to delete this gallery? This will permanently delete the gallery and all photos contained within."
     );
   };
+
   render() {
     return (
       <AdminContext.Consumer>
         {context => (
+          // <div className="edit-hide-gallery">
           <div className="editDelete">
             <button className="edit" onClick={this.props.galleryClick}>
-              EDIT
+              EDIT PHOTOS
             </button>
             <button
               className="delete"

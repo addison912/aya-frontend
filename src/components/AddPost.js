@@ -14,6 +14,8 @@ class AddPhoto extends Component {
     date: this.props.numDate(new Date()),
     text: "",
     photos: [],
+    hidePost: false,
+    hideDate: false,
     addPhoto: false
   };
 
@@ -76,16 +78,30 @@ class AddPhoto extends Component {
                     })
                   }
                 ></input>
-                <input
-                  type="date"
-                  name="date"
-                  value={this.state.date}
-                  onChange={e =>
-                    this.setState({
-                      date: e.target.value
-                    })
-                  }
-                ></input>
+                <div className="editDate">
+                  <input
+                    type="date"
+                    name="date"
+                    value={this.state.date}
+                    onChange={e =>
+                      this.setState({
+                        date: e.target.value
+                      })
+                    }
+                  ></input>
+                  <div className="hideDate">
+                    <input
+                      type="checkbox"
+                      checked={this.state.hideDate}
+                      onChange={e =>
+                        this.setState({
+                          hideDate: e.target.checked
+                        })
+                      }
+                    />
+                    <span>hide date</span>
+                  </div>
+                </div>
 
                 <ReactQuill
                   theme="snow"
@@ -108,21 +124,35 @@ class AddPhoto extends Component {
 
                 {this.state.addPhoto == true ? null : (
                   <div className="cancel-submit">
-                    <input
-                      type="button"
-                      name="cancel"
-                      className="cancel-button"
-                      value="Cancel"
-                      onClick={this.cancel}
-                    />
+                    <div className="hide-submit-container">
+                      <div className="hidePost">
+                        <input
+                          type="checkbox"
+                          checked={this.state.hidePost}
+                          onChange={e =>
+                            this.setState({
+                              hidePost: e.target.checked
+                            })
+                          }
+                        />
+                        <span>hide post</span>
+                      </div>
+                      <input
+                        type="button"
+                        name="cancel"
+                        className="cancel-button"
+                        value="Cancel"
+                        onClick={this.cancel}
+                      />
 
-                    <input
-                      type="button"
-                      name="submitPost"
-                      className="submit-button"
-                      value="Submit Post"
-                      onClick={() => context.uploadPost(this.state)}
-                    />
+                      <input
+                        type="button"
+                        name="submitPost"
+                        className="submit-button"
+                        value="Submit Post"
+                        onClick={() => context.uploadPost(this.state)}
+                      />
+                    </div>
                   </div>
                 )}
               </form>

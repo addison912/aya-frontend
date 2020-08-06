@@ -564,3 +564,42 @@ form input[type="text"] {
 .postPhotoEdit .cancel-submit input {
   margin-top: 0;
 }
+
+.hide-submit-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hidePost {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.hideGallery {
+  display: flex;
+  align-items: center;
+}
+
+.hidePost span,
+.hideGallery span {
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.add-post .hidePost span,
+.hideGallery span {
+  margin-bottom: 0;
+}
+
+.add-post .hidePost input[type="checkbox"] {
+  margin: 0;
+}
+.galleryContentHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

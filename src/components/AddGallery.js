@@ -8,7 +8,8 @@ class AddGallery extends Component {
   state = {
     name: "",
     order: "",
-    thumb: ""
+    thumb: "",
+    hideGallery: false
   };
 
   // componentDidMount() {
@@ -70,6 +71,19 @@ class AddGallery extends Component {
                     })
                   }
                 />
+
+                <div className="hideGallery">
+                  <input
+                    type="checkbox"
+                    checked={this.state.hideGallery}
+                    onChange={e =>
+                      this.setState({
+                        hideGallery: e.target.checked
+                      })
+                    }
+                  />
+                  <span>hide gallery</span>
+                </div>
 
                 <div className="cancel-submit">
                   <input

@@ -7,6 +7,7 @@ import AddPhoto from "./AddPhoto";
 import AdminContext from "../context/adminContext";
 import Breadcrumb from "./Breadcrumb";
 import DraggableGalleryItem from "./DraggableGalleryItem";
+import HideGallery from "./HideGallery";
 const update = require("immutability-helper");
 
 class GalleryGrid extends Component {
@@ -38,11 +39,22 @@ class GalleryGrid extends Component {
       <AdminContext.Consumer>
         {context => (
           <div className="gallery-content">
-            <Breadcrumb
-              gallery={this.props.gallery}
-              category={this.props.category}
-              view={this.props.view}
-            />
+            <div className="galleryContentHeader">
+              <Breadcrumb
+                gallery={this.props.gallery}
+                category={this.props.category}
+                view={this.props.view}
+              />
+              {this.props.view == "gallery" &&
+              !!this.props.category &&
+              this.props.category != "Search" &&
+              !!this.props.gallery &&
+              !!this.props.gallery.name &&
+              this.props.category.replace("-", " ").toUpperCase() !=
+                this.props.gallery.name.toUpperCase() ? (
+                <HideGallery gallery={this.props.gallery} />
+              ) : null}
+            </div>
             {this.props.category != "Search" && context.category != "Search" ? (
               <AddPhoto
                 gallery={this.props.gallery}

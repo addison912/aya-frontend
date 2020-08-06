@@ -82,6 +82,8 @@ class News extends Component {
     let newPost = new FormData();
     newPost.append("title", post.title);
     newPost.append("date", this.stringDate(post.date));
+    newPost.append("hideDate", post.hideDate ? post.hideDate : false);
+    newPost.append("hidePost", post.hidePost ? post.hidePost : false);
     newPost.append("text", post.text);
     for (const key of Object.keys(post.photos)) {
       newPost.append("photos", post.photos[key]);
@@ -128,6 +130,7 @@ class News extends Component {
     updatedPost.append("date", this.stringDate(date));
     updatedPost.append("text", post.text);
     updatedPost.append("hideDate", post.hideDate ? post.hideDate : false);
+    updatedPost.append("hidePost", post.hidePost ? post.hidePost : false);
     updatedPost.append("deletePhotos", JSON.stringify(post.deletePhotos));
     updatedPost.append("editPhotos", JSON.stringify(post.deletePhotos));
     if (post.newPhotos) {

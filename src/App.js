@@ -82,7 +82,8 @@ class App extends React.Component {
       galleryName: "",
       addGallery: false,
       createGallery: this.createGallery,
-      reorderGallery: this.reorderGallery
+      reorderGallery: this.reorderGallery,
+      hideGallery: this.hideGallery
     };
   }
 
@@ -244,13 +245,36 @@ class App extends React.Component {
     });
   };
 
+  hideGallery = (gallery, bool) => {
+    console.log(`${gallery._id}`);
+    let currentGallery = this.state.gallery;
+    currentGallery.hideGallery = bool;
+    this.setState({ gallery: currentGallery });
+    axios
+      .post(
+        `${domain}/api/gallery/hide/${gallery._id}`,
+        { bool },
+        {
+          headers: {
+            authorization: `bearer ${window.sessionStorage.ayaToken}`
+          }
+        }
+      )
+      .then(res => {
+        if (res.data) {
+          console.log(res.data);
+          this.setState({ gallery: res.data });
+        }
+      });
+  };
+
   createGallery = (gallery, category) => {
     let newGallery = new FormData();
     newGallery.append("name", gallery.name);
     newGallery.append("order", gallery.order);
     newGallery.append("category", category);
     newGallery.append("thumb", gallery.thumb);
-    newGallery.append("published", false);
+    newGallery.append("hideGallery", gallery.hideGallery);
 
     // for (var value of newGallery.values()) {
     //   console.log(value);
