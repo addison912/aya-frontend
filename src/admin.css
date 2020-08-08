@@ -603,3 +603,11 @@ form input[type="text"] {
   justify-content: space-between;
   width: 100%;
 }
+
+.instructions h1 {
+  margin-bottom: 1em;
+}
+
+.instructions {
+  margin-bottom: 1em;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import ShopItem from "../components/ShopItem";
+import ShopInstructions from "../components/ShopInstructions";
 
 class Shop extends Component {
   state = {
@@ -43,6 +44,7 @@ class Shop extends Component {
     return (
       <div className="main">
         <div className="content shop">
+          <ShopInstructions />
           {this.state.shopItems.map((item, i) => (
             <ShopItem key={i} item={item}></ShopItem>
           ))}
