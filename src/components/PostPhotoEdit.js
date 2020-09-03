@@ -4,8 +4,8 @@ import NewsContext from "../context/newsContext";
 export class PostPhotoEdit extends Component {
   static contextType = NewsContext;
   state = {
-    caption: "",
-    link: ""
+    caption: ""
+    // link: ""
   };
 
   // submitPhotoEdit = () => {
@@ -38,17 +38,17 @@ export class PostPhotoEdit extends Component {
   //   // photo.link = this.state.link;
   // };
 
-  // submitPhotoEdit = () => {
-  //   let editPost = this.context.editPost;
-  //   let photo = editPost.photos.find(photo => {
-  //     return photo == this.props.photo;
-  //   });
-  //   photo = Object.assign(photo, this.state);
-  //   console.log(photo);
+  submitPhotoEdit = () => {
+    let editPost = this.context.editPost;
+    let photo = editPost.photos.find(photo => {
+      return photo == this.props.photo;
+    });
+    photo = Object.assign(photo, this.state);
+    console.log(photo);
 
-  //   this.context.toState({ editPhoto: {}, editPost });
-  //   console.log(this.context.editPost);
-  // };
+    this.context.toState({ editPhoto: {}, editPost });
+    console.log(this.context.editPost);
+  };
 
   componentDidMount() {
     // this.setState({
@@ -65,36 +65,37 @@ export class PostPhotoEdit extends Component {
             <input
               type="text"
               name="caption"
-              value={this.props.photo.caption}
+              value={context.editPhoto.caption}
               placeholder={"caption (optional)"}
               onChange={e =>
-                this.context.handlePhotoEditInputChange(
-                  this.props.photo,
+                context.handlePhotoEditInputChange(
+                  context.editPhoto,
                   "caption",
                   e.target.value
                 )
               }
             ></input>
-            <input
+            {/* <input
               type="text"
               placeholder={"photo link (optional)"}
               name="photo-link"
               value={this.props.photo.link}
               onChange={e =>
-                this.context.handlePhotoEditInputChange(
+                context.handlePhotoEditInputChange(
                   this.props.photo,
                   "link",
                   e.target.value
                 )
               }
-            ></input>
+            ></input> */}
             <div className="cancel-submit">
               <input
                 type="button"
                 name="cancel"
                 className="cancel-button"
                 value="Cancel"
-                onClick={() => this.props.toState({ editPhoto: {} })}
+                onClick={() => context.cancelPhotoEdit(context.editPhoto)}
+                // onClick={() => this.props.toState({ editPhoto: {} })}
               />
 
               <input
@@ -102,7 +103,8 @@ export class PostPhotoEdit extends Component {
                 name="submitPhoto"
                 className="submit-button"
                 value="Submit Change"
-                onClick={() => this.submitPhotoEdit()}
+                // onClick={() => this.props.toState({ editPhoto: {} })}
+                onClick={() => context.submitPhotoEdit()}
               />
             </div>
           </div>

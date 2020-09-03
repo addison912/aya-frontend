@@ -21,7 +21,9 @@ class News extends Component {
       newsEdit: this.newsEdit,
       handlePostEdit: this.handlePostEdit,
       deletePhoto: this.deletePhoto,
-      handlePhotoEditInputChange: this.handlePhotoEditInputChange
+      handlePhotoEditInputChange: this.handlePhotoEditInputChange,
+      cancelPhotoEdit: this.cancelPhotoEdit,
+      submitPhotoEdit: this.submitPhotoEdit
     };
   }
 
@@ -132,7 +134,7 @@ class News extends Component {
     updatedPost.append("hideDate", post.hideDate ? post.hideDate : false);
     updatedPost.append("hidePost", post.hidePost ? post.hidePost : false);
     updatedPost.append("deletePhotos", JSON.stringify(post.deletePhotos));
-    updatedPost.append("editPhotos", JSON.stringify(post.deletePhotos));
+    updatedPost.append("editPhotos", JSON.stringify(post.editPhotos));
     if (post.newPhotos) {
       for (const key of Object.keys(post.newPhotos)) {
         updatedPost.append("newPhotos", post.newPhotos[key]);
@@ -177,7 +179,8 @@ class News extends Component {
   };
 
   handlePostEdit = edits => {
-    let editPost = this.state.editPost;
+    let editPost = {};
+    Object.assign(editPost, this.state.editPost);
     for (let i = 0; i < Object.keys(edits).length; i++) {
       editPost[Object.keys(edits)[i]] = edits[Object.keys(edits)[i]];
     }
@@ -185,9 +188,83 @@ class News extends Component {
   };
 
   handlePhotoEditInputChange = (photo, key, newValue) => {
-    this.state.editPost.photos.find(editPhoto => editPhoto == photo)[
-      key
-    ] = newValue;
+    let editPhoto = {};
+    Object.assign(editPhoto, this.state.editPhoto);
+    editPhoto[key] = newValue;
+    this.setState({ editPhoto });
+    // console.log(
+    //   `Found photo: ${JSON.stringify(
+    //     this.state.editPost.photos.find(editPhoto => editPhoto._id == photo._id)
+    //   )}`
+    // );
+  };
+
+  // submitPhotoEdit = photo => {
+  //   let editPost = this.state.editPost;
+  //   if (
+  //     !!editPost.newPhotos &&
+  //     editPost.newPhotos.find(editPhoto => editPhoto._id == photo._id)
+  //   ) {
+  //     editPost.newPhotos.find(editPhoto => editPhoto._id == photo._id).caption =
+  //       photo.caption;
+
+  //   } else if (!editPost.editPhotos) {
+  //     editPost.editPhotos = [photo];
+  //   } else if (
+  //     !!editPost.editPhotos &&
+  //     editPost.editPhotos.find(editPhoto => editPhoto._id == photo._id)
+  //   ) {
+  //     editPost.editPhotos.find(
+  //       editPhoto => editPhoto._id == photo._id
+  //     ).caption = photo.caption;
+
+  //   } else {
+  //     editPost.editPhotos.push(photo);
+  //   }
+
+  // };
+  submitPhotoEdit = () => {
+    let editPost = {};
+    Object.assign(editPost, this.state.editPost);
+    let editPhoto = this.state.editPhoto;
+    let editPhotoIndex = editPost.photos.indexOf(
+      editPost.photos.find(photo => photo._id == this.state.editPhoto._id)
+    );
+    editPost.photos.splice(editPhotoIndex, 1, editPhoto);
+    this.setState({ editPost, editPhoto: {} });
+
+    if (
+      !!editPost.newPhotos &&
+      editPost.newPhotos.find(photo => photo._id == editPhoto._id)
+    ) {
+      Object.assign(
+        editPost.newPhotos.find(photo => photo._id == photo._id),
+        editPhoto
+      );
+    } else if (
+      !!editPost.editPhotos &&
+      editPost.editPhotos.find(photo => photo._id == editPhoto._id)
+    ) {
+      Object.assign(
+        editPost.editPhotos.find(photo => photo._id == photo._id),
+        editPhoto
+      );
+    } else if (editPost.editPhotos) {
+      editPost.editPhotos.push(editPhoto);
+    } else {
+      editPost.editPhotos = [editPhoto];
+    }
+  };
+
+  cancelPhotoEdit = photo => {
+    let editPost = {};
+    Object.assign(editPost, this.state.editPost);
+    editPost.photos.find(
+      editPhoto => editPhoto._id == photo._id
+    ).caption = this.state.news
+      .find(post => post._id == editPost._id)
+      .photos.find(editPhoto => editPhoto._id == photo._id).caption;
+    this.setState({ editPost, editPhoto: {} });
   };
 
   deletePhoto = photo => {
@@ -244,7 +321,15 @@ class News extends Component {
   };
 
   handleEditClick = post => {
-    this.setState({ editPost: post, addPost: false });
+    let editPost = {};
+    Object.assign(editPost, post);
+    editPost.photos = [];
+    post.photos.forEach(photo => {
+      let newPhoto = {};
+      Object.assign(newPhoto, photo);
+      editPost.photos.push(newPhoto);
+    });
+    this.setState({ editPost, addPost: false });
     console.log(this.state.editPost);
   };
 

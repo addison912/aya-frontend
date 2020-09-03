@@ -18,19 +18,20 @@ export class EditPostGalleryPreview extends Component {
           <div className="add-post-photos post-images">
             {this.props.photos.map((photo, i) => (
               <figure className="grid-image" key={i}>
-                {photo._id ? (
+                {photo.preview ? (
+                  <img src={photo.preview} alt={photo.caption} />
+                ) : (
                   <img
                     src={`${domain}/uploads/news/${photo.location}`}
                     alt={photo.caption}
                   />
-                ) : (
-                  <img src={photo.preview} alt={photo.caption} />
                 )}
                 {/* {context.editPhoto == } */}
                 {photo.caption && context.editPhoto._id != photo._id ? (
                   <figcaption>{photo.caption}</figcaption>
                 ) : null}
-                {context.editPhoto != {} && context.editPhoto == photo ? (
+                {context.editPhoto != {} &&
+                context.editPhoto._id == photo._id ? (
                   <PostPhotoEdit toState={context.toState} photo={photo} />
                 ) : (
                   <div className="post-image-edit-icons">

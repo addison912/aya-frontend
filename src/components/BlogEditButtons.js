@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 
-class BlogEdit extends Component {
+class BlogEditButtons extends Component {
   render() {
     return (
       <div className="blog-edit-buttons">
@@ -24,4 +24,4 @@ class BlogEdit extends Component {
   }
 }
 
-export default BlogEdit;
+export default BlogEditButtons;

@@ -21,6 +21,9 @@ class EditAddPostPhoto extends Component {
       newPhoto.caption = this.state.caption;
       newPhoto.photoLink = this.state.link;
       newPhoto.preview = this.state.preview;
+      newPhoto._id = Math.random()
+        .toString(36)
+        .substring(2, 8);
       let photos = this.props.editPost.photos;
       photos.push(newPhoto);
       let newPhotos = this.props.editPost.newPhotos
@@ -111,7 +114,7 @@ class EditAddPostPhoto extends Component {
                     })
                   }
                 ></input>
-                <input
+                {/* <input
                   type="text"
                   placeholder="photo link (optional)"
                   name="photo-link"
@@ -121,7 +124,7 @@ class EditAddPostPhoto extends Component {
                       link: e.target.value
                     })
                   }
-                ></input>
+                ></input> */}
                 <div className="cancel-submit">
                   <input
                     type="button"
