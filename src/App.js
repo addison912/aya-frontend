@@ -382,11 +382,6 @@ class App extends React.Component {
           authorization: `bearer ${window.sessionStorage.ayaToken}`
         }
       })
-      // .then(res => {
-      //   if (res) {
-      //     console.log(res);
-      //   }
-      // })
       .catch(err => {
         console.log(err);
         alert("reordering gallery failed");

@@ -36,8 +36,33 @@ class News extends Component {
         news = news.sort(function(a, b) {
           return Date.parse(b.date) - Date.parse(a.date);
         });
+        news = this.sortNewsPhotos(news);
         this.setState({ news });
       });
+  };
+
+  sortNewsPhotos = news => {
+    news.forEach(post => {
+      post.photos = this.sortPostPhotos(post);
+    });
+    return news;
+  };
+
+  sortPostPhotos = post => {
+    if (post.photos && post.photos.length > 1) {
+      for (let i = 0; i < post.photos.length; i++) {
+        if (!post.photos[i].order) {
+          post.photos[i].order = post.photos.length + i;
+        }
+      }
+      post.photos = post.photos.sort(function(a, b) {
+        return a.order - b.order;
+      });
+      for (let i = 0; i < post.photos.length; i++) {
+        post.photos[i].order = i + 1;
+      }
+    }
+    return post.photos;
   };
 
   showMore = () => {
@@ -192,37 +217,8 @@ class News extends Component {
     Object.assign(editPhoto, this.state.editPhoto);
     editPhoto[key] = newValue;
     this.setState({ editPhoto });
-    // console.log(
-    //   `Found photo: ${JSON.stringify(
-    //     this.state.editPost.photos.find(editPhoto => editPhoto._id == photo._id)
-    //   )}`
-    // );
   };
 
-  // submitPhotoEdit = photo => {
-  //   let editPost = this.state.editPost;
-  //   if (
-  //     !!editPost.newPhotos &&
-  //     editPost.newPhotos.find(editPhoto => editPhoto._id == photo._id)
-  //   ) {
-  //     editPost.newPhotos.find(editPhoto => editPhoto._id == photo._id).caption =
-  //       photo.caption;
-
-  //   } else if (!editPost.editPhotos) {
-  //     editPost.editPhotos = [photo];
-  //   } else if (
-  //     !!editPost.editPhotos &&
-  //     editPost.editPhotos.find(editPhoto => editPhoto._id == photo._id)
-  //   ) {
-  //     editPost.editPhotos.find(
-  //       editPhoto => editPhoto._id == photo._id
-  //     ).caption = photo.caption;
-
-  //   } else {
-  //     editPost.editPhotos.push(photo);
-  //   }
-
-  // };
   submitPhotoEdit = () => {
     let editPost = {};
     Object.assign(editPost, this.state.editPost);
