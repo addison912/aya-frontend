@@ -104,7 +104,7 @@ export class PostPhotoEdit extends Component {
                 className="submit-button"
                 value="Submit Change"
                 // onClick={() => this.props.toState({ editPhoto: {} })}
-                onClick={() => context.submitPhotoEdit()}
+                onClick={() => context.submitPhotoEdit(context.editPhoto)}
               />
             </div>
           </div>

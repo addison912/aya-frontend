@@ -12,7 +12,8 @@ const aboutContext = React.createContext({
   editPhoto: {},
   handlePhotoEditInputChange() {},
   cancelPhotoEdit() {},
-  submitPhotoEdit() {}
+  submitPhotoEdit() {},
+  reorderPhotos() {}
 });
 
 export default aboutContext;

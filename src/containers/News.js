@@ -5,6 +5,7 @@ import NewsContext from "../context/newsContext";
 import AddPost from "../components/AddPost";
 import axios from "axios";
 import EditPost from "../components/EditPost";
+import update from "immutability-helper";
 
 class News extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class News extends Component {
       editPost: {},
       addPost: false,
       editPhoto: {},
+      reordered: false,
       numDate: this.numDate,
       toState: this.toState,
       uploadPost: this.uploadPost,
@@ -23,7 +25,8 @@ class News extends Component {
       deletePhoto: this.deletePhoto,
       handlePhotoEditInputChange: this.handlePhotoEditInputChange,
       cancelPhotoEdit: this.cancelPhotoEdit,
-      submitPhotoEdit: this.submitPhotoEdit
+      submitPhotoEdit: this.submitPhotoEdit,
+      reorderPhotos: this.reorderPhotos
     };
   }
 
@@ -149,6 +152,12 @@ class News extends Component {
   };
 
   newsEdit = post => {
+    // if (this.state.reorderPhotos == true) {
+    //   let photos = this.state.editPost.photos;
+    //   photos.forEach(photo => {
+    //     this.updateStagedPhoto(photo);
+    //   });
+    // }
     let date = new Date(post.date);
     date = new Date(date.getTimezoneOffset() * 60000 + date.getTime());
     let updatedPost = new FormData();
@@ -219,16 +228,52 @@ class News extends Component {
     this.setState({ editPhoto });
   };
 
-  submitPhotoEdit = () => {
+  reorderPhotos = () => {
+    console.log("reordering photos");
+    console.log(this.state.editPost.photos);
     let editPost = {};
     Object.assign(editPost, this.state.editPost);
-    let editPhoto = this.state.editPhoto;
+    for (let i = 0; i < editPost.photos.length; i++) {
+      editPost.photos[i].order = i + 1;
+      if (
+        editPost.newPhotos &&
+        editPost.newPhotos.find(photo => photo._id == editPost.photos[i]._id)
+      ) {
+        editPost.newPhotos.find(
+          photo => photo._id == editPost.photos[i]._id
+        ).order = i + 1;
+      } else if (
+        editPost.editPhotos &&
+        editPost.editPhotos.find(photo => photo._id == editPost.photos[i]._id)
+      ) {
+        editPost.editPhotos.find(
+          photo => photo._id == editPost.photos[i]._id
+        ).order = i + 1;
+      } else if (!editPost.editPhotos) {
+        editPost.editPhotos = [editPost.photos[i]];
+      } else {
+        editPost.editPhotos.push(editPost.photos[i]);
+      }
+    }
+
+    this.setState({ editPost, reordered: true });
+  };
+
+  submitPhotoEdit = editPhoto => {
+    let editPost = {};
+    Object.assign(editPost, this.state.editPost);
+
     let editPhotoIndex = editPost.photos.indexOf(
-      editPost.photos.find(photo => photo._id == this.state.editPhoto._id)
+      editPost.photos.find(photo => photo._id == editPhoto._id)
     );
     editPost.photos.splice(editPhotoIndex, 1, editPhoto);
-    this.setState({ editPost, editPhoto: {} });
 
+    this.updateStagedPhoto(editPhoto);
+  };
+
+  updateStagedPhoto = editPhoto => {
+    let editPost = {};
+    Object.assign(editPost, this.state.editPost);
     if (
       !!editPost.newPhotos &&
       editPost.newPhotos.find(photo => photo._id == editPhoto._id)
@@ -250,6 +295,7 @@ class News extends Component {
     } else {
       editPost.editPhotos = [editPhoto];
     }
+    this.setState({ editPost, editPhoto: {} });
   };
 
   cancelPhotoEdit = photo => {

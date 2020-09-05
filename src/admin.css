@@ -611,3 +611,7 @@ form input[type="text"] {
 .instructions {
   margin-bottom: 1em;
 }
+
+.add-post-photos .grid-image img:hover {
+  cursor: move;
+}
