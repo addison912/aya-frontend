@@ -461,7 +461,7 @@ class App extends React.Component {
       if (edits.order) {
         newPhoto.order = edits.order;
       }
-      if (edits.csearchTags) {
+      if (edits.searchTags) {
         newPhoto.searchTags = edits.searchTags;
       }
       axios
