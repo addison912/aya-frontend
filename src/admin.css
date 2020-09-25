@@ -252,6 +252,7 @@ input.submit-button {
 
 .gallery-content .edit-photo-form .gridImage {
   width: 25%;
+  height: auto;
 }
 
 .edit-photo-form form {
@@ -614,4 +615,9 @@ form input[type="text"] {
 
 .add-post-photos .grid-image img:hover {
   cursor: move;
+}
+
+.edit-photo-form .cancel-submit {
+  flex-direction: column;
+  justify-content: center;
 }
