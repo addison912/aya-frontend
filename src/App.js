@@ -614,17 +614,22 @@ class App extends React.Component {
           category.toLowerCase() == "home"
             ? Math.floor(Math.random() * galleries[0].photos.length)
             : 0;
+
+        for (let n = 0; n < galleries.length; n++) {
+          if (!galleries[n].order) {
+            galleries[n].order = galleries.length + n;
+          }
+          galleries[n].photos.sort(function(a, b) {
+            return a.order - b.order;
+          });
+          for (let i = 0; i < galleries[n].photos.length; i++) {
+            galleries[n].photos[i].order = i + 1;
+          }
+        }
         galleries.sort(function(a, b) {
           return a.order - b.order;
         });
-        galleries.forEach(gallery => {
-          gallery.photos.sort(function(a, b) {
-            return a.order - b.order;
-          });
-          for (let i = 0; i < gallery.photos.length; i++) {
-            gallery.photos[i].order = i + 1;
-          }
-        });
+        console.log(galleries);
         this.setState({
           galleries,
           photoIndex,

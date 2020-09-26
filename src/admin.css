@@ -253,6 +253,7 @@ input.submit-button {
 .gallery-content .edit-photo-form .gridImage {
   width: 25%;
   height: auto;
+  max-height: 300px;
 }
 
 .edit-photo-form form {
@@ -508,9 +509,9 @@ form input[type="text"] {
 }
 
 .galleryThumb {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   width: 24%;
 }
 
@@ -520,8 +521,9 @@ form input[type="text"] {
 
 .changeThumbButton {
   position: relative;
-  bottom: 31px;
+  bottom: 37px;
   padding: 8px;
+  line-height: 15px;
   width: calc(100% + 1px);
   border: none;
   border-radius: 0 0 0 2px;

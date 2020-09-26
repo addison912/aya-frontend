@@ -28,12 +28,12 @@ export class GalleryThumbnail extends Component {
           }
           className="gridImage"
         />
-        <button
+        <input
+          type="button"
+          value="Change Thumbnail"
           className="changeThumbButton"
           onClick={() => this.props.setEditGalleryThumb(this.props.gallery)}
-        >
-          Change Thumbnail
-        </button>
+        ></input>
       </div>
     );
   }
