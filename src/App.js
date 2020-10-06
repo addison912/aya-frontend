@@ -83,7 +83,8 @@ class App extends React.Component {
       addGallery: false,
       createGallery: this.createGallery,
       reorderGallery: this.reorderGallery,
-      hideGallery: this.hideGallery
+      hideGallery: this.hideGallery,
+      resizePhotoThumb: this.resizePhotoThumb
     };
   }
 
@@ -308,6 +309,20 @@ class App extends React.Component {
       });
   };
 
+  resizePhotoThumb = photo => {
+    console.log(photo);
+    axios
+      .post(`${domain}/api/photo/resize`, photo, {
+        headers: {
+          authorization: `bearer ${window.sessionStorage.ayaToken}`,
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+        console.log(res.data);
+      });
+  };
+
   deleteGallery = id => {
     let confirmed = confirm(
       "Are you sure you want to delete this gallery? This will permanently delete the gallery and all photos contained within."
@@ -400,7 +415,7 @@ class App extends React.Component {
     formData.append("file", photoData.photo);
     formData.append("category", category);
     formData.append("gallery", gallery);
-    formData.append("order", photoData.order);
+    formData.append("order", photoData.order ? photoData.order - 1 : 0);
     formData.append("caption", photoData.caption);
     formData.append("searchTags", photoData.searchTags);
 
@@ -413,6 +428,12 @@ class App extends React.Component {
       })
       .then(res => {
         if (res.data) {
+          res.data.photos.sort(function(a, b) {
+            return a.order - b.order;
+          });
+          for (let i = 0; i < res.data.photos.length; i++) {
+            res.data.photos[i].order = i + 1;
+          }
           this.setState({ gallery: res.data, addPhoto: false });
         }
       });

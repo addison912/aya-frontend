@@ -18,7 +18,8 @@ const adminContext = React.createContext({
   createGallery() {},
   gallery: {},
   reorderGallery() {},
-  hideGallery() {}
+  hideGallery() {},
+  resizePhotoThumb() {}
 });
 
 export default adminContext;

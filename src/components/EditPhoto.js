@@ -10,6 +10,12 @@ class EditPhoto extends Component {
           <div className="editDelete">
             <button
               className="edit"
+              onClick={() => context.resizePhotoThumb(this.props.photo)}
+            >
+              RESIZE
+            </button>
+            <button
+              className="edit"
               onClick={
                 context.editPhoto != this.props.photo._id
                   ? () =>
