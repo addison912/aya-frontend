@@ -136,3 +136,5 @@ new2/
 scratch.css
 
 config/
+.cache
+.parcel-cache

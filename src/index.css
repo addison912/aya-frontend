@@ -587,12 +587,16 @@ a {
   flex-direction: column; */
 }
 
+.category-image.grid-image {
+  margin-bottom: 60px;
+}
+
 .grid-image.book-image:nth-of-type(2) {
   width: 66.67%;
 }
 
 .grid-image img {
-  height: 80%;
+  height: 100%;
   width: 100%;
   background-color: var(--light-gray);
   object-fit: cover;
@@ -720,9 +724,13 @@ figcaption h1 {
     position: relative;
   }
 
-  .category-image img {
-    height: calc(100% - 32px);
+  .category-image.grid-image {
+    margin-bottom: 0px;
   }
+
+  /* .category-image img {
+    height: calc(100% - 32px);
+  } */
 
   figcaption {
     padding: 0 8px;

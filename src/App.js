@@ -35,7 +35,7 @@ class App extends React.Component {
     galleries: [],
     layout: "single",
     view: "gallery",
-    pictureUrl: require("./assets/images/spinner.gif"),
+    pictureUrl: require("url:./assets/images/spinner.gif"),
     photoIndex: 0,
     galleryIndex: 0,
     galleryLength: 0,
@@ -508,7 +508,10 @@ class App extends React.Component {
             />
           ) : null}
           <div id="cursor">
-            <img alt="Cursor Arrow" src={`${domain}/assets/up-arrow.svg`} />
+            <img
+              alt="Cursor Arrow"
+              src={require("url:./assets/images/up-arrow.svg")}
+            />
           </div>
         </div>
       </LocationProvider>

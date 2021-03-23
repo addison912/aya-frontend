@@ -20,7 +20,7 @@ class LayoutIcons extends Component {
               role="button"
             >
               <img
-                src={require("../assets/images/grid.svg")}
+                src={require("url:../assets/images/grid.svg")}
                 alt="toggle grid gallery"
                 className="gallery-toggle"
               />
@@ -36,7 +36,7 @@ class LayoutIcons extends Component {
               role="button"
             >
               <img
-                src={require("../assets/images/single.svg")}
+                src={require("url:../assets/images/single.svg")}
                 alt="toggle single gallery"
                 className="gallery-toggle"
               />

@@ -94,7 +94,7 @@ class Single extends Component {
                 <p className="caption-nav">
                   <span onClick={() => this.props.clickPicture("prev")}>
                     <img
-                      src={require("../assets/images/prev-arrow.svg")}
+                      src={require("url:../assets/images/prev-arrow.svg")}
                       alt="previous"
                       className="index-arrow"
                     />
@@ -107,7 +107,7 @@ class Single extends Component {
                   {this.props.galleryLength ? (
                     <span onClick={() => this.props.clickPicture("next")}>
                       <img
-                        src={require("../assets/images/next-arrow.svg")}
+                        src={require("url:../assets/images/next-arrow.svg")}
                         alt="next"
                         className="index-arrow"
                       />

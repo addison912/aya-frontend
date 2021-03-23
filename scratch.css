@@ -1,6 +1,6 @@
 @import url(http://funky.haus/assets/fonts.css);
-@import url(http://localhost:3001assets/next-arrow.svg);
-@import url(http://localhost:3001assets/prev-arrow.svg);
+@import url(http://localhost:3001/assets/next-arrow.svg);
+@import url(http://localhost:3001/assets/prev-arrow.svg);
 h1 {
   margin: 1em;
   font-family: GT America, sans-serif;

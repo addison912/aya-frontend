@@ -23,7 +23,7 @@ class Search extends Component {
             name="search"
           >
             <img
-              src={require("../assets/images/search.svg")}
+              src={require("url:../assets/images/search.svg")}
               alt="search icon"
             ></img>
           </button>
