@@ -38,7 +38,7 @@ class Navbar extends Component {
                 }
               >
                 <img
-                  src={require("url:../assets/images/back-nav.svg")}
+                  src={require("../assets/images/back-nav.svg")}
                   alt="previous"
                   className="index-arrow"
                 />
@@ -57,7 +57,7 @@ class Navbar extends Component {
             !this.props.mobileInfo ? (
               <div className="icon-wrapper">
                 <img
-                  src={require("url:../assets/images/info-icon.svg")}
+                  src={require("../assets/images/info-icon.svg")}
                   alt="info"
                   onClick={this.props.toggleMobileInfo}
                 />
@@ -69,7 +69,7 @@ class Navbar extends Component {
             !!this.props.mobileInfo ? (
               <div className="icon-wrapper" style={{ zIndex: "8" }}>
                 <img
-                  src={require("url:../assets/images/info-icon-selected.svg")}
+                  src={require("../assets/images/info-icon-selected.svg")}
                   alt="info"
                   onClick={this.props.toggleMobileInfo}
                 />

@@ -10,7 +10,7 @@ class BackButton extends Component {
         onClick={() => this.props.categoryChangeHandler(this.props.category)}
       >
         <img
-          src={require("url:../assets/images/back-nav.svg")}
+          src={require("../assets/images/back-nav.svg")}
           alt="previous"
           className="index-arrow"
         />

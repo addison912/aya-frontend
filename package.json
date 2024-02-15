@@ -21,7 +21,8 @@
     "reach-router-hash-history": "0.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-swipeable": "^5.5.1"
+    "react-swipeable": "^5.5.1",
+    "src": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

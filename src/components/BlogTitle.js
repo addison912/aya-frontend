@@ -31,7 +31,7 @@ class BlogTitle extends Component {
               .toLowerCase()}`}
           >
             <img
-              src={require("url:../assets/images/link.svg")}
+              src={require("../assets/images/link.svg")}
               alt="copy link to clipboard"
             />
             <span
