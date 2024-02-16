@@ -211,6 +211,7 @@ class App extends React.Component {
         });
       });
   };
+
   search = e => {
     e.preventDefault(this.state.searchInput);
     if (this.state.searchInput.length > 0) {
@@ -496,17 +497,21 @@ class App extends React.Component {
                 categoryChangeHandler={this.categoryChangeHandler}
                 layout={this.state.layout}
                 toggleGalleryLayout={this.toggleGalleryLayout}
+                search={this.search}
+                searchInput={this.state.searchInput}
+                handleSearchInput={this.handleSearchInput}
+                location={this.state.location}
               ></TopNav>
             )
           ) : null}
-          {this.state.location == "Main" ? (
+          {/* {this.state.location == "Main" ? (
             <Search
               className="search-component"
               search={this.search}
               searchInput={this.state.searchInput}
               handleSearchInput={this.handleSearchInput}
             />
-          ) : null}
+          ) : null} */}
           <div id="cursor">
             <img
               alt="Cursor Arrow"

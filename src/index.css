@@ -767,8 +767,8 @@ figcaption h1 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  grid-column: 2/2;
-  grid-row: 1/1;
+  /* grid-column: 2/2;
+  grid-row: 1/1; */
 }
 .search-container img:hover {
   cursor: pointer;
@@ -1372,13 +1372,18 @@ time {
 /*/// ↑ Gallery Cursor ↑ ///*/
 /*/// ↓ TopNav ↓ ///*/
 
+.topNav {
+  grid-column: 2/2;
+  grid-row: 1/1;
+}
+
 .topNav-icons {
   text-transform: uppercase;
   height: 100%;
   display: flex;
   align-items: center;
-  grid-column: 2/2;
-  grid-row: 1/1;
+  /* grid-column: 2/2;
+  grid-row: 1/1; */
 }
 .topNav-icons span:hover {
   cursor: pointer;
