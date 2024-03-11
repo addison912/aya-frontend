@@ -9,7 +9,6 @@ import {
 import { categories } from "./config/constants";
 
 import Logo from "./components/Logo";
-import Search from "./components/Search";
 import TopNav from "./components/TopNav";
 import { createHashSource } from "reach-router-hash-history";
 const history = createHistory(createHashSource());
@@ -22,7 +21,6 @@ import { domain } from "./config/constants";
 import Navbar from "./components/Navbar";
 import MobileInfo from "./components/MobileInfo";
 import LeftNav from "./components/LeftNav";
-import SearchMessage from "./components/SearchMessage";
 import NotFound from "./containers/NotFound";
 import Test from "./containers/Test";
 
@@ -483,26 +481,27 @@ class App extends React.Component {
             categoryChangeHandler={this.categoryChangeHandler}
             toggleGalleryLayout={this.toggleGalleryLayout}
           />
-          {this.state.view == "gallery" && this.state.location == "Main" ? (
-            this.state.layout == "grid" && this.state.category == "Search" ? (
-              <SearchMessage
-                searchQuery={this.state.searchQuery}
-                galleryLength={this.state.galleryLength}
-              ></SearchMessage>
-            ) : (
-              <TopNav
-                view={this.state.view}
-                galleries={this.state.galleries}
-                category={this.state.category}
-                categoryChangeHandler={this.categoryChangeHandler}
-                layout={this.state.layout}
-                toggleGalleryLayout={this.toggleGalleryLayout}
-                search={this.search}
-                searchInput={this.state.searchInput}
-                handleSearchInput={this.handleSearchInput}
-                location={this.state.location}
-              ></TopNav>
-            )
+          {this.state.location == "Main" ? (
+            // this.state.layout == "grid" && this.state.category == "Search" ? (
+            //   <SearchMessage
+            //     searchQuery={this.state.searchQuery}
+            //     galleryLength={this.state.galleryLength}
+            //   ></SearchMessage>
+            // ) : (
+            <TopNav
+              view={this.state.view}
+              galleries={this.state.galleries}
+              category={this.state.category}
+              categoryChangeHandler={this.categoryChangeHandler}
+              layout={this.state.layout}
+              toggleGalleryLayout={this.toggleGalleryLayout}
+              search={this.search}
+              searchInput={this.state.searchInput}
+              handleSearchInput={this.handleSearchInput}
+              location={this.state.location}
+              searchQuery={this.state.searchQuery}
+              galleryLength={this.state.galleryLength}
+            ></TopNav>
           ) : null}
           {/* {this.state.location == "Main" ? (
             <Search

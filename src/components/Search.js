@@ -6,7 +6,7 @@ import React, { Component } from "react";
 class Search extends Component {
   render() {
     return (
-      <div className="search-container" onSubmit={this.props.search}>
+      <form className="search-container" onSubmit={this.props.search}>
         <div className="search-wrapper">
           <input
             type="text"
@@ -28,7 +28,7 @@ class Search extends Component {
             ></img>
           </button>
         </div>
-      </div>
+      </form>
     );
   }
 }
