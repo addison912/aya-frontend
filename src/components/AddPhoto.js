@@ -7,7 +7,7 @@ class AddPhoto extends Component {
   static contextType = AdminContext;
   state = {
     caption: "",
-    order: "",
+    order: 1,
     photo: "",
     searchTags: ""
   };
