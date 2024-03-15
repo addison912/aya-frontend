@@ -107,6 +107,6 @@ dev/
 new2/
 scratch.css
 
-config/
+src/config
 .cache
 .parcel-cache
