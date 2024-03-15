@@ -1,21 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@addison912 
-2,848
-89,90345,258github/gitignore
- Code Pull requests 110 Actions Projects 0 Security Insights
-gitignore/Node.gitignore
-@Richienb Richienb feat: Add microbundle cache (#3116)
-086eaca 8 days ago
-@stuartpb@shiftkey@TennyZhuang@venatoria@ro31337@Richienb@melonmanchan@gouthamve@jucrouzet@cheddar@arcresu@kesoji@tejashah88@sroberts@SimonSiefke@segayuu@rgbkrk@rsolomo@peat@noinkling@ndelvalle@MikeRalphson@lmedson@unixchad@kerimdzhanov@joreyaesh
-99 lines (71 sloc)  1.39 KB
-  
 # Logs
 logs
 *.log
@@ -114,17 +96,7 @@ public
 
 # DynamoDB Local files
 .dynamodb/
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
+
 # About
 
 .DS_Store
