@@ -6,7 +6,7 @@
     "format": "prettier \"src/**/*.{js, jsx}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "start": "react-scripts start",
-    "build": "parcel build src/index.html --out-dir build",
+    "build": "parcel build  --dist-dir build src/index.html",
     "clear": "rm -rf .cache dist .parcel-cache"
   },
   "license": "ISC",
