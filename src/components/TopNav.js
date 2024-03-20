@@ -25,7 +25,9 @@ class TopNav extends Component {
               toggleGalleryLayout={this.props.toggleGalleryLayout}
             />
           </div>
-        ) : null}
+        ) : (
+          <div></div>
+        )}
 
         {this.props.location == "Main" ? (
           <Search
