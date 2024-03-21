@@ -19,7 +19,6 @@ class TopNav extends Component {
               category={this.props.category}
               categoryChangeHandler={this.props.categoryChangeHandler}
             />
-
             <LayoutIcons
               layout={this.props.layout}
               toggleGalleryLayout={this.props.toggleGalleryLayout}

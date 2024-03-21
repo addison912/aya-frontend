@@ -3,7 +3,7 @@ import {
   createHistory,
   LocationProvider,
   Router,
-  navigate
+  navigate,
 } from "@reach/router";
 // import mainContext from "./mainContext";
 import { categories } from "./config/constants";
@@ -41,17 +41,17 @@ class App extends React.Component {
     hamburgerMenu: false,
     mobileInfo: false,
     location: "",
-    searchQuery: ""
+    searchQuery: "",
   };
 
-  toggleGalleryLayout = layout => {
+  toggleGalleryLayout = (layout) => {
     this.setState({
       layout,
-      mobileInfo: false
+      mobileInfo: false,
     });
   };
 
-  setGallery = i => {
+  setGallery = (i) => {
     let gallery = this.state.galleries[i];
     this.setState({ gallery });
   };
@@ -60,26 +60,30 @@ class App extends React.Component {
     this.setState({ galleryLength: this.state.gallery.photos.length });
   };
 
-  galleryClick = gallery => {
+  galleryClick = (gallery) => {
     navigate(
       `/#/${this.state.category
         .toLowerCase()
         .replace(/\/?\s+/g, "-")}/${gallery.name
         .toLowerCase()
-        .replace(/\/?\s+/g, "-")}`
+        .replace(/\/?\s+/g, "-")}`,
     );
     // let i = e.target.closest("figure").getAttribute("data");
     // let gallery = this.state.galleries[i];
     this.setState({ gallery, view: "gallery" });
     let photo = gallery.photos[0];
-    let url =
-      domain +
-      "/uploads/photos/" +
-      gallery.category.replace(/\/?\s+/g, "_") +
-      "/" +
-      gallery.name.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "") +
-      "/" +
-      gallery.photos[0].location;
+    let urln = `${domain}/uploads/photos/${
+      photo.category.toLowerCase() == "advertising"
+        ? "Client-Work"
+        : photo.category.replace(/\/?\s+/g, "_")
+    }/${photo.gallery.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "")}/${
+      photo.location
+    }`;
+    let url = `${domain}/uploads/photos/${
+      photo.category.toLowerCase() == "advertising"
+        ? "Client-Work"
+        : photo.category.replace(/\/?\s+/g, "_")
+    }/${photo.gallery.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "")}/${gallery.photos[0].location}`;
     photo.url = url;
     this.setState({ photo, photoIndex: 0 });
     // this.setGallery(i);
@@ -99,13 +103,13 @@ class App extends React.Component {
       galleries: [],
       photoIndex: 0,
       galleryIndex: 0,
-      galleryLength: 0
+      galleryLength: 0,
     });
     this.getGalleries(category, galleryName);
     window.scroll({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
     this.setState({ hamburgerMenu: false, mobileInfo: false, layout: "grid" });
   };
@@ -123,33 +127,33 @@ class App extends React.Component {
   getGalleries = (category, galleryName) => {
     this.setState({ category });
     fetch(`${domain}/api/gallery/c/${category.replace(/[^\w\s]/gi, " ")}`)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(galleries => {
-        galleries = galleries.filter(gallery => gallery.hideGallery != true);
+      .then((galleries) => {
+        galleries = galleries.filter((gallery) => gallery.hideGallery != true);
         let photoIndex =
           category.toLowerCase() == "home"
             ? Math.floor(Math.random() * galleries[0].photos.length)
             : 0;
-        galleries.sort(function(a, b) {
+        galleries.sort(function (a, b) {
           return a.order - b.order;
         });
-        galleries.forEach(gallery => {
-          gallery.photos.sort(function(a, b) {
+        galleries.forEach((gallery) => {
+          gallery.photos.sort(function (a, b) {
             return a.order - b.order;
           });
         });
         this.setState({
           galleries,
           photoIndex,
-          galleryIndex: 0
+          galleryIndex: 0,
         });
 
         if (galleries.length > 1 && !galleryName) {
           this.setState({ view: "category" });
         } else if (galleryName) {
-          let gallery = galleries.find(galleries => {
+          let gallery = galleries.find((galleries) => {
             return (
               galleries.name.replace(/\/?\s+/g, "-").toLowerCase() ==
               galleryName.toLowerCase()
@@ -159,7 +163,7 @@ class App extends React.Component {
             view: "gallery",
             galleryLength: gallery.photos.length,
             layout: "grid",
-            gallery
+            gallery,
           });
           this.setPictureUrl();
         } else if (galleries.length == 1) {
@@ -168,7 +172,7 @@ class App extends React.Component {
             view: "gallery",
             galleryLength: gallery.photos.length,
             layout: "grid",
-            gallery
+            gallery,
           });
           this.setPictureUrl();
         }
@@ -176,7 +180,7 @@ class App extends React.Component {
   };
 
   //search
-  searchQuery = q => {
+  searchQuery = (q) => {
     this.setState({ category: "Search", searchQuery: q });
     if (this.state.hamburgerMenu == true) {
       this.setState({ hamburgerMenu: false });
@@ -189,14 +193,14 @@ class App extends React.Component {
     fetch(`${domain}/api/photo/search`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ query: q })
+      body: JSON.stringify({ query: q }),
     })
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(photos => {
+      .then((photos) => {
         this.setState({
           view: "gallery",
           layout: "grid",
@@ -205,12 +209,12 @@ class App extends React.Component {
           galleryIndex: 0,
           gallery: { photos },
           galleryLength: photos.length,
-          searchInput: ""
+          searchInput: "",
         });
       });
   };
 
-  search = e => {
+  search = (e) => {
     e.preventDefault(this.state.searchInput);
     if (this.state.searchInput.length > 0) {
       this.setState({ category: "Search" });
@@ -221,14 +225,14 @@ class App extends React.Component {
     }
   };
 
-  handleSearchInput = e => {
+  handleSearchInput = (e) => {
     this.setState({ searchInput: e.target.value });
   };
 
   clearSearch = () => this.setState({ searchInput: "" });
 
   //////
-  clickPicture = dir => {
+  clickPicture = (dir) => {
     // document.querySelector(".single-pic").classList.add("fade-out");
     let newIndex = this.state.photoIndex;
     if (dir == "next" || dir == "Left") {
@@ -246,14 +250,14 @@ class App extends React.Component {
   };
 
   /////
-  photoClick = e => {
+  photoClick = (e) => {
     let i = e.target.closest("figure").getAttribute("data");
     this.setState({ layout: "single", photoIndex: i });
     this.setPictureUrl(i);
     this.setGalleryLength();
   };
 
-  setPictureUrl = i => {
+  setPictureUrl = (i) => {
     let index = i || i == 0 ? i : this.state.photoIndex;
     // index = index == 0 ? 1 : index;
     index = index % this.state.gallery.photos.length;
@@ -270,7 +274,7 @@ class App extends React.Component {
     this.setGalleryLength();
   };
 
-  setLocation = location => {
+  setLocation = (location) => {
     this.setState({ location });
   };
 
@@ -286,7 +290,7 @@ class App extends React.Component {
 
   componentDidMount() {
     //hide hamburger menu when background clicked
-    window.addEventListener("click", e => {
+    window.addEventListener("click", (e) => {
       if (this.state.hamburgerMenu == true) {
         if (
           !e.target.closest("#navbar") &&
@@ -316,7 +320,7 @@ class App extends React.Component {
               handleLogoClick={this.handleLogoClick}
               default
             ></NotFound>
-            {categories.map(category => {
+            {categories.map((category) => {
               category = category.toLowerCase().replace(/\/?\s+/g, "-");
               return (
                 <Main
@@ -346,7 +350,7 @@ class App extends React.Component {
                 />
               );
             })}
-            {categories.map(category => {
+            {categories.map((category) => {
               category = category.toLowerCase().replace(/\/?\s+/g, "-");
               return (
                 <Main
@@ -503,14 +507,6 @@ class App extends React.Component {
               galleryLength={this.state.galleryLength}
             ></TopNav>
           ) : null}
-          {/* {this.state.location == "Main" ? (
-            <Search
-              className="search-component"
-              search={this.search}
-              searchInput={this.state.searchInput}
-              handleSearchInput={this.handleSearchInput}
-            />
-          ) : null} */}
           <div id="cursor">
             <img
               alt="Cursor Arrow"

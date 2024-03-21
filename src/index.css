@@ -767,9 +767,8 @@ figcaption h1 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* grid-column: 2/2;
-  grid-row: 1/1; */
 }
+
 .search-container img:hover {
   cursor: pointer;
 }
@@ -1003,16 +1002,28 @@ figcaption h1 {
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
   z-index: 6;
-  transition: background-color 1s, opacity 1s, height 0s;
-  -webkit-transition: background-color 1s, opacity 1s 0s, height 0s;
+  transition:
+    background-color 1s,
+    opacity 1s,
+    height 0s;
+  -webkit-transition:
+    background-color 1s,
+    opacity 1s 0s,
+    height 0s;
 }
 
 .hide {
   background-color: rgba(255, 255, 255, 0);
   opacity: 0;
   height: 0vh;
-  transition: background-color 1s, opacity 1s, height 0s 1s;
-  -webkit-transition: background-color 1s, opacity 1s, height 0s 1s;
+  transition:
+    background-color 1s,
+    opacity 1s,
+    height 0s 1s;
+  -webkit-transition:
+    background-color 1s,
+    opacity 1s,
+    height 0s 1s;
 }
 
 .mobile-info span {
@@ -1386,8 +1397,6 @@ time {
   height: 100%;
   display: flex;
   align-items: center;
-  /* grid-column: 2/2;
-  grid-row: 1/1; */
 }
 .topNav-icons span:hover {
   cursor: pointer;
