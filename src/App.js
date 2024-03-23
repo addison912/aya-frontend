@@ -72,13 +72,6 @@ class App extends React.Component {
     // let gallery = this.state.galleries[i];
     this.setState({ gallery, view: "gallery" });
     let photo = gallery.photos[0];
-    let urln = `${domain}/uploads/photos/${
-      photo.category.toLowerCase() == "advertising"
-        ? "Client-Work"
-        : photo.category.replace(/\/?\s+/g, "_")
-    }/${photo.gallery.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "")}/${
-      photo.location
-    }`;
     let url = `${domain}/uploads/photos/${
       photo.category.toLowerCase() == "advertising"
         ? "Client-Work"

@@ -17,10 +17,12 @@ class BlogImages extends Component {
               onClick={photo.link ? () => navigate(photo.link) : null}
             >
               <img
+                className={photo.link ? "post-image__clickable" : ""}
                 src={`${domain}/uploads/news/${photo.location}`}
                 alt={photo.caption ? photo.caption : `blog photo ${i}`}
               />
               {photo.caption ? <figcaption>{photo.caption}</figcaption> : null}
+              {photo.link}
             </figure>
           );
         })}

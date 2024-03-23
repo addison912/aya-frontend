@@ -109,3 +109,5 @@ scratch.css
 
 .cache
 .parcel-cache
+build*
+.syncthing.index.html.tmp

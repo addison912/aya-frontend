@@ -7,10 +7,10 @@ class Single extends Component {
     let cursorEl = document.querySelector("#cursor");
     let cursorImageEl = document.querySelector("#cursor > img");
 
-    window.addEventListener("mousemove", (event) => {
+    window.addEventListener("mousemove", event => {
       currentCursorPos = {
         x: event.clientX,
-        y: event.clientY,
+        y: event.clientY
       };
       if (
         document.querySelector(".image-container>div>div:hover") &&
@@ -28,9 +28,9 @@ class Single extends Component {
         cursorEl.style.display = "none";
       }
       if (document.querySelector(".left-overlay>div:hover")) {
-        cursorImageEl.style.transform = `rotate(-90deg)`;
-      } else if (document.querySelector(".right-overlay>div:hover")) {
         cursorImageEl.style.transform = `rotate(90deg)`;
+      } else if (document.querySelector(".right-overlay>div:hover")) {
+        cursorImageEl.style.transform = `rotate(-90deg)`;
       } else {
         cursorImageEl.style.transform = `rotate(0deg)`;
       }
@@ -40,7 +40,7 @@ class Single extends Component {
     let caption = document.querySelector(".image-info");
     if (caption) {
       caption.style.opacity = 0;
-      setTimeout(function () {
+      setTimeout(function() {
         caption.style.opacity = 1;
       }, 100);
     }
@@ -54,7 +54,7 @@ class Single extends Component {
       <div className="gallery center">
         <Swipeable
           className="image-container"
-          onSwiped={(e) => {
+          onSwiped={e => {
             this.props.clickPicture(e.dir);
           }}
         >

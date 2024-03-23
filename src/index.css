@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://admin.ayabrackett.com/assets/fonts.css");
+@import url("https://api.ayabrackett.com/assets/fonts.css");
 
 /* Variables */
 :root {
@@ -30,6 +30,10 @@
 
 #App {
   width: 100%;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 #left-nav {
@@ -580,11 +584,6 @@ a {
 .grid-image {
   height: auto;
   width: 33.33%;
-  /* min-height: auto;
-  margin: 0;
-  display: flex;
-  display: flex;
-  flex-direction: column; */
 }
 
 .category-image.grid-image {
@@ -659,6 +658,10 @@ figure img::after {
   box-shadow: var(--shadow-before);
   -webkit-transform: translateY(0);
   transform: translateY(0);
+}
+
+.post-images .post-image__clickable:hover {
+  cursor: pointer;
 }
 
 figcaption,
