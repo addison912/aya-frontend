@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class BlogArticle extends Component {
   componentDidMount() {
-    document.querySelectorAll(".post-text a").forEach(article => {
+    document.querySelectorAll(".post-text a").forEach((article) => {
       article.target = "_blank";
     });
   }

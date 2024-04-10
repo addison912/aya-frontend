@@ -5,16 +5,16 @@ import ShopItem from "../components/ShopItem";
 class Shop extends Component {
   state = {
     shopItems: [],
-    show: 10
+    show: 10,
   };
 
   getProducts = () => {
     fetch(`${domain}/api/shop/all`)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(shopItems => {
-        shopItems.sort(function(a, b) {
+      .then((shopItems) => {
+        shopItems.sort(function (a, b) {
           return a.order - b.order;
         });
         this.setState({ shopItems });

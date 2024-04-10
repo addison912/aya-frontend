@@ -6,7 +6,7 @@ class ClientList extends Component {
       <div className="clients">
         <h1>Clients</h1>
         <div className="client-list">
-          {Object.entries(this.props.clients).map(category => (
+          {Object.entries(this.props.clients).map((category) => (
             <div
               key={category[0]}
               dangerouslySetInnerHTML={{ __html: category[1] }}

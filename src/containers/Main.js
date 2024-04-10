@@ -11,7 +11,7 @@ class Main extends Component {
       // console.log(this.props.galleryName);
       this.props.categoryChangeHandler(
         this.props.category,
-        this.props.galleryName
+        this.props.galleryName,
       );
     } else if (this.props.path && this.props.path.indexOf("Search/") > -1) {
       if (this.props.query) {

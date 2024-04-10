@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class BlogTitle extends Component {
   state = {
-    showCopied: false
+    showCopied: false,
   };
 
   copyLink = () => {
@@ -46,7 +46,7 @@ class BlogTitle extends Component {
         <textarea
           readOnly
           className="hidden"
-          ref={textarea => (this.textArea = textarea)}
+          ref={(textarea) => (this.textArea = textarea)}
           value={`${window.location.origin}/#/news/${this.props.title
             .replace(/[^A-Z0-9]/gi, "-")
             .toLowerCase()}`}

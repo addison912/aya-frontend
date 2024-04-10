@@ -12,7 +12,7 @@ class LeftNav extends Component {
       <nav id="left-nav">
         <div className="nav-wrapper">
           <ul className="projects">
-            {categories.map(category => (
+            {categories.map((category) => (
               <li key={category}>
                 <Link
                   to={`/${category.toLowerCase().replace(/\/?\s+/g, "-")}`}

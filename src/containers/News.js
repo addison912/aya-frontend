@@ -5,19 +5,19 @@ import BlogPost from "../components/BlogPost";
 class News extends Component {
   state = {
     news: [],
-    show: 5
+    show: 5,
   };
 
   getNews = () => {
     fetch(`${domain}/api/news/all`)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(news => {
-        news = news.sort(function(a, b) {
+      .then((news) => {
+        news = news.sort(function (a, b) {
           return Date.parse(b.date) - Date.parse(a.date);
         });
-        news = news.filter(post => post.hidePost != true);
+        news = news.filter((post) => post.hidePost != true);
         this.setState({ news });
       });
   };
@@ -32,12 +32,12 @@ class News extends Component {
     if (this.props.postId) {
       let post = this.props.postId.toLowerCase();
       this.setState({ show: "all" });
-      setTimeout(function() {
+      setTimeout(function () {
         window.scroll({
           top: document.getElementById(post)
             ? document.getElementById(post).offsetTop + 96
             : 0,
-          left: 0
+          left: 0,
         });
       }, 1000);
     }

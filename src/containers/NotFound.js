@@ -6,8 +6,8 @@ class NotFound extends Component {
     images: [
       "AyaBrackettJellyDesserts.jpg",
       "AyaBrackettKetchup.jpg",
-      "AyaBrackettBeachPicnic.jpg"
-    ]
+      "AyaBrackettBeachPicnic.jpg",
+    ],
   };
   render() {
     return (

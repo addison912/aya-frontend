@@ -9,20 +9,20 @@ class About extends Component {
     clients: [],
     bio: "",
     press: [],
-    contact: []
+    contact: [],
   };
 
   getAbout = () => {
     fetch(`${domain}/api/about/all`)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(about => {
+      .then((about) => {
         this.setState({
           clients: about.clients,
           bio: about.bio,
           press: about.press,
-          contact: about.contact
+          contact: about.contact,
         });
       });
   };

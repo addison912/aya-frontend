@@ -20,7 +20,7 @@ const mainContext = React.createContext({
   galleryClick() {},
   photoClick() {},
   handleLogoClick() {},
-  setLocation() {}
+  setLocation() {},
 });
 
 export default mainContext;

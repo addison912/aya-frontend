@@ -18,7 +18,9 @@ class CategoryGrid extends Component {
             onClick={() => this.props.galleryClick(gallery)}
             role="button"
             style={{
-              order: gallery.order ? gallery.order : this.props.galleries.length
+              order: gallery.order
+                ? gallery.order
+                : this.props.galleries.length,
             }}
           >
             <img

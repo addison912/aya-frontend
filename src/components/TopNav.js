@@ -13,12 +13,16 @@ class TopNav extends Component {
             searchQuery={this.props.searchQuery}
             galleryLength={this.props.galleryLength}
           ></SearchMessage>
-        ) : this.props.view == "gallery" && this.props.galleries.length > 1 ? (
+        ) : this.props.view == "gallery" ||
+          (this.props.galleries.length == 1 &&
+            this.props.view == "category") ? (
           <div className="topNav-icons">
-            <BackButton
-              category={this.props.category}
-              categoryChangeHandler={this.props.categoryChangeHandler}
-            />
+            {this.props.galleries.length > 1 ? (
+              <BackButton
+                category={this.props.category}
+                categoryChangeHandler={this.props.categoryChangeHandler}
+              />
+            ) : null}
             <LayoutIcons
               layout={this.props.layout}
               toggleGalleryLayout={this.props.toggleGalleryLayout}

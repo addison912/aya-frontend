@@ -6,7 +6,7 @@ const leftNavContext = React.createContext({
   category: "",
   layout: "",
   categoryChangeHandler() {},
-  toggleGalleryLayout() {}
+  toggleGalleryLayout() {},
 });
 
 export default leftNavContext;

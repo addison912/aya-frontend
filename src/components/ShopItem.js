@@ -26,7 +26,7 @@ class ShopItem extends Component {
           .amount &&
         Number.isInteger(
           this.props.item.item_data.variations[0].item_variation_data
-            .price_money.amount
+            .price_money.amount,
         ) ? (
           <p>
             $
