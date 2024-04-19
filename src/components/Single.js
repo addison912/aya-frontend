@@ -28,9 +28,9 @@ class Single extends Component {
         cursorEl.style.display = "none";
       }
       if (document.querySelector(".left-overlay>div:hover")) {
-        cursorImageEl.style.transform = `rotate(90deg)`;
-      } else if (document.querySelector(".right-overlay>div:hover")) {
         cursorImageEl.style.transform = `rotate(-90deg)`;
+      } else if (document.querySelector(".right-overlay>div:hover")) {
+        cursorImageEl.style.transform = `rotate(90deg)`;
       } else {
         cursorImageEl.style.transform = `rotate(0deg)`;
       }
