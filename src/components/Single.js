@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Swipeable } from "react-swipeable";
+import { convertToWebp } from "../utils/helpers";
 
 class Single extends Component {
   initializeCursor = () => {
@@ -75,7 +76,7 @@ class Single extends Component {
               <img
                 className="single-pic"
                 key={this.props.photo.url}
-                src={this.props.photo.url}
+                src={convertToWebp(this.props.photo.url)}
                 alt={
                   this.props.photo.caption
                     ? this.props.photo.caption

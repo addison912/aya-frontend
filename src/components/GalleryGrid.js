@@ -3,7 +3,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
-import { domain } from "../config/constants";
+import { parsePhotoUrl } from "../utils/helpers";
+import { convertToWebp } from "../utils/helpers";
 
 class GalleryGrid extends Component {
   // componentDidMount() {
@@ -24,6 +25,7 @@ class GalleryGrid extends Component {
                 key={photo.location}
                 data={i}
                 role="button"
+                loading="lazy"
                 onClick={this.props.photoClick}
                 style={
                   photo.order
@@ -32,13 +34,7 @@ class GalleryGrid extends Component {
                 }
               >
                 <img
-                  src={`${domain}/uploads/photos/${
-                    photo.category.toLowerCase() == "advertising"
-                      ? "Client-Work"
-                      : photo.category.replace(/\/?\s+/g, "_")
-                  }/${photo.gallery
-                    .replace(/\/?\s+/g, "_")
-                    .replace(/[^\w\s]/gi, "")}/thumbs/${photo.location}`}
+                  src={`${parsePhotoUrl(photo)}/thumbs/${convertToWebp(photo.location)}`}
                   alt={photo.caption}
                   className="gridImage"
                 />

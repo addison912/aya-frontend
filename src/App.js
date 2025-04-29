@@ -23,6 +23,7 @@ import MobileInfo from "./components/MobileInfo";
 import LeftNav from "./components/LeftNav";
 import NotFound from "./containers/NotFound";
 import Test from "./containers/Test";
+import { convertToWebp, parsePhotoUrl } from "./utils/helpers";
 
 class App extends React.Component {
   state = {
@@ -72,12 +73,8 @@ class App extends React.Component {
     // let gallery = this.state.galleries[i];
     this.setState({ gallery, view: "gallery" });
     let photo = gallery.photos[0];
-    let url = `${domain}/uploads/photos/${
-      photo.category.toLowerCase() == "advertising"
-        ? "Client-Work"
-        : photo.category.replace(/\/?\s+/g, "_")
-    }/${photo.gallery.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "")}/${gallery.photos[0].location}`;
-    photo.url = url;
+    let url = `${parsePhotoUrl(photo)}/${photo.location}`;
+    photo.url = convertToWebp(url);
     this.setState({ photo, photoIndex: 0 });
     // this.setGallery(i);
     this.setState({ galleryLength: gallery.photos.length });
@@ -236,10 +233,29 @@ class App extends React.Component {
     if (newIndex <= -1) {
       newIndex = this.state.galleryLength - 1;
     }
-    // setTimeout(() => {
     this.setState({ photoIndex: newIndex });
     this.setPictureUrl(newIndex);
-    // }, 500);
+    this.preloadAdjacentImages(newIndex);
+  };
+
+  preloadAdjacentImages = (currentIndex) => {
+    if (!this.state.gallery) return;
+    const length = this.state.gallery.photos.length;
+    const nextIndex = (currentIndex + 1) % length;
+    const prevIndex = (currentIndex - 1 + length) % length;
+
+    console.log(nextIndex);
+
+    [nextIndex, prevIndex].forEach((index) => {
+      // console.log(this.state.gallery);
+      const imageUrl = `${parsePhotoUrl(this.state.gallery.photos[index])}/${this.state.gallery.photos[index].location}`;
+      console.log(`Preloading image ${imageUrl}`);
+      const img = new Image();
+      img.src = convertToWebp(imageUrl);
+      img.onload = () => {
+        console.log(`Image ${imageUrl} loaded`);
+      };
+    });
   };
 
   /////
@@ -262,7 +278,7 @@ class App extends React.Component {
     }/${photo.gallery.replace(/\/?\s+/g, "_").replace(/[^\w\s]/gi, "")}/${
       photo.location
     }`;
-    photo.url = url;
+    photo.url = convertToWebp(url);
     this.setState({ photo });
     this.setGalleryLength();
   };
