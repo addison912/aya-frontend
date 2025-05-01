@@ -29,11 +29,13 @@ class Single extends Component {
         cursorEl.style.display = "none";
       }
       if (document.querySelector(".left-overlay>div:hover")) {
-        cursorImageEl.style.transform = `rotate(-90deg)`;
+        cursorImageEl.classList.remove("rotate-right", "rotate-left");
+        cursorImageEl.classList.add("rotate-left");
       } else if (document.querySelector(".right-overlay>div:hover")) {
-        cursorImageEl.style.transform = `rotate(90deg)`;
+        cursorImageEl.classList.remove("rotate-right", "rotate-left");
+        cursorImageEl.classList.add("rotate-right");
       } else {
-        cursorImageEl.style.transform = `rotate(0deg)`;
+        cursorImageEl.classList.remove("rotate-right", "rotate-left");
       }
     });
   };

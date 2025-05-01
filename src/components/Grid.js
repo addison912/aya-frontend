@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CategoryGrid from "../components/CategoryGrid";
 import GalleryGrid from "../components/GalleryGrid";
-import { Router } from "@reach/router";
 
 class Grid extends Component {
   componentDidMount() {
@@ -12,7 +11,6 @@ class Grid extends Component {
   }
   render() {
     return (
-      // <Router className="gallery">
       <div className="gallery">
         {this.props.view == "category" ? (
           <CategoryGrid
@@ -29,14 +27,12 @@ class Grid extends Component {
                     .replace(/\/?\s+/g, "-")}`
                 : null
             }
-            // path="/:galleryName"
             gallery={this.props.gallery}
             photoClick={this.props.photoClick}
             category={this.props.category}
           />
         )}
       </div>
-      // </Router>
     );
   }
 }

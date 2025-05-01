@@ -43,6 +43,7 @@ class App extends React.Component {
     mobileInfo: false,
     location: "",
     searchQuery: "",
+    prefetchedUrls: new Set(),
   };
 
   toggleGalleryLayout = (layout) => {
@@ -244,21 +245,56 @@ class App extends React.Component {
     const nextIndex = (currentIndex + 1) % length;
     const prevIndex = (currentIndex - 1 + length) % length;
 
-    console.log(nextIndex);
+    const range = 2;
+    const keepUrls = new Set();
+
+    // remove prefetches that are not in range
+    this.state.prefetchedUrls.forEach((url) => {
+      const index = this.state.gallery.photos.findIndex((photo) => {
+        return (
+          `${parsePhotoUrl(photo)}/${convertToWebp(photo.location)}` == url
+        );
+      });
+      if (index >= currentIndex - range && index <= currentIndex + range) {
+        keepUrls.add(url);
+      } else {
+        this.removePrefetchedUrl(index);
+      }
+    });
 
     [nextIndex, prevIndex].forEach((index) => {
-      // console.log(this.state.gallery);
-      const imageUrl = `${parsePhotoUrl(this.state.gallery.photos[index])}/${this.state.gallery.photos[index].location}`;
-      console.log(`Preloading image ${imageUrl}`);
-      const img = new Image();
-      img.src = convertToWebp(imageUrl);
-      img.onload = () => {
-        console.log(`Image ${imageUrl} loaded`);
-      };
+      if (this.checkPrefetchedUrl(index)) return;
+      const photo = this.state.gallery.photos[index];
+      const imageUrl = `${parsePhotoUrl(photo)}/${convertToWebp(photo.location)}`;
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.as = "image";
+      link.href = imageUrl;
+      link.dataset.prefetch = "true";
+      document.head.appendChild(link);
+      keepUrls.add(imageUrl);
+    });
+
+    this.setState({
+      prefetchedUrls: keepUrls,
     });
   };
 
-  /////
+  checkPrefetchedUrl = (index) => {
+    const photo = this.state.gallery.photos[index];
+    const url = `${parsePhotoUrl(photo)}/${convertToWebp(photo.location)}`;
+    return this.state.prefetchedUrls.has(url);
+  };
+
+  removePrefetchedUrl = (index) => {
+    const photo = this.state.gallery.photos[index];
+    if (!photo) return;
+    const url = `${parsePhotoUrl(photo)}/${convertToWebp(photo.location)}`;
+    document.head.removeChild(document.querySelector(`link[href="${url}"]`));
+    this.state.prefetchedUrls.delete(url);
+  };
+
+  // photoClick
   photoClick = (e) => {
     let i = e.target.closest("figure").getAttribute("data");
     this.setState({ layout: "single", photoIndex: i });

@@ -1,6 +1,7 @@
 import { domain } from "../config/constants";
 
 export const parsePhotoUrl = (photo) => {
+  console.log(photo);
   return `${domain}/uploads/photos/${
     photo.category.toLowerCase() == "advertising"
       ? "Client-Work"

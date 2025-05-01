@@ -1364,6 +1364,17 @@ time {
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.6, 1.46, 0.53, 0.92);
   transition-property: transform, opacity;
+  image-orientation: 0deg;
+}
+
+#cursor > img.rotate-left {
+  transform: rotate(-90deg);
+}
+#cursor > img.rotate-right {
+  transform: rotate(90deg);
+}
+#cursor > img.rotate-default {
+  transform: rotate(0deg);
 }
 
 .image-container > div {
