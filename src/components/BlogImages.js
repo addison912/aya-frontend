@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { domain } from "../config/constants";
 import { navigate } from "@reach/router";
+import { convertToWebp } from "../utils/helpers";
 
 class BlogImages extends Component {
   render() {
@@ -18,8 +19,9 @@ class BlogImages extends Component {
             >
               <img
                 className={photo.link ? "post-image__clickable" : ""}
-                src={`${domain}/uploads/news/${photo.location}`}
+                src={`${domain}/uploads/news/${convertToWebp(photo.location)}`}
                 alt={photo.caption ? photo.caption : `blog photo ${i}`}
+                loading="lazy"
               />
               {photo.caption ? <figcaption>{photo.caption}</figcaption> : null}
               {photo.link}

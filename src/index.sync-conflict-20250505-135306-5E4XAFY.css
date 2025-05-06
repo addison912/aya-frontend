@@ -291,16 +291,17 @@ a {
 }
 
 .image-wrapper {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-height: 100%;
-  vertical-align: top;
 }
 
 .single-pic {
   display: block;
-  max-width: 100%;
-  height: auto;
   max-height: calc(100% - 32px);
+  max-width: 100%;
+  /* max-height: 100%; */
   object-fit: contain;
   -webkit-animation: fadein 0.12s;
   -moz-animation: fadein 0.12s;
@@ -311,13 +312,10 @@ a {
 
 @media only screen and (max-width: 560px) {
   .single-pic {
+    display: block;
     max-width: 100%;
     object-fit: contain;
     height: calc(100% - 48px);
-  }
-  img.single-pic {
-    opacity: 1;
-    transition: none;
   }
   .right-overlay,
   .left-overlay {
@@ -1368,17 +1366,6 @@ time {
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.6, 1.46, 0.53, 0.92);
   transition-property: transform, opacity;
-  image-orientation: 0deg;
-}
-
-#cursor > img.rotate-left {
-  transform: rotate(-90deg);
-}
-#cursor > img.rotate-right {
-  transform: rotate(90deg);
-}
-#cursor > img.rotate-default {
-  transform: rotate(0deg);
 }
 
 .image-container > div {

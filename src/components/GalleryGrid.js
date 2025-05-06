@@ -7,10 +7,6 @@ import { parsePhotoUrl } from "../utils/helpers";
 import { convertToWebp } from "../utils/helpers";
 
 class GalleryGrid extends Component {
-  // componentDidMount() {
-  //   // console.log("gallery grid mounted");
-  //   // console.log(this.props);
-  // }
   render() {
     return (
       <div className="gallery-content">

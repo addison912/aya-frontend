@@ -245,7 +245,7 @@ class App extends React.Component {
     const nextIndex = (currentIndex + 1) % length;
     const prevIndex = (currentIndex - 1 + length) % length;
 
-    const range = 2;
+    const range = 3;
     const keepUrls = new Set();
 
     // remove prefetches that are not in range
@@ -333,6 +333,25 @@ class App extends React.Component {
     this.setState({ hamburgerMenu: false });
   };
 
+  prefetchPhotos() {
+    const { gallery } = this.state;
+    if (gallery && gallery.photos && gallery.photos.length > 0) {
+      gallery.photos.slice(0, 6).forEach((photo) => {
+        const thumbUrl = `${parsePhotoUrl(photo)}/thumbs/${convertToWebp(photo.location)}`;
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.as = "image";
+        link.href = thumbUrl;
+        link.dataset.prefetch = "true";
+        document.head.appendChild(link);
+        this.state.prefetchedUrls.add(thumbUrl);
+        this.setState({
+          prefetchedUrls: this.state.prefetchedUrls,
+        });
+      });
+    }
+  }
+
   componentDidMount() {
     //hide hamburger menu when background clicked
     window.addEventListener("click", (e) => {
@@ -346,7 +365,41 @@ class App extends React.Component {
       }
     });
     //initialize cursor
+    if (
+      this.state.layout == "grid" &&
+      this.state.view == "gallery" &&
+      this.state.gallery
+    ) {
+      // prefetch first 6 photos
+      this.prefetchPhotos();
+    }
   }
+
+  // Returns the adjacent photo object (with url, width, height) for preloading in Single
+  getAdjacentPhoto = (offset) => {
+    const { gallery, photoIndex } = this.state;
+    if (!gallery || !gallery.photos || !gallery.photos.length) return null;
+    const length = gallery.photos.length;
+    let idx = (parseInt(photoIndex, 10) + offset + length) % length;
+    const photo = gallery.photos[idx];
+    if (!photo) return null;
+    // Generate .url if not present
+    let url = photo.url;
+    if (!url) {
+      url = `${domain}/uploads/photos/${
+        photo.category && photo.category.toLowerCase() === "advertising"
+          ? "Client-Work"
+          : photo.category.replace(/\/\?\s+/g, "_")
+      }/${photo.gallery.replace(/\/\?\s+/g, "_").replace(/[^\w\s]/gi, "")}/$${photo.location}`;
+      url = convertToWebp(url);
+    }
+    return {
+      ...photo,
+      url,
+      width: photo.width,
+      height: photo.height,
+    };
+  };
 
   render() {
     return (

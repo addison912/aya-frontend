@@ -3,6 +3,19 @@ import { Swipeable } from "react-swipeable";
 import { convertToWebp } from "../utils/helpers";
 
 class Single extends Component {
+  state = {
+    imageLoaded: false,
+    lastImageUrl: null,
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // Reset imageLoaded if the image URL changes
+    if (nextProps.photo.url !== prevState.lastImageUrl) {
+      return { imageLoaded: false, lastImageUrl: nextProps.photo.url };
+    }
+    return null;
+  }
+
   initializeCursor = () => {
     let currentCursorPos;
     let cursorEl = document.querySelector("#cursor");
@@ -84,9 +97,56 @@ class Single extends Component {
                     ? this.props.photo.caption
                     : this.props.photo.gallery
                 }
+                style={{
+                  opacity: this.state.imageLoaded ? 1 : 0,
+                  transition: "opacity 0.1s ease",
+                  display: "block",
+                }}
+                width={
+                  this.props.photo.width ? this.props.photo.width : undefined
+                }
+                height={
+                  this.props.photo.height ? this.props.photo.height : undefined
+                }
+                onLoad={() => this.setState({ imageLoaded: true })}
               />
             ) : null}
-            {this.props.photo.url && this.props.photo.caption ? (
+
+            {/* Pre-render previous and next images for prefetching */}
+            {this.props.getAdjacentPhoto && this.props.photo.url
+              ? (() => {
+                  const prev = this.props.getAdjacentPhoto(-1);
+                  const next = this.props.getAdjacentPhoto(1);
+                  return (
+                    <>
+                      {prev && prev.url && (
+                        <img
+                          className="single-pic preload-adjacent"
+                          src={convertToWebp(prev.url)}
+                          alt=""
+                          style={{ display: "none" }}
+                          width={prev.width ? prev.width : undefined}
+                          height={prev.height ? prev.height : undefined}
+                        />
+                      )}
+                      {next && next.url && (
+                        <img
+                          className="single-pic preload-adjacent"
+                          src={convertToWebp(next.url)}
+                          alt=""
+                          style={{ display: "none" }}
+                          width={next.width ? next.width : undefined}
+                          height={next.height ? next.height : undefined}
+                        />
+                      )}
+                    </>
+                  );
+                })()
+              : null}
+
+            {this.props.photo.url &&
+            this.props.photo.caption &&
+            this.state.imageLoaded ? (
               <div className="image-info" onChange={this.wait()}>
                 <p className="caption">{this.props.photo.caption}</p>
                 <p className="caption-nav">

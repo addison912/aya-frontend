@@ -41,6 +41,7 @@ class Main extends Component {
                 category={this.props.category}
                 galleryLength={this.props.galleryLength}
                 photoIndex={this.props.photoIndex}
+                getAdjacentPhoto={this.props.getAdjacentPhoto}
               />
             ) : (
               <Grid
